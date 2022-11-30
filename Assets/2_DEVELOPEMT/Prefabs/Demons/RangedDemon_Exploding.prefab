@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6797332652028833486
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_Name
+      value: RangedDemon_Exploding
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441288, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441288, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441288, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441288, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441288, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9995645
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441288, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441288, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.029509999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441288, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441288, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441288, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -3.382
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441288, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441291, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441291, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: deathLayerID
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281319840441291, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: projectileType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091281321206336123, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253380757492070809, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253380757492070809, guid: fd36a919ae3ab9f48af8013acb96dffb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: daf6a57fd945a4c4a929184dc115dfd7, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
