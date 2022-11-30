@@ -12,6 +12,8 @@ namespace AKB.Core.Managing
         Stunned,
         Confused,
         Charmed,
+
+        None,
     }
 
     [DefaultExecutionOrder(100)]
@@ -32,7 +34,7 @@ namespace AKB.Core.Managing
 
         void CheckEffectsArrayLength()
         {
-            if (effects.Length < Enum.GetValues(typeof(EffectType)).Length)
+            if (effects.Length < Enum.GetValues(typeof(EffectType)).Length - 1)
             {
                 throw new ArgumentException("Not many effects in the effects array");
             }

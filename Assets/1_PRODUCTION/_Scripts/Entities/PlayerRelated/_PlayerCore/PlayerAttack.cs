@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 using AKB.Entities.Interactions;
 using AKB.Core.Managing;
+using AKB.Core.Managing.InRunUpdates;
 
 namespace AKB.Entities.Player
 {
@@ -18,6 +19,7 @@ namespace AKB.Entities.Player
 
         PlayerEntity playerEntity;
         InputAction attackAction;
+        AttackAdvancementHandler AttackAdvancementHandler;
 
         bool isAttacking = false;
         bool healthRegenActive = false;
@@ -31,6 +33,7 @@ namespace AKB.Entities.Player
         void Start()
         {
             playerEntity = transform.root.GetComponent<PlayerEntity>();
+            AttackAdvancementHandler = gameObject.AddComponent<AttackAdvancementHandler>();
 
             //Input setup
             attackAction = playerEntity.PlayerInputs.Player.Fire;
@@ -87,15 +90,32 @@ namespace AKB.Entities.Player
                 {
                     interactable.AttackInteraction(attackDamage);
 
-                    if (healthRegenActive)
-                    {
-                        float percentageToHeal = GetAttackDamage() * 0.2f;
-
-                        playerEntity.IncrementPlayerHealthBy((int)percentageToHeal);
-                    }
+                    ApplyAdvancementEffect(interactable);
+                    OmvivampEffect();
 
                     GameManager.S.GameEventsHandler.OnEnemyHit();
                 }
+            }
+        }
+
+        private void ApplyAdvancementEffect(IInteractable interactable)
+        {
+            EffectType attackEffect = AttackAdvancementHandler.GetCurrentAdvancementEffect();
+            GameObject effect = GameManager.S.StatusEffectManager.GetNeededEffect(attackEffect);
+
+            if (effect != null)
+            {
+                interactable.ApplyStatusEffect(effect);
+            }
+        }
+
+        private void OmvivampEffect()
+        {
+            if (healthRegenActive)
+            {
+                float percentageToHeal = GetAttackDamage() * 0.2f;
+
+                playerEntity.IncrementPlayerHealthBy((int)percentageToHeal);
             }
         }
 

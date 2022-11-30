@@ -7,28 +7,31 @@ using AKB.Entities.Player;
 using AKB.Core.Managing.LevelLoading;
 using AKB.Core.Managing.UI;
 using AKB.Core.Managing.UpdateSystem;
+using AKB.Core.Managing.InRunUpdates;
 
 namespace AKB.Core.Managing
 {
     [DefaultExecutionOrder(10)]
     public class GameManager : MonoBehaviour
     {
-        static GameManager _S;
+        static GameManager _s;
         public static GameManager S
         {
             get
             {
-                if (_S is null)
+                if (_s is null)
                 {
                     Debug.LogError("Game manager is null");
                 }
 
-                return _S;
+                return _s;
             }
         }
 
+        #region HANDLERS
         public GameEventsHandler GameEventsHandler { get; private set; }
         public AdvancementHandler AdvancementHandler { get; private set; }
+        public SlotsHandler SlotsHandler { get; private set; }
 
         public LevelManager LevelManager { get; private set; }
 
@@ -41,15 +44,23 @@ namespace AKB.Core.Managing
         public ProjectilePools ProjectilePools { get; private set; }
 
         public PlayerEntity PlayerEntity { get; private set; }
+        #endregion
 
         private void Awake()
         {
-            _S = this;
+            _s = this;
 
+            CacheHandlers();
+        }
+
+        #region REFERENCE_MUTATORS
+        void CacheHandlers()
+        {
             GameEventsHandler = new GameEventsHandler();
             AdvancementHandler = new AdvancementHandler();
 
             LevelManager = FindObjectOfType<LevelManager>();
+            SlotsHandler = FindObjectOfType<SlotsHandler>();
         }
 
         public void SetUI_ManagerReference(UI_Manager reference)
@@ -81,18 +92,11 @@ namespace AKB.Core.Managing
         {
             ProjectilePools = reference;
         }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                GameManager.S.AdvancementHandler.AdvanceTierOf(AdvancementType.DevilRage);
-            }
-        }
+        #endregion
 
         private void OnDestroy()
         {
-            _S = null;
+            _s = null;
         }
     }
 }
