@@ -21,20 +21,20 @@ namespace AKB.Core.Managing.InRunUpdates
         None,
 
         ThirdEnflamed,
-        ChainLighting,
+        Lighting,
         ThirdStun,
     }
 
     public class AttackAdvancementHandler : MonoBehaviour,
         IAdvanceable
     {
-        AttackInRunAdvancements activeAdvancement = AttackInRunAdvancements.ThirdEnflamed;
+        AttackInRunAdvancements activeAdvancement = AttackInRunAdvancements.None;
 
         Dictionary<AttackInRunAdvancements, EffectType> attackEffectPairs = new Dictionary<AttackInRunAdvancements, EffectType>()
         {
             {AttackInRunAdvancements.None, EffectType.None},
             {AttackInRunAdvancements.ThirdEnflamed, EffectType.Enflamed },
-            {AttackInRunAdvancements.ChainLighting, EffectType.Shocked },
+            {AttackInRunAdvancements.Lighting, EffectType.Shocked },
             {AttackInRunAdvancements.ThirdStun, EffectType.Stunned },
         };
 
@@ -46,6 +46,11 @@ namespace AKB.Core.Managing.InRunUpdates
         public EffectType GetCurrentAdvancementEffect()
         {
             return attackEffectPairs[activeAdvancement];
+        }
+
+        public void SetActiveAdvancement(AttackInRunAdvancements advancement)
+        {
+            activeAdvancement = advancement;
         }
     }
 }
