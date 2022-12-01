@@ -21,9 +21,16 @@ namespace AKB.Core.Managing.InRunUpdates
 
         IAdvanceable[] slots;
 
+        //keep handlers here
+        public AttackAdvancementHandler AttackAdvancementHandler { get; private set; }
+        public SpearInRunAdvancements SpearInRunAdvancements { get; private set; }
+
         private void Awake()
         {
             slots = new IAdvanceable[slotSize];
+
+            AttackAdvancementHandler = gameObject.AddComponent<AttackAdvancementHandler>();
+            SpearInRunAdvancements = gameObject.AddComponent<SpearInRunAdvancements>();
         }
 
         public void SetAdvanceableAtSlot(SlotType slotType, IAdvanceable advanceable)

@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 using AKB.Entities.Interactions;
+using AKB.Core.Managing;
+using AKB.Core.Managing.InRunUpdates;
 
 namespace AKB.Entities.Player.SpearHandling
 {
@@ -25,6 +27,7 @@ namespace AKB.Entities.Player.SpearHandling
 
         PlayerSpearThrow playerSpearThrow;
         IEnumerator runningBehaviour;
+        Transform poolParent;
 
         float maxTravelTime;
         float currentTravelTime;
@@ -36,7 +39,6 @@ namespace AKB.Entities.Player.SpearHandling
         private void Awake()
         {
             CacheNeededComponents();
-
             SpearRB.isKinematic = true;
         }
 
@@ -56,6 +58,8 @@ namespace AKB.Entities.Player.SpearHandling
         /// </summary>
         public void StartSpearThrowSimulation(float spearSpeed, float maxTravelTime, PlayerSpearThrow playerSpearThrow)
         {
+            poolParent = transform.parent;
+
             this.spearSpeed = spearSpeed;
             this.maxTravelTime = maxTravelTime;
             this.playerSpearThrow = playerSpearThrow;
@@ -110,17 +114,37 @@ namespace AKB.Entities.Player.SpearHandling
 
         private void OnCollisionEnter(Collision collision)
         {
-            SpearRB.constraints = RigidbodyConstraints.FreezeAll;
-
             if (!inTransit) return;
 
+            SpearStateBasedBehaviour(collision);
+        }
+
+        void SpearStateBasedBehaviour(Collision collision)
+        {
             if (currentTravelDirection == TravelDirection.Thrown)
             {
                 StartCoroutine(HitSurroundings(playerSpearThrow.GetSpearThrowDamage()));
+                CheckForSpearPiercing(collision);
             }
             else
             {
                 StartCoroutine(HitSurroundings(playerSpearThrow.GetSpearRecallDamage()));
+            }
+        }
+
+        void CheckForSpearPiercing(Collision collision)
+        {
+            if (GameManager.S.SlotsHandler.SpearInRunAdvancements.GetIsAdvancementActive(SpearRunAdvancements.SpearPierce))
+            {
+                if (!collision.transform.CompareTag("Demons"))
+                {
+                    SpearRB.constraints = RigidbodyConstraints.FreezeAll;
+                }
+            }
+            else
+            {
+                gameObject.transform.SetParent(collision.transform, true);
+                SpearRB.constraints = RigidbodyConstraints.FreezeAll;
             }
         }
 
@@ -150,13 +174,16 @@ namespace AKB.Entities.Player.SpearHandling
         public void StartSpearRetraction(Transform spearRecallPoint)
         {
             runningBehaviour = SimulateSpearRetraction(spearRecallPoint);
-            currentTravelDirection = TravelDirection.Recall;
-
             StartCoroutine(runningBehaviour);
         }
 
         IEnumerator SimulateSpearRetraction(Transform spearRecallPoint)
         {
+            if (!GameManager.S.SlotsHandler.SpearInRunAdvancements.GetIsAdvancementActive(SpearRunAdvancements.PullEnemyOnSpearRecall))
+            {
+                gameObject.transform.SetParent(poolParent);
+            }
+
             currentTravelDirection = TravelDirection.Recall;
 
             //face the caller

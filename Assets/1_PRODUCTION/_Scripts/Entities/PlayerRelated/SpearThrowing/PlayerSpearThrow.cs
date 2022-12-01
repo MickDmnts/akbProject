@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 using AKB.Core.Managing;
 using UnityEngine.Rendering.Universal;
+using AKB.Core.Managing.InRunUpdates;
 
 namespace AKB.Entities.Player.SpearHandling
 {
