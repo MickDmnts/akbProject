@@ -33,14 +33,6 @@ namespace AKB.Core.Managing.InRunUpdates
     {
         SpearRunAdvancements activeAdvancement = SpearRunAdvancements.None;
 
-        /*Dictionary<SpearRunAdvancements, bool> spearBoolPairs = new Dictionary<SpearRunAdvancements, bool>
-        {
-            {SpearRunAdvancements.None, false},
-            {SpearRunAdvancements.SpearPierce, true},
-            {SpearRunAdvancements.DamageAtTeleportPoint, true},
-            {SpearRunAdvancements.PullEnemyOnSpearRecall, true},
-        };
-*/
         public void SetActiveAdvancement(SpearRunAdvancements advancement) => activeAdvancement = advancement;
 
         public bool GetIsAdvancementActive(SpearRunAdvancements advancement)

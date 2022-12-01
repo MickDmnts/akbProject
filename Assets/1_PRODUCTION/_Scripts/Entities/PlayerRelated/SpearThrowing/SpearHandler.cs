@@ -32,7 +32,6 @@ namespace AKB.Entities.Player.SpearHandling
         float maxTravelTime;
         float currentTravelTime;
 
-        bool inTransit = false;
         TravelDirection currentTravelDirection;
 
         #region STARTUP_SETUP
@@ -64,7 +63,7 @@ namespace AKB.Entities.Player.SpearHandling
             this.maxTravelTime = maxTravelTime;
             this.playerSpearThrow = playerSpearThrow;
 
-            inTransit = true;
+            SpearCollider.isTrigger = true;
 
             runningBehaviour = SimulateSpearTravel();
             StartCoroutine(runningBehaviour);
@@ -74,23 +73,20 @@ namespace AKB.Entities.Player.SpearHandling
         //Change to async/await if possible
         IEnumerator SimulateSpearTravel()
         {
+            yield return new WaitForFixedUpdate();
+
             currentTravelDirection = TravelDirection.Thrown;
 
             //Simulate spear air travel
-            while (SpearRB.isKinematic)
+            while (currentTravelTime <= maxTravelTime)
             {
                 transform.position += transform.forward * spearSpeed * Time.deltaTime;
                 currentTravelTime += 0.1f;
 
-                if (currentTravelTime > maxTravelTime)
-                {
-                    break;
-                }
                 yield return null;
             }
 
             //Simulate spear drop.
-            SpearCollider.isTrigger = false;
             SpearRB.isKinematic = false;
             SpearRB.AddForce(transform.forward * spearSpeed, ForceMode.VelocityChange);
 
@@ -112,31 +108,33 @@ namespace AKB.Entities.Player.SpearHandling
             transform.rotation = Quaternion.LerpUnclamped(transform.rotation, currentRotation * Quaternion.Euler(rotation.x, rotation.y, rotation.z), lerpTime * Time.deltaTime);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        void OnTriggerEnter(Collider other)
         {
-            if (!inTransit) return;
-
-            SpearStateBasedBehaviour(collision);
+            SpearStateBasedBehaviour(other.gameObject);
         }
 
-        void SpearStateBasedBehaviour(Collision collision)
+        void SpearStateBasedBehaviour(GameObject collision)
         {
             if (currentTravelDirection == TravelDirection.Thrown)
             {
+                //While being thrown
                 StartCoroutine(HitSurroundings(playerSpearThrow.GetSpearThrowDamage()));
+
                 CheckForSpearPiercing(collision);
             }
             else
             {
+                //While recalling
                 StartCoroutine(HitSurroundings(playerSpearThrow.GetSpearRecallDamage()));
+                SpearRB.constraints = RigidbodyConstraints.FreezeAll;
             }
         }
 
-        void CheckForSpearPiercing(Collision collision)
+        void CheckForSpearPiercing(GameObject collision)
         {
             if (GameManager.S.SlotsHandler.SpearInRunAdvancements.GetIsAdvancementActive(SpearRunAdvancements.SpearPierce))
             {
-                if (!collision.transform.CompareTag("Demons"))
+                if (!collision.gameObject.CompareTag("Demon"))
                 {
                     SpearRB.constraints = RigidbodyConstraints.FreezeAll;
                 }
@@ -203,8 +201,6 @@ namespace AKB.Entities.Player.SpearHandling
                 if (Vector3.Distance(transform.position, spearRecallPoint.position) <= 2f)
                 {
                     gameObject.SetActive(false);
-
-                    inTransit = false;
                     break;
                 }
 
@@ -224,7 +220,6 @@ namespace AKB.Entities.Player.SpearHandling
 
         IEnumerator StopSpearRetractionSimulation()
         {
-            SpearCollider.isTrigger = false;
             SpearRB.isKinematic = false;
             SpearRB.AddForce(transform.forward * 5f, ForceMode.VelocityChange);
 
