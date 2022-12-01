@@ -17,10 +17,15 @@ namespace AKB.Core.Managing.UI
     [DefaultExecutionOrder(50)]
     public class UI_Manager : MonoBehaviour
     {
+        public PlayerUIBars playerUIBars { get; private set; }
+
+        public dummy testing { get; private set; }
+
         //Dynamically changed
         List<GameObject> uiPanels;
 
         bool isPaused = false;
+
         public bool IsPaused
         {
             get { return isPaused; }
@@ -74,7 +79,8 @@ namespace AKB.Core.Managing.UI
         /// </summary>
         bool IsInInvalidScene()
         {
-            if (GameManager.S.LevelManager.FocusedScene == GameScenes.MainMenu)
+            if (GameManager.S.LevelManager.FocusedScene == GameScenes.MainMenu
+                || GameManager.S.LevelManager.FocusedScene == GameScenes.TutorialArena)
                 return true;
 
             return false;
@@ -89,6 +95,22 @@ namespace AKB.Core.Managing.UI
             {
                 panel.SetActive(panelName.Equals(panel.name));
             }
+        }
+
+        /// <summary>
+        /// Call to disable the passed UI panel.
+        /// </summary>
+        public void DisablePanel()
+        {
+            foreach (GameObject panel in uiPanels)
+            {
+                panel.SetActive(false);
+            }
+        }
+
+        void QuitGame()
+        {
+            Application.Quit();
         }
     }
 }
