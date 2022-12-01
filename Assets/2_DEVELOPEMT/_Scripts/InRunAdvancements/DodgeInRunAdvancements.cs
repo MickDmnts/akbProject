@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AKB.Core.Managing.InRunUpdates
 {
-
     /* CLASS DOCUMENTATION *\
      * 
      * [Variable Specifics]
@@ -19,23 +17,23 @@ namespace AKB.Core.Managing.InRunUpdates
      * 1. ...
      */
 
-    public enum SpearRunAdvancements
+    public enum DodgeRunAdvancements
     {
         None = 0,
 
-        SpearPierce = 1,
-        DamageAtTeleportPoint = 2,
-        //PullEnemyOnSpearRecall = 3,
+        MovementSpeed = 1,
+        PushAway = 2,
+        ShockOnTouch = 3,
     }
 
-    public class SpearInRunAdvancements : MonoBehaviour,
+    public class DodgeInRunAdvancements : MonoBehaviour,
         IAdvanceable
     {
-        SpearRunAdvancements activeAdvancement = SpearRunAdvancements.None;
+        DodgeRunAdvancements activeAdvancement = DodgeRunAdvancements.PushAway;
 
-        public void SetActiveAdvancement(SpearRunAdvancements advancement) => activeAdvancement = advancement;
+        public void SetActiveAdvancement(DodgeRunAdvancements advancement) => activeAdvancement = advancement;
 
-        public bool GetIsAdvancementActive(SpearRunAdvancements advancement)
+        public bool GetIsAdvancementActive(DodgeRunAdvancements advancement)
         {
             return advancement == activeAdvancement;
         }

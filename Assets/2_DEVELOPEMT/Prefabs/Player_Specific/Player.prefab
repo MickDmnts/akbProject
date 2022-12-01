@@ -101,6 +101,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spearTeleportationCD: 8
   teleportationCharges: 1
+  damageAtTeleportPoint: 10
+  overlapSphereRadius: 5
+  demonsHitLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &2972379026024975738
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,12 +399,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74409d7ba41a6f43b1631c27bd356c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLayer: 6
   nonAttackableLayerIndex: 31
   startingDodgeCount: 1
   maxStartingDodgeCount: 1
   dodgeCooldown: 0.8
   pushForce: 20
   movementThresholdToDodge: 1
+  effectToApply: 1
+  demonsHitLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  effectiveRadius: 5
+  damageOnPush: 5
+  surroundingsPushForce: 10
+  pushForceRadius: 4
 --- !u!1 &3195567131058879845
 GameObject:
   m_ObjectHideFlags: 0

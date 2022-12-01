@@ -177,10 +177,10 @@ namespace AKB.Entities.Player.SpearHandling
 
         IEnumerator SimulateSpearRetraction(Transform spearRecallPoint)
         {
-            if (!GameManager.S.SlotsHandler.SpearInRunAdvancements.GetIsAdvancementActive(SpearRunAdvancements.PullEnemyOnSpearRecall))
-            {
-                gameObject.transform.SetParent(poolParent);
-            }
+            /*            if (!GameManager.S.SlotsHandler.SpearInRunAdvancements.GetIsAdvancementActive(SpearRunAdvancements.PullEnemyOnSpearRecall))
+                        {*/
+            gameObject.transform.SetParent(poolParent);
+            //}
 
             currentTravelDirection = TravelDirection.Recall;
 

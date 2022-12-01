@@ -349,11 +349,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2972379025614347761, guid: 9005271d0f41e0a458cd19aacb635b6d,
-        type: 3}
-      propertyPath: demonsHitLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     - target: {fileID: 2972379026712878070, guid: 9005271d0f41e0a458cd19aacb635b6d,
         type: 3}
       propertyPath: m_Name
@@ -1328,7 +1323,7 @@ PrefabInstance:
     - target: {fileID: 5440863929184355375, guid: cac3802df1d3b6b488fada71fd33c948,
         type: 3}
       propertyPath: m_Speed
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5440863929184355375, guid: cac3802df1d3b6b488fada71fd33c948,
         type: 3}

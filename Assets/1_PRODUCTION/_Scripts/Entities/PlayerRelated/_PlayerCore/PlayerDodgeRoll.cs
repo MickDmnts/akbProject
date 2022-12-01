@@ -2,18 +2,34 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using AKB.Core.Managing;
+using AKB.Entities.Interactions;
+using AKB.Core.Managing.InRunUpdates;
+using UnityEngine.AI;
+
 namespace AKB.Entities.Player
 {
     [DefaultExecutionOrder(450)]
     public class PlayerDodgeRoll : MonoBehaviour
     {
         [Header("Set in inspector")]
+        [SerializeField] int playerLayer = 6;
         [SerializeField] int nonAttackableLayerIndex = 31;
         [SerializeField] int startingDodgeCount = 1;
         [SerializeField] int maxStartingDodgeCount = 1;
         [SerializeField] float dodgeCooldown = 0.8f;
         [SerializeField] float pushForce = 50f;
         [SerializeField] float movementThresholdToDodge = 1f;
+
+        [Header("Shock on touch specifics")]
+        [SerializeField] EffectType effectToApply;
+        [SerializeField] LayerMask demonsHitLayer;
+        [SerializeField] float effectiveRadius = 5f;
+
+        [Header("Push on dodge specifics")]
+        [SerializeField] int damageOnPush = 5;
+        [SerializeField] float surroundingsPushForce = 7f;
+        [SerializeField] float pushForceRadius = 5f;
 
         PlayerEntity playerEntity;
         InputAction dodgeAction;
@@ -69,19 +85,80 @@ namespace AKB.Entities.Player
         {
             yield return new WaitForFixedUpdate();
 
+            if (GameManager.S.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.PushAway))
+            {
+                PushSurroundings();
+            }
+
             while (playerEntity.PlayerAnimations.IsInTransition(0)
                 || playerEntity.PlayerAnimations.IsAnimationRunning(0, "DodgeRoll"))
             {
+                if (GameManager.S.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.ShockOnTouch))
+                {
+                    ShockSurroundings();
+                }
                 yield return null;
             }
 
-            gameObject.layer = 6;
+            gameObject.layer = playerLayer;
             playerEntity.PlayerMovement.SetCanMoveState(true);
             playerEntity.Rigidbody.velocity = Vector3.zero;
 
             isDodging = false;
 
             ResetDodgesCount();
+            if (GameManager.S.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.MovementSpeed))
+            {
+                StartCoroutine(IncreaseMoveSpeed());
+            }
+        }
+
+        IEnumerator IncreaseMoveSpeed()
+        {
+            playerEntity.PlayerMovement.SetCurrentMoveSpeed(playerEntity.PlayerMovement.GetMoveSpeed() * 2, true);
+            yield return new WaitForSeconds(2f);
+
+            playerEntity.PlayerMovement.SetCurrentMoveSpeed(playerEntity.PlayerMovement.GetMoveSpeedCache());
+
+            StopCoroutine(IncreaseMoveSpeed());
+        }
+
+        void ShockSurroundings()
+        {
+            Collider[] hits = new Collider[50];
+            int hitCount = Physics.OverlapSphereNonAlloc(transform.position, effectiveRadius, hits, demonsHitLayer.value);
+
+            for (int i = 0; i < hitCount; i++)
+            {
+                if (hits[i] == null) continue;
+
+                IInteractable interactable;
+
+                if (hits[i].TryGetComponent<IInteractable>(out interactable))
+                {
+                    interactable.ApplyStatusEffect(GameManager.S.StatusEffectManager.GetNeededEffect(effectToApply));
+                }
+            }
+        }
+
+        void PushSurroundings()
+        {
+            Collider[] hits = new Collider[50];
+            int hitCount = Physics.OverlapSphereNonAlloc(transform.position, pushForceRadius, hits, demonsHitLayer.value);
+
+            for (int i = 0; i < hitCount; i++)
+            {
+                if (hits[i] == null) continue;
+
+                NavMeshAgent hitAgent = null;
+                IInteractable interaction;
+
+                if (hits[i].TryGetComponent<NavMeshAgent>(out hitAgent) && hits[i].TryGetComponent<IInteractable>(out interaction))
+                {
+                    hitAgent.velocity = (hits[i].transform.position - transform.position).normalized * surroundingsPushForce;
+                    interaction.AttackInteraction(damageOnPush);
+                }
+            }
         }
 
         bool CanDodge()

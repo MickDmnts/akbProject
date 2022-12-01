@@ -43,6 +43,9 @@ namespace AKB.Entities.AI.Implementations.Simple_Demon
         private void Awake()
         {
             CacheNeededComponents();
+
+            agentSpeedCache = ai_agent.speed;
+            attackSpeedCache = attackCooldown;
         }
 
         /// <summary>
@@ -158,12 +161,8 @@ namespace AKB.Entities.AI.Implementations.Simple_Demon
 
             isShocked = true;
 
-            //Cache default speeds
-            agentSpeedCache = ai_agent.speed;
-            attackSpeedCache = attackCooldown;
-
             GetDemonData().SetAttackCooldown(attackCooldown * 2);
-            agentSpeedCache /= 2;
+            ai_agent.speed /= 2;
         }
 
         public void RemoveShockInteraction()
