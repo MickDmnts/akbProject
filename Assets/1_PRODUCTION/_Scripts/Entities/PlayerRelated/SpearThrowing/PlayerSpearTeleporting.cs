@@ -1,3 +1,5 @@
+using AKB.Core.Managing;
+using AKB.Entities.Interactions;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +12,11 @@ namespace AKB.Entities.Player.SpearHandling
         [Header("Set in inspector")]
         [SerializeField] float spearTeleportationCD;
         [SerializeField] int teleportationCharges;
+
+        [Header("Damage at teleport skill")]
+        [SerializeField] int damageAtTeleportPoint = 10;
+        [SerializeField] float overlapSphereRadius = 5f;
+        [SerializeField] LayerMask demonsHitLayer;
 
         PlayerSpearThrow spearThrowHandler;
 
@@ -87,11 +94,34 @@ namespace AKB.Entities.Player.SpearHandling
                 hasTeleported = true;
                 canTeleport = false;
 
+                if (GameManager.S.SlotsHandler.SpearInRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.SpearRunAdvancements.DamageAtTeleportPoint))
+                {
+                    StartCoroutine(DamageOnTeleport());
+                }
+
                 StartCoroutine(SpearTeleportationRecharge());
             }
-            else
+        }
+
+        IEnumerator DamageOnTeleport()
+        {
+            yield return new WaitForFixedUpdate();
+
+            Collider[] hits = new Collider[50];
+            int hitCount = Physics.OverlapSphereNonAlloc(transform.position, overlapSphereRadius, hits, demonsHitLayer.value);
+
+            for (int i = 0; i < hitCount; i++)
             {
-                Debug.Log("No spear to teleport to");
+                if (hits[i] == null) continue;
+
+                IInteractable interactable;
+
+                if (hits[i].TryGetComponent<IInteractable>(out interactable))
+                {
+                    interactable.AttackInteraction(damageAtTeleportPoint);
+                }
+
+                yield return null;
             }
         }
 

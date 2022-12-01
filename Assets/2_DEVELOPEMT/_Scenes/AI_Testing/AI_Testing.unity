@@ -349,6 +349,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2972379025614347761, guid: 9005271d0f41e0a458cd19aacb635b6d,
+        type: 3}
+      propertyPath: demonsHitLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 2972379026712878070, guid: 9005271d0f41e0a458cd19aacb635b6d,
         type: 3}
       propertyPath: m_Name
@@ -554,7 +559,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452234943}
-  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.8522369}
+  m_LocalRotation: {x: 0.2933253, y: -0.40960622, z: 0.14097942, w: 0.852237}
   m_LocalPosition: {x: 26.64, y: 25.115, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -785,7 +790,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028478043}
-  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.8522369}
+  m_LocalRotation: {x: 0.2933253, y: -0.40960622, z: 0.14097942, w: 0.852237}
   m_LocalPosition: {x: 26.64, y: 25.115, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

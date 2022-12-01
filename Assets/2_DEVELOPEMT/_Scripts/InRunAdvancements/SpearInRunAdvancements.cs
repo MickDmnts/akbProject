@@ -31,7 +31,7 @@ namespace AKB.Core.Managing.InRunUpdates
     public class SpearInRunAdvancements : MonoBehaviour,
         IAdvanceable
     {
-        SpearRunAdvancements activeAdvancement = SpearRunAdvancements.None;
+        SpearRunAdvancements activeAdvancement = SpearRunAdvancements.DamageAtTeleportPoint;
 
         public void SetActiveAdvancement(SpearRunAdvancements advancement) => activeAdvancement = advancement;
 
