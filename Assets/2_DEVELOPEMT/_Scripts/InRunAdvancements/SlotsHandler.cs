@@ -17,22 +17,25 @@ namespace AKB.Core.Managing.InRunUpdates
 
     public class SlotsHandler : MonoBehaviour
     {
+        [Header("Set in inspector")]
         [SerializeField] int slotSize = 5;
 
         IAdvanceable[] slots;
 
         //keep handlers here
         public AttackAdvancementHandler AttackAdvancementHandler { get; private set; }
-        public SpearInRunAdvancements SpearInRunAdvancements { get; private set; }
+        public SpearRunAdvancements SpearInRunAdvancements { get; private set; }
         public DodgeInRunAdvancements DodgeInRunAdvancements { get; private set; }
+        public PassiveRunAdvancements PassiveRunAdvancements { get; private set; }
 
         private void Awake()
         {
             slots = new IAdvanceable[slotSize];
 
             AttackAdvancementHandler = gameObject.AddComponent<AttackAdvancementHandler>();
-            SpearInRunAdvancements = gameObject.AddComponent<SpearInRunAdvancements>();
+            SpearInRunAdvancements = gameObject.AddComponent<SpearRunAdvancements>();
             DodgeInRunAdvancements = gameObject.AddComponent<DodgeInRunAdvancements>();
+            PassiveRunAdvancements = gameObject.AddComponent<PassiveRunAdvancements>();
         }
 
         public void SetAdvanceableAtSlot(SlotType slotType, IAdvanceable advanceable)

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
 using AKB.Entities.Interactions;
+using AKB.Core.Managing;
+using AKB.Core.Managing.LevelLoading;
 
 namespace AKB.Entities.Player.Interactions
 {
@@ -21,6 +23,9 @@ namespace AKB.Entities.Player.Interactions
         IInteractable, IShockable, IStunnable, IConfusable,
         ICharmable
     {
+        [Header("Set in inspector")]
+        [SerializeField, Range(0f, 1f)] float healthRegenOnRoomEntry = 0.1f;
+
         PlayerEntity playerEntity;
 
         float mitigateDamageAfter;
@@ -30,14 +35,40 @@ namespace AKB.Entities.Player.Interactions
         bool currentlyCharmed = false;
         Vector3 inflictedFromDirection;
 
+        bool ignoreHit = false;
+
         private void Start()
         {
+            GameManager.S.GameEventsHandler.onSceneChanged += OnSceneEntryPassive;
+
             playerEntity = GetComponent<PlayerEntity>();
+        }
+
+        void OnSceneEntryPassive(GameScenes activeScene)
+        {
+            if (GameManager.S.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.PassiveAdvancements.RegenHealthOnRoomEntry))
+            {
+                RegenHealthOnRoomEntry();
+            }
+
+            if (GameManager.S.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.PassiveAdvancements.IgnoreFirstHit))
+            {
+                ignoreHit = true;
+            }
+        }
+
+        private void RegenHealthOnRoomEntry()
+        {
+            float percentage = playerEntity.GetPlayerMaxHealth() * healthRegenOnRoomEntry;
+
+            playerEntity.SetPlayerHealth(playerEntity.GetPlayerHealth() + percentage);
         }
 
         public void AttackInteraction(float damageValue)
         {
-            if (playerEntity.IsDead) return;
+            if (playerEntity.IsDead || ignoreHit) return;
+
+            ignoreHit = false;
 
             Debug.Log($"Attacked player for {damageValue}");
 
@@ -194,5 +225,10 @@ namespace AKB.Entities.Player.Interactions
             playerEntity.PlayerMovement.SetMovementInputsState(true);
         }
         #endregion
+
+        private void OnDestroy()
+        {
+            GameManager.S.GameEventsHandler.onSceneChanged -= OnSceneEntryPassive;
+        }
     }
 }

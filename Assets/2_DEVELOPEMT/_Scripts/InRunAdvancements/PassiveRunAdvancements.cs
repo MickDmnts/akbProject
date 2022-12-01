@@ -2,6 +2,7 @@
 
 namespace AKB.Core.Managing.InRunUpdates
 {
+
     /* CLASS DOCUMENTATION *\
      * 
      * [Variable Specifics]
@@ -16,23 +17,23 @@ namespace AKB.Core.Managing.InRunUpdates
      * 1. ...
      */
 
-    public enum DodgeRunAdvancements
+    public enum PassiveAdvancements
     {
         None = 0,
 
-        MovementSpeed = 1,
-        PushAway = 2,
-        ShockOnTouch = 3,
+        IgnoreFirstHit = 1,
+        MultiplyCoins = 2,
+        RegenHealthOnRoomEntry = 3,
     }
 
-    public class DodgeInRunAdvancements : MonoBehaviour,
+    public class PassiveRunAdvancements : MonoBehaviour,
         IAdvanceable
     {
-        DodgeRunAdvancements activeAdvancement = DodgeRunAdvancements.None;
+        PassiveAdvancements activeAdvancement = PassiveAdvancements.None;
 
-        public void SetActiveAdvancement(DodgeRunAdvancements advancement) => activeAdvancement = advancement;
+        public void SetActiveAdvancement(PassiveAdvancements advancement) => activeAdvancement = advancement;
 
-        public bool GetIsAdvancementActive(DodgeRunAdvancements advancement)
+        public bool GetIsAdvancementActive(PassiveAdvancements advancement)
         {
             return advancement == activeAdvancement;
         }

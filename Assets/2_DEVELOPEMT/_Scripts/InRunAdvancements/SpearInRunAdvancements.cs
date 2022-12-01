@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AKB.Core.Managing.InRunUpdates
 {
@@ -19,7 +17,7 @@ namespace AKB.Core.Managing.InRunUpdates
      * 1. ...
      */
 
-    public enum SpearRunAdvancements
+    public enum SpearTypeAdvancements
     {
         None = 0,
 
@@ -28,14 +26,14 @@ namespace AKB.Core.Managing.InRunUpdates
         //PullEnemyOnSpearRecall = 3,
     }
 
-    public class SpearInRunAdvancements : MonoBehaviour,
+    public class SpearRunAdvancements : MonoBehaviour,
         IAdvanceable
     {
-        SpearRunAdvancements activeAdvancement = SpearRunAdvancements.None;
+        SpearTypeAdvancements activeAdvancement = SpearTypeAdvancements.None;
 
-        public void SetActiveAdvancement(SpearRunAdvancements advancement) => activeAdvancement = advancement;
+        public void SetActiveAdvancement(SpearTypeAdvancements advancement) => activeAdvancement = advancement;
 
-        public bool GetIsAdvancementActive(SpearRunAdvancements advancement)
+        public bool GetIsAdvancementActive(SpearTypeAdvancements advancement)
         {
             return advancement == activeAdvancement;
         }
