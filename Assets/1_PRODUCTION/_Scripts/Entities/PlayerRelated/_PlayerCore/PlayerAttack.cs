@@ -29,7 +29,8 @@ namespace AKB.Entities.Player
 
         float nextAttack;
         float attackCooldownCache;
-        int statusEffectCounter = 0;
+        public int statusEffectCounter =0;
+        float resetEffectCounter = 1f;
         int attackDamageCache;
         #endregion
         #endregion
@@ -59,7 +60,18 @@ namespace AKB.Entities.Player
             if (!playerEntity.PlayerSpearThrow.GetHasSpear()
                 || playerEntity.PlayerDodgeRoll.GetIsDodging()) return;
 
-            //reset timer here
+            if (!isAttacking)
+            {
+                resetEffectCounter -= Time.deltaTime;
+                if(resetEffectCounter <= 0)
+                {
+                    statusEffectCounter = 0;
+                }
+            }
+            else
+            {
+                resetEffectCounter = 1f;
+            }
 
             if (attackAction.ReadValue<float>() > 0.5f)
             {
@@ -94,6 +106,7 @@ namespace AKB.Entities.Player
                     playerEntity.PlayerMovement.MouseBasedOrbitRotation(rotateToAttackDir);
                 }
             }
+            
         }
 
         void CallAttackInteraction()
@@ -155,7 +168,6 @@ namespace AKB.Entities.Player
 
                 yield return null;
             }
-
             isAttacking = false;
             playerEntity.PlayerMovement.SetCanMoveState(true);
         }
