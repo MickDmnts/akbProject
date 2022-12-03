@@ -12,14 +12,18 @@ namespace AKB.Entities.Player
     [DefaultExecutionOrder(460)]
     public class PlayerAttack : MonoBehaviour
     {
+        #region INSPECTOR_VARS
         [Header("Set in inspector")]
         [SerializeField] int attackDamage;
         [SerializeField] float attackCooldown = 0.2f;
         [SerializeField, Range(0f, 1f)] float rotateToAttackDir = 0.5f;
+        #endregion
 
+        #region PRIVATE_VARS
         PlayerEntity playerEntity;
         InputAction attackAction;
 
+        #region ATTACK_VARS
         bool isAttacking = false;
         bool healthRegenActive = false;
 
@@ -27,9 +31,19 @@ namespace AKB.Entities.Player
         float attackCooldownCache;
         int statusEffectCounter = 0;
         int attackDamageCache;
+        #endregion
+        #endregion
 
         // Start is called before the first frame update
         void Start()
+        {
+            EntrySetup();
+        }
+
+        /// <summary>
+        /// Call to set up player attacking when the game gets loaded.
+        /// </summary>
+        void EntrySetup()
         {
             playerEntity = transform.root.GetComponent<PlayerEntity>();
 
@@ -40,7 +54,6 @@ namespace AKB.Entities.Player
             attackCooldownCache = attackCooldown;
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (!playerEntity.PlayerSpearThrow.GetHasSpear()
@@ -54,6 +67,9 @@ namespace AKB.Entities.Player
             }
         }
 
+        /// <summary>
+        /// Call to start the player attack sequence
+        /// </summary>
         void AttackBehaviour()
         {
             if (Time.time >= nextAttack)
