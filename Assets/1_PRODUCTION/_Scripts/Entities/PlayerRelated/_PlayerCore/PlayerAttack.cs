@@ -70,10 +70,6 @@ namespace AKB.Entities.Player
                 StartCoroutine(AttackReset());
 
                 isAttacking = true;
-                if (statusEffectCounter >= 3)
-                {
-                    //call status effect and then set status effect counter to 0
-                }
             }
             else
             {
@@ -95,7 +91,9 @@ namespace AKB.Entities.Player
                 {
                     interactable.AttackInteraction(attackDamage);
 
+                    //Apply status effect on third hit
                     ApplyAdvancementEffect(interactable);
+
                     OmvivampEffect();
 
                     GameManager.S.GameEventsHandler.OnEnemyHit();
@@ -105,12 +103,15 @@ namespace AKB.Entities.Player
 
         private void ApplyAdvancementEffect(IInteractable interactable)
         {
-            EffectType attackEffect = GameManager.S.SlotsHandler.AttackAdvancementHandler.GetCurrentAdvancementEffect();
-            GameObject effect = GameManager.S.StatusEffectManager.GetNeededEffect(attackEffect);
-
-            if (effect != null)
+            if (statusEffectCounter >= 3)
             {
-                interactable.ApplyStatusEffect(effect);
+                EffectType attackEffect = GameManager.S.SlotsHandler.AttackAdvancementHandler.GetCurrentAdvancementEffect();
+                GameObject effect = GameManager.S.StatusEffectManager.GetNeededEffect(attackEffect);
+
+                if (effect != null)
+                {
+                    interactable.ApplyStatusEffect(effect);
+                }
             }
         }
 
