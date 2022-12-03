@@ -37,7 +37,7 @@ namespace AKB.Core.Managing.LevelLoading
 
         private void Start()
         {
-            GameManager.S.UIManager.EnablePanel("Main Menu Screen Panel");
+            GameManager.S.UIManager.EnablePanel("MainMenuScreen_UI_Panel");
         }
     }
 }

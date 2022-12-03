@@ -31,6 +31,17 @@ namespace AKB.Core.Managing.UI
             get { return isPaused; }
         }
 
+        public GameObject MainMenuScreen_UI_Panel;
+        public GameObject SaveSlot_UI_Panel;
+        public GameObject PauseMenu_UI_Panel;
+        public GameObject Options_UI_Panel;
+        public GameObject HellsGrimoire_UI_Panel;
+        public GameObject Attack_UI_Panel;
+
+        public GameObject SceneFader_UI_Panel;
+
+
+
         #region AWAKE_CALLED_EXTERNALLY
         /// <summary>
         /// Call to set the uiPanels list to the passed reference.
@@ -112,5 +123,29 @@ namespace AKB.Core.Managing.UI
         {
             Application.Quit();
         }
+
+        //public void EnablePanel(string panelToBeActivated)
+        //{
+        //    MainMenuScreen_UI_Panel.SetActive(panelToBeActivated.Equals(MainMenuScreen_UI_Panel.name));
+        //    SaveSlot_UI_Panel.SetActive(panelToBeActivated.Equals(SaveSlot_UI_Panel.name));
+        //    PauseMenu_UI_Panel.SetActive(panelToBeActivated.Equals(PauseMenu_UI_Panel.name));
+        //    Options_UI_Panel.SetActive(panelToBeActivated.Equals(Options_UI_Panel.name));
+        //    HellsGrimoire_UI_Panel.SetActive(panelToBeActivated.Equals(HellsGrimoire_UI_Panel.name));
+        //    Attack_UI_Panel.SetActive(panelToBeActivated.Equals(Attack_UI_Panel.name));
+
+        //    SceneFader_UI_Panel.SetActive(panelToBeActivated.Equals(SceneFader_UI_Panel.name));
+        //}
+
+        //public void DisablePanel(string panelToBeActivated)
+        //{
+        //    MainMenuScreen_UI_Panel.SetActive(false);
+        //    SaveSlot_UI_Panel.SetActive(panelToBeActivated.Equals(SaveSlot_UI_Panel.name));
+        //    PauseMenu_UI_Panel.SetActive(panelToBeActivated.Equals(PauseMenu_UI_Panel.name));
+        //    Options_UI_Panel.SetActive(panelToBeActivated.Equals(Options_UI_Panel.name));
+        //    HellsGrimoire_UI_Panel.SetActive(panelToBeActivated.Equals(HellsGrimoire_UI_Panel.name));
+        //    Attack_UI_Panel.SetActive(panelToBeActivated.Equals(Attack_UI_Panel.name));
+
+        //    SceneFader_UI_Panel.SetActive(panelToBeActivated.Equals(SceneFader_UI_Panel.name));
+        //}
     }
 }

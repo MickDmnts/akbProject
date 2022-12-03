@@ -72,17 +72,17 @@ public class HellsGrimoire : MonoBehaviour
 
     void Tutorials()
     {
-        GameManager.S.UIManager.EnablePanel("Tutorials Body");
+        //GameManager.S.UIManager.EnablePanel();
     }
 
     void Monsters()
     {
-        GameManager.S.UIManager.EnablePanel("Monsters Body");
+        //GameManager.S.UIManager.ActivatePanel("Monsters Body");
     }
 
     void PastRuns()
     {
-        GameManager.S.UIManager.EnablePanel("Past Runs Body");
+        //GameManager.S.UIManager.ActivatePanel("Past Runs Body");
     }
 
     void Setter()
