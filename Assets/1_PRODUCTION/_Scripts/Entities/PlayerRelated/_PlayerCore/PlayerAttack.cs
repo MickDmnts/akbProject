@@ -46,6 +46,8 @@ namespace AKB.Entities.Player
             if (!playerEntity.PlayerSpearThrow.GetHasSpear()
                 || playerEntity.PlayerDodgeRoll.GetIsDodging()) return;
 
+            //reset timer here
+
             if (attackAction.ReadValue<float>() > 0.5f)
             {
                 AttackBehaviour();
