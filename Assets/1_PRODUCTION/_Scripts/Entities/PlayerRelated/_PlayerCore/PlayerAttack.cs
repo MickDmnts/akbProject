@@ -128,6 +128,8 @@ namespace AKB.Entities.Player
                 {
                     interactable.ApplyStatusEffect(effect);
                 }
+
+                statusEffectCounter = 0;
             }
         }
 
