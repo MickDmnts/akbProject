@@ -115,6 +115,8 @@ namespace AKB.Entities.Player
                     GameManager.S.GameEventsHandler.OnEnemyHit();
                 }
             }
+
+            if (hits.Count <= 0) statusEffectCounter = 0;
         }
 
         private void ApplyAdvancementEffect(IInteractable interactable)
