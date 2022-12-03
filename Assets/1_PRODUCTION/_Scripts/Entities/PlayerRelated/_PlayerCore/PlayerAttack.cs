@@ -25,7 +25,7 @@ namespace AKB.Entities.Player
 
         float nextAttack;
         float attackCooldownCache;
-
+        int statusEffectCounter = 0;
         int attackDamageCache;
 
         // Start is called before the first frame update
@@ -56,6 +56,7 @@ namespace AKB.Entities.Player
         {
             if (Time.time >= nextAttack)
             {
+                statusEffectCounter++;
                 nextAttack = Time.time + attackCooldown;
 
                 playerEntity.PlayerMovement.SetCanMoveState(false);
@@ -67,6 +68,10 @@ namespace AKB.Entities.Player
                 StartCoroutine(AttackReset());
 
                 isAttacking = true;
+                if (statusEffectCounter >= 3)
+                {
+                    //call status effect and then set status effect counter to 0
+                }
             }
             else
             {
