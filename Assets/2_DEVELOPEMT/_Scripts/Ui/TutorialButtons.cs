@@ -49,7 +49,7 @@ public class TutorialButtons : MonoBehaviour
 
     void Setter()
     {
-        imageTemplate.sprite = GameManager.S.UIManager.testing.sprite;
-        textTempalte.text = GameManager.S.UIManager.testing.description;
+        //imageTemplate.sprite = GameManager.S.UIManager.testing.sprite;
+        //textTempalte.text = GameManager.S.UIManager.testing.description;
     }
 }

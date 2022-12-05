@@ -19,8 +19,6 @@ namespace AKB.Core.Managing.UI
     {
         public PlayerUIBars playerUIBars { get; private set; }
 
-        public dummy testing { get; private set; }
-
         //Dynamically changed
         List<GameObject> uiPanels;
 
