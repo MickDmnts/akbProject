@@ -34,10 +34,7 @@ public class PauseMenu : MonoBehaviour
 
     void ClosePauseMenu()
     {
-        //close pause menu
-        //why pause isnt working
-        //GameManager.S.UIManager.isPaused == true;
-        GameManager.S.UIManager.DisablePanel();
+        GameManager.S.UIManager.PauseGame();
     }
 
     void HellsGrimoire()

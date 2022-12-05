@@ -392,7 +392,6 @@ GameObject:
   - component: {fileID: 32974415}
   - component: {fileID: 32974414}
   - component: {fileID: 32974413}
-  - component: {fileID: 32974416}
   m_Layer: 5
   m_Name: 'Fire Basic Demons '
   m_TagString: Untagged
@@ -416,10 +415,10 @@ RectTransform:
   m_Father: {fileID: 569343034}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.1632, y: -131.3795}
-  m_SizeDelta: {x: 576.3264, y: 85.586334}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &32974413
 MonoBehaviour:
@@ -503,20 +502,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32974411}
   m_CullTransparentMesh: 1
---- !u!114 &32974416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32974411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: fire basic demon..
 --- !u!1 &33436348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,7 +1288,6 @@ GameObject:
   - component: {fileID: 99230987}
   - component: {fileID: 99230986}
   - component: {fileID: 99230985}
-  - component: {fileID: 99230988}
   m_Layer: 5
   m_Name: Big Chargers
   m_TagString: Untagged
@@ -1327,10 +1311,10 @@ RectTransform:
   m_Father: {fileID: 569343034}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.1632, y: -308.5522}
-  m_SizeDelta: {x: 576.3264, y: 85.586334}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &99230985
 MonoBehaviour:
@@ -1414,20 +1398,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99230983}
   m_CullTransparentMesh: 1
---- !u!114 &99230988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99230983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: big chargers..
 --- !u!1 &108016271
 GameObject:
   m_ObjectHideFlags: 0
@@ -2003,9 +1973,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e8a73a52ab041d285dfee621cb0366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageTemplate: {fileID: 1560373155}
-  textTempalte: {fileID: 333744835}
-  enemiesButtons: []
+  monsterSpriteTemplate: {fileID: 1560373155}
+  monsterDescriptionTempalte: {fileID: 333744835}
+  monsterSprite:
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  monsterDescription:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
   basicDemonButton: {fileID: 2068514472}
   fireBasicDemonButton: {fileID: 32974413}
   bigDemonButton: {fileID: 460713024}
@@ -2017,7 +2010,6 @@ MonoBehaviour:
   confuseDemonsButton: {fileID: 1141040129}
   beelzebubButton: {fileID: 781134323}
   astarothButton: {fileID: 1962153793}
-  Monsters_UI_Panel: {fileID: 0}
 --- !u!1 &221745150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,7 +2163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &256624435
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2399,7 +2391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864d6bca5ece9492eaf7a82553edb652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPaused: 0
 --- !u!4 &274057619
 Transform:
   m_ObjectHideFlags: 0
@@ -2829,7 +2820,7 @@ GameObject:
   - component: {fileID: 333744836}
   - component: {fileID: 333744835}
   m_Layer: 5
-  m_Name: DescriptionTemplate
+  m_Name: MonsterDescriptionTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3629,7 +3620,7 @@ GameObject:
   - component: {fileID: 388317169}
   - component: {fileID: 388317170}
   m_Layer: 5
-  m_Name: IconsTemplate
+  m_Name: TutorialSpriteTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3705,7 +3696,7 @@ GameObject:
   - component: {fileID: 389213738}
   - component: {fileID: 389213737}
   m_Layer: 5
-  m_Name: DescriptionTemplate
+  m_Name: TutorialDescriptionTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4136,7 +4127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &420664114
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4421,7 +4412,6 @@ GameObject:
   - component: {fileID: 460713026}
   - component: {fileID: 460713025}
   - component: {fileID: 460713024}
-  - component: {fileID: 460713027}
   m_Layer: 5
   m_Name: Big Demons
   m_TagString: Untagged
@@ -4445,10 +4435,10 @@ RectTransform:
   m_Father: {fileID: 569343034}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.1632, y: -219.96585}
-  m_SizeDelta: {x: 576.3264, y: 85.586334}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &460713024
 MonoBehaviour:
@@ -4532,20 +4522,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460713022}
   m_CullTransparentMesh: 1
---- !u!114 &460713027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460713022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: big demons..
 --- !u!1 &463484751
 GameObject:
   m_ObjectHideFlags: 0
@@ -5404,7 +5380,6 @@ GameObject:
   - component: {fileID: 600216951}
   - component: {fileID: 600216950}
   - component: {fileID: 600216949}
-  - component: {fileID: 600216952}
   m_Layer: 5
   m_Name: Status Demons
   m_TagString: Untagged
@@ -5428,10 +5403,10 @@ RectTransform:
   m_Father: {fileID: 569343034}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.1632, y: -574.31116}
-  m_SizeDelta: {x: 576.3264, y: 85.586334}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &600216949
 MonoBehaviour:
@@ -5515,20 +5490,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600216947}
   m_CullTransparentMesh: 1
---- !u!114 &600216952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600216947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: status demons..
 --- !u!1 &603817734
 GameObject:
   m_ObjectHideFlags: 0
@@ -6863,7 +6824,6 @@ GameObject:
   - component: {fileID: 781134325}
   - component: {fileID: 781134324}
   - component: {fileID: 781134323}
-  - component: {fileID: 781134326}
   m_Layer: 5
   m_Name: Beelzebub
   m_TagString: Untagged
@@ -6887,10 +6847,10 @@ RectTransform:
   m_Father: {fileID: 569343034}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.1632, y: -840.0702}
-  m_SizeDelta: {x: 576.3264, y: 85.586334}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &781134323
 MonoBehaviour:
@@ -6974,20 +6934,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781134321}
   m_CullTransparentMesh: 1
---- !u!114 &781134326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781134321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: Bossssss #1
 --- !u!1 &805757933
 GameObject:
   m_ObjectHideFlags: 0
@@ -7411,7 +7357,6 @@ GameObject:
   - component: {fileID: 838144518}
   - component: {fileID: 838144517}
   - component: {fileID: 838144516}
-  - component: {fileID: 838144519}
   m_Layer: 5
   m_Name: 'Ranged Demons '
   m_TagString: Untagged
@@ -7435,10 +7380,10 @@ RectTransform:
   m_Father: {fileID: 569343034}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.1632, y: -397.1385}
-  m_SizeDelta: {x: 576.3264, y: 85.586334}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &838144516
 MonoBehaviour:
@@ -7522,20 +7467,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838144514}
   m_CullTransparentMesh: 1
---- !u!114 &838144519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838144514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: ranged demons..
 --- !u!1 &843600957
 GameObject:
   m_ObjectHideFlags: 0
@@ -7984,7 +7915,6 @@ MonoBehaviour:
   Tutorials_UI_Panel: {fileID: 256624434}
   Monsters_UI_Panel: {fileID: 420664113}
   PastRuns_UI_Panel: {fileID: 805757933}
-  HellsGrimoire_UI_Panel: {fileID: 0}
 --- !u!1 &874438136
 GameObject:
   m_ObjectHideFlags: 0
@@ -8029,16 +7959,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda772621710648b8ace4eaa982c8f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageTemplate: {fileID: 388317170}
-  textTempalte: {fileID: 389213737}
+  tutorialSpriteTemplate: {fileID: 388317170}
+  tutorialDescriptionTempalte: {fileID: 389213737}
+  tutorialSprite:
+  - {fileID: 21300000, guid: 70632ddfe8e71b04b8f90ef7e29a9e98, type: 3}
+  - {fileID: 21300000, guid: 70632ddfe8e71b04b8f90ef7e29a9e98, type: 3}
+  - {fileID: 21300000, guid: 70632ddfe8e71b04b8f90ef7e29a9e98, type: 3}
+  - {fileID: 21300000, guid: 70632ddfe8e71b04b8f90ef7e29a9e98, type: 3}
+  - {fileID: 21300000, guid: 70632ddfe8e71b04b8f90ef7e29a9e98, type: 3}
+  tutorialDescription:
+  - Attack...
+  - Dodge...
+  - Throw....
+  - Teleport...
+  - callback...
   meleeAttackButton: {fileID: 1529382650}
   dodgeRollButton: {fileID: 1519478681}
   throwButton: {fileID: 1599251694}
   teleportationButton: {fileID: 1167139800}
   recallButton: {fileID: 1853344699}
-  Tutorials_UI_Panel: {fileID: 0}
-  tutorialButtonsSprite: []
-  tutorialButtonsDescription: []
 --- !u!1 &877751368
 GameObject:
   m_ObjectHideFlags: 0
@@ -9099,7 +9038,6 @@ GameObject:
   - component: {fileID: 1141040131}
   - component: {fileID: 1141040130}
   - component: {fileID: 1141040129}
-  - component: {fileID: 1141040132}
   m_Layer: 5
   m_Name: Confuse Demons
   m_TagString: Untagged
@@ -9123,10 +9061,10 @@ RectTransform:
   m_Father: {fileID: 569343034}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.1632, y: -751.4838}
-  m_SizeDelta: {x: 576.3264, y: 85.586334}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1141040129
 MonoBehaviour:
@@ -9210,20 +9148,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141040127}
   m_CullTransparentMesh: 1
---- !u!114 &1141040132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1141040127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: confuse demons..
 --- !u!1 &1141168667
 GameObject:
   m_ObjectHideFlags: 0
@@ -9362,7 +9286,6 @@ GameObject:
   - component: {fileID: 1167139802}
   - component: {fileID: 1167139801}
   - component: {fileID: 1167139800}
-  - component: {fileID: 1167139803}
   m_Layer: 5
   m_Name: Teleport
   m_TagString: Untagged
@@ -9386,10 +9309,10 @@ RectTransform:
   m_Father: {fileID: 1589100205}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 287.95914, y: -681.0967}
+  m_SizeDelta: {x: 575.9183, y: 192.02763}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1167139800
 MonoBehaviour:
@@ -9473,20 +9396,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167139798}
   m_CullTransparentMesh: 1
---- !u!114 &1167139803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167139798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 3a0c527d7f890d64a9b56b086e6e766a, type: 3}
-  description: teleport..
 --- !u!1 &1175259872
 GameObject:
   m_ObjectHideFlags: 0
@@ -11150,7 +11059,6 @@ GameObject:
   - component: {fileID: 1352297302}
   - component: {fileID: 1352297301}
   - component: {fileID: 1352297300}
-  - component: {fileID: 1352297303}
   m_Layer: 5
   m_Name: Electro Demons
   m_TagString: Untagged
@@ -11174,10 +11082,10 @@ RectTransform:
   m_Father: {fileID: 569343034}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.1632, y: -485.72485}
-  m_SizeDelta: {x: 576.3264, y: 85.586334}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1352297300
 MonoBehaviour:
@@ -11261,20 +11169,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352297298}
   m_CullTransparentMesh: 1
---- !u!114 &1352297303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352297298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: electro demons..
 --- !u!1 &1387472568
 GameObject:
   m_ObjectHideFlags: 0
@@ -11559,7 +11453,6 @@ GameObject:
   - component: {fileID: 1418798283}
   - component: {fileID: 1418798282}
   - component: {fileID: 1418798281}
-  - component: {fileID: 1418798284}
   m_Layer: 5
   m_Name: Charm Demons
   m_TagString: Untagged
@@ -11583,10 +11476,10 @@ RectTransform:
   m_Father: {fileID: 569343034}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.1632, y: -662.8975}
-  m_SizeDelta: {x: 576.3264, y: 85.586334}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1418798281
 MonoBehaviour:
@@ -11670,20 +11563,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418798279}
   m_CullTransparentMesh: 1
---- !u!114 &1418798284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418798279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: charm demons..
 --- !u!1 &1432478717
 GameObject:
   m_ObjectHideFlags: 0
@@ -12906,7 +12785,6 @@ GameObject:
   - component: {fileID: 1519478683}
   - component: {fileID: 1519478682}
   - component: {fileID: 1519478681}
-  - component: {fileID: 1519478684}
   m_Layer: 5
   m_Name: Dodge Roll
   m_TagString: Untagged
@@ -12930,10 +12808,10 @@ RectTransform:
   m_Father: {fileID: 1589100205}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 287.95914, y: -291.04144}
+  m_SizeDelta: {x: 575.9183, y: 192.02763}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1519478681
 MonoBehaviour:
@@ -13017,20 +12895,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519478679}
   m_CullTransparentMesh: 1
---- !u!114 &1519478684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519478679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 70632ddfe8e71b04b8f90ef7e29a9e98, type: 3}
-  description: dodge roll...
 --- !u!1 &1526553941
 GameObject:
   m_ObjectHideFlags: 0
@@ -13134,7 +12998,6 @@ GameObject:
   - component: {fileID: 1529382652}
   - component: {fileID: 1529382651}
   - component: {fileID: 1529382650}
-  - component: {fileID: 1529382653}
   m_Layer: 5
   m_Name: Attack
   m_TagString: Untagged
@@ -13158,10 +13021,10 @@ RectTransform:
   m_Father: {fileID: 1589100205}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 287.9591, y: -96.013916}
+  m_SizeDelta: {x: 575.9183, y: 192.02763}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1529382650
 MonoBehaviour:
@@ -13270,20 +13133,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529382648}
   m_CullTransparentMesh: 1
---- !u!114 &1529382653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529382648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
-  description: attack...
 --- !u!1 &1530593086
 GameObject:
   m_ObjectHideFlags: 0
@@ -13590,7 +13439,7 @@ GameObject:
   - component: {fileID: 1560373156}
   - component: {fileID: 1560373155}
   m_Layer: 5
-  m_Name: IconsTemplate
+  m_Name: MonsterSpriteTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14104,7 +13953,6 @@ GameObject:
   - component: {fileID: 1599251696}
   - component: {fileID: 1599251695}
   - component: {fileID: 1599251694}
-  - component: {fileID: 1599251697}
   m_Layer: 5
   m_Name: Throw
   m_TagString: Untagged
@@ -14128,10 +13976,10 @@ RectTransform:
   m_Father: {fileID: 1589100205}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 287.95914, y: -486.0691}
+  m_SizeDelta: {x: 575.9183, y: 192.02763}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1599251694
 MonoBehaviour:
@@ -14215,20 +14063,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599251692}
   m_CullTransparentMesh: 1
---- !u!114 &1599251697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599251692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: dae33700bd23f76409a80bf78fdb8a42, type: 3}
-  description: throw..
 --- !u!1 &1606900992
 GameObject:
   m_ObjectHideFlags: 0
@@ -15602,7 +15436,6 @@ GameObject:
   - component: {fileID: 1853344701}
   - component: {fileID: 1853344700}
   - component: {fileID: 1853344699}
-  - component: {fileID: 1853344702}
   m_Layer: 5
   m_Name: Callback
   m_TagString: Untagged
@@ -15626,10 +15459,10 @@ RectTransform:
   m_Father: {fileID: 1589100205}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 287.95914, y: -876.1244}
+  m_SizeDelta: {x: 575.9183, y: 192.02763}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1853344699
 MonoBehaviour:
@@ -15713,20 +15546,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853344697}
   m_CullTransparentMesh: 1
---- !u!114 &1853344702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853344697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: fd098fb4cf57bad419701c802e442b7e, type: 3}
-  description: callback..
 --- !u!1 &1856033132
 GameObject:
   m_ObjectHideFlags: 0
@@ -16088,7 +15907,6 @@ GameObject:
   - component: {fileID: 1962153795}
   - component: {fileID: 1962153794}
   - component: {fileID: 1962153793}
-  - component: {fileID: 1962153796}
   m_Layer: 5
   m_Name: Astaroth
   m_TagString: Untagged
@@ -16112,10 +15930,10 @@ RectTransform:
   m_Father: {fileID: 569343034}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.1632, y: -928.6565}
-  m_SizeDelta: {x: 576.3264, y: 85.586334}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1962153793
 MonoBehaviour:
@@ -16199,20 +16017,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962153791}
   m_CullTransparentMesh: 1
---- !u!114 &1962153796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962153791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: bossssss #2
 --- !u!1 &1981546754
 GameObject:
   m_ObjectHideFlags: 0
@@ -17324,7 +17128,6 @@ GameObject:
   - component: {fileID: 2068514474}
   - component: {fileID: 2068514473}
   - component: {fileID: 2068514472}
-  - component: {fileID: 2068514475}
   m_Layer: 5
   m_Name: Basic Demon
   m_TagString: Untagged
@@ -17348,10 +17151,10 @@ RectTransform:
   m_Father: {fileID: 569343034}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288.1632, y: -42.793213}
-  m_SizeDelta: {x: 576.3264, y: 85.586334}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2068514472
 MonoBehaviour:
@@ -17460,20 +17263,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068514470}
   m_CullTransparentMesh: 1
---- !u!114 &2068514475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068514470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f1048ce7244a80972e8d167a37a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: basic demon..
 --- !u!1 &2075024702
 GameObject:
   m_ObjectHideFlags: 0

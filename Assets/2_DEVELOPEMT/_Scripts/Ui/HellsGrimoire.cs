@@ -15,17 +15,9 @@ public class HellsGrimoire : MonoBehaviour
     [SerializeField] GameObject Monsters_UI_Panel;
     [SerializeField] GameObject PastRuns_UI_Panel;
 
-    //Parent gameobject 
-    [SerializeField] GameObject HellsGrimoire_UI_Panel;
-
     private void Start()
     {
         EntrySetup();
-
-        if (HellsGrimoire_UI_Panel.activeSelf == true)
-        {
-            tutorialsButton.Select();
-        }
     }
 
     //we need a back button to return to pause menu screen

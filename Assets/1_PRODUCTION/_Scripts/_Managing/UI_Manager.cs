@@ -22,7 +22,7 @@ namespace AKB.Core.Managing.UI
         //Dynamically changed
         List<GameObject> uiPanels;
 
-        public bool isPaused = false;
+        bool isPaused = false;
 
         public bool IsPaused
         {
@@ -57,7 +57,7 @@ namespace AKB.Core.Managing.UI
         /// Call to activate the Options panel if the user is not in the MainMenu.
         /// Sets isPaused to true if successfully paused or false if unpaused.
         /// </summary>
-        void PauseGame()
+        public void PauseGame()
         {
             //if (IsInInvalidScene()) return;
 

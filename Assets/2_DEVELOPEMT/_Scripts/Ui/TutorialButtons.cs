@@ -7,8 +7,13 @@ using UnityEngine.UI;
 
 public class TutorialButtons : MonoBehaviour
 {
-    [SerializeField] Image imageTemplate;
-    [SerializeField] TextMeshProUGUI textTempalte;
+    [SerializeField] Image tutorialSpriteTemplate;
+    [SerializeField] TextMeshProUGUI tutorialDescriptionTempalte;
+
+    [SerializeField] List<Sprite> tutorialSprite;
+    [SerializeField] List<string> tutorialDescription;
+
+    List<Button> tutorialButtons = new List<Button>();
 
     //Tutorials Buttons
     [SerializeField] Button meleeAttackButton;
@@ -17,21 +22,11 @@ public class TutorialButtons : MonoBehaviour
     [SerializeField] Button teleportationButton;
     [SerializeField] Button recallButton;
 
-    //Parent gameobject
-    [SerializeField] GameObject Tutorials_UI_Panel;
-
-    [SerializeField] List<Sprite> tutorialButtonsSprite;
-    [SerializeField] List<string> tutorialButtonsDescription;
-
-
     private void Start()
     {
-        EntrySetup();
+        AddButtonsToList();
 
-        if (Tutorials_UI_Panel.activeSelf == true)
-        {
-            meleeAttackButton.Select();
-        }
+        EntrySetup();
     }
 
     /// <summary>
@@ -40,16 +35,26 @@ public class TutorialButtons : MonoBehaviour
     void EntrySetup()
     {
         //Tutorials Buttons
-        meleeAttackButton.onClick.AddListener(Setter);
-        dodgeRollButton.onClick.AddListener(Setter);
-        throwButton.onClick.AddListener(Setter);
-        teleportationButton.onClick.AddListener(Setter);
-        recallButton.onClick.AddListener(Setter);
+        meleeAttackButton.onClick.AddListener(delegate { Setter(0); });
+        dodgeRollButton.onClick.AddListener(delegate { Setter(1); });
+        throwButton.onClick.AddListener(delegate { Setter(2); });
+        teleportationButton.onClick.AddListener(delegate { Setter(3); });
+        recallButton.onClick.AddListener(delegate { Setter(4); });
     }
 
-    void Setter()
+    void AddButtonsToList()
     {
-        //imageTemplate.sprite = GameManager.S.UIManager.testing.sprite;
-        //textTempalte.text = GameManager.S.UIManager.testing.description;
+        tutorialButtons.Add(meleeAttackButton);
+        tutorialButtons.Add(dodgeRollButton);
+        tutorialButtons.Add(throwButton);
+        tutorialButtons.Add(teleportationButton);
+        tutorialButtons.Add(recallButton);
+    }
+
+
+    void Setter(int buttonIndex)
+    {
+        tutorialSpriteTemplate.sprite = tutorialSprite[buttonIndex];
+        tutorialDescriptionTempalte.text = tutorialDescription[buttonIndex];
     }
 }

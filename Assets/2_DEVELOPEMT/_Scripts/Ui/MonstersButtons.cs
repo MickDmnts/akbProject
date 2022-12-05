@@ -7,10 +7,13 @@ using UnityEngine.UI;
 
 public class MonstersButtons : MonoBehaviour
 {
-    [SerializeField] Image imageTemplate;
-    [SerializeField] TextMeshProUGUI textTempalte;
+    [SerializeField] Image monsterSpriteTemplate;
+    [SerializeField] TextMeshProUGUI monsterDescriptionTempalte;
 
-    [SerializeField] List<Button> enemiesButtons = new List<Button>();
+    [SerializeField] List<Sprite> monsterSprite;
+    [SerializeField] List<string> monsterDescription;
+
+    List<Button> monsterButtons = new List<Button>();
 
     //Monsters Buttons
     [SerializeField] Button basicDemonButton;
@@ -25,17 +28,12 @@ public class MonstersButtons : MonoBehaviour
     [SerializeField] Button beelzebubButton;
     [SerializeField] Button astarothButton;
 
-    //Parent gameobject
-    [SerializeField] GameObject Monsters_UI_Panel;
-
     private void Start()
     {
-        EntrySetup();
+        AddButtonsToList();
 
-        if (Monsters_UI_Panel.activeSelf == true)
-        {
-            basicDemonButton.Select();
-        }
+
+        EntrySetup();
     }
 
     /// <summary>
@@ -44,40 +42,37 @@ public class MonstersButtons : MonoBehaviour
     void EntrySetup()
     {
         //Monsters Buttons
-        basicDemonButton.onClick.AddListener(Setter);
-        fireBasicDemonButton.onClick.AddListener(Setter);
-        bigDemonButton.onClick.AddListener(Setter);
-        bigChargersButton.onClick.AddListener(Setter);
-        rangedDemonsButton.onClick.AddListener(Setter);
-        electroDemonsButton.onClick.AddListener(Setter);
-        statusDemonsButton.onClick.AddListener(Setter);
-        charmDemonsButton.onClick.AddListener(Setter);
-        confuseDemonsButton.onClick.AddListener(Setter);
-        beelzebubButton.onClick.AddListener(Setter);
-        astarothButton.onClick.AddListener(Setter);
+        basicDemonButton.onClick.AddListener(delegate {Setter(0); });
+        fireBasicDemonButton.onClick.AddListener(delegate {Setter(1); });
+        bigDemonButton.onClick.AddListener(delegate { Setter(2); });
+        bigChargersButton.onClick.AddListener(delegate { Setter(3); });
+        rangedDemonsButton.onClick.AddListener(delegate { Setter(4); });
+        electroDemonsButton.onClick.AddListener(delegate { Setter(5); });
+        statusDemonsButton.onClick.AddListener(delegate { Setter(6); });
+        charmDemonsButton.onClick.AddListener(delegate { Setter(7); });
+        confuseDemonsButton.onClick.AddListener(delegate { Setter(8); });
+        beelzebubButton.onClick.AddListener(delegate { Setter(9); });
+        astarothButton.onClick.AddListener(delegate { Setter(11); });
     }
 
     void AddButtonsToList()
     {
-        enemiesButtons.Add(basicDemonButton);
-        enemiesButtons.Add(fireBasicDemonButton);
-        enemiesButtons.Add(bigDemonButton);
-        enemiesButtons.Add(bigDemonButton);
-        enemiesButtons.Add(rangedDemonsButton);
-        enemiesButtons.Add(electroDemonsButton);
-        enemiesButtons.Add(statusDemonsButton);
-        enemiesButtons.Add(charmDemonsButton);
-        enemiesButtons.Add(confuseDemonsButton);
-        enemiesButtons.Add(beelzebubButton);
-        enemiesButtons.Add(astarothButton);
+        monsterButtons.Add(basicDemonButton);
+        monsterButtons.Add(fireBasicDemonButton);
+        monsterButtons.Add(bigDemonButton);
+        monsterButtons.Add(bigDemonButton);
+        monsterButtons.Add(rangedDemonsButton);
+        monsterButtons.Add(electroDemonsButton);
+        monsterButtons.Add(statusDemonsButton);
+        monsterButtons.Add(charmDemonsButton);
+        monsterButtons.Add(confuseDemonsButton);
+        monsterButtons.Add(beelzebubButton);
+        monsterButtons.Add(astarothButton);
     }
 
-    void Setter()
+    void Setter(int buttonIndex)
     {
-        //imageTemplate.sprite = GameManager.S.UIManager.testing.sprite;
-        //textTempalte.text = GameManager.S.UIManager.testing.description;
+        monsterSpriteTemplate.sprite = monsterSprite[buttonIndex];
+        monsterDescriptionTempalte.text = monsterDescription[buttonIndex];
     }
-
-    //playerListGameobject.transform.Find("PlayerNameText").GetComponent<Text>().text = player.NickName;
-
 }
