@@ -24,7 +24,7 @@ namespace AKB.Entities.AI.Implementations.Ranged_Demon
 
         void SpawnProjectile()
         {
-            GameObject temp = GameManager.S.ProjectilePools.GetPooledProjectileByType(_data.GetProjectileType());
+            GameObject temp = ManagerHUB.GetManager.ProjectilePools.GetPooledProjectileByType(_data.GetProjectileType());
 
             //Play attack animation
             _data.GetEnemyEntity().GetDemonAnimations().PlayAttackAnimation();

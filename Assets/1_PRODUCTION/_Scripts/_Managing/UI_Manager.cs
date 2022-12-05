@@ -37,11 +37,24 @@ namespace AKB.Core.Managing.UI
         {
             uiPanels = panels;
         }
+
+        public void AddExtraPanelsToManager(List<GameObject> panels, bool deactivateOnAdd = false)
+        {
+            foreach (GameObject panel in panels)
+            {
+                uiPanels.Add(panel);
+
+                if (deactivateOnAdd)
+                {
+                    panel.SetActive(false);
+                }
+            }
+        }
         #endregion
 
         private void Awake()
         {
-            GameManager.S.SetUI_ManagerReference(this);
+            ManagerHUB.GetManager.SetUI_ManagerReference(this);
         }
 
         private void Update()
@@ -65,13 +78,13 @@ namespace AKB.Core.Managing.UI
             {
                 //TODO: Handle pausing
                 isPaused = true;
-                EnablePanel("PauseMenu_UI_Panel");  
+                EnablePanel("PauseMenu_UI_Panel");
             }
             else
             {
                 //TODO: Handle un-pausing
                 isPaused = false;
-                DisablePanel();
+                DisableAllPanels();
             }
         }
 
@@ -81,8 +94,8 @@ namespace AKB.Core.Managing.UI
         /// </summary>
         bool IsInInvalidScene()
         {
-            if (GameManager.S.LevelManager.FocusedScene == GameScenes.MainMenu
-                || GameManager.S.LevelManager.FocusedScene == GameScenes.TutorialArena)
+            if (ManagerHUB.GetManager.LevelManager.FocusedScene == GameScenes.PlayerScene
+                || ManagerHUB.GetManager.LevelManager.FocusedScene == GameScenes.TutorialArena)
                 return true;
 
             return false;
@@ -102,7 +115,7 @@ namespace AKB.Core.Managing.UI
         /// <summary>
         /// Call to disable the passed UI panel.
         /// </summary>
-        public void DisablePanel()
+        public void DisableAllPanels()
         {
             foreach (GameObject panel in uiPanels)
             {

@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class MainMenuScreen : MonoBehaviour
 {
+    [Header("Set in inspector\n\tMain Menu Panel")]
     [SerializeField] Button continueButton;
     [SerializeField] Button newGameButton;
     [SerializeField] Button loadGamedButton;
     [SerializeField] Button exitButton;
-
 
     private void Start()
     {
@@ -30,23 +30,29 @@ public class MainMenuScreen : MonoBehaviour
 
     void Continue()
     {
-        //Continues from  last saved game
-        Debug.Log("Continue button on main menu screen was pressed");
+        //Continues from last saved game
+        throw new System.NotImplementedException();
     }
 
     void NewGame()
     {
-        GameManager.S.UIManager.EnablePanel("SaveSlot_UI_Panel");
+        //Replace when save-loading system gets introduced.
+        //ManagerHUB.GetManager.UIManager.EnablePanel("SaveSlot_UI_Panel");
+
+        //------------------------
+        ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
+        ManagerHUB.GetManager.LevelManager.LoadNext(false);
+        //------------------------
     }
 
     void LoadGame()
     {
-        GameManager.S.UIManager.EnablePanel("SaveSlot_UI_Panel");
+        ManagerHUB.GetManager.UIManager.EnablePanel("SaveSlot_UI_Panel");
+        throw new System.NotImplementedException();
     }
 
     void Exit()
     {
         Application.Quit();
-        Debug.Log("Exit button on main menu screen was pressed");
     }
 }

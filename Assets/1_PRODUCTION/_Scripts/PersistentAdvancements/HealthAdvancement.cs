@@ -49,7 +49,7 @@ namespace AKB.Core.Managing.UpdateSystem.Implementations
 
         protected override void UpdatePerTier(int currentTier)
         {
-            GameManager.S.PlayerEntity.IncrementPlayerMaxHealthBy(_healthTierUpdatesPairs[currentTier]);
+            ManagerHUB.GetManager.PlayerEntity.IncrementPlayerMaxHealthBy(_healthTierUpdatesPairs[currentTier]);
         }
     }
 }

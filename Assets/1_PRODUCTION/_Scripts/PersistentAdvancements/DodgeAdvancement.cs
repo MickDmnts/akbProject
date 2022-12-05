@@ -49,7 +49,7 @@ namespace AKB.Core.Managing.UpdateSystem.Implementations
 
         protected override void UpdatePerTier(int currentTier)
         {
-            GameManager.S.PlayerEntity.PlayerDodgeRoll.SetMaxDodges(_dodgeTierUpdatePairs[currentTier]);
+            ManagerHUB.GetManager.PlayerEntity.PlayerDodgeRoll.SetMaxDodges(_dodgeTierUpdatePairs[currentTier]);
         }
     }
 }

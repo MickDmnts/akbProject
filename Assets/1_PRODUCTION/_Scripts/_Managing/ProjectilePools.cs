@@ -59,7 +59,7 @@ namespace AKB.Core.Managing
 
         private void Start()
         {
-            GameManager.S.SetProjectilePoolsReference(this);
+            ManagerHUB.GetManager.SetProjectilePoolsReference(this);
 
             InitializeDataStructures();
         }

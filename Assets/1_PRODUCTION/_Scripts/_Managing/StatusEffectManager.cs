@@ -24,7 +24,7 @@ namespace AKB.Core.Managing
 
         private void Awake()
         {
-            GameManager.S.SetStatusEffectRef(this);
+            ManagerHUB.GetManager.SetStatusEffectRef(this);
         }
 
         private void Start()

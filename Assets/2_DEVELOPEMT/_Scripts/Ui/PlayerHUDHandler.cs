@@ -1,18 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHUDHandler : MonoBehaviour
+namespace AKB.Core.Managing.UI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerHUDHandler : MonoBehaviour
     {
-        
-    }
+        [Header("Set in inspector")]
+        [SerializeField] List<GameObject> playerHUDPanels;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            AddPanelReferencesToManager();
+        }
+
+        void AddPanelReferencesToManager()
+        {
+            ManagerHUB.GetManager.UIManager.AddExtraPanelsToManager(playerHUDPanels, true);
+        }
     }
 }

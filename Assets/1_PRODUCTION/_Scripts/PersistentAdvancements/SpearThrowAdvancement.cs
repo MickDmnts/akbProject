@@ -58,20 +58,20 @@
 
         void IncreaseSpearDamage()
         {
-            int currentSpearDamage = GameManager.S.PlayerEntity.PlayerSpearThrow.GetSpearRecallDamage();
+            int currentSpearDamage = ManagerHUB.GetManager.PlayerEntity.PlayerSpearThrow.GetSpearRecallDamage();
 
             currentSpearDamage *= spearDamageMultiplier;
 
-            GameManager.S.PlayerEntity.PlayerSpearThrow.SetSpearRecallDamage(currentSpearDamage);
+            ManagerHUB.GetManager.PlayerEntity.PlayerSpearThrow.SetSpearRecallDamage(currentSpearDamage);
         }
 
         void IncreaseSpearRange()
         {
-            float currentSpearRange = GameManager.S.PlayerEntity.PlayerSpearThrow.GetHoldCounterMultiplier();
+            float currentSpearRange = ManagerHUB.GetManager.PlayerEntity.PlayerSpearThrow.GetHoldCounterMultiplier();
 
             currentSpearRange += currentSpearRange * spearRangeMultiplier;
 
-            GameManager.S.PlayerEntity.PlayerSpearThrow.SetHoldCounterMultiplier(currentSpearRange);
+            ManagerHUB.GetManager.PlayerEntity.PlayerSpearThrow.SetHoldCounterMultiplier(currentSpearRange);
         }
     }
 }

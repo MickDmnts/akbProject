@@ -47,7 +47,7 @@ namespace AKB.Projectiles
             this.startPos = startPos;
             midPos = bezierHint;
 
-            target = GameManager.S.PlayerEntity.transform;
+            target = ManagerHUB.GetManager.PlayerEntity.transform;
 
             //Start lerping
             StartCoroutine(LerpToTarget());
@@ -147,7 +147,7 @@ namespace AKB.Projectiles
 
                         if (interactable != null)
                         {
-                            interactable.ApplyStatusEffect(GameManager.S.StatusEffectManager.GetNeededEffect(EffectType.Shocked));
+                            interactable.ApplyStatusEffect(ManagerHUB.GetManager.StatusEffectManager.GetNeededEffect(EffectType.Shocked));
                             break;
                         }
                     }
@@ -160,7 +160,7 @@ namespace AKB.Projectiles
 
         void CacheProjectileToPool()
         {
-            GameManager.S.ProjectilePools.CacheProjectile(gameObject, ProjectileType.Normal);
+            ManagerHUB.GetManager.ProjectilePools.CacheProjectile(gameObject, ProjectileType.Normal);
         }
 
         private void OnDisable()

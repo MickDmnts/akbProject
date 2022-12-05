@@ -48,7 +48,7 @@ namespace AKB.Entities.AI.Implementations.Status_Demon
                             //open for extension
                     }
 
-                    interactable.ApplyStatusEffect(GameManager.S.StatusEffectManager.GetNeededEffect(effectType));
+                    interactable.ApplyStatusEffect(ManagerHUB.GetManager.StatusEffectManager.GetNeededEffect(effectType));
 
                     return true;
                 }

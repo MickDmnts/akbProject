@@ -128,6 +128,6 @@ public class Options : MonoBehaviour
 
     void Back()
     {
-        GameManager.S.UIManager.EnablePanel("PauseMenu_UI_Panel");
+        ManagerHUB.GetManager.UIManager.EnablePanel("PauseMenu_UI_Panel");
     }
 }

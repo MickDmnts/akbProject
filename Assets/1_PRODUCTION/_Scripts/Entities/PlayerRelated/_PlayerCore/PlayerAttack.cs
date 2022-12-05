@@ -125,7 +125,7 @@ namespace AKB.Entities.Player
 
                     OmvivampEffect();
 
-                    GameManager.S.GameEventsHandler.OnEnemyHit();
+                    ManagerHUB.GetManager.GameEventsHandler.OnEnemyHit();
                 }
             }
 
@@ -136,8 +136,8 @@ namespace AKB.Entities.Player
         {
             if (statusEffectCounter >= 3)
             {
-                EffectType attackEffect = GameManager.S.SlotsHandler.AttackAdvancementHandler.GetCurrentAdvancementEffect();
-                GameObject effect = GameManager.S.StatusEffectManager.GetNeededEffect(attackEffect);
+                EffectType attackEffect = ManagerHUB.GetManager.SlotsHandler.AttackAdvancementHandler.GetCurrentAdvancementEffect();
+                GameObject effect = ManagerHUB.GetManager.StatusEffectManager.GetNeededEffect(attackEffect);
 
                 if (effect != null)
                 {
@@ -208,7 +208,7 @@ namespace AKB.Entities.Player
         public float GetAttackCooldown() => attackCooldown;
         public float GetAttackCooldownCache() => attackCooldownCache;
 
-        public void SetInputsActiveState(bool value)
+        public void SetAttackInputActiveState(bool value)
         {
             if (value)
             {

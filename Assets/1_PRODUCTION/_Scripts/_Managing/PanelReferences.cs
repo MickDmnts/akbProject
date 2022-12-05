@@ -32,12 +32,12 @@ namespace AKB.Core.Managing.LevelLoading
         /// </summary>
         void PassPanelReferences()
         {
-            GameManager.S.UIManager.SetUIPanels(uiPanels);
+            ManagerHUB.GetManager.UIManager.SetUIPanels(uiPanels);
         }
 
         private void Start()
         {
-            GameManager.S.UIManager.EnablePanel("MainMenuScreen_UI_Panel");
+            ManagerHUB.GetManager.UIManager.EnablePanel("MainMenuScreen_UI_Panel");
         }
     }
 }

@@ -32,7 +32,7 @@ namespace AKB.Entities.Player
 
         void EntrySetup()
         {
-            GameManager.S.GameEventsHandler.onEnemyHit += IncreaseRageFill;
+            ManagerHUB.GetManager.GameEventsHandler.onEnemyHit += IncreaseRageFill;
 
             playerEntity = transform.root.GetComponent<PlayerEntity>();
 
@@ -84,11 +84,11 @@ namespace AKB.Entities.Player
             {
                 rageActive = true;
 
-                int currentDamage = GameManager.S.PlayerEntity.PlayerAttack.GetAttackDamage();
+                int currentDamage = ManagerHUB.GetManager.PlayerEntity.PlayerAttack.GetAttackDamage();
 
                 currentDamage *= rageDamageMultiplier;
 
-                GameManager.S.PlayerEntity.PlayerAttack.SetAttackDamage(currentDamage, true);
+                ManagerHUB.GetManager.PlayerEntity.PlayerAttack.SetAttackDamage(currentDamage, true);
             }
         }
 
@@ -102,7 +102,7 @@ namespace AKB.Entities.Player
 
         void ResetDamageToDefault()
         {
-            GameManager.S.PlayerEntity.PlayerAttack.SetAttackDamageToCache();
+            ManagerHUB.GetManager.PlayerEntity.PlayerAttack.SetAttackDamageToCache();
         }
 
         #region UTILITIES
@@ -119,10 +119,10 @@ namespace AKB.Entities.Player
         }
         #endregion
 
-        private void OnDestroy()
+        private void OnDisable()
         {
-            if (GameManager.S != null)
-                GameManager.S.GameEventsHandler.onEnemyHit -= IncreaseRageFill;
+            if (ManagerHUB.GetManager != null)
+                ManagerHUB.GetManager.GameEventsHandler.onEnemyHit -= IncreaseRageFill;
         }
     }
 }

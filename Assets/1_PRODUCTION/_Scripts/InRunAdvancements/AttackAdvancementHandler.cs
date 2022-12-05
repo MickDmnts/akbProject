@@ -39,7 +39,7 @@ namespace AKB.Core.Managing.InRunUpdates
 
         private void Start()
         {
-            GameManager.S.SlotsHandler.SetAdvanceableAtSlot(SlotType.Attack, this);
+            ManagerHUB.GetManager.SlotsHandler.SetAdvanceableAtSlot(SlotType.Attack, this);
         }
 
         public EffectType GetCurrentAdvancementEffect()

@@ -94,7 +94,7 @@ namespace AKB.Entities.Player.SpearHandling
                 hasTeleported = true;
                 canTeleport = false;
 
-                if (GameManager.S.SlotsHandler.SpearInRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.SpearTypeAdvancements.DamageAtTeleportPoint))
+                if (ManagerHUB.GetManager.SlotsHandler.SpearInRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.SpearTypeAdvancements.DamageAtTeleportPoint))
                 {
                     StartCoroutine(DamageOnTeleport());
                 }

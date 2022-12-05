@@ -34,17 +34,17 @@ public class PauseMenu : MonoBehaviour
 
     void ClosePauseMenu()
     {
-        GameManager.S.UIManager.PauseGame();
+        ManagerHUB.GetManager.UIManager.PauseGame();
     }
 
     void HellsGrimoire()
     {
-        GameManager.S.UIManager.EnablePanel("HellsGrimoire_UI_Panel");
+        ManagerHUB.GetManager.UIManager.EnablePanel("HellsGrimoire_UI_Panel");
     }
 
     void Options()
     {
-        GameManager.S.UIManager.EnablePanel("Options_UI_Panel");
+        ManagerHUB.GetManager.UIManager.EnablePanel("Options_UI_Panel");
     }
 
     void AbandonRun()

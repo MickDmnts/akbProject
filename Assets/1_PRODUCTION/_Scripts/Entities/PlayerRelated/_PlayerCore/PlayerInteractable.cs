@@ -39,19 +39,19 @@ namespace AKB.Entities.Player.Interactions
 
         private void Start()
         {
-            GameManager.S.GameEventsHandler.onSceneChanged += OnSceneEntryPassive;
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += OnSceneEntryPassive;
 
             playerEntity = GetComponent<PlayerEntity>();
         }
 
         void OnSceneEntryPassive(GameScenes activeScene)
         {
-            if (GameManager.S.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.PassiveAdvancements.RegenHealthOnRoomEntry))
+            if (ManagerHUB.GetManager.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.PassiveAdvancements.RegenHealthOnRoomEntry))
             {
                 RegenHealthOnRoomEntry();
             }
 
-            if (GameManager.S.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.PassiveAdvancements.IgnoreFirstHit))
+            if (ManagerHUB.GetManager.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.PassiveAdvancements.IgnoreFirstHit))
             {
                 ignoreHit = true;
             }
@@ -158,11 +158,11 @@ namespace AKB.Entities.Player.Interactions
             currentlyStunned = true;
 
             #region MOVEMENT
-            playerEntity.PlayerMovement.SetMovementInputsState(false);
+            playerEntity.PlayerMovement.SetMovementInputActiveState(false);
             #endregion
 
             #region ATTACK
-            playerEntity.PlayerAttack.SetInputsActiveState(false);
+            playerEntity.PlayerAttack.SetAttackInputActiveState(false);
             #endregion
         }
 
@@ -171,11 +171,11 @@ namespace AKB.Entities.Player.Interactions
             currentlyStunned = false;
 
             #region MOVEMENT
-            playerEntity.PlayerMovement.SetMovementInputsState(true);
+            playerEntity.PlayerMovement.SetMovementInputActiveState(true);
             #endregion
 
             #region ATTACK
-            playerEntity.PlayerAttack.SetInputsActiveState(true);
+            playerEntity.PlayerAttack.SetAttackInputActiveState(true);
             #endregion
         }
         #endregion
@@ -215,20 +215,20 @@ namespace AKB.Entities.Player.Interactions
         {
             currentlyCharmed = true;
 
-            playerEntity.PlayerMovement.SetMovementInputsState(false);
+            playerEntity.PlayerMovement.SetMovementInputActiveState(false);
         }
 
         public void ActivateEntityControls()
         {
             currentlyCharmed = false;
 
-            playerEntity.PlayerMovement.SetMovementInputsState(true);
+            playerEntity.PlayerMovement.SetMovementInputActiveState(true);
         }
         #endregion
 
-        private void OnDestroy()
+        private void OnDisable()
         {
-            GameManager.S.GameEventsHandler.onSceneChanged -= OnSceneEntryPassive;
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= OnSceneEntryPassive;
         }
     }
 }

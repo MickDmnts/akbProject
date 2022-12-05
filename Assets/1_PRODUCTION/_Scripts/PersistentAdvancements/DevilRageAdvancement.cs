@@ -45,27 +45,27 @@ namespace AKB.Core.Managing.UpdateSystem.Implementations
             {
                 case -1:
                 {
-                    GameManager.S.PlayerEntity.DevilRage.SetIsUnlockedState(true);
+                    ManagerHUB.GetManager.PlayerEntity.DevilRage.SetIsUnlockedState(true);
                 }
                 break;
 
                 case 0:
                 {
-                    float fill = GameManager.S.PlayerEntity.DevilRage.GetRageFillRate();
+                    float fill = ManagerHUB.GetManager.PlayerEntity.DevilRage.GetRageFillRate();
 
                     fill *= 2;
 
-                    GameManager.S.PlayerEntity.DevilRage.SetRageFillValue(fill);
+                    ManagerHUB.GetManager.PlayerEntity.DevilRage.SetRageFillValue(fill);
                 }
                 break;
 
                 case 1:
                 {
-                    float duration = GameManager.S.PlayerEntity.DevilRage.GetRageDuration();
+                    float duration = ManagerHUB.GetManager.PlayerEntity.DevilRage.GetRageDuration();
 
                     duration *= 2;
 
-                    GameManager.S.PlayerEntity.DevilRage.SetRageDuration(duration);
+                    ManagerHUB.GetManager.PlayerEntity.DevilRage.SetRageDuration(duration);
                 }
                 break;
             }

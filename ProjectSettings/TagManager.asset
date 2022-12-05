@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Main_Canvas
   - Demon
+  - UI_Camera
   layers:
   - Default
   - TransparentFX

@@ -26,7 +26,7 @@ namespace AKB.Core.Managing
         // Start is called before the first frame update
         void Start()
         {
-            GameManager.S.SetSpearPoolReference(this);
+            ManagerHUB.GetManager.SetSpearPoolReference(this);
 
             PopulatePool(ref spearQueue, amountToPool, spearParent);
         }

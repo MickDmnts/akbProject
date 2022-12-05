@@ -23,12 +23,12 @@ namespace AKB.Core.Managing.PCG
         private void Awake()
         {
             roomDataContainer = FindObjectOfType<RoomDataContainer>();
+            ManagerHUB.GetManager.SetRoomSelector(this);
         }
 
         private void Start()
         {
             //UpdateHealthValues();
-            GameManager.S.SetRoomSelector(this);
         }
 
         /// <summary>
@@ -36,8 +36,8 @@ namespace AKB.Core.Managing.PCG
         /// </summary>
         void UpdateHealthValues()
         {
-            playerCurrentHealth = (int)GameManager.S.PlayerEntity.GetPlayerHealth();
-            playerMaxHealth = (int)GameManager.S.PlayerEntity.GetPlayerMaxHealth();
+            playerCurrentHealth = (int)ManagerHUB.GetManager.PlayerEntity.GetPlayerHealth();
+            playerMaxHealth = (int)ManagerHUB.GetManager.PlayerEntity.GetPlayerMaxHealth();
         }
 
         void UpdateCoinValues()

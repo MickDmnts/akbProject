@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3845fae1ecbbb5b478ad652b89352a6b, type: 3}
-  m_Name: _EntryToMainMenu
+  m_Name: 6_EntryToHub
   m_EditorClassIdentifier: 
-  PacketIndex: 0
-  PacketMainScene: 0
-  ScenesToLoad: 0200000001000000
+  PacketIndex: 6
+  PacketMainScene: 4
+  ScenesToLoad: 04000000
   ScenesToUnload: 

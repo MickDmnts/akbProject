@@ -85,7 +85,7 @@ namespace AKB.Entities.Player
         {
             yield return new WaitForFixedUpdate();
 
-            if (GameManager.S.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.PushAway))
+            if (ManagerHUB.GetManager.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.PushAway))
             {
                 PushSurroundings();
             }
@@ -93,7 +93,7 @@ namespace AKB.Entities.Player
             while (playerEntity.PlayerAnimations.IsInTransition(0)
                 || playerEntity.PlayerAnimations.IsAnimationRunning(0, "DodgeRoll"))
             {
-                if (GameManager.S.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.ShockOnTouch))
+                if (ManagerHUB.GetManager.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.ShockOnTouch))
                 {
                     ShockSurroundings();
                 }
@@ -107,7 +107,7 @@ namespace AKB.Entities.Player
             isDodging = false;
 
             ResetDodgesCount();
-            if (GameManager.S.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.MovementSpeed))
+            if (ManagerHUB.GetManager.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.MovementSpeed))
             {
                 StartCoroutine(IncreaseMoveSpeed());
             }
@@ -136,7 +136,7 @@ namespace AKB.Entities.Player
 
                 if (hits[i].TryGetComponent<IInteractable>(out interactable))
                 {
-                    interactable.ApplyStatusEffect(GameManager.S.StatusEffectManager.GetNeededEffect(effectToApply));
+                    interactable.ApplyStatusEffect(ManagerHUB.GetManager.StatusEffectManager.GetNeededEffect(effectToApply));
                 }
             }
         }
@@ -188,5 +188,17 @@ namespace AKB.Entities.Player
 
         public bool GetIsDodging() => isDodging;
         public void SetMaxDodges(int value) => maxDodges = value;
+
+        public void SetDodgeInputActiveState(bool state)
+        {
+            if (state == true)
+            {
+                dodgeAction.Enable();
+            }
+            else
+            {
+                dodgeAction.Disable();
+            }
+        }
     }
 }

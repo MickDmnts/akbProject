@@ -30,6 +30,13 @@ namespace AKB.Core.Managing.InRunUpdates
 
         private void Awake()
         {
+            ManagerHUB.GetManager.SetSlotHandlerReference(this);
+
+            EntrySetup();
+        }
+
+        void EntrySetup()
+        {
             slots = new IAdvanceable[slotSize];
 
             AttackAdvancementHandler = gameObject.AddComponent<AttackAdvancementHandler>();

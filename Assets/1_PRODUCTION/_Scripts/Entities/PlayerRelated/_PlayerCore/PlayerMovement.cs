@@ -206,7 +206,7 @@ namespace AKB.Entities.Player
 
         public bool GetHasControllerConnected() => hasControllerConnected;
 
-        public void SetMovementInputsState(bool state)
+        public void SetMovementInputActiveState(bool state)
         {
             if (state)
             {

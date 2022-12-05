@@ -15,16 +15,15 @@ namespace AKB.Core.Managing.LevelLoading
         AnyScene = -1,
 
         GameEntryScene = 0,
-        MainMenu = 1,
-        UI_Scene = 2,
-        PlayerScene = 3,
+        UI_Scene = 1,
+        PlayerScene = 2,
 
-        TutorialArena = 4,
+        TutorialArena = 3,
 
-        PlayerHUB = 5,
+        PlayerHUB = 4,
 
-        World1Scene = 6,
-        World2Scene = 7,
+        World1Scene = 5,
+        World2Scene = 6,
     }
 
     /* [CLASS DOCUMENTATION]
@@ -50,11 +49,6 @@ namespace AKB.Core.Managing.LevelLoading
 
         [Header("Populate the list with all the level load packets of the game.")]
         [SerializeField] List<LevelLoadPacket> levelsInLoadOrder;
-
-        [Header("Set for manual index traveling")]
-        [SerializeField] LevelLoadPacket toPlayerHubPacket;
-        [SerializeField] LevelLoadPacket toNewGamePacket;
-        [SerializeField] LevelLoadPacket toLoadGamePacket;
 
         //Dynamically changed
         List<GameScenes> currentlyLoadedScenes = new List<GameScenes>();
@@ -95,21 +89,6 @@ namespace AKB.Core.Managing.LevelLoading
         {
             //This boots up all the game scene loading system.
             LoadNext(false);
-        }
-
-        public void TransitToPlayerHub()
-        {
-            ForceLoad(toPlayerHubPacket.PacketIndex);
-        }
-
-        public void StartNewGameScene()
-        {
-            ForceLoad(toNewGamePacket.PacketIndex);
-        }
-
-        public void LoadGameScene()
-        {
-            ForceLoad(toLoadGamePacket.PacketIndex);
         }
 
         #region NORMAL_PACKET_HANDLING
@@ -203,7 +182,7 @@ namespace AKB.Core.Managing.LevelLoading
                 ReadjustPacketIndexOnForceLoad(packetIndex);
             }
 
-            GameManager.S.GameEventsHandler.OnSceneChanged(FocusedScene);
+            ManagerHUB.GetManager.GameEventsHandler.OnSceneChanged(FocusedScene);
 
             if (fader != null) fader.FadeOut();
         }

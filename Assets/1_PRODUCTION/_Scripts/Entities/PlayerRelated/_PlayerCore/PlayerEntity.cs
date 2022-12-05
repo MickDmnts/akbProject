@@ -4,6 +4,7 @@ using AKB.Core.Managing;
 using AKB.Entities.Player.SpearHandling;
 using AKB.Entities.Interactions;
 using AKB.Entities.Player.Interactions;
+using AKB.Core.Managing.LevelLoading;
 
 namespace AKB.Entities.Player
 {
@@ -47,24 +48,51 @@ namespace AKB.Entities.Player
 
         private void Awake()
         {
-            GameManager.S.SetPlayerReference(this);
+            ManagerHUB.GetManager.SetPlayerReference(this);
 
             PlayerInputs = new PlayerInputs();
             PlayerInteractable = GetComponent<PlayerInteractable>();
 
-            PlayerAttackFOV = GetComponentInChildren<EntityAttackFOV>();
+            Rigidbody = GetComponent<Rigidbody>();
+
             PlayerMovement = GetComponent<PlayerMovement>();
             PlayerAnimations = GetComponent<PlayerAnimations>();
-            PlayerSpearTeleporting = GetComponentInChildren<PlayerSpearTeleporting>();
             PlayerSpearThrow = GetComponentInChildren<PlayerSpearThrow>();
+            PlayerSpearTeleporting = GetComponentInChildren<PlayerSpearTeleporting>();
             PlayerDodgeRoll = GetComponent<PlayerDodgeRoll>();
             PlayerAttack = GetComponentInChildren<PlayerAttack>();
+            PlayerAttackFOV = GetComponentInChildren<EntityAttackFOV>();
             DevilRage = GetComponentInChildren<DevilRage>();
-
-            Rigidbody = GetComponent<Rigidbody>();
 
             _isDead = false;
             _isActive = true;
+
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += SetMovementStatesBasedOnRoom;
+        }
+
+        void SetMovementStatesBasedOnRoom(GameScenes gameScenes)
+        {
+            Debug.Log(gameScenes);
+
+            if (gameScenes == GameScenes.PlayerScene)
+            {
+                PlayerAttack.SetAttackInputActiveState(false);
+                PlayerMovement.SetMovementInputActiveState(false);
+                PlayerSpearThrow.SetThrowInputActiveState(false);
+                PlayerDodgeRoll.SetDodgeInputActiveState(false);
+            }
+            else if (gameScenes == GameScenes.PlayerHUB)
+            {
+                PlayerMovement.SetMovementInputActiveState(true);
+            }
+            else if (gameScenes == GameScenes.World1Scene
+                || gameScenes == GameScenes.TutorialArena)
+            {
+                PlayerAttack.SetAttackInputActiveState(true);
+                PlayerMovement.SetMovementInputActiveState(true);
+                PlayerSpearThrow.SetThrowInputActiveState(true);
+                PlayerDodgeRoll.SetDodgeInputActiveState(true);
+            }
         }
 
         public int GetPlayerHealth() => (int)EntityLife;
@@ -84,5 +112,10 @@ namespace AKB.Entities.Player
         }
 
         public int GetMitigateDamageAfter() => (int)mitigateDamageAfter;
+
+        private void OnDisable()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= SetMovementStatesBasedOnRoom;
+        }
     }
 }

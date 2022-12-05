@@ -55,16 +55,16 @@
 
         void IncreasePlayerDamage()
         {
-            int currentDamage = GameManager.S.PlayerEntity.PlayerAttack.GetAttackDamage();
+            int currentDamage = ManagerHUB.GetManager.PlayerEntity.PlayerAttack.GetAttackDamage();
 
             currentDamage = (currentDamage / 2) + currentDamage;
 
-            GameManager.S.PlayerEntity.PlayerAttack.SetAttackDamage(currentDamage);
+            ManagerHUB.GetManager.PlayerEntity.PlayerAttack.SetAttackDamage(currentDamage);
         }
 
         void EnableHealthRegen()
         {
-            GameManager.S.PlayerEntity.PlayerAttack.SetHealthRegenState(true);
+            ManagerHUB.GetManager.PlayerEntity.PlayerAttack.SetHealthRegenState(true);
         }
     }
 }

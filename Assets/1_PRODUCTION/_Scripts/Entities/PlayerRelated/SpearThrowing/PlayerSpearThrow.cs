@@ -246,7 +246,7 @@ namespace AKB.Entities.Player.SpearHandling
         /// </summary>
         public void SpawnSpear()
         {
-            thrownSpear = GameManager.S.SpearPool.GetPooledSpear();
+            thrownSpear = ManagerHUB.GetManager.SpearPool.GetPooledSpear();
 
             thrownSpear.transform.position = spearSpawnPoint.position;
             thrownSpear.transform.rotation = spearSpawnPoint.rotation;
@@ -297,7 +297,7 @@ namespace AKB.Entities.Player.SpearHandling
             if (hasSpear || playerEntity.PlayerDodgeRoll.GetIsDodging()) return;
 
             StartOrbit();
-            playerEntity.PlayerAttack.SetInputsActiveState(false);
+            playerEntity.PlayerAttack.SetAttackInputActiveState(false);
 
             playerEntity.PlayerAnimations.SetSpearPullAnimationState(false);
 
@@ -347,7 +347,7 @@ namespace AKB.Entities.Player.SpearHandling
         {
             hasSpear = true;
 
-            playerEntity.PlayerAttack.SetInputsActiveState(true);
+            playerEntity.PlayerAttack.SetAttackInputActiveState(true);
 
             SetPlayerSpearActiveState(true);
 
@@ -360,7 +360,7 @@ namespace AKB.Entities.Player.SpearHandling
         /// </summary>
         void NullifySpearReferences()
         {
-            GameManager.S.SpearPool.CacheSpear(thrownSpear.gameObject);
+            ManagerHUB.GetManager.SpearPool.CacheSpear(thrownSpear.gameObject);
 
             activeSpearHandler = null;
             thrownSpear = null;
@@ -381,6 +381,18 @@ namespace AKB.Entities.Player.SpearHandling
 
         public void SetHoldCounterMultiplier(float value) => holdCounterMultiplier = value;
         public float GetHoldCounterMultiplier() => holdCounterMultiplier;
+
+        public void SetThrowInputActiveState(bool state)
+        {
+            if (state == true)
+            {
+                throwAction.Enable();
+            }
+            else
+            {
+                throwAction.Disable();
+            }
+        }
 
         private void OnDisable()
         {

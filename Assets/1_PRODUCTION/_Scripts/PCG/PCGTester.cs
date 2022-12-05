@@ -10,7 +10,7 @@ namespace AKB.Core.Managing.PCG
         {
             if (Input.GetKeyUp(KeyCode.T))
             {
-                RoomData nextRoom = GameManager.S.RoomSelector.SelectNextRoom(world);
+                RoomData nextRoom = ManagerHUB.GetManager.RoomSelector.SelectNextRoom(world);
                 nextRoom.GetRoomPrefab().SetActive(true);
             }
         }

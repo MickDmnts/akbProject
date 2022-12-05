@@ -15,8 +15,17 @@ EditorBuildSettings:
     path: Assets/1_PRODUCTION/_Scenes/_MANAGING/PlayerScene.unity
     guid: 27d169f3256b7d44e924b8184702257f
   - enabled: 1
-    path: Assets/1_PRODUCTION/_Scenes/_MANAGING/MainMenuScene.unity
-    guid: 0609da8b64357644b879411db9ccdd72
+    path: Assets/1_PRODUCTION/_Scenes/Gameplay/TutorialScene.unity
+    guid: 32214a9ad2791284fb519b49b592036e
+  - enabled: 1
+    path: Assets/1_PRODUCTION/_Scenes/Gameplay/PlayerHUB.unity
+    guid: 0f3eab80ab6bbd04dae5eb88a73af657
+  - enabled: 1
+    path: Assets/1_PRODUCTION/_Scenes/Gameplay/SampleWorld_1.unity
+    guid: 10ab006b094881145b727d1e8aacbf23
+  - enabled: 1
+    path: Assets/1_PRODUCTION/_Scenes/Gameplay/SampleWorld_2.unity
+    guid: bf649cd16754d3c4da4dcbcf5f06bd0b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fecf1814328a8034786700a6d2aa7861,
       type: 2}

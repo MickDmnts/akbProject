@@ -50,7 +50,7 @@ namespace AKB.Core.Managing.UpdateSystem.Implementations
 
         protected override void UpdatePerTier(int currentTier)
         {
-            GameManager.S.PlayerEntity.PlayerSpearTeleporting.IncreaseTeleportChargesBy(_teleportTierUpdatePairs[currentTier]);
+            ManagerHUB.GetManager.PlayerEntity.PlayerSpearTeleporting.IncreaseTeleportChargesBy(_teleportTierUpdatePairs[currentTier]);
         }
     }
 }
