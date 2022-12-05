@@ -2,43 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 using AKB.Core.Managing;
 
 public class HellsGrimoire : MonoBehaviour
 {
-    [SerializeField]Image imageTemplate;
-    [SerializeField]TextMeshProUGUI textTempalte;
-
     [SerializeField] Button tutorialsButton;
     [SerializeField] Button monstersButton;
     [SerializeField] Button pastRunsButton;
 
-    //Tutorials Buttons
-    [SerializeField] Button meleeAttackButton;
-    [SerializeField] Button dodgeRollButton;
-    [SerializeField] Button throwButton;
-    [SerializeField] Button teleportationButton;
-    [SerializeField] Button recallButton;
+    [SerializeField] GameObject Tutorials_UI_Panel;
+    [SerializeField] GameObject Monsters_UI_Panel;
+    [SerializeField] GameObject PastRuns_UI_Panel;
 
-    //Monsters Buttons
-    [SerializeField] Button basicDemonButton;
-    [SerializeField] Button fireBasicDemonButton;
-    [SerializeField] Button bigDemonButton;
-    [SerializeField] Button bigChargersButton;
-    [SerializeField] Button rangedDemonsButton;
-    [SerializeField] Button electroDemonsButton;
-    [SerializeField] Button statusDemonsButton;
-    [SerializeField] Button charmDemonsButton;
-    [SerializeField] Button confuseDemonsButton;
-    [SerializeField] Button beelzebubButton;
-    [SerializeField] Button astarothButton;
+    //Parent gameobject 
+    [SerializeField] GameObject HellsGrimoire_UI_Panel;
 
     private void Start()
     {
         EntrySetup();
+
+        if (HellsGrimoire_UI_Panel.activeSelf == true)
+        {
+            tutorialsButton.Select();
+        }
     }
+
+    //we need a back button to return to pause menu screen
 
     /// <summary>
     /// Call to set up the default script behaviour.
@@ -48,46 +38,27 @@ public class HellsGrimoire : MonoBehaviour
         tutorialsButton.onClick.AddListener(Tutorials);
         monstersButton.onClick.AddListener(Monsters);
         pastRunsButton.onClick.AddListener(PastRuns);
-
-        //Tutorials Buttons
-        meleeAttackButton.onClick.AddListener(Setter);
-        dodgeRollButton.onClick.AddListener(Setter);
-        throwButton.onClick.AddListener(Setter);
-        teleportationButton.onClick.AddListener(Setter);
-        recallButton.onClick.AddListener(Setter);
-
-        //Monsters Buttons
-        basicDemonButton.onClick.AddListener(Setter);
-        fireBasicDemonButton.onClick.AddListener(Setter);
-        bigDemonButton.onClick.AddListener(Setter);
-        bigChargersButton.onClick.AddListener(Setter);
-        rangedDemonsButton.onClick.AddListener(Setter);
-        electroDemonsButton.onClick.AddListener(Setter);
-        statusDemonsButton.onClick.AddListener(Setter);
-        charmDemonsButton.onClick.AddListener(Setter);
-        confuseDemonsButton.onClick.AddListener(Setter);
-        beelzebubButton.onClick.AddListener(Setter);
-        astarothButton.onClick.AddListener(Setter);
     }
 
     void Tutorials()
     {
-        //GameManager.S.UIManager.EnablePanel();
+        ActivatePanel("Tutorials_UI_Panel");
     }
 
     void Monsters()
     {
-        //GameManager.S.UIManager.ActivatePanel("Monsters Body");
+        ActivatePanel("Monsters_UI_Panel");
     }
 
     void PastRuns()
     {
-        //GameManager.S.UIManager.ActivatePanel("Past Runs Body");
+        ActivatePanel("PastRuns_UI_Panel");
     }
 
-    void Setter()
+    void ActivatePanel(string panelToBeActivated)
     {
-        imageTemplate.sprite = GameManager.S.UIManager.testing.sprite;
-        textTempalte.text = GameManager.S.UIManager.testing.description;
+        Tutorials_UI_Panel.SetActive(panelToBeActivated.Equals(Tutorials_UI_Panel.name));
+        Monsters_UI_Panel.SetActive(panelToBeActivated.Equals(Monsters_UI_Panel.name));
+        PastRuns_UI_Panel.SetActive(panelToBeActivated.Equals(PastRuns_UI_Panel.name));
     }
 }

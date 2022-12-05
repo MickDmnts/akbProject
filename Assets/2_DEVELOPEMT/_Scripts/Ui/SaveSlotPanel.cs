@@ -29,9 +29,14 @@ public class SaveSlotPanel : MonoBehaviour
         button4.onClick.AddListener(Placeholder);
     }
 
+    //theloume na kanei new game
+    //theloume na krataei ta saves mas
+    //ta save mas prepei na kratane kapoies plhrofories tis opoies kai prepei na deiksoume
+    //theloume na kanei override to prohgoumo run an exei pathsei new game se ena hdh yparxon
     void Placeholder()
     {
         //gia twra,  apla na se phgainei se mia pista
-        GameManager.S.LevelManager.TransitToPlayerHub();
+        //GameManager.S.LevelManager.TransitToPlayerHub();
+        Debug.Log("New game button on save slots screen was pressed");
     }
 }

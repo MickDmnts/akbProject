@@ -31,6 +31,7 @@ public class MainMenuScreen : MonoBehaviour
     void Continue()
     {
         //Continues from  last saved game
+        Debug.Log("Continue button on main menu screen was pressed");
     }
 
     void NewGame()
@@ -46,5 +47,6 @@ public class MainMenuScreen : MonoBehaviour
     void Exit()
     {
         Application.Quit();
+        Debug.Log("Exit button on main menu screen was pressed");
     }
 }

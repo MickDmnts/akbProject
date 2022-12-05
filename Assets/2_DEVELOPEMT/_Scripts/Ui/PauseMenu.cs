@@ -30,9 +30,13 @@ public class PauseMenu : MonoBehaviour
         saveExit.onClick.AddListener(SaveExit);
     }
 
+    //prepei na kratane kapoies plhrofories tis opoies kai prepei na deiksoume on runtime
+
     void ClosePauseMenu()
     {
         //close pause menu
+        //why pause isnt working
+        //GameManager.S.UIManager.isPaused == true;
         GameManager.S.UIManager.DisablePanel();
     }
 
@@ -43,16 +47,17 @@ public class PauseMenu : MonoBehaviour
 
     void Options()
     {
-        GameManager.S.UIManager.EnablePanel("SaveSlot_UI_Panel");
+        GameManager.S.UIManager.EnablePanel("Options_UI_Panel");
     }
 
     void AbandonRun()
     {
-        GameManager.S.LevelManager.TransitToPlayerHub();
+        //GameManager.S.LevelManager.TransitToPlayerHub();
+        Debug.Log("Abandon run button on pause menu screen was pressed");
     }
 
     void SaveExit()
     {
-
+        Debug.Log("Save & Exit button on pause menu screen was pressed");
     }
 }

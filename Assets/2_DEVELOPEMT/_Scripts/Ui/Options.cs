@@ -68,12 +68,13 @@ public class Options : MonoBehaviour
         {
             screenShakeToggle.isOn = true;
             sstIsActive = true;
+            Debug.Log("sstIsActive toggle is <On> on options menu screen");
         }
         else
         {
             screenShakeToggle.isOn = false;
             sstIsActive = false;
-
+            Debug.Log("sstIsActive toggle is <Off> on options menu screen");
         }
     }
 
@@ -83,12 +84,13 @@ public class Options : MonoBehaviour
         {
             redScreenTintToggle.isOn = true;
             rstIsActive = true;
+            Debug.Log("rstIsActive toggle is <On> on options menu screen");
         }
         else
         {
             redScreenTintToggle.isOn = false;
             rstIsActive = false;
-
+            Debug.Log("rstIsActive toggle is <Off> on options menu screen");
         }
     }
 
@@ -98,12 +100,13 @@ public class Options : MonoBehaviour
         {
             hideUIElementToggle.isOn = true;
             huietIsActive = true;
+            Debug.Log("huietIsActive toggle is <On> on options menu screen");
         }
         else
         {
             hideUIElementToggle.isOn = false;
             huietIsActive = false;
-
+            Debug.Log("huietIsActive toggle is <Off> on options menu screen");
         }
     }
 
@@ -113,12 +116,13 @@ public class Options : MonoBehaviour
         {
             DevModeToggle.isOn = true;
             dmtIsActive = true;
+            Debug.Log("dmtIsActive toggle is <On> on options menu screen");
         }
         else
         {
             DevModeToggle.isOn = false;
             dmtIsActive = false;
-
+            Debug.Log("dmtIsActive toggle is <Off> on options menu screen");
         }
     }
 
