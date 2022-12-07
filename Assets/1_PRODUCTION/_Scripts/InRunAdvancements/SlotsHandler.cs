@@ -15,6 +15,7 @@ namespace AKB.Core.Managing.InRunUpdates
         DevilRage = 4,
     }
 
+    [DefaultExecutionOrder(150)]
     public class SlotsHandler : MonoBehaviour
     {
         [Header("Set in inspector")]

@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 using AKB.Core.Managing;
 using UnityEngine.Rendering.Universal;
-using AKB.Core.Managing.InRunUpdates;
 
 namespace AKB.Entities.Player.SpearHandling
 {
@@ -47,6 +46,30 @@ namespace AKB.Entities.Player.SpearHandling
         float throwActionValue;
         #endregion
 
+        #region ATTACK_USED_ACTIONS
+        /*
+        * The events below are used from the PlayerAttack.cs input action 
+        * to determine when the player pressed/hold/released the attack button while in orbit mode.
+        */
+        private event Action<InputAction> onChargePressed;
+        public void OnChargePressed(InputAction input)
+        {
+            if (onChargePressed != null)
+            {
+                onChargePressed(input);
+            }
+        }
+
+        private event Action onChargeReleased;
+        public void OnChargeReleased()
+        {
+            if (onChargeReleased != null)
+            {
+                onChargeReleased();
+            }
+        }
+        #endregion
+
         #region ENTRY_SETUP
         private void Start()
         {
@@ -80,6 +103,9 @@ namespace AKB.Entities.Player.SpearHandling
 
             throwAction.canceled += _ => CancelAction();
             recallAction.canceled += _ => RecallCancelAction();
+
+            onChargePressed += ThrowInputHandler;
+            onChargeReleased += ThrowOnReleaseHandler;
         }
         #endregion
 
@@ -110,21 +136,37 @@ namespace AKB.Entities.Player.SpearHandling
             playerEntity.PlayerAnimations.SetSpearChargeState(true);
         }
 
-        private void Update()
+        private void LateUpdate()
+        {
+            if (!DetermineIsHoldingState(throwActionValue))
+            {
+                DecreaseHoldTimer();
+            }
+        }
+
+        void ThrowInputHandler(InputAction input)
         {
             if (!hasSpear || playerEntity.PlayerDodgeRoll.GetIsDodging()) return;
 
-            //Trigger - RMB input caching
-            throwActionValue = throwAction.ReadValue<float>();
+            throwActionValue = input.ReadValue<float>();
 
             if (DetermineIsHoldingState(throwActionValue))
             {
                 IncreaseHoldTimer();
             }
-            else
+        }
+
+        void ThrowOnReleaseHandler()
+        {
+            if (holdCounter >= spearThrowMinimumPressTime)
             {
-                DecreaseHoldTimer();
+                PlayThrowSpearAnim();
+
+                holdCounterCache = holdCounter;
+                holdCounter = 0f;
             }
+
+            throwActionValue = 0f;
         }
 
         /// <summary>
@@ -173,26 +215,12 @@ namespace AKB.Entities.Player.SpearHandling
         #region SPEAR_ACTIONS_AND_ANIMATIONS
         /// <summary>
         /// Called when the unity canceled event gets called to determine the correct actions based on player inputs.
-        /// <para>If hasSpear is false, invokes StopSpearRecall() and StopOrbit(), returns after.</para>
-        /// <para>If holdCounter is greater/equal to spearThrowMinimumPressTime then invokes PlayThrowSpearAnim()
-        /// and sets holdCounterCache to holdCounter, and holdCounter to 0.</para>
-        /// <para>else invokes PlayChargeCancelationAnim() and StopOrbit()</para>
+        /// <para>Invokes StopOrbit()</para>
         /// </summary>
         void CancelAction()
         {
             if (!hasSpear || playerEntity.PlayerDodgeRoll.GetIsDodging()) return;
-
-            if (holdCounter >= spearThrowMinimumPressTime)
-            {
-                PlayThrowSpearAnim();
-
-                holdCounterCache = holdCounter;
-                holdCounter = 0f;
-            }
-            else
-            {
-                StopOrbit();
-            }
+            StopOrbit();
         }
 
         void RecallCancelAction()
@@ -397,13 +425,12 @@ namespace AKB.Entities.Player.SpearHandling
         private void OnDisable()
         {
             throwAction.Disable();
-        }
-
-        private void OnDestroy()
-        {
             throwAction.started -= _ => StartedAction();
             throwAction.performed -= _ => RecallSpear();
             throwAction.canceled -= _ => CancelAction();
+
+            onChargePressed -= ThrowInputHandler;
+            onChargeReleased -= ThrowOnReleaseHandler;
         }
     }
 }

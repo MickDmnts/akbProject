@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 using AKB.Entities.Interactions;
 using AKB.Core.Managing;
-using AKB.Core.Managing.InRunUpdates;
 
 namespace AKB.Entities.Player
 {
@@ -21,6 +20,7 @@ namespace AKB.Entities.Player
 
         #region PRIVATE_VARS
         PlayerEntity playerEntity;
+
         InputAction attackAction;
 
         #region ATTACK_VARS
@@ -29,7 +29,7 @@ namespace AKB.Entities.Player
 
         float nextAttack;
         float attackCooldownCache;
-        public int statusEffectCounter =0;
+        int statusEffectCounter = 0;
         float resetEffectCounter = 1f;
         int attackDamageCache;
         #endregion
@@ -50,6 +50,7 @@ namespace AKB.Entities.Player
 
             //Input setup
             attackAction = playerEntity.PlayerInputs.Player.Fire;
+            attackAction.canceled += _ => AttackReleasedCallback();
             attackAction.Enable();
 
             attackCooldownCache = attackCooldown;
@@ -63,7 +64,7 @@ namespace AKB.Entities.Player
             if (!isAttacking)
             {
                 resetEffectCounter -= Time.deltaTime;
-                if(resetEffectCounter <= 0)
+                if (resetEffectCounter <= 0)
                 {
                     statusEffectCounter = 0;
                 }
@@ -75,8 +76,23 @@ namespace AKB.Entities.Player
 
             if (attackAction.ReadValue<float>() > 0.5f)
             {
-                AttackBehaviour();
+                //If the user is pivoting
+                if (playerEntity.PlayerMovement.GetOrbitState())
+                {
+                    //Charge callback here
+                    playerEntity.PlayerSpearThrow.OnChargePressed(attackAction);
+                }
+                else
+                {
+                    AttackBehaviour();
+                }
             }
+        }
+
+        //Subed to canceled attackAction event
+        void AttackReleasedCallback()
+        {
+            playerEntity.PlayerSpearThrow.OnChargeReleased();
         }
 
         /// <summary>
@@ -106,7 +122,7 @@ namespace AKB.Entities.Player
                     playerEntity.PlayerMovement.MouseBasedOrbitRotation(rotateToAttackDir);
                 }
             }
-            
+
         }
 
         void CallAttackInteraction()
@@ -222,6 +238,8 @@ namespace AKB.Entities.Player
 
         private void OnDisable()
         {
+            attackAction.canceled -= _ => AttackReleasedCallback();
+
             attackAction.Disable();
         }
         #endregion
