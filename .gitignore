@@ -62,3 +62,4 @@ crashlytics-build.properties
 
 #Team ignores
 *.dwlt
+UserSettings/EditorUserSettings.asset
