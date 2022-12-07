@@ -483,7 +483,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf9fe4d2b4764f78999d4684a4e4152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldData: []
+  worldData:
+  - WorldName: World 1
+    entry: {fileID: 5480419412266862194, guid: ccc07f48eaca20244a553cf597c816d1, type: 3}
+    battleRooms:
+    - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
+    battleRoomsCopy: []
+    usedBattleRooms: []
+    healRoom: {fileID: 0}
+    storeRoom: {fileID: 0}
+    bossRoom: {fileID: 0}
+  - WorldName: World 2
+    entry: {fileID: 0}
+    battleRooms: []
+    battleRoomsCopy: []
+    usedBattleRooms: []
+    healRoom: {fileID: 0}
+    storeRoom: {fileID: 0}
+    bossRoom: {fileID: 0}
 --- !u!4 &1856625620
 Transform:
   m_ObjectHideFlags: 0

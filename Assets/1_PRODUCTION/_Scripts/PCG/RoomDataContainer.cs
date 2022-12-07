@@ -24,11 +24,14 @@ namespace AKB.Core.Managing.PCG
     [System.Serializable]
     struct WorldContainer
     {
+        [Header("Set in inspector")]
         public string WorldName;
         public RoomData entry;
         public List<RoomData> battleRooms;
+        [Header("Set dynamically")]
         public List<RoomData> battleRoomsCopy;
         public List<RoomData> usedBattleRooms;
+        [Header("Set in inspector")]
         public RoomData healRoom;
         public RoomData storeRoom;
         public RoomData bossRoom;
@@ -82,45 +85,45 @@ namespace AKB.Core.Managing.PCG
             switch (roomType)
             {
                 case RoomType.Entry:
-                {
-                    data = worldData[worldToInt].entry;
-                }
-                break;
+                    {
+                        data = worldData[worldToInt].entry;
+                    }
+                    break;
 
                 case RoomType.Heal:
-                {
-                    data = worldData[worldToInt].healRoom;
-                }
-                break;
+                    {
+                        data = worldData[worldToInt].healRoom;
+                    }
+                    break;
 
                 case RoomType.Store:
-                {
-                    data = worldData[worldToInt].storeRoom;
-                }
-                break;
+                    {
+                        data = worldData[worldToInt].storeRoom;
+                    }
+                    break;
 
                 case RoomType.Battle:
-                {
-                    int randomRoomOrder = Random.Range(0, worldData[worldToInt].battleRoomsCopy.Count);
+                    {
+                        int randomRoomOrder = Random.Range(0, worldData[worldToInt].battleRoomsCopy.Count);
 
-                    worldData[worldToInt].usedBattleRooms.Add(worldData[worldToInt].battleRooms[randomRoomOrder]);
+                        worldData[worldToInt].usedBattleRooms.Add(worldData[worldToInt].battleRooms[randomRoomOrder]);
 
-                    //Get and delete room from the copy list
-                    data = worldData[worldToInt].battleRoomsCopy[randomRoomOrder];
-                    worldData[worldToInt].battleRoomsCopy.RemoveAt(randomRoomOrder);
-                }
-                break;
+                        //Get and delete room from the copy list
+                        data = worldData[worldToInt].battleRoomsCopy[randomRoomOrder];
+                        worldData[worldToInt].battleRoomsCopy.RemoveAt(randomRoomOrder);
+                    }
+                    break;
 
                 case RoomType.Boss:
-                {
-                    data = worldData[worldToInt].bossRoom;
-                }
-                break;
+                    {
+                        data = worldData[worldToInt].bossRoom;
+                    }
+                    break;
 
                 default:
-                {
-                    throw new ArgumentException();
-                }
+                    {
+                        throw new ArgumentException();
+                    }
             }
 
             //return the room information script.
