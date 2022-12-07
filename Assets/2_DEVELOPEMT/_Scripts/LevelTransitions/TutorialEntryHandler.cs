@@ -7,6 +7,7 @@ namespace AKB.Core.Managing.LevelLoading.Hub
         private void Start()
         {
             ManagerHUB.GetManager.PlayerEntity.PlayerMovement.TeleportEntity(transform.position);
+            Debug.Log("Press G to teleport to Hub - DEBUG PURPOSES");
         }
 
         private void Update()
