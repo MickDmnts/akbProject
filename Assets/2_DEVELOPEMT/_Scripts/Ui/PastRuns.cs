@@ -18,7 +18,7 @@ public class PastRuns : MonoBehaviour
         foreach (int num in numbers)
         {
             GameObject pastRunsGameobject = Instantiate(pastRunsPrefab);
-            pastRunsGameobject.transform.SetParent(pastRunsContainer.transform);
+            pastRunsGameobject.transform.SetParent(pastRunsContainer.transform, false);
             pastRunsGameobject.transform.localScale = Vector3.one;
         }
     }
