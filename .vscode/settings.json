@@ -13,6 +13,18 @@
         "As[!s]*/**": true,
         "Ass[!e]*/**": true,
         "Asse[!t]*/**": true,
-        "Asset[!s]*/**": true
+        "Asset[!s]*/**": true,
+        "Assets/[!2]*/**": true,
+        "Assets/2[!_]*/**": true,
+        "Assets/2_[!D]*/**": true,
+        "Assets/2_D[!E]*/**": true,
+        "Assets/2_DE[!V]*/**": true,
+        "Assets/2_DEV[!E]*/**": true,
+        "Assets/2_DEVE[!L]*/**": true,
+        "Assets/2_DEVEL[!O]*/**": true,
+        "Assets/2_DEVELO[!P]*/**": true,
+        "Assets/2_DEVELOP[!E]*/**": true,
+        "Assets/2_DEVELOPE[!M]*/**": true,
+        "Assets/2_DEVELOPEM[!T]*/**": true
     }
 }

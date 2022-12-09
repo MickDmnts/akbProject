@@ -10,6 +10,7 @@ namespace AKB.Core.Managing
         EXITING,
     }
 
+    [DefaultExecutionOrder(-400)]
     public class GameManager : MonoBehaviour
     {
         static GameManager _s;

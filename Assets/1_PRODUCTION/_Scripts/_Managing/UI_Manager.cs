@@ -14,7 +14,7 @@ namespace AKB.Core.Managing.UI
      * 1. The uiPanels are set from the UIRender scene when it loads, not the opposite.
      */
 
-    [DefaultExecutionOrder(50)]
+    [DefaultExecutionOrder(-398)]
     public class UI_Manager : MonoBehaviour
     {
         public PlayerUIBars playerUIBars { get; private set; }

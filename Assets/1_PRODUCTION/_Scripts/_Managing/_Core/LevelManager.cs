@@ -40,7 +40,7 @@ namespace AKB.Core.Managing.LevelLoading
      * 2. The ForceLoad method unloads EVERY active scene BUT the _GameEntry, UIRender and PlayerScene.
      */
 
-    [DefaultExecutionOrder(125)]
+    [DefaultExecutionOrder(-397)]
     public class LevelManager : MonoBehaviour
     {
         [Header("Set the desired essential game scenes.\n" +

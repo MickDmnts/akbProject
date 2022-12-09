@@ -25,7 +25,7 @@ namespace AKB.Core.Managing
     * 1. The GetPooledProjectileByType(...) returns null in case the pool is empty.
     * 
     */
-    [DefaultExecutionOrder(50)]
+    [DefaultExecutionOrder(-394)]
     public class ProjectilePools : MonoBehaviour
     {
         #region INSPECTOR_VARIABLES

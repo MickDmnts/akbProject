@@ -37,6 +37,7 @@ namespace AKB.Core.Managing.PCG
         public RoomData bossRoom;
     }
 
+    [DefaultExecutionOrder(-396)]
     public class RoomDataContainer : MonoBehaviour
     {
         [Header("Set in inspector")]

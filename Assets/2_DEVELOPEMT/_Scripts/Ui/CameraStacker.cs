@@ -18,7 +18,7 @@ namespace AKB.Core.Managing.UI
         ///<summary>This camera gets auto-retrieved when the Player Scene gets loaded.</summary>
         [SerializeField, Tooltip("This camera gets auto-retrieved when the Player Scene gets loaded.")] Camera uiOverlayRenderer;
 
-        private void Awake()
+        private void Start()
         {
             uiOverlayRenderer = GameObject.FindGameObjectWithTag("UI_Camera").GetComponent<Camera>();
 

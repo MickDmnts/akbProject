@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace AKB.Core.Managing.UI
 {
+    [DefaultExecutionOrder(501)]
     public class PlayerHUDHandler : MonoBehaviour
     {
         [Header("Set in inspector")]

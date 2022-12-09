@@ -11,7 +11,7 @@ using AKB.Core.Managing.InRunUpdates;
 
 namespace AKB.Core.Managing
 {
-    [DefaultExecutionOrder(10)]
+    [DefaultExecutionOrder(-399)]
     public class ManagerHUB : MonoBehaviour
     {
         static ManagerHUB _s;

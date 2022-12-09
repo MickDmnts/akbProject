@@ -16,7 +16,7 @@ namespace AKB.Core.Managing
         None,
     }
 
-    [DefaultExecutionOrder(100)]
+    [DefaultExecutionOrder(-395)]
     public class StatusEffectManager : MonoBehaviour
     {
         [Header("Set in inspector")]
