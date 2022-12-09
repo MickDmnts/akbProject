@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace AKB.Core.Managing
 {
+    /// <summary>
+    /// All the states the games can be in.
+    /// </summary>
     public enum GameState
     {
         ENTRY,
@@ -10,24 +13,56 @@ namespace AKB.Core.Managing
         EXITING,
     }
 
-    [DefaultExecutionOrder(-400)]
+    /// <summary>
+    /// The Game Manager of the game.
+    /// <para>Singleton present</para>
+    /// </summary>
+    [DefaultExecutionOrder(-450)]
     public class GameManager : MonoBehaviour
     {
+        /// <summary>
+        /// Game manager Singleton.
+        /// </summary>
         static GameManager _s;
-        public static GameManager GetManager()
-        {
-            return _s;
-        }
+        /// <summary>
+        /// Get the GameManager singleton.
+        /// </summary>
+        public static GameManager GetManager => _s;
 
+        /// <summary>
+        /// The Manager Hub instance.
+        /// </summary>
+        ManagerHUB _managerHUB;
+        /// <summary>
+        /// Get the manager hub instance
+        /// </summary>
+        public ManagerHUB ManagerHUB => _managerHUB;
+
+        /// <summary>
+        /// The current game state of the game.
+        /// </summary>
         private GameState _state = GameState.ENTRY;
-        public GameState GetGameState() => _state;
+        /// <summary>
+        /// Get the current game state of the game.
+        /// </summary>
+        public GameState GetGameState => _state;
+        /// <summary>
+        /// Set the current game state of the game.
+        /// </summary>
+        /// <param name="state">The current game state</param>
         public void SetGameState(GameState state) => _state = state;
 
         private void Awake()
         {
-            if (_s = null)
+            if (_s == null)
             {
                 _s = this;
+
+                _managerHUB = new ManagerHUB();
+            }
+            else
+            {
+                Destroy(gameObject);
             }
         }
     }

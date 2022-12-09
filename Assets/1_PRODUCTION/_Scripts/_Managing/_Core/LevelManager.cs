@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -26,63 +27,73 @@ namespace AKB.Core.Managing.LevelLoading
         World2Scene = 6,
     }
 
-    /* [CLASS DOCUMENTATION]
-     * 
-     * [Variable specific]
-     * Inspector values: These values must be set from the inspector.
-     * Dynamically changed: Theses values change in runtime.
-     * 
-     * [Class flow]
-     * 1. The LoadNext() is called exactly when the game starts to load the MainMenu scene and let the game flow.
-     * 
-     * [Must Know]
-     * 1. The levelsInLoadOrder list must be populated with LoadLevelPacket SOs that hold the scenes to load + unload.
-     * 2. The ForceLoad method unloads EVERY active scene BUT the _GameEntry, UIRender and PlayerScene.
-     */
-
     [DefaultExecutionOrder(-397)]
     public class LevelManager : MonoBehaviour
     {
-        [Header("Set the desired essential game scenes.\n" +
-            "These scenes will never get unloaded")]
-        [SerializeField] List<GameScenes> essentialScenes;
-
-        [Header("Populate the list with all the level load packets of the game.")]
-        [SerializeField] List<LevelLoadPacket> levelsInLoadOrder;
-
-        //Dynamically changed
-        List<GameScenes> currentlyLoadedScenes = new List<GameScenes>();
-        int lastLoadedPacketIndex = 0;
-
-        SceneFader fader;
+        /// <summary>
+        /// The essential game scenes. These scenes, once loaded, will neven get unloaded.
+        /// </summary>
+        [Header("Set the desired essential game scenes.")]
+        [SerializeField, Tooltip("The essential game scenes. These scenes, once loaded, will neven get unloaded.")] List<GameScenes> essentialScenes;
 
         /// <summary>
-        /// When the ActiveScene field is SET it automatically 
-        /// calls the OnSceneChanged() event;
+        /// The level packets in order of desired loading. \n Add extra packets at the end of the list for further manual transitioning.
+        /// </summary>
+        [Header("Populate the list with all the level load packets of the game.")]
+        [SerializeField, Tooltip("The level packets in order of desired loading. Add extra packets at the end of the list for further manual transitioning.")]
+        List<LevelLoadPacket> levelsInLoadOrder;
+
+        /// <summary>
+        /// The currently loaded and active scenes.
+        /// </summary>
+        /// <typeparam name="GameScenes">Game scene enum.</typeparam>
+        List<GameScenes> currentlyLoadedScenes = new List<GameScenes>();
+
+        /// <summary>
+        /// The levelsInLoadOrder trace index.
+        /// <para>This index gets incremented and auto-set when a new scene loads or gets forcefully loaded.</para>
+        /// </summary>
+        int lastLoadedPacketIndex = 0;
+
+
+        /// <summary>
+        /// The currently loaded scenes in the game.
         /// </summary>
         private GameScenes[] _activeScenes;
-        public GameScenes[] ActiveScene
-        {
-            get { return _activeScenes; }
-            private set
-            {
-                _activeScenes = value;
-            }
-        }
+        /// <summary>
+        /// Get the currently loaded scenes in the game as an array.
+        /// </summary>
+        public GameScenes[] ActiveScene { get => _activeScenes; private set => _activeScenes = value; }
 
+        /// <summary>
+        /// The scene marked as focused in the game.
+        /// </summary>
         private GameScenes _focusedScene;
-        public GameScenes FocusedScene
-        {
-            get { return _focusedScene; }
-            private set
-            {
-                _focusedScene = value;
-            }
-        }
+        /// <summary>
+        /// Get the scene marked as focused in the game.
+        /// </summary>
+        /// <value></value>
+        public GameScenes FocusedScene { get => _focusedScene; private set => _focusedScene = value; }
 
-        public void SetFaderReference(SceneFader fader)
+        /// <summary>
+        /// The currently active coroutine of the loader.
+        /// </summary>
+        IEnumerator activeCoroutine;
+
+        /// <summary>
+        /// The game transition effect.
+        /// </summary>
+        SceneFader fader;
+        /// <summary>
+        /// Sets the transition effect instance in the Level Manager.
+        /// Do not nullify mid game.
+        /// </summary>
+        /// <param name="fader">The active transition effect.</param>
+        public void SetFaderReference(SceneFader fader) => this.fader = fader;
+
+        private void Awake()
         {
-            this.fader = fader;
+            ManagerHUB.GetManager.SetLevelManagerReference(this);
         }
 
         private void Start()
@@ -94,17 +105,19 @@ namespace AKB.Core.Managing.LevelLoading
         #region NORMAL_PACKET_HANDLING
         /// <summary>
         /// Call to load the next scene load packet (order set from inspector).
-        /// If fromForceLoad is true then a packet index must be passed
-        /// so the packet indexer can automatically set itself in the correct List index.
+        /// If fromForceLoad is true then a packet index must be passed.
         /// </summary>
-        /// <param name="fromForceLoad"></param>
-        /// <param name="packetIndex"></param>
         public void LoadNext(bool fromForceLoad, int packetIndex = 0)
         {
-            StartCoroutine(InitiateUnloadLoadSequence(fromForceLoad, packetIndex));
+            activeCoroutine = InitiateUnloadLoadSequence(fromForceLoad, _LoadPassedScenes, packetIndex);
+            StartCoroutine(activeCoroutine);
         }
 
-        IEnumerator InitiateUnloadLoadSequence(bool fromForceLoad, int packetIndex = 0)
+        /// <summary>
+        /// Asynchronously unload all scenes.
+        /// Then call the unloadCallback and pass the fromForceLoad and packetIndex args.
+        /// </summary>
+        IEnumerator InitiateUnloadLoadSequence(bool fromForceLoad, Action<bool, int> unloadCallback, int packetIndex = 0)
         {
             //wait for the black to fade in
             if (fader != null) fader.FadeIn();
@@ -130,7 +143,8 @@ namespace AKB.Core.Managing.LevelLoading
 
             _ClearCurrentlyLoadedList();
 
-            StartCoroutine(_LoadPacketScenes(fromForceLoad, packetIndex));
+            unloadCallback(fromForceLoad, packetIndex);
+
             yield return null;
         }
 
@@ -143,10 +157,21 @@ namespace AKB.Core.Managing.LevelLoading
         }
 
         /// <summary>
+        /// Starts _LoadPacketScenes coroutine.
+        /// </summary>
+        void _LoadPassedScenes(bool fromForceLoad, int packetIndex)
+        {
+            StopCoroutine(activeCoroutine);
+
+            activeCoroutine = _LoadPacketScenes(fromForceLoad, OnSceneLoadingFinished, packetIndex);
+            StartCoroutine(activeCoroutine);
+        }
+
+        /// <summary>
         /// Call to load every CURRENT packet scene with LoadSceneMode.Additive.
         /// Also adds every loaded scene to the currentlyLoadedScenes list.
         /// </summary>
-        IEnumerator _LoadPacketScenes(bool fromForceLoad, int packetIndex = 0)
+        IEnumerator _LoadPacketScenes(bool fromForceLoad, Action<bool, int> unloadCallback, int packetIndex = 0)
         {
             foreach (GameScenes scene in levelsInLoadOrder[lastLoadedPacketIndex].ScenesToLoad)
             {
@@ -160,11 +185,20 @@ namespace AKB.Core.Managing.LevelLoading
                 currentlyLoadedScenes.Add(scene);
             }
 
-            OnSceneLoadingFinished(fromForceLoad, packetIndex);
+            unloadCallback(fromForceLoad, packetIndex);
+
+            yield return null;
         }
 
+        /// <summary>
+        /// The scene loading callback function.
+        /// Sets the ActiveScene, FocusedScene and lastLoadedPacketIndex values.
+        /// Calls the OnSceneChanged(...) event.
+        /// </summary>
         void OnSceneLoadingFinished(bool fromForceLoad, int packetIndex = 0)
         {
+            StopCoroutine(activeCoroutine);
+
             ActiveScene = currentlyLoadedScenes.ToArray();
             SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex((int)ActiveScene[ActiveScene.Length - 1]));
             FocusedScene = ActiveScene[ActiveScene.Length - 1];
@@ -195,10 +229,16 @@ namespace AKB.Core.Managing.LevelLoading
         /// <param name="levelPacketIndex">The packet index to load</param>
         public void ForceLoad(int levelPacketIndex)
         {
-            StartCoroutine(_UnloadCurrentlyLoaded(levelPacketIndex));
+            StopCoroutine(activeCoroutine);
+
+            activeCoroutine = _UnloadCurrentlyLoaded(levelPacketIndex, _ForceLoadEndCallback);
+            StartCoroutine(activeCoroutine);
         }
 
-        IEnumerator _UnloadCurrentlyLoaded(int levelPacketIndex)
+        /// <summary>
+        /// Call to unload every scene BUT the essential scenes.
+        /// </summary>
+        IEnumerator _UnloadCurrentlyLoaded(int levelPacketIndex, Action<bool, int> unloadEndCallback)
         {
             foreach (GameScenes scene in currentlyLoadedScenes)
             {
@@ -214,7 +254,17 @@ namespace AKB.Core.Managing.LevelLoading
 
             SetPacketIndex(levelPacketIndex);
 
-            LoadNext(true, levelPacketIndex);
+            unloadEndCallback(true, levelPacketIndex);
+        }
+
+        /// <summary>
+        /// Call load the passed scene index when a force load is in action.
+        /// </summary>
+        void _ForceLoadEndCallback(bool fromForceLoad, int levelPacketIndex)
+        {
+            StopCoroutine(activeCoroutine);
+
+            LoadNext(fromForceLoad, levelPacketIndex);
         }
         #endregion
 
