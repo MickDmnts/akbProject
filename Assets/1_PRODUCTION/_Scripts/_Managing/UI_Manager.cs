@@ -76,15 +76,24 @@ namespace AKB.Core.Managing.UI
 
             if (!isPaused)
             {
+                //---------------------DEBUGING--------------------------
+                Time.timeScale = 0f;
+                //-------------------------------------------------------
+
                 //TODO: Handle pausing
                 isPaused = true;
                 EnablePanel("PauseMenu_UI_Panel");
             }
             else
             {
+                //---------------------DEBUGING--------------------------
+                Time.timeScale = 1f;
+                //-------------------------------------------------------
+
                 //TODO: Handle un-pausing
                 isPaused = false;
                 DisableAllPanels();
+                EnablePanel("GamePlayScreenPanel");
             }
         }
 
