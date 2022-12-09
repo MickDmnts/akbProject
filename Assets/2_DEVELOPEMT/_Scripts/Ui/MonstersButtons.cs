@@ -52,7 +52,7 @@ public class MonstersButtons : MonoBehaviour
         charmDemonsButton.onClick.AddListener(delegate { Setter(7); });
         confuseDemonsButton.onClick.AddListener(delegate { Setter(8); });
         beelzebubButton.onClick.AddListener(delegate { Setter(9); });
-        astarothButton.onClick.AddListener(delegate { Setter(11); });
+        astarothButton.onClick.AddListener(delegate { Setter(10); });
     }
 
     void AddButtonsToList()
