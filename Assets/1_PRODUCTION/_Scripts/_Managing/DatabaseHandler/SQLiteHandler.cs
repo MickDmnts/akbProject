@@ -16,7 +16,7 @@ namespace AKB.Core.Database
                 dbPath = "URI=file:" + Application.dataPath + "/Resources/akbPlayerDb.db";
 
 #if UNITY_STANDALONE && !UNITY_EDITOR
-            dbPath = "URI=file:" + Application.dataPath + "/minecraftDb.db";
+            dbPath = "URI=file:" + Application.dataPath + "/akbPlayerDb.db";
 #endif
             }
 
