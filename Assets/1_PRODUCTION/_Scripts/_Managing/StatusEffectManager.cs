@@ -1,10 +1,11 @@
-using System;
 using UnityEngine;
+using AKB.Entities.Interactions;
 
 namespace AKB.Core.Managing
 {
-    using AKB.Entities.Interactions;
-
+    /// <summary>
+    /// The available EffectTypes of the game.
+    /// </summary>
     public enum EffectType
     {
         Enflamed,
@@ -16,30 +17,26 @@ namespace AKB.Core.Managing
         None,
     }
 
+    /// <summary>
+    /// This class is responsible for holing the status effects of the game.
+    /// </summary>
     [DefaultExecutionOrder(-395)]
     public class StatusEffectManager : MonoBehaviour
     {
+        /// <summary>
+        /// The game status effects.
+        /// </summary>
         [Header("Set in inspector")]
-        [SerializeField] StatusEffect[] effects;
+        [SerializeField, Tooltip("The game status effects.")] StatusEffect[] effects;
 
         private void Awake()
         {
             ManagerHUB.GetManager.SetStatusEffectRef(this);
         }
 
-        private void Start()
-        {
-            CheckEffectsArrayLength();
-        }
-
-        void CheckEffectsArrayLength()
-        {
-            if (effects.Length < Enum.GetValues(typeof(EffectType)).Length - 1)
-            {
-                throw new ArgumentException("Not many effects in the effects array");
-            }
-        }
-
+        /// <summary>
+        /// Returns a gameobject of the passed effect type.
+        /// </summary>
         public GameObject GetNeededEffect(EffectType effectType)
         {
             GameObject tempEffect = null;

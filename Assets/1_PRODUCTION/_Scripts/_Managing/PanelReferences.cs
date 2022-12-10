@@ -1,34 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace AKB.Core.Managing.LevelLoading
 {
-    /* [CLASS DOCUMENTATION]
-     * 
-     * All the script variables are public and must be set from the inspector.
-     * 
-     * [Must Know]
-     * 1. The purpose of this script is to pass the UI panels from the UI_Render scene to the GameEntry scene 
-     * to update the UIManager with the new panel references present in the UI_Render scene.
-     * 2. The LevelManager Fader script reference is also set from this script.
-     */
+    /// <summary>
+    /// This class is responsible for passing the UI scene panels to the 
+    /// UI Manager present in the Game Entry Scene.
+    /// </summary>
     [DefaultExecutionOrder(100)]
     public class PanelReferences : MonoBehaviour
     {
+        /// <summary>
+        /// The panels present in the Main Canvas
+        /// </summary>
         [Header("Set in inspector")]
-        [SerializeField] List<GameObject> uiPanels;
-        [SerializeField] SceneFader fader;
+        [SerializeField, Tooltip("The panels present in the Main Canvas.")] List<GameObject> uiPanels;
 
         private void Awake()
         {
-            //Called in Awake!
             PassPanelReferences();
         }
 
         /// <summary>
-        /// Call to pass the assigned panel references, the Continue and Quit buttons to the UIManager
-        /// and the Fader script reference to the LevelManager.
+        /// Passes the uiPanels (inspector set) to the UI Manager in game entry scene.
         /// </summary>
         void PassPanelReferences()
         {
@@ -36,6 +30,14 @@ namespace AKB.Core.Managing.LevelLoading
         }
 
         private void Start()
+        {
+            EnableMainMenuPanel();
+        }
+
+        /// <summary>
+        /// Enables the Main menu panel
+        /// </summary>
+        void EnableMainMenuPanel()
         {
             ManagerHUB.GetManager.UIManager.EnablePanel("MainMenuScreen_UI_Panel");
         }
