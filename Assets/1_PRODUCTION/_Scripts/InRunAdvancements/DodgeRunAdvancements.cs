@@ -1,7 +1,7 @@
 ﻿namespace AKB.Core.Managing.InRunUpdates
 {
     [System.Serializable]
-    public class PassiveRunAdvancements : IAdvanceable
+    public class DodgeRunAdvancements : IAdvanceable
     {
         AdvancementTypes activeAdvancement = AdvancementTypes.None;
 
