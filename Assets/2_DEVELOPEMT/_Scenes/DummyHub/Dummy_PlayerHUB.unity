@@ -6638,7 +6638,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267904025}
-  m_LocalRotation: {x: 0.2933253, y: -0.40960622, z: 0.14097942, w: 0.852237}
+  m_LocalRotation: {x: 0.29332533, y: -0.40960622, z: 0.14097942, w: 0.852237}
   m_LocalPosition: {x: -9975, y: 25.115, z: -199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6946,6 +6946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityImage: {fileID: 1310471724}
+  buttonImage: {fileID: 297619746}
   lvl: {fileID: 183277598}
 --- !u!1 &304383361
 GameObject:
@@ -9490,6 +9491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityImage: {fileID: 1808330366}
+  buttonImage: {fileID: 472371186}
   lvl: {fileID: 2111803583}
 --- !u!1 &487458944
 GameObject:
@@ -36517,7 +36519,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792142000}
-  m_LocalRotation: {x: 0.2933253, y: -0.40960622, z: 0.14097942, w: 0.852237}
+  m_LocalRotation: {x: 0.29332533, y: -0.40960622, z: 0.14097942, w: 0.852237}
   m_LocalPosition: {x: -9975, y: 25.115, z: -199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -50579,6 +50581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityImage: {fileID: 0}
+  buttonImage: {fileID: 0}
   lvl: {fileID: 0}
 --- !u!4 &1006225191
 Transform:
@@ -50812,6 +50815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityImage: {fileID: 684884918}
+  buttonImage: {fileID: 1017772209}
   lvl: {fileID: 1675313653}
 --- !u!1 &1019886216
 GameObject:
@@ -53614,6 +53618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityImage: {fileID: 1824349898}
+  buttonImage: {fileID: 1244678413}
   lvl: {fileID: 2092163421}
 --- !u!1 &1244933068
 GameObject:
@@ -53873,6 +53878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityImage: {fileID: 1414340880}
+  buttonImage: {fileID: 1254440857}
   lvl: {fileID: 1064670082}
 --- !u!1 &1256789766
 GameObject:
@@ -61315,6 +61321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityImage: {fileID: 304383363}
+  buttonImage: {fileID: 1739899096}
   lvl: {fileID: 1427862053}
 --- !u!1 &1740687517
 GameObject:

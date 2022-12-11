@@ -18,19 +18,25 @@ public class PersistentAdvancements : MonoBehaviour, IPointerDownHandler, IPoint
 
     [SerializeField] Image abilityImage;
 
+    [SerializeField] Image buttonImage;
+
     [SerializeField] TextMeshProUGUI lvl;
 
     //[SerializeField] UnityEvent onHold;
 
-
     public void OnPointerDown(PointerEventData pointerEventData)
     {
         pointerDown = true;
+
+        buttonImage.color = Color.grey;
+
     }
 
     //Detect if clicks are no longer registering
     public void OnPointerUp(PointerEventData pointerEventData)
     {
+        buttonImage.color = Color.white;
+
         if (currentlvl == 0)
         {
             Reset();
