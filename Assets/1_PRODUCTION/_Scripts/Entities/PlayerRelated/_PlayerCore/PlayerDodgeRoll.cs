@@ -4,11 +4,12 @@ using UnityEngine.InputSystem;
 
 using AKB.Core.Managing;
 using AKB.Entities.Interactions;
-using AKB.Core.Managing.InRunUpdates;
+
 using UnityEngine.AI;
 
 namespace AKB.Entities.Player
 {
+    using AKB.Core.Managing.InRunUpdates;
     [DefaultExecutionOrder(450)]
     public class PlayerDodgeRoll : MonoBehaviour
     {
@@ -85,7 +86,7 @@ namespace AKB.Entities.Player
         {
             yield return new WaitForFixedUpdate();
 
-            if (ManagerHUB.GetManager.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.PushAway))
+            if (ManagerHUB.GetManager.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(AdvancementTypes.PushAway))
             {
                 PushSurroundings();
             }
@@ -93,7 +94,7 @@ namespace AKB.Entities.Player
             while (playerEntity.PlayerAnimations.IsInTransition(0)
                 || playerEntity.PlayerAnimations.IsAnimationRunning(0, "DodgeRoll"))
             {
-                if (ManagerHUB.GetManager.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.ShockOnTouch))
+                if (ManagerHUB.GetManager.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(AdvancementTypes.ShockOnTouch))
                 {
                     ShockSurroundings();
                 }
@@ -107,7 +108,7 @@ namespace AKB.Entities.Player
             isDodging = false;
 
             ResetDodgesCount();
-            if (ManagerHUB.GetManager.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(DodgeRunAdvancements.MovementSpeed))
+            if (ManagerHUB.GetManager.SlotsHandler.DodgeInRunAdvancements.GetIsAdvancementActive(AdvancementTypes.MovementSpeed))
             {
                 StartCoroutine(IncreaseMoveSpeed());
             }

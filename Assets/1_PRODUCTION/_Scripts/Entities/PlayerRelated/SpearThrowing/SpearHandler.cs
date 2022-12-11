@@ -132,7 +132,7 @@ namespace AKB.Entities.Player.SpearHandling
 
         void CheckForSpearPiercing(GameObject collision)
         {
-            if (ManagerHUB.GetManager.SlotsHandler.SpearInRunAdvancements.GetIsAdvancementActive(SpearTypeAdvancements.SpearPierce))
+            if (ManagerHUB.GetManager.SlotsHandler.SpearInRunAdvancements.GetIsAdvancementActive(AdvancementTypes.SpearPierce))
             {
                 if (!collision.gameObject.CompareTag("Demon"))
                 {

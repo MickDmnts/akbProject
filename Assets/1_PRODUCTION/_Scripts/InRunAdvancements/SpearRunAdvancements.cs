@@ -1,41 +1,20 @@
-﻿using UnityEngine;
-
-namespace AKB.Core.Managing.InRunUpdates
+﻿namespace AKB.Core.Managing.InRunUpdates
 {
-
-    /* CLASS DOCUMENTATION *\
-     * 
-     * [Variable Specifics]
-     * Inspector values: ___ MUST be set from the inspector
-     * Dynamically changed: These variables dynamically change throughout the game
-     * 
-     * [Class Flow]
-     * 1. ....
-     * 2. ....
-     * 
-     * [Must Know]
-     * 1. ...
-     */
-
-    public enum SpearTypeAdvancements
+    [System.Serializable]
+    public class SpearRunAdvancements : IAdvanceable
     {
-        None = 0,
+        AdvancementTypes activeAdvancement = AdvancementTypes.None;
 
-        SpearPierce = 1,
-        DamageAtTeleportPoint = 2,
-        //PullEnemyOnSpearRecall = 3,
-    }
+        public void SetActiveAdvancement(AdvancementTypes advancement) => activeAdvancement = advancement;
 
-    public class SpearRunAdvancements : MonoBehaviour,
-        IAdvanceable
-    {
-        SpearTypeAdvancements activeAdvancement = SpearTypeAdvancements.None;
-
-        public void SetActiveAdvancement(SpearTypeAdvancements advancement) => activeAdvancement = advancement;
-
-        public bool GetIsAdvancementActive(SpearTypeAdvancements advancement)
+        public bool GetIsAdvancementActive(AdvancementTypes advancement)
         {
             return advancement == activeAdvancement;
+        }
+
+        public string GetActiveName()
+        {
+            return System.Enum.GetName(typeof(AdvancementTypes), activeAdvancement);
         }
     }
 }

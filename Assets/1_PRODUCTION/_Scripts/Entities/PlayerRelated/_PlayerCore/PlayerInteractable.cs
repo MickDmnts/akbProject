@@ -6,19 +6,6 @@ using AKB.Core.Managing.LevelLoading;
 
 namespace AKB.Entities.Player.Interactions
 {
-    /* CLASS DOCUMENTATION *\
-     * 
-     * [Variable Specifics]
-     * 
-     * 
-     * [Class Flow]
-     * 1. ....
-     * 2. ....
-     * 
-     * [Must Know]
-     * 1. ...
-     */
-
     public class PlayerInteractable : MonoBehaviour,
         IInteractable, IShockable, IStunnable, IConfusable,
         ICharmable
@@ -46,12 +33,12 @@ namespace AKB.Entities.Player.Interactions
 
         void OnSceneEntryPassive(GameScenes activeScene)
         {
-            if (ManagerHUB.GetManager.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.PassiveAdvancements.RegenHealthOnRoomEntry))
+            if (ManagerHUB.GetManager.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.AdvancementTypes.RegenHealthOnRoomEntry))
             {
                 RegenHealthOnRoomEntry();
             }
 
-            if (ManagerHUB.GetManager.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.PassiveAdvancements.IgnoreFirstHit))
+            if (ManagerHUB.GetManager.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.AdvancementTypes.IgnoreFirstHit))
             {
                 ignoreHit = true;
             }

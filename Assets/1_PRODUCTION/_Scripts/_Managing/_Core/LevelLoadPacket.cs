@@ -2,11 +2,6 @@ using UnityEngine;
 
 namespace AKB.Core.Managing.LevelLoading
 {
-    /*[CLASS DOCUMENTATION]
-     * 
-     * This script is used to create Level load packet scriptable objects.
-     * 
-     */
     [CreateAssetMenu(fileName = "Level Load Packet", menuName = "Level Load Packet/Packet")]
     public class LevelLoadPacket : ScriptableObject
     {

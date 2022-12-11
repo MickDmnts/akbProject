@@ -1,11 +1,10 @@
-using AKB.Projectiles;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace AKB.Core.Managing
 {
     /// <summary>
-    /// Every available bullet type in the game.
+    /// Every available Projectile type in the game.
     /// </summary>
     public enum ProjectileType
     {
@@ -13,32 +12,35 @@ namespace AKB.Core.Managing
         Exploding,
     }
 
-    /* [CLASS DOCUMENTATION]
-    * 
-    * Inspector variable : Must be set from the inspector
-    * Private variables: These values change in runtime.
-    * 
-    * [Class flow]
-    * 1. When the game loads the manager pools the inpector projectile gameobjects.
-    * 
-    * [Must know]
-    * 1. The GetPooledProjectileByType(...) returns null in case the pool is empty.
-    * 
-    */
+    /// <summary>
+    /// 
+    /// </summary>
     [DefaultExecutionOrder(-394)]
     public class ProjectilePools : MonoBehaviour
     {
         #region INSPECTOR_VARIABLES
+        /// <summary>
+        /// The projectile prefabs the enemies can shoot.
+        /// </summary>
         [Header("Set in inspector - Projectile prefab")]
-        [SerializeField] List<GameObject> projectilePrefabs;
+        [SerializeField, Tooltip("The projectile prefabs the enemies can shoot.")] List<GameObject> projectilePrefabs;
 
+        /// <summary>
+        /// The amount of per-projectile to preload on game start.
+        /// </summary>
         [Header("\tSet in inspector - Total Projectile amount")]
-        [SerializeField] int amountToPool;
+        [SerializeField, Tooltip("The amount of per-projectile to preload on game start.")] int amountToPool;
         #endregion
 
         #region PRIVATE_VARIABLES
+        /// <summary>
+        /// The spawned projectiles hierarchy anchor.
+        /// </summary>
         Transform projectileAnchor;
 
+        /// <summary>
+        /// The created projectile pools.
+        /// </summary>
         List<Queue<GameObject>> projectilePools;
         #endregion
 
@@ -49,7 +51,7 @@ namespace AKB.Core.Managing
         }
 
         /// <summary>
-        /// Call to createan anchor with the projectiles as children so the hierarchy is kept clean.
+        /// Call to create an anchor with the projectiles as children so the hierarchy is kept clean.
         /// </summary>
         void CreateAnchors()
         {

@@ -5,29 +5,26 @@ using AKB.Core.Managing.LevelLoading;
 
 namespace AKB.Core.Managing.UI
 {
-    /* [CLASS DOCUMENTATION]
-     * 
-     * [Variable specific]
-     * Dynamically changed: Theses values change in runtime.
-     * 
-     * [Must Know]
-     * 1. The uiPanels are set from the UIRender scene when it loads, not the opposite.
-     */
-
+    /// <summary>
+    /// This class is responsible for managing the activation and deactivation of all in-game
+    /// UI Panels.
+    /// </summary>
     [DefaultExecutionOrder(-398)]
     public class UI_Manager : MonoBehaviour
     {
-        public PlayerUIBars playerUIBars { get; private set; }
-
-        //Dynamically changed
+        /// <summary>
+        ///  All UI panels of the game.
+        /// </summary>
         List<GameObject> uiPanels;
 
+        /// <summary>
+        /// The games' paused state.
+        /// </summary>
         bool isPaused = false;
-
-        public bool IsPaused
-        {
-            get { return isPaused; }
-        }
+        /// <summary>
+        /// Get the games' paused state.
+        /// </summary>
+        public bool IsPaused => isPaused;
 
         #region AWAKE_CALLED_EXTERNALLY
         /// <summary>
@@ -38,6 +35,10 @@ namespace AKB.Core.Managing.UI
             uiPanels = panels;
         }
 
+        /// <summary>
+        /// Pass extra panels to feed in the UI managers panel list.
+        /// </summary>
+        /// <param name="deactivateOnAdd">If true, the panels gets deactivated once added.</param>
         public void AddExtraPanelsToManager(List<GameObject> panels, bool deactivateOnAdd = false)
         {
             foreach (GameObject panel in panels)
@@ -54,6 +55,7 @@ namespace AKB.Core.Managing.UI
 
         private void Awake()
         {
+            //Pass the UI_Manager reference to the Manager HUB for ease of access.
             ManagerHUB.GetManager.SetUI_ManagerReference(this);
         }
 
@@ -67,13 +69,10 @@ namespace AKB.Core.Managing.UI
         }
 
         /// <summary>
-        /// Call to activate the Options panel if the user is not in the MainMenu.
-        /// Sets isPaused to true if successfully paused or false if unpaused.
+        /// Call to activate the Options panel and freeze the game.
         /// </summary>
         public void PauseGame()
         {
-            //if (IsInInvalidScene()) return;
-
             if (!isPaused)
             {
                 //---------------------DEBUGING--------------------------
@@ -98,8 +97,7 @@ namespace AKB.Core.Managing.UI
         }
 
         /// <summary>
-        /// Call to iterate through the currently active scenes, if one of them is the MainMenu then return true
-        /// false otherwise.
+        /// Call to check if the user can pause in the current scene.
         /// </summary>
         bool IsInInvalidScene()
         {
@@ -122,7 +120,7 @@ namespace AKB.Core.Managing.UI
         }
 
         /// <summary>
-        /// Call to disable the passed UI panel.
+        /// Call to disable all UI panels.
         /// </summary>
         public void DisableAllPanels()
         {
@@ -132,6 +130,9 @@ namespace AKB.Core.Managing.UI
             }
         }
 
+        /// <summary>
+        /// Call to shut down the game.
+        /// </summary>
         void QuitGame()
         {
             Application.Quit();

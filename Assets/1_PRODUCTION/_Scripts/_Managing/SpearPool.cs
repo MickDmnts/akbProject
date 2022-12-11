@@ -3,12 +3,29 @@ using UnityEngine;
 
 namespace AKB.Core.Managing
 {
+    /// <summary>
+    /// The player spear pool manager.
+    /// Creates an X amount of spears for the player to use.
+    /// </summary>
     public class SpearPool : MonoBehaviour
     {
-        [SerializeField] GameObject spearPrefab;
-        [SerializeField] int amountToPool;
+        /// <summary>
+        /// The player spear prefab.
+        /// </summary>
+        [Header("Set in inspector")]
+        [SerializeField, Tooltip("The player spear prefab")] GameObject spearPrefab;
+        /// <summary>
+        /// The created amount of spears to preload.
+        /// </summary>
+        [SerializeField, Tooltip("The created amount of spears to preload.")] int amountToPool;
 
+        /// <summary>
+        /// The queue used for spear caching.
+        /// </summary>
         Queue<GameObject> spearQueue = new Queue<GameObject>();
+        /// <summary>
+        /// The hierarchy parent to keep it clean.
+        /// </summary>
         Transform spearParent;
 
         private void Awake()
@@ -16,6 +33,9 @@ namespace AKB.Core.Managing
             SetParent();
         }
 
+        /// <summary>
+        /// Creates a new empty game object in the hierarchy to hold the spears.
+        /// </summary>
         void SetParent()
         {
             GameObject spearAnchor = new GameObject("Projectiles");
@@ -23,7 +43,6 @@ namespace AKB.Core.Managing
             spearParent = spearAnchor.transform;
         }
 
-        // Start is called before the first frame update
         void Start()
         {
             ManagerHUB.GetManager.SetSpearPoolReference(this);
@@ -31,6 +50,9 @@ namespace AKB.Core.Managing
             PopulatePool(ref spearQueue, amountToPool, spearParent);
         }
 
+        /// <summary>
+        /// Creates a pool of spears based on the amountToPool value for the player to use.
+        /// </summary>
         /// <param name="spearQueue">The Queue to populate.</param>
         /// <param name="amountToPool">How many bullets to create.</param>
         /// <param name="spearParent">The parent gameObject in the hierarchy</param>
@@ -48,7 +70,7 @@ namespace AKB.Core.Managing
         }
 
         /// <summary>
-        /// Call to get Spear Gameobject reference.
+        /// Call to get the Spear Gameobject reference.
         /// </summary>
         public GameObject GetPooledSpear()
         {
