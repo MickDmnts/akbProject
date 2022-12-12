@@ -46,6 +46,9 @@ namespace AKB.Core.Database
             SetupSaveFileInfoDB();
         }
 
+        /// <summary>
+        /// Creates a table used for logging the database queries.
+        /// </summary>
         void CreateDBLogger()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -64,6 +67,10 @@ namespace AKB.Core.Database
             }
         }
 
+        /// <summary>
+        /// Call to add the passed string to the logger table of the database.
+        /// </summary>
+        /// <param name="log"></param>
         public static void AddLoggerEntry(string log)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -74,8 +81,8 @@ namespace AKB.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"INSERT INTO DB_LOGGER (
-                                                LogFile)
+                    command.CommandText = @"INSERT INTO DB_LOGGER 
+                                                (LogFile)
                                             VALUES
                                                 (@log)";
 
@@ -90,6 +97,9 @@ namespace AKB.Core.Database
             }
         }
 
+        /// <summary>
+        /// Creates a table to hold the save files of the game.
+        /// </summary>
         void CreateSaveFiles()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -100,7 +110,8 @@ namespace AKB.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"CREATE TABLE IF NOT EXISTS SAVE_FILE (
+                    command.CommandText = @"CREATE TABLE IF NOT EXISTS SAVE_FILE 
+                                            (
                                                 SaveFileID INTEGER PRIMARY KEY
                                                                  UNIQUE
                                                                  NOT NULL
@@ -112,6 +123,9 @@ namespace AKB.Core.Database
             }
         }
 
+        /// <summary>
+        /// Inserts the save flles entries to the database.
+        /// </summary>
         void SetupSaveFilesDB()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -122,7 +136,8 @@ namespace AKB.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"INSERT OR IGNORE INTO SAVE_FILE (SaveFileID)
+                    command.CommandText = @"INSERT OR IGNORE INTO SAVE_FILE 
+                                                (SaveFileID)
                                             VALUES
                                                 (0),
                                                 (1),
@@ -146,14 +161,14 @@ namespace AKB.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"CREATE TABLE IF NOT EXISTS SINNER_SOULS (
+                    command.CommandText = @"CREATE TABLE IF NOT EXISTS SINNER_SOULS 
+                                            (
                                                 SaveFileID INTEGER REFERENCES SAVE_FILE (SaveFileID) 
                                                                    UNIQUE,
                                                 SoulsValue INTEGER NOT NULL,
-                                                PRIMARY KEY (
-                                                    SaveFileID,
-                                                    SoulsValue
-                                                )
+                                                
+                                                PRIMARY KEY 
+                                                (SaveFileID, SoulsValue)
                                             );";
 
                     int result = command.ExecuteNonQuery();
@@ -172,15 +187,16 @@ namespace AKB.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"INSERT OR IGNORE INTO SINNER_SOULS (
+                    command.CommandText = @"INSERT OR IGNORE INTO SINNER_SOULS 
+                                            (
                                                 SaveFileID,
                                                 SoulsValue
                                             )
                                             VALUES 
-                                            (0,0),
-                                            (1,0),
-                                            (2,0),
-                                            (3,0);";
+                                                (0,0),
+                                                (1,0),
+                                                (2,0),
+                                                (3,0);";
 
                     int result = command.ExecuteNonQuery();
                     AddLoggerEntry($"Sinner Souls table setup: {result.ToString()}");
@@ -198,10 +214,9 @@ namespace AKB.Core.Database
                 using (SqliteCommand command = connection.CreateCommand())
                 {
                     command.CommandType = CommandType.Text;
-                    command.CommandText = @"CREATE TABLE IF NOT EXISTS PERS_ADV_TYPES (
-                                                Type ADVANCEMENT (1) PRIMARY KEY
-                                                                    UNIQUE
-                                                                    NOT NULL
+                    command.CommandText = @"CREATE TABLE IF NOT EXISTS PERS_ADV_TYPES 
+                                            (
+                                                Type ADVANCEMENT (1) PRIMARY KEY UNIQUE NOT NULL
                                             );";
 
                     int result = command.ExecuteNonQuery();
@@ -246,7 +261,8 @@ namespace AKB.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"CREATE TABLE IF NOT EXISTS PERS_ADVANCEMENTS (
+                    command.CommandText = @"CREATE TABLE IF NOT EXISTS PERS_ADVANCEMENTS 
+                                            (
                                                 SaveFileID  INTEGER         REFERENCES SAVE_FILE (SaveFileID),
                                                 Advancement ADVANCEMENT (1) REFERENCES PERS_ADV_TYPES (Type) 
                                                                             NOT NULL,
@@ -254,10 +270,8 @@ namespace AKB.Core.Database
                                                                             DEFAULT (0),
                                                 IsUnlocked  INTEGER (1)     NOT NULL
                                                                             DEFAULT (0),
-                                                PRIMARY KEY (
-                                                    SaveFileID,
-                                                    Advancement
-                                                )
+                                                PRIMARY KEY 
+                                                (SaveFileID, Advancement)
                                             );";
 
                     int result = command.ExecuteNonQuery();
@@ -276,42 +290,43 @@ namespace AKB.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"INSERT OR IGNORE INTO PERS_ADVANCEMENTS (
+                    command.CommandText = @"INSERT OR IGNORE INTO PERS_ADVANCEMENTS 
+                                            (
                                                 SaveFileID,
                                                 Advancement,
                                                 Tier,
                                                 IsUnlocked
-                                                )
+                                            )
                                             VALUES 
-                                            (0,'DEVIL_RAGE',0,0),
-                                            (1,'DEVIL_RAGE',0,0),
-                                            (2,'DEVIL_RAGE',0,0),
-                                            (3,'DEVIL_RAGE',0,0),
+                                                (0,'DEVIL_RAGE',0,0),
+                                                (1,'DEVIL_RAGE',0,0),
+                                                (2,'DEVIL_RAGE',0,0),
+                                                (3,'DEVIL_RAGE',0,0),
 
-                                            (0,'DODGE',0,0),
-                                            (1,'DODGE',0,0),
-                                            (2,'DODGE',0,0),
-                                            (3,'DODGE',0,0),
+                                                (0,'DODGE',0,0),
+                                                (1,'DODGE',0,0),
+                                                (2,'DODGE',0,0),
+                                                (3,'DODGE',0,0),
 
-                                            (0,'HEALTH',0,0),
-                                            (1,'HEALTH',0,0),
-                                            (2,'HEALTH',0,0),
-                                            (3,'HEALTH',0,0),
+                                                (0,'HEALTH',0,0),
+                                                (1,'HEALTH',0,0),
+                                                (2,'HEALTH',0,0),
+                                                (3,'HEALTH',0,0),
 
-                                            (0,'MELEE',0,0),
-                                            (1,'MELEE',0,0),
-                                            (2,'MELEE',0,0),
-                                            (3,'MELEE',0,0),
+                                                (0,'MELEE',0,0),
+                                                (1,'MELEE',0,0),
+                                                (2,'MELEE',0,0),
+                                                (3,'MELEE',0,0),
 
-                                            (0,'SPEAR_THROW',0,0),
-                                            (1,'SPEAR_THROW',0,0),
-                                            (2,'SPEAR_THROW',0,0),
-                                            (3,'SPEAR_THROW',0,0),
+                                                (0,'SPEAR_THROW',0,0),
+                                                (1,'SPEAR_THROW',0,0),
+                                                (2,'SPEAR_THROW',0,0),
+                                                (3,'SPEAR_THROW',0,0),
 
-                                            (0,'TP_CHARGE',0,0),
-                                            (1,'TP_CHARGE',0,0),
-                                            (2,'TP_CHARGE',0,0),
-                                            (3,'TP_CHARGE',0,0);";
+                                                (0,'TP_CHARGE',0,0),
+                                                (1,'TP_CHARGE',0,0),
+                                                (2,'TP_CHARGE',0,0),
+                                                (3,'TP_CHARGE',0,0);";
 
                     int result = command.ExecuteNonQuery();
                     AddLoggerEntry($"Advancements table setup: {result.ToString()}");
@@ -331,7 +346,8 @@ namespace AKB.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"CREATE TABLE IF NOT EXISTS SAVE_FILE_RUN_INFO (
+                    command.CommandText = @"CREATE TABLE IF NOT EXISTS SAVE_FILE_RUN_INFO 
+                                            (
                                                 SaveFileID         INTEGER PRIMARY KEY UNIQUE  REFERENCES SAVE_FILE (SaveFileID) DEFAULT NULL,
                                                 TotalRuns          INTEGER,      
                                                 LastRoom           INTEGER DEFAULT ( -1),                                                                         
@@ -354,7 +370,8 @@ namespace AKB.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"INSERT OR IGNORE INTO SAVE_FILE_RUN_INFO (
+                    command.CommandText = @"INSERT OR IGNORE INTO SAVE_FILE_RUN_INFO 
+                                            (
                                                 SaveFileID,
                                                 TotalRuns,
                                                 LastRoom,
