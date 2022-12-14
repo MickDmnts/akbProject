@@ -1,60 +1,59 @@
-using System.Collections;
-using System.Collections.Generic;
-using AKB.Core.Managing;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseMenu : MonoBehaviour
+namespace AKB.Core.Managing.UI
 {
-    [SerializeField] Button closePauseMenu;
-    [SerializeField] Button hellsGrimoire;
-    [SerializeField] Button options;
-    [SerializeField] Button abandonRun;
-    [SerializeField] Button saveExit;
-
-
-    private void Start()
+    public class PauseMenu : MonoBehaviour
     {
-        EntrySetup();
-    }
+        [SerializeField] Button closePauseMenu;
+        [SerializeField] Button hellsGrimoire;
+        [SerializeField] Button options;
+        [SerializeField] Button abandonRun;
+        [SerializeField] Button saveExit;
 
-    /// <summary>
-    /// Call to set up the default script behaviour.
-    /// </summary>
-    void EntrySetup()
-    {
-        closePauseMenu.onClick.AddListener(ClosePauseMenu);
-        hellsGrimoire.onClick.AddListener(HellsGrimoire);
-        options.onClick.AddListener(Options);
-        abandonRun.onClick.AddListener(AbandonRun);
-        saveExit.onClick.AddListener(SaveExit);
-    }
+        private void Start()
+        {
+            EntrySetup();
+        }
 
-    //prepei na kratane kapoies plhrofories tis opoies kai prepei na deiksoume on runtime
+        /// <summary>
+        /// Call to set up the default script behaviour.
+        /// </summary>
+        void EntrySetup()
+        {
+            closePauseMenu.onClick.AddListener(ClosePauseMenu);
+            hellsGrimoire.onClick.AddListener(HellsGrimoire);
+            options.onClick.AddListener(Options);
+            abandonRun.onClick.AddListener(AbandonRun);
+            saveExit.onClick.AddListener(SaveExit);
+        }
 
-    void ClosePauseMenu()
-    {
-        ManagerHUB.GetManager.UIManager.PauseGame();
-    }
+        //prepei na kratane kapoies plhrofories tis opoies kai prepei na deiksoume on runtime
 
-    void HellsGrimoire()
-    {
-        ManagerHUB.GetManager.UIManager.EnablePanel("HellsGrimoire_UI_Panel");
-    }
+        void ClosePauseMenu()
+        {
+            ManagerHUB.GetManager.UIManager.PauseGame();
+        }
 
-    void Options()
-    {
-        ManagerHUB.GetManager.UIManager.EnablePanel("Options_UI_Panel");
-    }
+        void HellsGrimoire()
+        {
+            ManagerHUB.GetManager.UIManager.EnablePanel("HellsGrimoire_UI_Panel");
+        }
 
-    void AbandonRun()
-    {
-        //GameManager.S.LevelManager.TransitToPlayerHub();
-        Debug.Log("Abandon run button on pause menu screen was pressed");
-    }
+        void Options()
+        {
+            ManagerHUB.GetManager.UIManager.EnablePanel("Options_UI_Panel");
+        }
 
-    void SaveExit()
-    {
-        Debug.Log("Save & Exit button on pause menu screen was pressed");
+        void AbandonRun()
+        {
+            //GameManager.S.LevelManager.TransitToPlayerHub();
+            Debug.Log("Abandon run button on pause menu screen was pressed");
+        }
+
+        void SaveExit()
+        {
+            Debug.Log("Save & Exit button on pause menu screen was pressed");
+        }
     }
 }

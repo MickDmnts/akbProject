@@ -1,56 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-using AKB.Core.Managing;
-
-public class HellsGrimoire : MonoBehaviour
+namespace AKB.Core.Managing.UI
 {
-    [SerializeField] Button tutorialsButton;
-    [SerializeField] Button monstersButton;
-    [SerializeField] Button pastRunsButton;
-
-    [SerializeField] GameObject Tutorials_UI_Panel;
-    [SerializeField] GameObject Monsters_UI_Panel;
-    [SerializeField] GameObject PastRuns_UI_Panel;
-
-    private void Start()
+    public class HellsGrimoire : MonoBehaviour
     {
-        EntrySetup();
-    }
+        [SerializeField] Button tutorialsButton;
+        [SerializeField] Button monstersButton;
+        [SerializeField] Button pastRunsButton;
 
-    //we need a back button to return to pause menu screen
+        [SerializeField] GameObject Tutorials_UI_Panel;
+        [SerializeField] GameObject Monsters_UI_Panel;
+        [SerializeField] GameObject PastRuns_UI_Panel;
 
-    /// <summary>
-    /// Call to set up the default script behaviour.
-    /// </summary>
-    void EntrySetup()
-    {
-        tutorialsButton.onClick.AddListener(Tutorials);
-        monstersButton.onClick.AddListener(Monsters);
-        pastRunsButton.onClick.AddListener(PastRuns);
-    }
+        private void Start()
+        {
+            EntrySetup();
+        }
 
-    void Tutorials()
-    {
-        ActivatePanel("Tutorials_UI_Panel");
-    }
+        //we need a back button to return to pause menu screen
 
-    void Monsters()
-    {
-        ActivatePanel("Monsters_UI_Panel");
-    }
+        /// <summary>
+        /// Call to set up the default script behaviour.
+        /// </summary>
+        void EntrySetup()
+        {
+            tutorialsButton.onClick.AddListener(Tutorials);
+            monstersButton.onClick.AddListener(Monsters);
+            pastRunsButton.onClick.AddListener(PastRuns);
+        }
 
-    void PastRuns()
-    {
-        ActivatePanel("PastRuns_UI_Panel");
-    }
+        void Tutorials()
+        {
+            ActivatePanel("Tutorials_UI_Panel");
+        }
 
-    void ActivatePanel(string panelToBeActivated)
-    {
-        Tutorials_UI_Panel.SetActive(panelToBeActivated.Equals(Tutorials_UI_Panel.name));
-        Monsters_UI_Panel.SetActive(panelToBeActivated.Equals(Monsters_UI_Panel.name));
-        PastRuns_UI_Panel.SetActive(panelToBeActivated.Equals(PastRuns_UI_Panel.name));
+        void Monsters()
+        {
+            ActivatePanel("Monsters_UI_Panel");
+        }
+
+        void PastRuns()
+        {
+            ActivatePanel("PastRuns_UI_Panel");
+        }
+
+        void ActivatePanel(string panelToBeActivated)
+        {
+            Tutorials_UI_Panel.SetActive(panelToBeActivated.Equals(Tutorials_UI_Panel.name));
+            Monsters_UI_Panel.SetActive(panelToBeActivated.Equals(Monsters_UI_Panel.name));
+            PastRuns_UI_Panel.SetActive(panelToBeActivated.Equals(PastRuns_UI_Panel.name));
+        }
     }
 }

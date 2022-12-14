@@ -5,6 +5,8 @@
     {
         AdvancementTypes activeAdvancement = AdvancementTypes.None;
 
+        public SpearRunAdvancements() { }
+
         public void SetActiveAdvancement(AdvancementTypes advancement) => activeAdvancement = advancement;
 
         public bool GetIsAdvancementActive(AdvancementTypes advancement)

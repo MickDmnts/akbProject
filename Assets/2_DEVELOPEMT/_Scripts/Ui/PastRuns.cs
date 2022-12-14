@@ -1,25 +1,27 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PastRuns : MonoBehaviour
+namespace AKB.Core.Managing.UI
 {
-    [SerializeField] GameObject pastRunsPrefab;
-    [SerializeField] GameObject pastRunsContainer;
-
-    [SerializeField]
-    List<int> numbers = new List<int>();
-
-    //den to deixnei otan pataw play alla doulebei
-
-    // Start is called before the first frame update
-    void Start()
+    public class PastRuns : MonoBehaviour
     {
-        foreach (int num in numbers)
+        [SerializeField] GameObject pastRunsPrefab;
+        [SerializeField] GameObject pastRunsContainer;
+
+        [SerializeField]
+        List<int> numbers = new List<int>();
+
+        //den to deixnei otan pataw play alla doulebei
+
+        // Start is called before the first frame update
+        void Start()
         {
-            GameObject pastRunsGameobject = Instantiate(pastRunsPrefab);
-            pastRunsGameobject.transform.SetParent(pastRunsContainer.transform, false);
-            pastRunsGameobject.transform.localScale = Vector3.one;
+            foreach (int num in numbers)
+            {
+                GameObject pastRunsGameobject = Instantiate(pastRunsPrefab);
+                pastRunsGameobject.transform.SetParent(pastRunsContainer.transform, false);
+                pastRunsGameobject.transform.localScale = Vector3.one;
+            }
         }
     }
 }

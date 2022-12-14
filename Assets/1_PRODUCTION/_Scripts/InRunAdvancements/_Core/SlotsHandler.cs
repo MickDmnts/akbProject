@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AKB.Core.Managing.InRunUpdates
 {
@@ -48,18 +50,22 @@ namespace AKB.Core.Managing.InRunUpdates
         TeleportOnDodge = 14,
     }
 
-    [DefaultExecutionOrder(150)]
     public class SlotsHandler : MonoBehaviour
     {
         /// <summary>
-        /// The advancement slots of the player
+        /// The advancement slots number of the player.
         /// </summary>
         /// <returns></returns>
         [Header("Set in inspector")]
-        [SerializeField, Tooltip("The advancement slots of the player.")] int slotSize = 5;
+        [SerializeField, Tooltip("The advancement slots number of the player.")] int slotSize = 5;
+        /// <summary>
+        /// The images holding the slots in the user HUD.
+        /// </summary>
+        /// <returns></returns>
+        [SerializeField, Tooltip("The images holding the slots in the user HUD.")] List<Image> slotImages;
 
         /// <summary>
-        /// The player active advancements
+        /// The player slots containg the advancement handlers.
         /// </summary>
         IAdvanceable[] slots;
 
@@ -111,14 +117,33 @@ namespace AKB.Core.Managing.InRunUpdates
             DodgeInRunAdvancements = new DodgeRunAdvancements();
             PassiveRunAdvancements = new PassiveRunAdvancements();
             DevilRageRunAdvancements = new DevilRageRunAdvancements();
+
+            slots[0] = AttackAdvancementHandler;
+            slots[1] = SpearInRunAdvancements;
+            slots[2] = DodgeInRunAdvancements;
+            slots[3] = PassiveRunAdvancements;
+            slots[4] = DevilRageRunAdvancements;
         }
 
-        /* FUTURE DEVELOPMENT
+        public string[] GetSlottedAdvancementTypes()
+        {
+            List<string> parsedTypes = new List<string>();
+
+            for (int i = 0; i < slots.Length; i++)
+            {
+                string name = slots[i].GetActiveName();
+                parsedTypes.Add(name);
+            }
+
+            return parsedTypes.ToArray();
+        }
+
+        /*FUTURE DEVELOPMENT*/
         void NullifyAbilitiesOnDeath()
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                slots[i] = null;
+                slots[i].SetActiveAdvancement(AdvancementTypes.None);
             }
         }
 
@@ -130,6 +155,6 @@ namespace AKB.Core.Managing.InRunUpdates
         void ClearCurrentHUDSlots()
         {
             throw new System.NotImplementedException();
-        }*/
+        }
     }
 }

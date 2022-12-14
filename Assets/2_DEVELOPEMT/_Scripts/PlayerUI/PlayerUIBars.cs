@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace AKB.Core.Managing
 {
     public class PlayerUIBars : MonoBehaviour
-    { 
+    {
         //[SerializeField] Slider healthSlider;
 
         //[SerializeField] Slider rageSlider;

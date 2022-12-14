@@ -6,5 +6,6 @@ namespace AKB.Core.Managing.InRunUpdates
     public class AdvancementData
     {
         public string[] unusedTypes;
+        public string[] slottedTypes;
     }
 }

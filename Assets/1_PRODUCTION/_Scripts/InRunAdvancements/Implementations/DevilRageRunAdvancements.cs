@@ -6,6 +6,8 @@ namespace AKB.Core.Managing.InRunUpdates
     {
         AdvancementTypes activeAdvancement = AdvancementTypes.None;
 
+        public DevilRageRunAdvancements() { }
+
         public void SetActiveAdvancement(AdvancementTypes advancement) => activeAdvancement = advancement;
 
         public bool GetIsAdvancementActive(AdvancementTypes advancement)

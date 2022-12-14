@@ -15,10 +15,11 @@ namespace AKB.Core.Serialization
         /// </summary>
         /// <param name="arrayOfOrderedAdvancements">The unused advancements from the copy.</param>
         /// <returns>The JSON string.</returns>
-        public static string SerializeInRunAdvancements(string[] arrayOfOrderedAdvancements)
+        public static string SerializeInRunAdvancements(string[] arrayOfOrderedAdvancements, string[] arrayOfSlottedOrderedAdvs)
         {
             AdvancementData data = new AdvancementData();
             data.unusedTypes = arrayOfOrderedAdvancements;
+            data.slottedTypes = arrayOfSlottedOrderedAdvs;
 
             return JsonUtility.ToJson(data);
         }
@@ -28,20 +29,12 @@ namespace AKB.Core.Serialization
         /// </summary>
         /// <param name="jsonStrFromDB">The JSON string loaded from the database.</param>
         /// <returns>An array containg all the AdvancementTypes loaded from the passed JSON.</returns>
-        public static AdvancementTypes[] DeserializeInRunAdvancements(string jsonStrFromDB)
+        public static AdvancementData DeserializeInRunAdvancements(string jsonStrFromDB)
         {
             AdvancementData data = new AdvancementData();
             JsonUtility.FromJsonOverwrite(jsonStrFromDB, data);
 
-            List<AdvancementTypes> types = new List<AdvancementTypes>();
-
-            foreach (string str in data.unusedTypes)
-            {
-                AdvancementTypes parsedType = Enum.Parse<AdvancementTypes>(str);
-                types.Add(parsedType);
-            }
-
-            return types.ToArray();
+            return data;
         }
         #endregion
 

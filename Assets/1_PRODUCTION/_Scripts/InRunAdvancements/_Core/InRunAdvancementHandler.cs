@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+
 using AKB.Core.Database;
 using AKB.Core.Serialization;
 
 namespace AKB.Core.Managing.InRunUpdates
 {
-    [DefaultExecutionOrder(100)]
     public class InRunAdvancementHandler : MonoBehaviour
     {
         /// <summary>
@@ -65,25 +65,41 @@ namespace AKB.Core.Managing.InRunUpdates
         /// </summary>
         void SaveMidRun()
         {
+            //Parse the unused advancements enum types to strings and cache them in the list of strings.
             List<string> typeStrings = new List<string>();
-
             foreach (KeyValuePair<AdvancementTypes, GameObject> pair in inRunAdvancements)
             {
                 AdvancementTypes type = inRunAdvancements[pair.Key].GetComponent<AdvancementPickUp>().GetAdvancementType();
                 typeStrings.Add(type.ToString());
             }
 
-            string jsonStr = DataSerializer.SerializeInRunAdvancements(typeStrings.ToArray());
-            SQLiteHandler.UpdateUnusedAdvancementsCell(jsonStr, 0);
+            //Convert the slotted advancements and the unused advancements to arrays for serialization
+            string[] unusedAdvs = typeStrings.ToArray();
+            string[] activeAdvs = ManagerHUB.GetManager.SlotsHandler.GetSlottedAdvancementTypes();
+
+            //Write the serialized json string to the corresponding save file in the DB.
+            string jsonStr = DataSerializer.SerializeInRunAdvancements(unusedAdvs, activeAdvs);
+            SQLiteHandler.UpdateUnusedAdvancementsCell(jsonStr, 0); //zero gets replaced from the active save file.
         }
 
         void LoadUnusedAdvancements()
         {
+            //Read the json string from the db
             string jsonStr = SQLiteHandler.GetUnusedAdvancements(0);
 
-            AdvancementTypes[] deserializedJson = DataSerializer.DeserializeInRunAdvancements(jsonStr);
+            //Get the deserialized advancement data from the JSON deserializer
+            AdvancementData deserializedData = DataSerializer.DeserializeInRunAdvancements(jsonStr);
 
-            foreach (AdvancementTypes type in deserializedJson)
+            //Parse every string type to its corresponding enum type
+            List<AdvancementTypes> types = new List<AdvancementTypes>();
+            foreach (string str in deserializedData.unusedTypes)
+            {
+                AdvancementTypes parsedType = Enum.Parse<AdvancementTypes>(str);
+                types.Add(parsedType);
+            }
+
+            //Finaly write the loaded enum types to the inRunAdvancements list.
+            foreach (AdvancementTypes type in types)
             {
                 inRunAdvancements.Add(type, CreateAdvancementGameobject(type));
             }

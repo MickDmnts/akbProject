@@ -1,5 +1,4 @@
 using AKB.Core.Database;
-using UnityEditor;
 using UnityEngine;
 
 namespace AKB.Core.Managing

@@ -8,7 +8,12 @@
         /// <summary>
         /// Get the active advancement name represented as a string.
         /// </summary>
-        /// <returns></returns>
         string GetActiveName();
+
+        /// <summary>
+        /// Set the active advancement of this handler to the passed enum type.
+        /// </summary>
+        /// <param name="advancement"></param>
+        void SetActiveAdvancement(AdvancementTypes advancement);
     }
 }

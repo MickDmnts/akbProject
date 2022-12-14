@@ -5,6 +5,8 @@
     {
         AdvancementTypes activeAdvancement = AdvancementTypes.None;
 
+        public DodgeRunAdvancements() { }
+
         public void SetActiveAdvancement(AdvancementTypes advancement) => activeAdvancement = advancement;
 
         public bool GetIsAdvancementActive(AdvancementTypes advancement)
