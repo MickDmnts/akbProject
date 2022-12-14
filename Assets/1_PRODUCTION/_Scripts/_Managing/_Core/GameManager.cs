@@ -1,3 +1,5 @@
+using AKB.Core.Database;
+using UnityEditor;
 using UnityEngine;
 
 namespace AKB.Core.Managing
@@ -20,6 +22,9 @@ namespace AKB.Core.Managing
     [DefaultExecutionOrder(-450)]
     public class GameManager : MonoBehaviour
     {
+        SQLiteHandler _database;
+        public SQLiteHandler Database => _database;
+
         /// <summary>
         /// Game manager Singleton.
         /// </summary>
@@ -46,6 +51,7 @@ namespace AKB.Core.Managing
         /// Get the current game state of the game.
         /// </summary>
         public GameState GetGameState => _state;
+
         /// <summary>
         /// Set the current game state of the game.
         /// </summary>
@@ -58,6 +64,7 @@ namespace AKB.Core.Managing
             {
                 _s = this;
 
+                _database = new SQLiteHandler();
                 _managerHUB = new ManagerHUB();
             }
             else

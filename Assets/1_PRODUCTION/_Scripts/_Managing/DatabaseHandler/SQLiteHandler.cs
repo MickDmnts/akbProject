@@ -6,12 +6,16 @@ using Mono.Data.Sqlite;
 
 namespace AKB.Core.Database
 {
-    [DefaultExecutionOrder(0)]
-    public class SQLiteHandler : MonoBehaviour
+    public class SQLiteHandler
     {
         private static string dbPath = "";
 
-        private void Awake()
+        public SQLiteHandler()
+        {
+            OnCostruction();
+        }
+
+        private void OnCostruction()
         {
             if (dbPath == "")
             {
@@ -46,6 +50,7 @@ namespace AKB.Core.Database
             SetupSaveFileInfoDB();
         }
 
+#if UNITY_EDITOR
         /// <summary>
         /// Creates a table used for logging the database queries.
         /// </summary>
@@ -96,6 +101,7 @@ namespace AKB.Core.Database
                 }
             }
         }
+#endif
 
         /// <summary>
         /// Creates a table to hold the save files of the game.
@@ -118,7 +124,10 @@ namespace AKB.Core.Database
                                             );";
 
                     int result = command.ExecuteNonQuery();
+
+#if UNITY_EDITOR
                     AddLoggerEntry($"Save files table creation result: {result.ToString()}");
+#endif
                 }
             }
         }
@@ -145,7 +154,9 @@ namespace AKB.Core.Database
                                                 (3);";
 
                     int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
                     AddLoggerEntry($"Save file table setup: {result.ToString()}");
+#endif
                 }
             }
         }
@@ -172,7 +183,9 @@ namespace AKB.Core.Database
                                             );";
 
                     int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
                     AddLoggerEntry($"Sinner Souls table creation result: {result.ToString()}");
+#endif
                 }
             }
         }
@@ -199,7 +212,9 @@ namespace AKB.Core.Database
                                                 (3,0);";
 
                     int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
                     AddLoggerEntry($"Sinner Souls table setup: {result.ToString()}");
+#endif
                 }
             }
         }
@@ -220,7 +235,9 @@ namespace AKB.Core.Database
                                             );";
 
                     int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
                     AddLoggerEntry($"Persistent Types table creation result: {result.ToString()}");
+#endif
                 }
             }
         }
@@ -244,7 +261,9 @@ namespace AKB.Core.Database
                                                     ('TP_CHARGE');";
 
                     int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
                     AddLoggerEntry($"Persistent Types table setup: {result.ToString()}");
+#endif
                 }
             }
         }
@@ -275,7 +294,9 @@ namespace AKB.Core.Database
                                             );";
 
                     int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
                     AddLoggerEntry($"Advancements table creation result: {result.ToString()}");
+#endif
                 }
             }
         }
@@ -329,7 +350,9 @@ namespace AKB.Core.Database
                                                 (3,'TP_CHARGE',0,0);";
 
                     int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
                     AddLoggerEntry($"Advancements table setup: {result.ToString()}");
+#endif
                 }
             }
         }
@@ -349,13 +372,17 @@ namespace AKB.Core.Database
                     command.CommandText = @"CREATE TABLE IF NOT EXISTS SAVE_FILE_RUN_INFO 
                                             (
                                                 SaveFileID         INTEGER PRIMARY KEY UNIQUE  REFERENCES SAVE_FILE (SaveFileID) DEFAULT NULL,
-                                                TotalRuns          INTEGER,      
-                                                LastRoom           INTEGER DEFAULT ( -1),                                                                         
-                                                UnusedAdvancements VARCHAR (255) 
+                                                TotalRuns          INTEGER DEFAULT ( 0),      
+                                                LastRoom           INTEGER DEFAULT ( -1),
+                                                PlayerHealth       INTEGER DEFAULT ( -1),                                                                         
+                                                UnusedAdvancements VARCHAR (255),
+                                                UnusedRoomIDs      VARCHAR (255)
                                             )";
 
                     int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
                     AddLoggerEntry($"Save files INFO table creation result: {result.ToString()}");
+#endif
                 }
             }
         }
@@ -375,15 +402,20 @@ namespace AKB.Core.Database
                                                 SaveFileID,
                                                 TotalRuns,
                                                 LastRoom,
-                                                UnusedAdvancements)
+                                                PlayerHealth,
+                                                UnusedAdvancements,
+                                                UnusedRoomIDs
+                                            )
                                             VALUES
-                                                (0,0,NULL,NULL),
-                                                (1,0,NULL,NULL),
-                                                (2,0,NULL,NULL),
-                                                (3,0,NULL,NULL);";
+                                                (0,0,NULL,NULL,NULL,NULL),
+                                                (1,0,NULL,NULL,NULL,NULL),
+                                                (2,0,NULL,NULL,NULL,NULL),
+                                                (3,0,NULL,NULL,NULL,NULL);";
 
                     int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
                     AddLoggerEntry($"Save file INFO table setup: {result.ToString()}");
+#endif
                 }
             }
         }
@@ -418,7 +450,9 @@ namespace AKB.Core.Database
                     });
 
                     int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
                     AddLoggerEntry($"Unused advancement update result: {result.ToString()}");
+#endif
                 }
             }
         }
@@ -450,7 +484,9 @@ namespace AKB.Core.Database
                         result = sb.Append(reader.GetString(0)).ToString();
                     }
 
+#if UNITY_EDITOR
                     AddLoggerEntry($"JSON retrieval for save file {saveFileID}, result: {result}");
+#endif
                     return result;
                 }
             }
@@ -466,7 +502,7 @@ namespace AKB.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"SELECT UnusedAdvancements FROM SAVE_FILE_RUN_INFO
+                    command.CommandText = @"SELECT LastRoom FROM SAVE_FILE_RUN_INFO
                                             WHERE SaveFileID = @fileID;";
 
                     command.Parameters.Add(new SqliteParameter()
@@ -488,17 +524,254 @@ namespace AKB.Core.Database
                             result = sb.Append(readStr).ToString();
                         }
 
-                        bool outcome = !result.Equals(string.Empty);
+                        bool outcome = (!result.Equals(string.Empty) || result.Equals("0"));
 
+#if UNITY_EDITOR
                         AddLoggerEntry($"Get has active run for save file {saveFileID} result: {result} - outcome: {outcome}");
+#endif
                         return outcome;
                     }
                 }
                 connection.Clone();
                 connection.Dispose();
 
+#if UNITY_EDITOR
                 AddLoggerEntry("Not currently in run");
+#endif
                 return false;
+            }
+        }
+
+        public static void UpdatePlayerHealthValue(int playerHealth, int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"UPDATE SAVE_FILE_RUN_INFO
+                                            SET
+                                                PlayerHealth = @healthValue
+                                            WHERE 
+                                                SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "healthValue",
+                        Value = playerHealth
+                    });
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Player health update at save file {saveFileID}, result : {result.ToString()}");
+#endif
+                }
+            }
+        }
+
+        /// <summary>
+        /// Call to get the player health stored in the database.
+        /// </summary>
+        /// <returns>-1 in case there is not a player health value stored.</returns>
+        public static int GetPlayerHealthValue(int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"SELECT PlayerHealth FROM SAVE_FILE_RUN_INFO
+                                            WHERE SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = -1;
+                    SqliteDataReader reader = command.ExecuteReader();
+
+                    if (reader[0].GetType() != typeof(DBNull))
+                    {
+                        while (reader.Read())
+                        {
+                            result = reader.GetInt32(0);
+                        }
+
+#if UNITY_EDITOR
+                        AddLoggerEntry($"Get Player health at save file {saveFileID}, result : {result.ToString()}");
+#endif
+                        return result;
+                    }
+
+                    connection.Clone();
+                    connection.Dispose();
+                    AddLoggerEntry($"No player health entry at {saveFileID}");
+                    return -1;
+                }
+            }
+        }
+
+        public static void UpdateLastRoom(int roomID, int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"UPDATE SAVE_FILE_RUN_INFO
+                                            SET
+                                                LastRoom = @roomId
+                                            WHERE 
+                                                SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "roomId",
+                        Value = roomID
+                    });
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Last room update at save file {saveFileID}, result: {result.ToString()}");
+#endif
+                }
+            }
+        }
+
+        public static int GetLastRoom(int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"SELECT LastRoom FROM SAVE_FILE_RUN_INFO
+                                            WHERE SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = -1;
+                    SqliteDataReader reader = command.ExecuteReader();
+
+                    if (reader[0].GetType() != typeof(DBNull))
+                    {
+                        while (reader.Read())
+                        {
+                            result = reader.GetInt32(0);
+                        }
+
+#if UNITY_EDITOR
+                        AddLoggerEntry($"Get last room at save file {saveFileID}, result : {result.ToString()}");
+#endif
+                        return result;
+                    }
+
+                    connection.Clone();
+                    connection.Dispose();
+                    AddLoggerEntry($"No last room entry at {saveFileID}");
+                    return -1;
+                }
+            }
+        }
+
+        public static void UpdateUnusedRooms(string jsonStr, int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"UPDATE SAVE_FILE_RUN_INFO
+                                            SET
+                                                UnusedRoomIDs = @str
+                                            WHERE 
+                                                SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "str",
+                        Value = jsonStr
+                    });
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Update unused rooms at save file {saveFileID}, result: {result.ToString()}");
+#endif
+                }
+            }
+        }
+
+        public static string GetUnusedRooms(int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"SELECT UnusedRoomIDs FROM SAVE_FILE_RUN_INFO
+                                            WHERE SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    string result = "";
+                    StringBuilder sb = new StringBuilder();
+                    SqliteDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result = sb.Append(reader.GetString(0)).ToString();
+                    }
+
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Get unused rooms JSON for save file {saveFileID}, result: {result}");
+#endif
+                    return result;
+                }
             }
         }
     }

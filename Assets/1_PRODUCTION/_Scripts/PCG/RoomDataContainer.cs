@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using AKB.Core.Database;
+using AKB.Core.Serialization;
 using UnityEngine;
 
 using Random = UnityEngine.Random;
@@ -11,6 +13,8 @@ namespace AKB.Core.Managing.PCG
     /// </summary>
     public enum RoomWorld
     {
+        None = -1,
+
         World1 = 0,
         World2 = 1,
     }
@@ -55,6 +59,7 @@ namespace AKB.Core.Managing.PCG
         [Tooltip("A copy of the worlds battle rooms used from as a cache"
         + " so the original list stays unchanged.")]
         public List<RoomData> battleRoomsCopy;
+
         /// <summary>
         /// The battle rooms the player already passed.
         /// </summary>
@@ -87,9 +92,16 @@ namespace AKB.Core.Managing.PCG
         [Header("Set in inspector")]
         [SerializeField, Tooltip("The custom worlds of the game.")] List<WorldContainer> worldData;
 
+        RoomWorld activeWorld = RoomWorld.World1;
+
         private void Start()
         {
             SetupRoomsForUse();
+
+            /*if (we have a save)
+            {
+                LoadSavedRooms();
+            }*/
         }
 
         /// <summary>
@@ -167,6 +179,8 @@ namespace AKB.Core.Managing.PCG
 
                         //Get and delete room from the copy list
                         data = worldData[worldToInt].battleRoomsCopy[randomRoomOrder];
+
+                        //Delete battle room from copies list
                         worldData[worldToInt].battleRoomsCopy.RemoveAt(randomRoomOrder);
                     }
                     break;
@@ -195,6 +209,61 @@ namespace AKB.Core.Managing.PCG
         public void ResetWorlds()
         {
             SetupRoomsForUse();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                LoadSavedRooms();
+            }
+        }
+
+        //OH Its its time to save;
+        void SaveRoomIDs()
+        {
+            Debug.Log("Saving unused battle rooms to db.");
+
+            List<int> ids = new List<int>();
+
+            for (int i = 0; i < worldData[(int)activeWorld].battleRoomsCopy.Count; i++)
+            {
+                int id = worldData[(int)activeWorld].battleRoomsCopy[i].GetRoomID();
+                ids.Add(id);
+            }
+
+            foreach (int num in ids)
+            {
+                Debug.Log(num);
+            }
+
+            string jsonStr = DataSerializer.SerializeUnusedRooms(ids.ToArray(), activeWorld);
+
+            Debug.Log(jsonStr);
+
+            SQLiteHandler.UpdateUnusedRooms(jsonStr, 0); //0 being the save file index.
+        }
+
+        void LoadSavedRooms()
+        {
+            //zero represents the active save
+            string dbStr = SQLiteHandler.GetUnusedRooms(0);
+
+            Debug.Log($"Loading json string {dbStr}");
+
+            PCGData data = DataSerializer.DeserializePCGData(dbStr);
+
+            //Change the active world to the saved world
+            activeWorld = (RoomWorld)data.correspondingWorld;
+
+            //Refresh the list of battle room copies
+            worldData[(int)activeWorld].battleRoomsCopy.Clear();
+
+            for (int i = 0; i < data.unusedRooms.Length; i++)
+            {
+                RoomData roomToAdd = worldData[(int)activeWorld].battleRooms[data.unusedRooms[i]]; //Cache the original room from the pcg list
+                worldData[(int)activeWorld].battleRoomsCopy.Add(roomToAdd); //and insert it into the battle copy list.
+            }
         }
     }
 }

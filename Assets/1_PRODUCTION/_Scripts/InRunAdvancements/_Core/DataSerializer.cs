@@ -2,10 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AKB.Core.Managing.InRunUpdates
+using AKB.Core.Managing.InRunUpdates;
+using AKB.Core.Managing.PCG;
+
+namespace AKB.Core.Serialization
 {
-    public static class AdvancementsSerializer
+    public static class DataSerializer
     {
+        #region InRunAdvancements
         /// <summary>
         /// Creates a JSON representation of the passed array of strings.
         /// </summary>
@@ -39,5 +43,25 @@ namespace AKB.Core.Managing.InRunUpdates
 
             return types.ToArray();
         }
+        #endregion
+
+        #region PCG_Rooms
+        public static string SerializeUnusedRooms(int[] roomIDs, RoomWorld roomWorld)
+        {
+            PCGData data = new PCGData();
+            data.unusedRooms = roomIDs;
+            data.correspondingWorld = (int)roomWorld;
+
+            return JsonUtility.ToJson(data);
+        }
+
+        public static PCGData DeserializePCGData(string jsonStrFromDB)
+        {
+            PCGData data = new PCGData();
+            JsonUtility.FromJsonOverwrite(jsonStrFromDB, data);
+
+            return data;
+        }
+        #endregion
     }
 }

@@ -26,26 +26,6 @@ namespace AKB.Core.Managing.PCG
             ManagerHUB.GetManager.SetRoomSelector(this);
         }
 
-        private void Start()
-        {
-            //UpdateHealthValues();
-        }
-
-        /// <summary>
-        /// Updates health values
-        /// </summary>
-        void UpdateHealthValues()
-        {
-            playerCurrentHealth = (int)ManagerHUB.GetManager.PlayerEntity.GetPlayerHealth();
-            playerMaxHealth = (int)ManagerHUB.GetManager.PlayerEntity.GetPlayerMaxHealth();
-        }
-
-        void UpdateCoinValues()
-        {
-            //This should feed the values from the currency system during the run
-            accumulatedCoins = 10;
-        }
-
         #region PCG
         //called externally from the each level transition to determine next room.
 
@@ -57,7 +37,7 @@ namespace AKB.Core.Managing.PCG
         {
             RoomData nextRoom;
 
-            //UpdateHealthValues();
+            UpdateHealthValues();
             UpdateCoinValues();
 
             //Entry room
@@ -162,6 +142,22 @@ namespace AKB.Core.Managing.PCG
                 return roomDataContainer.GetRoomData(roomWorld, RoomType.Store);
             }
         }
+
+        /// <summary>
+        /// Updates health values
+        /// </summary>
+        void UpdateHealthValues()
+        {
+            playerCurrentHealth = (int)ManagerHUB.GetManager.PlayerEntity.GetPlayerHealth();
+            playerMaxHealth = (int)ManagerHUB.GetManager.PlayerEntity.GetPlayerMaxHealth();
+        }
+
+        void UpdateCoinValues()
+        {
+            //This should feed the values from the currency system during the run
+            accumulatedCoins = 10;
+        }
+
         #endregion
     }
 }

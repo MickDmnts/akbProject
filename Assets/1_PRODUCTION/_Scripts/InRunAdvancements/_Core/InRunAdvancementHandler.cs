@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using AKB.Core.Database;
+using AKB.Core.Serialization;
 
 namespace AKB.Core.Managing.InRunUpdates
 {
@@ -72,7 +73,7 @@ namespace AKB.Core.Managing.InRunUpdates
                 typeStrings.Add(type.ToString());
             }
 
-            string jsonStr = AdvancementsSerializer.SerializeInRunAdvancements(typeStrings.ToArray());
+            string jsonStr = DataSerializer.SerializeInRunAdvancements(typeStrings.ToArray());
             SQLiteHandler.UpdateUnusedAdvancementsCell(jsonStr, 0);
         }
 
@@ -80,7 +81,7 @@ namespace AKB.Core.Managing.InRunUpdates
         {
             string jsonStr = SQLiteHandler.GetUnusedAdvancements(0);
 
-            AdvancementTypes[] deserializedJson = AdvancementsSerializer.DeserializeInRunAdvancements(jsonStr);
+            AdvancementTypes[] deserializedJson = DataSerializer.DeserializeInRunAdvancements(jsonStr);
 
             foreach (AdvancementTypes type in deserializedJson)
             {
