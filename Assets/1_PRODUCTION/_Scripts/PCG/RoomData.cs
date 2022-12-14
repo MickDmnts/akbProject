@@ -3,6 +3,14 @@ using UnityEngine;
 
 namespace AKB.Core.Managing.PCG
 {
+    [System.Serializable]
+    public struct EnemySpawnInfo
+    {
+        public int PairID;
+        public GameObject Enemy;
+        public Transform EnemySpawn;
+    }
+
     /// <summary>
     /// This class is responsible for holding all the information a room will need to 
     /// interact with the PCG system.
@@ -17,7 +25,8 @@ namespace AKB.Core.Managing.PCG
         /// <summary>
         /// The room enemy spawn points.
         /// </summary>
-        [SerializeField, Tooltip("The room enemy spawn points.")] List<Transform> roomSpawnPoints;
+        [SerializeField, Tooltip("The room enemy spawn points.")] List<EnemySpawnInfo> enemySpawnPairs;
+
         /// <summary>
         /// The world the room belongs to.
         /// </summary>
@@ -67,7 +76,7 @@ namespace AKB.Core.Managing.PCG
         /// <summary>
         /// Get this rooms list of spawn points.
         /// </summary>
-        public List<Transform> GetRoomSpawnPoints() => roomSpawnPoints;
+        public List<EnemySpawnInfo> GetRoomSpawnPoints() => enemySpawnPairs;
         #endregion
     }
 }
