@@ -76,7 +76,7 @@ namespace AKB.Core.Database
         /// Call to add the passed string to the logger table of the database.
         /// </summary>
         /// <param name="log"></param>
-        public static void AddLoggerEntry(string log)
+        public void AddLoggerEntry(string log)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {
@@ -421,7 +421,7 @@ namespace AKB.Core.Database
         }
         #endregion
 
-        public static void UpdateUnusedAdvancementsCell(string jsonString, int saveFileID)
+        public void UpdateUnusedAdvancementsCell(string jsonString, int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {
@@ -457,7 +457,7 @@ namespace AKB.Core.Database
             }
         }
 
-        public static string GetUnusedAdvancements(int saveFileID)
+        public string GetUnusedAdvancements(int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {
@@ -492,7 +492,7 @@ namespace AKB.Core.Database
             }
         }
 
-        public static bool GetHasActiveRun(int saveFileID)
+        public bool GetHasActiveRun(int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {
@@ -542,7 +542,7 @@ namespace AKB.Core.Database
             }
         }
 
-        public static void UpdatePlayerHealthValue(int playerHealth, int saveFileID)
+        public void UpdatePlayerHealthValue(int playerHealth, int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {
@@ -582,7 +582,7 @@ namespace AKB.Core.Database
         /// Call to get the player health stored in the database.
         /// </summary>
         /// <returns>-1 in case there is not a player health value stored.</returns>
-        public static int GetPlayerHealthValue(int saveFileID)
+        public int GetPlayerHealthValue(int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {
@@ -625,7 +625,7 @@ namespace AKB.Core.Database
             }
         }
 
-        public static void UpdateLastRoom(int roomID, int saveFileID)
+        public void UpdateLastRoom(int roomID, int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {
@@ -661,7 +661,7 @@ namespace AKB.Core.Database
             }
         }
 
-        public static int GetLastRoom(int saveFileID)
+        public int GetLastRoom(int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {
@@ -704,7 +704,7 @@ namespace AKB.Core.Database
             }
         }
 
-        public static void UpdateUnusedRooms(string jsonStr, int saveFileID)
+        public void UpdateUnusedRooms(string jsonStr, int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {
@@ -740,7 +740,7 @@ namespace AKB.Core.Database
             }
         }
 
-        public static string GetUnusedRooms(int saveFileID)
+        public string GetUnusedRooms(int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {

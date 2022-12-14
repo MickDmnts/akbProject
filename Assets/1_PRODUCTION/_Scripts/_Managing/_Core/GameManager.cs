@@ -21,6 +21,9 @@ namespace AKB.Core.Managing
     [DefaultExecutionOrder(-450)]
     public class GameManager : MonoBehaviour
     {
+        /// <summary>
+        /// Gives access to the games' database methods.
+        /// </summary>
         SQLiteHandler _database;
         public SQLiteHandler Database => _database;
 

@@ -241,13 +241,13 @@ namespace AKB.Core.Managing.PCG
 
             Debug.Log(jsonStr);
 
-            SQLiteHandler.UpdateUnusedRooms(jsonStr, 0); //0 being the save file index.
+            GameManager.GetManager.Database.UpdateUnusedRooms(jsonStr, 0); //0 being the save file index.
         }
 
         void LoadSavedRooms()
         {
             //zero represents the active save
-            string dbStr = SQLiteHandler.GetUnusedRooms(0);
+            string dbStr = GameManager.GetManager.Database.GetUnusedRooms(0);
 
             Debug.Log($"Loading json string {dbStr}");
 

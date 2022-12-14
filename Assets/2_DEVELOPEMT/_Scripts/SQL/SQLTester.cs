@@ -1,3 +1,4 @@
+using AKB.Core.Managing;
 using UnityEngine;
 
 namespace AKB.Core.Database
@@ -9,36 +10,36 @@ namespace AKB.Core.Database
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 Debug.Log("Updating health value");
-                SQLiteHandler.UpdatePlayerHealthValue(120, 0);
+                GameManager.GetManager.Database.UpdatePlayerHealthValue(120, 0);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 Debug.Log("Getting health value");
-                Debug.Log(SQLiteHandler.GetPlayerHealthValue(0));
+                Debug.Log(GameManager.GetManager.Database.GetPlayerHealthValue(0));
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 Debug.Log("Updating last room value");
-                SQLiteHandler.UpdateLastRoom(2, 0);
+                GameManager.GetManager.Database.UpdateLastRoom(2, 0);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 Debug.Log("Getting last room value");
-                Debug.Log(SQLiteHandler.GetLastRoom(0));
+                Debug.Log(GameManager.GetManager.Database.GetLastRoom(0));
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
                 string jsonStr = "TODO";
-                SQLiteHandler.UpdateUnusedRooms(jsonStr, 0);
+                GameManager.GetManager.Database.UpdateUnusedRooms(jsonStr, 0);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                Debug.Log(SQLiteHandler.GetUnusedRooms(0));
+                Debug.Log(GameManager.GetManager.Database.GetUnusedRooms(0));
             }
         }
     }

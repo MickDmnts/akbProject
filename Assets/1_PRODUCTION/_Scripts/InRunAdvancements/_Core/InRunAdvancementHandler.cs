@@ -26,7 +26,7 @@ namespace AKB.Core.Managing.InRunUpdates
         /// </summary>
         void SaveDependentBehaviour()
         {
-            if (SQLiteHandler.GetHasActiveRun(0))
+            if (GameManager.GetManager.Database.GetHasActiveRun(0))
             {
                 Debug.Log("Had save");
                 LoadUnusedAdvancements();
@@ -79,13 +79,13 @@ namespace AKB.Core.Managing.InRunUpdates
 
             //Write the serialized json string to the corresponding save file in the DB.
             string jsonStr = DataSerializer.SerializeInRunAdvancements(unusedAdvs, activeAdvs);
-            SQLiteHandler.UpdateUnusedAdvancementsCell(jsonStr, 0); //zero gets replaced from the active save file.
+            GameManager.GetManager.Database.UpdateUnusedAdvancementsCell(jsonStr, 0); //zero gets replaced from the active save file.
         }
 
         void LoadUnusedAdvancements()
         {
             //Read the json string from the db
-            string jsonStr = SQLiteHandler.GetUnusedAdvancements(0);
+            string jsonStr = GameManager.GetManager.Database.GetUnusedAdvancements(0);
 
             //Get the deserialized advancement data from the JSON deserializer
             AdvancementData deserializedData = DataSerializer.DeserializeInRunAdvancements(jsonStr);
