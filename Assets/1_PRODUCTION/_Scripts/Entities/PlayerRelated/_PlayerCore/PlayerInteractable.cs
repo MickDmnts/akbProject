@@ -33,12 +33,12 @@ namespace AKB.Entities.Player.Interactions
 
         void OnSceneEntryPassive(GameScenes activeScene)
         {
-            if (ManagerHUB.GetManager.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.AdvancementTypes.RegenHealthOnRoomEntry))
+            if (ManagerHUB.GetManager.SlotsHandler.PassiveInRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.AdvancementTypes.RegenHealthOnRoomEntry))
             {
                 RegenHealthOnRoomEntry();
             }
 
-            if (ManagerHUB.GetManager.SlotsHandler.PassiveRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.AdvancementTypes.IgnoreFirstHit))
+            if (ManagerHUB.GetManager.SlotsHandler.PassiveInRunAdvancements.GetIsAdvancementActive(Core.Managing.InRunUpdates.AdvancementTypes.IgnoreFirstHit))
             {
                 ignoreHit = true;
             }

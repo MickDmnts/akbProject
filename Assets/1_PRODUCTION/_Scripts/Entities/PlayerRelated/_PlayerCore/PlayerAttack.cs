@@ -152,7 +152,7 @@ namespace AKB.Entities.Player
         {
             if (statusEffectCounter >= 3)
             {
-                EffectType attackEffect = ManagerHUB.GetManager.SlotsHandler.AttackAdvancementHandler.GetCurrentAdvancementEffect();
+                EffectType attackEffect = ManagerHUB.GetManager.SlotsHandler.AttackInRunAdvancements.GetCurrentAdvancementEffect();
                 GameObject effect = ManagerHUB.GetManager.StatusEffectManager.GetNeededEffect(attackEffect);
 
                 if (effect != null)

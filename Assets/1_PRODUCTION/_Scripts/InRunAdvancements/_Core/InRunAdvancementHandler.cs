@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
-using AKB.Core.Database;
 using AKB.Core.Serialization;
 
 namespace AKB.Core.Managing.InRunUpdates
@@ -13,7 +12,7 @@ namespace AKB.Core.Managing.InRunUpdates
         /// All the runtime created gameObjects created based on the AdvancementTypes enum names.
         /// *Remark: None values gets ommited*
         /// </summary>
-        Dictionary<AdvancementTypes, GameObject> inRunAdvancements = new Dictionary<AdvancementTypes, GameObject>();
+        Dictionary<AdvancementTypes, GameObject> inRunAdvancementPairs = new Dictionary<AdvancementTypes, GameObject>();
 
         private void Start()
         {
@@ -55,7 +54,7 @@ namespace AKB.Core.Managing.InRunUpdates
                 //Bypass the none enum type.
                 if (Enum.Parse<AdvancementTypes>(type).Equals(AdvancementTypes.None)) continue;
 
-                inRunAdvancements.Add(advType, CreateAdvancementGameobject(advType));
+                inRunAdvancementPairs.Add(advType, CreateAdvancementGameobject(advType));
             }
         }
 
@@ -67,9 +66,9 @@ namespace AKB.Core.Managing.InRunUpdates
         {
             //Parse the unused advancements enum types to strings and cache them in the list of strings.
             List<string> typeStrings = new List<string>();
-            foreach (KeyValuePair<AdvancementTypes, GameObject> pair in inRunAdvancements)
+            foreach (KeyValuePair<AdvancementTypes, GameObject> pair in inRunAdvancementPairs)
             {
-                AdvancementTypes type = inRunAdvancements[pair.Key].GetComponent<AdvancementPickUp>().GetAdvancementType();
+                AdvancementTypes type = inRunAdvancementPairs[pair.Key].GetComponent<AdvancementPickUp>().GetAdvancementType();
                 typeStrings.Add(type.ToString());
             }
 
@@ -101,7 +100,7 @@ namespace AKB.Core.Managing.InRunUpdates
             //Finaly write the loaded enum types to the inRunAdvancements list.
             foreach (AdvancementTypes type in types)
             {
-                inRunAdvancements.Add(type, CreateAdvancementGameobject(type));
+                inRunAdvancementPairs.Add(type, CreateAdvancementGameobject(type));
             }
         }
 
@@ -114,11 +113,25 @@ namespace AKB.Core.Managing.InRunUpdates
         {
             //Create a new gameObject with a pick up data
             GameObject newAdv = new GameObject($"{type}");
-            newAdv.AddComponent<AdvancementPickUp>().SetAdvancementType(type);
+            AdvancementPickUp advPickUp = newAdv.AddComponent<AdvancementPickUp>();
+
+            advPickUp.SetAdvancementType(type);
+
             newAdv.transform.SetParent(transform);
             newAdv.transform.position = transform.root.position;
 
+            //make a switch here
+
             return newAdv;
+        }
+
+        /// <summary>
+        /// Returns a copy of the GameObject of the passed type.
+        /// </summary>
+        public GameObject GetAdvancementGameObject(AdvancementTypes type)
+        {
+            GameObject copy = inRunAdvancementPairs[type];
+            return copy;
         }
     }
 }

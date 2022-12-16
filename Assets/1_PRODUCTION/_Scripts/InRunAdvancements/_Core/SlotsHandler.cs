@@ -73,7 +73,7 @@ namespace AKB.Core.Managing.InRunUpdates
         /// <summary>
         /// Get the Attack Advancement handler
         /// </summary>
-        public AttackRunAdvancements AttackAdvancementHandler { get; private set; }
+        public AttackRunAdvancements AttackInRunAdvancements { get; private set; }
 
         /// <summary>
         /// Get the Spear Advancement handler
@@ -88,12 +88,12 @@ namespace AKB.Core.Managing.InRunUpdates
         /// <summary>
         /// Get the Passive Advancement handler
         /// </summary>
-        public PassiveRunAdvancements PassiveRunAdvancements { get; private set; }
+        public PassiveRunAdvancements PassiveInRunAdvancements { get; private set; }
 
         /// <summary>
         /// Get the Devil Rage Advancement handler
         /// </summary>
-        public DevilRageRunAdvancements DevilRageRunAdvancements { get; private set; }
+        public DevilRageRunAdvancements DevilRageInRunAdvancements { get; private set; }
         #endregion
 
         private void Awake()
@@ -112,17 +112,17 @@ namespace AKB.Core.Managing.InRunUpdates
         {
             slots = new IAdvanceable[slotSize];
 
-            AttackAdvancementHandler = new AttackRunAdvancements();
+            AttackInRunAdvancements = new AttackRunAdvancements();
             SpearInRunAdvancements = new SpearRunAdvancements();
             DodgeInRunAdvancements = new DodgeRunAdvancements();
-            PassiveRunAdvancements = new PassiveRunAdvancements();
-            DevilRageRunAdvancements = new DevilRageRunAdvancements();
+            PassiveInRunAdvancements = new PassiveRunAdvancements();
+            DevilRageInRunAdvancements = new DevilRageRunAdvancements();
 
-            slots[0] = AttackAdvancementHandler;
+            slots[0] = AttackInRunAdvancements;
             slots[1] = SpearInRunAdvancements;
             slots[2] = DodgeInRunAdvancements;
-            slots[3] = PassiveRunAdvancements;
-            slots[4] = DevilRageRunAdvancements;
+            slots[3] = PassiveInRunAdvancements;
+            slots[4] = DevilRageInRunAdvancements;
         }
 
         public string[] GetSlottedAdvancementTypes()
