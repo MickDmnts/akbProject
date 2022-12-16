@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace AKB.Core.Managing.UI
 {
-    public class OpenPAPanel : MonoBehaviour
+    public class OpenPanel : MonoBehaviour
     {
         [SerializeField] GameObject persistentAdvancementsPanel;
 

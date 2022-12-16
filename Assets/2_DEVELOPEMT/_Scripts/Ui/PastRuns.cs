@@ -11,8 +11,6 @@ namespace AKB.Core.Managing.UI
         [SerializeField]
         List<int> numbers = new List<int>();
 
-        //den to deixnei otan pataw play alla doulebei
-
         // Start is called before the first frame update
         void Start()
         {

@@ -18,5 +18,25 @@ namespace AKB.Core.Managing.UI
         {
             AstarothHealthbar.fillAmount = currentHealth / maxHealth;
         }
+
+        public void EnableBeezlebubHealthbar()
+        {
+            BeelzebubHealthbar.enabled = true;
+        }
+
+        public void DisableBeezlebubHealthbar()
+        {
+            BeelzebubHealthbar.enabled = false;
+        }
+
+        public void EnableAstarothHealthbar()
+        {
+            AstarothHealthbar.enabled = true;
+        }
+
+        public void DisableAstarothHealthbar()
+        {
+            AstarothHealthbar.enabled = false;
+        }
     }
 }
