@@ -15,8 +15,6 @@ namespace AKB.Core.Managing.UI
 
         int currentlvl = 0;
 
-        int souls = 50;
-
         [SerializeField] Image abilityImage;
 
         [SerializeField] Image buttonImage;
@@ -64,28 +62,28 @@ namespace AKB.Core.Managing.UI
 
                 if (pointerDownTimer > requiredHoldTime)
                 {
-                    if (currentlvl == 0 && souls > 1)
+                    if (currentlvl == 0 && GameManager.GetManager.Souls > 3)
                     {
                         currentlvl++;
-                        souls = souls - 1;
+                        GameManager.GetManager.Souls = GameManager.GetManager.Souls - 3;
                         lvl.text = currentlvl + " / " + 3;
-                        Debug.Log(souls);
+                        Debug.Log(GameManager.GetManager.Souls);
                         Reset();
                     }
-                    else if (currentlvl == 1 & souls > 2)
+                    else if (currentlvl == 1 & GameManager.GetManager.Souls > 5)
                     {
                         currentlvl++;
-                        souls = souls - 2;
+                        GameManager.GetManager.Souls = GameManager.GetManager.Souls - 5;
                         lvl.text = currentlvl + " / " + 3;
-                        Debug.Log(souls);
+                        Debug.Log(GameManager.GetManager.Souls);
                         Reset();
                     }
-                    else if (currentlvl == 2 & souls > 3)
+                    else if (currentlvl == 2 & GameManager.GetManager.Souls > 8)
                     {
                         currentlvl++;
-                        souls = souls - 3;
+                        GameManager.GetManager.Souls = GameManager.GetManager.Souls - 8;
                         lvl.text = currentlvl + " / " + 3;
-                        Debug.Log(souls);
+                        Debug.Log(GameManager.GetManager.Souls);
                         Reset();
                     }
                 }

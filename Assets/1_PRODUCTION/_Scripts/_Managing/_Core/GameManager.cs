@@ -21,6 +21,9 @@ namespace AKB.Core.Managing
     [DefaultExecutionOrder(-450)]
     public class GameManager : MonoBehaviour
     {
+        //for testing
+        public int Souls = 150;
+
         /// <summary>
         /// Gives access to the games' database methods.
         /// </summary>
