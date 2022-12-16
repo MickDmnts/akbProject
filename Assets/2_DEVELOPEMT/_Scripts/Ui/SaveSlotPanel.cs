@@ -6,6 +6,14 @@ namespace AKB.Core.Managing.UI
 {
     public class SaveSlotPanel : MonoBehaviour
     {
+        enum ButtonType
+        {
+            newGame,
+            savedGame,
+        }
+
+        [SerializeField] ButtonType buttonType;
+
         [SerializeField] Button button1;
         [SerializeField] Button button2;
         [SerializeField] Button button3;
@@ -27,33 +35,20 @@ namespace AKB.Core.Managing.UI
             button4.onClick.AddListener(delegate { Placeholder(3); });
         }
 
-        //theloume na kanei new game
-        //theloume na krataei ta saves mas
-        //ta save mas prepei na kratane kapoies plhrofories tis opoies kai prepei na deiksoume
-        //theloume na kanei override to prohgoumo run an exei pathsei new game se ena hdh yparxon
+       
         void Placeholder(int buttonIndex)
         {
-            //gia twra,  apla na se phgainei se mia pista
-            //GameManager.S.LevelManager.TransitToPlayerHub();
-            Debug.Log("New game button on save slots screen was pressed");
-            if(buttonIndex == 0)
+            switch(buttonType)
             {
+                case ButtonType.newGame:
+                    GameManager.GetManager.SetFileID(buttonIndex);
+                    //Erase previous data from db
+                    break;
 
-            }
-
-            if(buttonIndex == 1)
-            {
-
-            }
-
-            if (buttonIndex == 2)
-            {
-
-            }
-
-            if (buttonIndex == 3)
-            {
-
+                case ButtonType.savedGame:
+                    //GameManager.GetManager.SetFileID();
+                    throw new NotImplementedException(); 
+                    break;
             }
 
             //-Each save slot shows the time played

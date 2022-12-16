@@ -29,25 +29,17 @@ namespace AKB.Core.Managing.UI
 
         void Continue()
         {
-            //Continues from last saved game
-            throw new System.NotImplementedException();
+            ManagerHUB.GetManager.LevelManager.TransitToHub();
         }
 
         void NewGame()
         {
-            //Replace when save-loading system gets introduced.
-            //ManagerHUB.GetManager.UIManager.EnablePanel("SaveSlot_UI_Panel");
-
-            //------------------------
-            ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
-            ManagerHUB.GetManager.LevelManager.LoadNext(false);
-            //------------------------
+            ManagerHUB.GetManager.UIManager.EnablePanel("SaveSlot_UI_Panel");
         }
 
         void LoadGame()
         {
             ManagerHUB.GetManager.UIManager.EnablePanel("SaveSlot_UI_Panel");
-            throw new System.NotImplementedException();
         }
 
         void Exit()

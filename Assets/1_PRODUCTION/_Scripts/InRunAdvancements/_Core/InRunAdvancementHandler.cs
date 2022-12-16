@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
 
 using AKB.Core.Serialization;
 
@@ -13,6 +14,20 @@ namespace AKB.Core.Managing.InRunUpdates
         /// *Remark: None values gets ommited*
         /// </summary>
         Dictionary<AdvancementTypes, GameObject> inRunAdvancementPairs = new Dictionary<AdvancementTypes, GameObject>();
+
+        Dictionary<AdvancementTypes, Sprite> inRunAdvancementsSpritesPairs = new Dictionary<AdvancementTypes, Sprite>();
+
+        [SerializeField] Sprite[] inRunAdvancementsSprites;
+
+        void SetInRunAdvancementsSprites()
+        {
+           //AdvancementTypes[] types = Enum.GetNames(typeof(AdvancementTypes));
+
+            for(int i = 0; i < inRunAdvancementsSprites.Length; i++)
+            {
+                //AdvancementTypes type = Enum.ge
+            }
+        }
 
         private void Start()
         {

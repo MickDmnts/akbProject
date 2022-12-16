@@ -24,6 +24,9 @@ namespace AKB.Core.Managing
         //for testing
         public int Souls = 150;
 
+        private int _activeFileID = -1;
+        public int ActiveFileID => _activeFileID;
+
         /// <summary>
         /// Gives access to the games' database methods.
         /// </summary>
@@ -62,6 +65,8 @@ namespace AKB.Core.Managing
         /// </summary>
         /// <param name="state">The current game state</param>
         public void SetGameState(GameState state) => _state = state;
+
+        public void SetFileID(int fileID) => _activeFileID = fileID;
 
         private void Awake()
         {

@@ -47,13 +47,13 @@ namespace AKB.Core.Managing.UI
 
         void AbandonRun()
         {
-            //GameManager.S.LevelManager.TransitToPlayerHub();
-            Debug.Log("Abandon run button on pause menu screen was pressed");
+            ManagerHUB.GetManager.LevelManager.TransitToHub();
         }
 
         void SaveExit()
         {
-            Debug.Log("Save & Exit button on pause menu screen was pressed");
+            Debug.Log("Wow i savedd");
+            Application.Quit();
         }
     }
 }

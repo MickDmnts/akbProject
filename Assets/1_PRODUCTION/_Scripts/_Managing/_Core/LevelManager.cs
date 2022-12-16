@@ -43,6 +43,9 @@ namespace AKB.Core.Managing.LevelLoading
         [SerializeField, Tooltip("The level packets in order of desired loading. Add extra packets at the end of the list for further manual transitioning.")]
         List<LevelLoadPacket> levelsInLoadOrder;
 
+        [SerializeField]
+        LevelLoadPacket hubPacket;
+
         /// <summary>
         /// The currently loaded and active scenes.
         /// </summary>
@@ -94,6 +97,12 @@ namespace AKB.Core.Managing.LevelLoading
         private void Awake()
         {
             ManagerHUB.GetManager.SetLevelManagerReference(this);
+        }
+
+        public void TransitToHub()
+        {
+            //force load to player hub
+            ForceLoad(hubPacket.PacketIndex);
         }
 
         private void Start()
