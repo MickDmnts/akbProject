@@ -1,4 +1,4 @@
-namespace AKB.Core.Managing.InRunUpdates
+namespace akb.Core.Managing.InRunUpdates
 {
     /// <summary>
     /// A class used for JSON advancement serialization.

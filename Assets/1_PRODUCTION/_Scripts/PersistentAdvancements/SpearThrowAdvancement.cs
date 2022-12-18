@@ -1,4 +1,4 @@
-﻿namespace AKB.Core.Managing.UpdateSystem.Implementations
+﻿namespace akb.Core.Managing.UpdateSystem.Implementations
 {
     /* CLASS DOCUMENTATION *\
      * 
@@ -41,16 +41,16 @@
             switch (currentTier)
             {
                 case -1:
-                {
-                    IncreaseSpearDamage();
-                }
-                break;
+                    {
+                        IncreaseSpearDamage();
+                    }
+                    break;
 
                 case 0:
-                {
-                    IncreaseSpearRange();
-                }
-                break;
+                    {
+                        IncreaseSpearRange();
+                    }
+                    break;
             }
 
             advancementCurrentTier++;

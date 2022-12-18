@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using AKB.Entities.Interactions;
-using AKB.Core.Managing;
+using akb.Entities.Interactions;
+using akb.Core.Managing;
 
-namespace AKB.Entities.Player
+namespace akb.Entities.Player
 {
     [DefaultExecutionOrder(460)]
     public class PlayerAttack : MonoBehaviour

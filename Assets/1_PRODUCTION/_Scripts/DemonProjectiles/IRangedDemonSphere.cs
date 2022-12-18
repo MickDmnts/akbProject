@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace AKB.Projectiles
+namespace akb.Projectiles
 {
     public interface IRangedDemonSphere
     {

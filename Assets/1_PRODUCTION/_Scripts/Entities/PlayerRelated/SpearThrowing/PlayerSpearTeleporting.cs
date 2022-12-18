@@ -1,10 +1,10 @@
-using AKB.Core.Managing;
-using AKB.Entities.Interactions;
+using akb.Core.Managing;
+using akb.Entities.Interactions;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace AKB.Entities.Player.SpearHandling
+namespace akb.Entities.Player.SpearHandling
 {
     [DefaultExecutionOrder(430)]
     public class PlayerSpearTeleporting : MonoBehaviour

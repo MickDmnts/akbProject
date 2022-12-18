@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AKB.Core.Managing.UpdateSystem.Implementations
+namespace akb.Core.Managing.UpdateSystem.Implementations
 {
     /* CLASS DOCUMENTATION *\
      * 
@@ -44,30 +44,30 @@ namespace AKB.Core.Managing.UpdateSystem.Implementations
             switch (currentTier)
             {
                 case -1:
-                {
-                    ManagerHUB.GetManager.PlayerEntity.DevilRage.SetIsUnlockedState(true);
-                }
-                break;
+                    {
+                        ManagerHUB.GetManager.PlayerEntity.DevilRage.SetIsUnlockedState(true);
+                    }
+                    break;
 
                 case 0:
-                {
-                    float fill = ManagerHUB.GetManager.PlayerEntity.DevilRage.GetRageFillRate();
+                    {
+                        float fill = ManagerHUB.GetManager.PlayerEntity.DevilRage.GetRageFillRate();
 
-                    fill *= 2;
+                        fill *= 2;
 
-                    ManagerHUB.GetManager.PlayerEntity.DevilRage.SetRageFillValue(fill);
-                }
-                break;
+                        ManagerHUB.GetManager.PlayerEntity.DevilRage.SetRageFillValue(fill);
+                    }
+                    break;
 
                 case 1:
-                {
-                    float duration = ManagerHUB.GetManager.PlayerEntity.DevilRage.GetRageDuration();
+                    {
+                        float duration = ManagerHUB.GetManager.PlayerEntity.DevilRage.GetRageDuration();
 
-                    duration *= 2;
+                        duration *= 2;
 
-                    ManagerHUB.GetManager.PlayerEntity.DevilRage.SetRageDuration(duration);
-                }
-                break;
+                        ManagerHUB.GetManager.PlayerEntity.DevilRage.SetRageDuration(duration);
+                    }
+                    break;
             }
         }
     }

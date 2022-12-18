@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AKB.Entities.AI.Implementations.Simple_Demon
+namespace akb.Entities.AI.Implementations.Simple_Demon
 {
     /* [CLASS DOCUMENTATION]
      *

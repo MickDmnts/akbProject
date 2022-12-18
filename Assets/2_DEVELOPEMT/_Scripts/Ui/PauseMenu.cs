@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AKB.Core.Managing.UI
+namespace akb.Core.Managing.UI
 {
     public class PauseMenu : MonoBehaviour
     {

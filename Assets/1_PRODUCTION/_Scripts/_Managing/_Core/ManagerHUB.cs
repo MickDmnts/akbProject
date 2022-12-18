@@ -1,13 +1,13 @@
-using AKB.Core.Managing.PCG;
-using AKB.Core.Managing.GameEvents;
+using akb.Core.Managing.PCG;
+using akb.Core.Managing.GameEvents;
 
-using AKB.Entities.Player;
-using AKB.Core.Managing.LevelLoading;
-using AKB.Core.Managing.UI;
-using AKB.Core.Managing.UpdateSystem;
-using AKB.Core.Managing.InRunUpdates;
+using akb.Entities.Player;
+using akb.Core.Managing.LevelLoading;
+using akb.Core.Managing.UI;
+using akb.Core.Managing.UpdateSystem;
+using akb.Core.Managing.InRunUpdates;
 
-namespace AKB.Core.Managing
+namespace akb.Core.Managing
 {
     /// <summary>
     /// This class holds all the available in-game managers the scripts will need.
@@ -88,11 +88,6 @@ namespace AKB.Core.Managing
         /// Get the PlayerEntity class.
         /// </summary>
         public PlayerEntity PlayerEntity { get; private set; }
-
-        ///<summary>
-        /// Get the OnEnemyDeath class.
-        ///</summary>
-        public OnEnemyDeath OnEnemyDeath { get; private set; }
         #endregion
 
         #region REFERENCE_MUTATORS
@@ -158,13 +153,6 @@ namespace AKB.Core.Managing
         public void SetSlotHandlerReference(SlotsHandler reference)
         {
             SlotsHandler = reference;
-        }
-        /// <summary>
-        /// Sets the OnEnemyDeath class
-        /// </summary>
-        public void SetOnEnemyDeath(OnEnemyDeath reference)
-        {
-            OnEnemyDeath = reference;
         }
         #endregion
     }

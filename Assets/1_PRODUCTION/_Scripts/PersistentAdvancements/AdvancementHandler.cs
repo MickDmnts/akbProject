@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace AKB.Core.Managing.UpdateSystem
+namespace akb.Core.Managing.UpdateSystem
 {
-    using AKB.Core.Managing.UpdateSystem.Implementations;
+    using akb.Core.Managing.UpdateSystem.Implementations;
     /* CLASS DOCUMENTATION *\
      * 
      * [Variable Specifics]

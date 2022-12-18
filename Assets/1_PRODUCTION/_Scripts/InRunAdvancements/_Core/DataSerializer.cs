@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-using AKB.Core.Managing.InRunUpdates;
-using AKB.Core.Managing.PCG;
+using akb.Core.Managing.InRunUpdates;
+using akb.Core.Managing.PCG;
 
-namespace AKB.Core.Serialization
+namespace akb.Core.Serialization
 {
     public static class DataSerializer
     {

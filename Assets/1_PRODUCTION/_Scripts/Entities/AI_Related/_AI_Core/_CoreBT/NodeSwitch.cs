@@ -1,4 +1,4 @@
-namespace AKB.Entities.AI.Implementations
+namespace akb.Entities.AI.Implementations
 {
     public abstract class NodeSwitch : INode
     {

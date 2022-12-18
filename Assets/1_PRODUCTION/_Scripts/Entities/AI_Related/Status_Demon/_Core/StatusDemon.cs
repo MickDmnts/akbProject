@@ -1,12 +1,12 @@
-using AKB.Core.Managing;
-using AKB.Entities.Interactions;
+using akb.Core.Managing;
+using akb.Entities.Interactions;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-namespace AKB.Entities.AI.Implementations.Status_Demon
+namespace akb.Entities.AI.Implementations.Status_Demon
 {
     public class StatusDemon : AI_Entity, IInteractable,
         IStunnable, IShockable

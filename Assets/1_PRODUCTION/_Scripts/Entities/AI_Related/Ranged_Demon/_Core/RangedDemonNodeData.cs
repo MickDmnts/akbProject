@@ -1,7 +1,7 @@
-using AKB.Core.Managing;
+using akb.Core.Managing;
 using UnityEngine;
 
-namespace AKB.Entities.AI.Implementations.Ranged_Demon
+namespace akb.Entities.AI.Implementations.Ranged_Demon
 {
     public class RangedDemonNodeData : AI_NodeData
     {

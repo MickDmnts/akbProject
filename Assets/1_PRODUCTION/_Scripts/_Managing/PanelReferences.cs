@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AKB.Core.Managing.LevelLoading
+namespace akb.Core.Managing.LevelLoading
 {
     /// <summary>
     /// This class is responsible for passing the UI scene panels to the 

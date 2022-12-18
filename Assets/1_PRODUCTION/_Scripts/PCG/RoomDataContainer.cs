@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using AKB.Core.Database;
-using AKB.Core.Serialization;
+using akb.Core.Database;
+using akb.Core.Serialization;
 using UnityEngine;
 
 using Random = UnityEngine.Random;
 
-namespace AKB.Core.Managing.PCG
+namespace akb.Core.Managing.PCG
 {
     /// <summary>
     /// The available game worlds.

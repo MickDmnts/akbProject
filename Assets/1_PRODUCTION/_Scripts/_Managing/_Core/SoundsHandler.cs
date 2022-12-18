@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AKB.Core.Sounds
+namespace akb.Core.Sounds
 {
     public class SoundsHandler : MonoBehaviour
     {

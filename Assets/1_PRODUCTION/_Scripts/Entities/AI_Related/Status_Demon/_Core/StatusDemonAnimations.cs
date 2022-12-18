@@ -1,4 +1,4 @@
-namespace AKB.Entities.AI.Implementations.Status_Demon
+namespace akb.Entities.AI.Implementations.Status_Demon
 {
     public class StatusDemonAnimations : AI_EntityAnimations
     {

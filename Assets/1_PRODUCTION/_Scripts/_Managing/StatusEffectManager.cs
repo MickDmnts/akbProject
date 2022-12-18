@@ -1,7 +1,7 @@
 using UnityEngine;
-using AKB.Entities.Interactions;
+using akb.Entities.Interactions;
 
-namespace AKB.Core.Managing
+namespace akb.Core.Managing
 {
     /// <summary>
     /// The available EffectTypes of the game.

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AKB.Core.Managing.LevelLoading
+namespace akb.Core.Managing.LevelLoading
 {
     /* 
      * This script handles the fade in and fade out between scene changing.

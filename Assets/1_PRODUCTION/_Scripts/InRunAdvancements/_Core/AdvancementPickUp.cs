@@ -1,7 +1,7 @@
-using AKB.Entities.Player;
+using akb.Entities.Player;
 using UnityEngine;
 
-namespace AKB.Core.Managing.InRunUpdates
+namespace akb.Core.Managing.InRunUpdates
 {
     public enum AdvancementSlot
     {

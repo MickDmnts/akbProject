@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AKB.Entities.AI.Implementations.Ranged_Demon
+namespace akb.Entities.AI.Implementations.Ranged_Demon
 {
     public class RangedDemonAttackCooldown : RunAfterCountdown
     {

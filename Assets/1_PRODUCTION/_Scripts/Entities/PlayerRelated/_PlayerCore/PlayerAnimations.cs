@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AKB.Entities.Player
+namespace akb.Entities.Player
 {
     [DefaultExecutionOrder(410)]
     public class PlayerAnimations : MonoBehaviour

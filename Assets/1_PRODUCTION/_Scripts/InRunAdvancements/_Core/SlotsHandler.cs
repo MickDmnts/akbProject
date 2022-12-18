@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AKB.Core.Managing.InRunUpdates
+namespace akb.Core.Managing.InRunUpdates
 {
     /// <summary>
     /// The available player slots.

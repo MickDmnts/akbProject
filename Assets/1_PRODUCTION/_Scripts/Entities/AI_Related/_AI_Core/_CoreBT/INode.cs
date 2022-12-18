@@ -1,4 +1,4 @@
-namespace AKB.Entities.AI
+namespace akb.Entities.AI
 {
     /*
      * This interface is used in behaviour tree node creation.

@@ -1,4 +1,4 @@
-﻿namespace AKB.Core.Managing.UpdateSystem
+﻿namespace akb.Core.Managing.UpdateSystem
 {
     /* CLASS DOCUMENTATION *\
      * 

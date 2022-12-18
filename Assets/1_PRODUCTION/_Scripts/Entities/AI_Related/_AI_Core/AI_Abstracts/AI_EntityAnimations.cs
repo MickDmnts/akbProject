@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AKB.Entities.AI
+namespace akb.Entities.AI
 {
     public abstract class AI_EntityAnimations : MonoBehaviour
     {

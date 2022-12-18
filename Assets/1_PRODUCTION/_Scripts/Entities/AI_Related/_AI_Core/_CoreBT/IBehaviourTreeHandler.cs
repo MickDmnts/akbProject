@@ -1,4 +1,4 @@
-namespace AKB.Entities.AI
+namespace akb.Entities.AI
 {
     public interface IBehaviourTreeHandler
     {

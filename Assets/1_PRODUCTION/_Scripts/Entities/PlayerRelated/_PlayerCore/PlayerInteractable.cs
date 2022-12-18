@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-using AKB.Entities.Interactions;
-using AKB.Core.Managing;
-using AKB.Core.Managing.LevelLoading;
+using akb.Entities.Interactions;
+using akb.Core.Managing;
+using akb.Core.Managing.LevelLoading;
 
-namespace AKB.Entities.Player.Interactions
+namespace akb.Entities.Player.Interactions
 {
     public class PlayerInteractable : MonoBehaviour,
         IInteractable, IShockable, IStunnable, IConfusable,
@@ -20,7 +20,7 @@ namespace AKB.Entities.Player.Interactions
         bool currentlyShocked = false;
         bool currentlyStunned = false;
         bool currentlyCharmed = false;
-        bool takenDamage = false;
+        //bool takenDamage = false;
         Vector3 inflictedFromDirection;
 
         bool ignoreHit = false;
@@ -79,7 +79,9 @@ namespace AKB.Entities.Player.Interactions
         void SubtractHealth(float subtractionValue)
         {
             playerEntity.SetPlayerHealth(playerEntity.GetPlayerHealth() - subtractionValue);
-            DamageTaken();
+
+            //Notify coin multiplyer reset
+            ManagerHUB.GetManager.GameEventsHandler.OnPlayerHit();
         }
 
         bool CheckIfDead(float healthValue)
@@ -96,19 +98,23 @@ namespace AKB.Entities.Player.Interactions
         {
             GameObject temp = GameObject.Instantiate(effect, playerEntity.transform);
         }
-        #region Taken_Damage
+
+        /* #region Taken_Damage
         public bool TookDamage() => takenDamage;
+
         public void DamageTaken()
         {
             if (takenDamage) return;
 
             takenDamage = true;
         }
+
         public void DamageTakenReset()
         {
             takenDamage = false;
         }
-        #endregion
+        #endregion */
+
         #region SHOCKED_INTERACTION
         public bool IsGettingShocked() => currentlyShocked;
 

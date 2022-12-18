@@ -1,4 +1,4 @@
-namespace AKB.Core.Managing.PCG
+namespace akb.Core.Managing.PCG
 {
     public class PCGData
     {

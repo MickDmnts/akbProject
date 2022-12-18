@@ -2,10 +2,10 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using AKB.Core.Managing;
+using akb.Core.Managing;
 using UnityEngine.Rendering.Universal;
 
-namespace AKB.Entities.Player.SpearHandling
+namespace akb.Entities.Player.SpearHandling
 {
     [DefaultExecutionOrder(440)]
     public class PlayerSpearThrow : MonoBehaviour

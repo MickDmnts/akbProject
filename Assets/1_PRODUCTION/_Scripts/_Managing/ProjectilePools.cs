@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AKB.Core.Managing
+namespace akb.Core.Managing
 {
     /// <summary>
     /// Every available Projectile type in the game.

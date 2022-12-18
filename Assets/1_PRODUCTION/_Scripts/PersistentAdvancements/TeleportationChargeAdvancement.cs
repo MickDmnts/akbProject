@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.UI;
 
-namespace AKB.Core.Managing.UpdateSystem.Implementations
+namespace akb.Core.Managing.UpdateSystem.Implementations
 {
     /* CLASS DOCUMENTATION *\
      * 

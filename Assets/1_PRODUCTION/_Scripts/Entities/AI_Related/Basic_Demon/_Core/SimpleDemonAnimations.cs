@@ -1,4 +1,4 @@
-namespace AKB.Entities.AI.Implementations.Simple_Demon
+namespace akb.Entities.AI.Implementations.Simple_Demon
 {
     public class SimpleDemonAnimations : AI_EntityAnimations
     {

@@ -1,9 +1,9 @@
 using UnityEngine;
 
-using AKB.Projectiles;
-using AKB.Core.Managing;
+using akb.Projectiles;
+using akb.Core.Managing;
 
-namespace AKB.Entities.AI.Implementations.Ranged_Demon
+namespace akb.Entities.AI.Implementations.Ranged_Demon
 {
     public class RangedDemonAttackAction : AttackAction
     {

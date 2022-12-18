@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AKB.Core.Managing.PCG
+namespace akb.Core.Managing.PCG
 {
     public class RoomSelector : MonoBehaviour
     {

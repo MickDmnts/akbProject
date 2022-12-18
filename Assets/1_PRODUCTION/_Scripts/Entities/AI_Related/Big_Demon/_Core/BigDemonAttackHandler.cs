@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using AKB.Entities.Interactions;
+using akb.Entities.Interactions;
 
-namespace AKB.Entities.AI.Implementations.Big_Demon
+namespace akb.Entities.AI.Implementations.Big_Demon
 {
     public class BigDemonAttackHandler : MonoBehaviour
     {

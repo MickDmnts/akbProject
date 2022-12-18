@@ -1,4 +1,4 @@
-namespace AKB.Entities.AI.Implementations.Big_Demon
+namespace akb.Entities.AI.Implementations.Big_Demon
 {
     public class BigDemonBTHandler : AI_EntityBTHandler
     {

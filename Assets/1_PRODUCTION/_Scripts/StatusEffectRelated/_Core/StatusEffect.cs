@@ -1,8 +1,8 @@
 using UnityEngine;
 
-using AKB.Core.Managing;
+using akb.Core.Managing;
 
-namespace AKB.Entities.Interactions
+namespace akb.Entities.Interactions
 {
     public abstract class StatusEffect : MonoBehaviour
     {

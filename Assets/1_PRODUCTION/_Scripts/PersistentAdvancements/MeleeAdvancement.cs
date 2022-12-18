@@ -1,4 +1,4 @@
-﻿namespace AKB.Core.Managing.UpdateSystem.Implementations
+﻿namespace akb.Core.Managing.UpdateSystem.Implementations
 {
     /* CLASS DOCUMENTATION *\
      * 
@@ -38,16 +38,16 @@
             switch (currentTier)
             {
                 case -1:
-                {
-                    IncreasePlayerDamage();
-                }
-                break;
+                    {
+                        IncreasePlayerDamage();
+                    }
+                    break;
 
                 case 0:
-                {
-                    EnableHealthRegen();
-                }
-                break;
+                    {
+                        EnableHealthRegen();
+                    }
+                    break;
             }
 
             advancementCurrentTier++;

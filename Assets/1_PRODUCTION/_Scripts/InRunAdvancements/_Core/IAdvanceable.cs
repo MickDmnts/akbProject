@@ -1,4 +1,4 @@
-﻿namespace AKB.Core.Managing.InRunUpdates
+﻿namespace akb.Core.Managing.InRunUpdates
 {
     /// <summary>
     /// An interface for better handling of the games' in-run advancements.

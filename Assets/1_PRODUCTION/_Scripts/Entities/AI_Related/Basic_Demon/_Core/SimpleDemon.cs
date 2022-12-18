@@ -2,11 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace AKB.Entities.AI.Implementations.Simple_Demon
+namespace akb.Entities.AI.Implementations.Simple_Demon
 {
-    using AKB.Entities.Interactions;
+    using akb.Core.Managing;
+
+    using akb.Entities.Interactions;
     using Fire_Demon;
-    using UnityEngine.Rendering.Universal;
 
     /// <summary>
     /// The available simple demon variations.
@@ -34,7 +35,6 @@ namespace AKB.Entities.AI.Implementations.Simple_Demon
         [SerializeField] float fireAoeRadious = 7f;
 
         SimpleDemonAttackHandler attackHandler;
-
 
         bool isShocked = false;
         float agentSpeedCache;
@@ -141,6 +141,9 @@ namespace AKB.Entities.AI.Implementations.Simple_Demon
                 GetDemonAnimations().PlayDeathAnimation();
 
                 MoveLayerOnDeath();
+
+                //Notify subs for an agent death
+                ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
             }
         }
 

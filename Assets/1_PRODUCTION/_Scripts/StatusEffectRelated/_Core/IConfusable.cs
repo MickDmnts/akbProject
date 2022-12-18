@@ -1,4 +1,4 @@
-﻿namespace AKB.Entities.Interactions
+﻿namespace akb.Entities.Interactions
 {
     public interface IConfusable
     {

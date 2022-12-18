@@ -1,7 +1,7 @@
-using AKB.Core.Managing;
+using akb.Core.Managing;
 using UnityEngine;
 
-namespace AKB.Core.Database
+namespace akb.Core.Database
 {
     public class SQLTester : MonoBehaviour
     {

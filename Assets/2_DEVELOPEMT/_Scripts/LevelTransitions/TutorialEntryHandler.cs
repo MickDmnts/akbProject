@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AKB.Core.Managing.LevelLoading.Hub
+namespace akb.Core.Managing.LevelLoading.Hub
 {
     public class TutorialEntryHandler : MonoBehaviour
     {

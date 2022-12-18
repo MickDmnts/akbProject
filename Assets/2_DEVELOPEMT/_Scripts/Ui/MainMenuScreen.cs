@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AKB.Core.Managing.UI
+namespace akb.Core.Managing.UI
 {
     public class MainMenuScreen : MonoBehaviour
     {
@@ -30,6 +30,8 @@ namespace AKB.Core.Managing.UI
         void Continue()
         {
             ManagerHUB.GetManager.LevelManager.TransitToHub();
+            //TODO: Load save file ID from coresponding db field, pass it through the same methods of the save buttons
+            //to load the game info correctly.
         }
 
         void NewGame()

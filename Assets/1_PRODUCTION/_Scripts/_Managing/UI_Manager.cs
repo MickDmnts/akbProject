@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using AKB.Core.Managing.LevelLoading;
+using akb.Core.Managing.LevelLoading;
 
-namespace AKB.Core.Managing.UI
+namespace akb.Core.Managing.UI
 {
     /// <summary>
     /// This class is responsible for managing the activation and deactivation of all in-game

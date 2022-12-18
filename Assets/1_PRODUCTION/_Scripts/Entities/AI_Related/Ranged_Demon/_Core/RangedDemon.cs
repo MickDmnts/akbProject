@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-using AKB.Core.Managing;
-using AKB.Entities.Interactions;
+using akb.Core.Managing;
+using akb.Entities.Interactions;
 
-namespace AKB.Entities.AI.Implementations.Ranged_Demon
+namespace akb.Entities.AI.Implementations.Ranged_Demon
 {
     public class RangedDemon : AI_Entity, IInteractable,
         IStunnable, IShockable

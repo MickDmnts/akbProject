@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AKB.Core.Managing.InRunUpdates
+namespace akb.Core.Managing.InRunUpdates
 {
     [System.Serializable]
     public class AttackRunAdvancements : IAdvanceable

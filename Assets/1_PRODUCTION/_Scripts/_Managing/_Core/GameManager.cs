@@ -1,7 +1,7 @@
-using AKB.Core.Database;
+using akb.Core.Database;
 using UnityEngine;
 
-namespace AKB.Core.Managing
+namespace akb.Core.Managing
 {
     /// <summary>
     /// All the states the games can be in.

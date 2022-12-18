@@ -1,8 +1,8 @@
-using AKB.Core.Managing;
+using akb.Core.Managing;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace AKB.Entities.Player
+namespace akb.Entities.Player
 {
     public class DevilRage : MonoBehaviour
     {

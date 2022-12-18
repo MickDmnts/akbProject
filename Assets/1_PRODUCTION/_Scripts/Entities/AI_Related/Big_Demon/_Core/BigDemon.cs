@@ -4,9 +4,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace AKB.Entities.AI.Implementations.Big_Demon
+namespace akb.Entities.AI.Implementations.Big_Demon
 {
-    using AKB.Entities.Interactions;
+    using akb.Entities.Interactions;
     using Charge_Only;
 
     public enum BigDemonType

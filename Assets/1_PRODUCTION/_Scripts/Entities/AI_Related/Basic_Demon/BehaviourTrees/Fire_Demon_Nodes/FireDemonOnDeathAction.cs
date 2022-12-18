@@ -1,6 +1,6 @@
 using System;
 
-namespace AKB.Entities.AI.Implementations.Simple_Demon.Fire_Demon
+namespace akb.Entities.AI.Implementations.Simple_Demon.Fire_Demon
 {
     public sealed class FireDemonOnDeathAction : INode
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AKB.Core.Managing.UI
+namespace akb.Core.Managing.UI
 {
     public class OpenPanel : MonoBehaviour
     {

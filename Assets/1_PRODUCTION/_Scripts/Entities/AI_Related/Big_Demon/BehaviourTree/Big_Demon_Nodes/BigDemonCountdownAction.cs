@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace AKB.Entities.AI.Implementations.Big_Demon
+namespace akb.Entities.AI.Implementations.Big_Demon
 {
     public sealed class BigDemonCountdownAction : RunAfterCountdown
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace AKB.Entities.AI
+namespace akb.Entities.AI
 {
     /* [Node Documentation]
      * 

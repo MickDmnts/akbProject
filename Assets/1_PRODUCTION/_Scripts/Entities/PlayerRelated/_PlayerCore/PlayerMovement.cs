@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
 
-namespace AKB.Entities.Player
+namespace akb.Entities.Player
 {
     [DefaultExecutionOrder(420)]
     public class PlayerMovement : MonoBehaviour

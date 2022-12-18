@@ -1,10 +1,10 @@
 using UnityEngine;
 
-using AKB.Core.Managing;
-using AKB.Entities.Interactions;
-using AKB.Entities.Player.Interactions;
+using akb.Core.Managing;
+using akb.Entities.Interactions;
+using akb.Entities.Player.Interactions;
 
-namespace AKB.Entities.AI.Implementations.Status_Demon
+namespace akb.Entities.AI.Implementations.Status_Demon
 {
     public class StatusDemonAOEHandler : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-namespace AKB.Core.Managing.UI
+namespace akb.Core.Managing.UI
 {
     public class AdvancementsUpdatePanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {

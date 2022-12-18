@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AKB.Entities.AI.Implementations.Status_Demon
+namespace akb.Entities.AI.Implementations.Status_Demon
 {
     public class StatusDemonAfterAttackSelector : Selector
     {

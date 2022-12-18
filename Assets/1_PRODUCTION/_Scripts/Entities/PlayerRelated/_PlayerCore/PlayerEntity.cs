@@ -1,12 +1,12 @@
 using UnityEngine;
 
-using AKB.Core.Managing;
-using AKB.Entities.Player.SpearHandling;
-using AKB.Entities.Interactions;
-using AKB.Entities.Player.Interactions;
-using AKB.Core.Managing.LevelLoading;
+using akb.Core.Managing;
+using akb.Entities.Player.SpearHandling;
+using akb.Entities.Interactions;
+using akb.Entities.Player.Interactions;
+using akb.Core.Managing.LevelLoading;
 
-namespace AKB.Entities.Player
+namespace akb.Entities.Player
 {
     [DefaultExecutionOrder(400)]
     public sealed class PlayerEntity : Entity

@@ -1,4 +1,4 @@
-namespace AKB.Entities.AI.Implementations
+namespace akb.Entities.AI.Implementations
 {
     public class IsStunnedSelector : INode
     {

@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
-using AKB.Entities.Interactions;
-using AKB.Core.Managing;
-using AKB.Core.Managing.InRunUpdates;
+using akb.Entities.Interactions;
+using akb.Core.Managing;
+using akb.Core.Managing.InRunUpdates;
 
-namespace AKB.Entities.Player.SpearHandling
+namespace akb.Entities.Player.SpearHandling
 {
     enum TravelDirection
     {

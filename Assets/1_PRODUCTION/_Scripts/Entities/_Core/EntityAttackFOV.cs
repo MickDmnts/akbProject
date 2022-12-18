@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace AKB.Entities.Interactions
+namespace akb.Entities.Interactions
 {
     /// <summary>
     /// A class used to transfer inpector given data to the FOV manager in runtime.

@@ -1,8 +1,8 @@
 using System;
 
-using AKB.Core.Managing.LevelLoading;
+using akb.Core.Managing.LevelLoading;
 
-namespace AKB.Core.Managing.GameEvents
+namespace akb.Core.Managing.GameEvents
 {
     /// <summary>
     /// A class containing all game-wide events.
@@ -22,7 +22,39 @@ namespace AKB.Core.Managing.GameEvents
         public void OnSceneChanged(GameScenes focusedScene)
         {
             if (onSceneChanged != null)
+            {
                 onSceneChanged(focusedScene);
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when a new game starts.
+        /// </summary>
+        public event Action<int> onNewGame;
+        /// <summary>
+        /// Call to notify the onNewGame callbacks.
+        /// </summary>
+        public void OnNewGame(int saveFileID)
+        {
+            if (onNewGame != null)
+            {
+                onNewGame(saveFileID);
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when a load game starts.
+        /// </summary>
+        public event Action<int> onLoadGame;
+        /// <summary>
+        /// Call to notify the onLoadGame callbacks.
+        /// </summary>
+        public void OnLoadGame(int saveFileID)
+        {
+            if (onLoadGame != null)
+            {
+                onLoadGame(saveFileID);
+            }
         }
 
         /// <summary>
@@ -35,7 +67,39 @@ namespace AKB.Core.Managing.GameEvents
         public void OnEnemyHit()
         {
             if (onEnemyHit != null)
+            {
                 onEnemyHit();
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when an enemy dies.
+        /// </summary>
+        public event Action onEnemyDeath;
+        /// <summary>
+        /// Call to notify onEnemyDeath callbacks.
+        /// </summary>
+        public void OnEnemyDeath()
+        {
+            if (onEnemyDeath != null)
+            {
+                onEnemyDeath();
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when an the player gets hit.
+        /// </summary>
+        public event Action onPlayerHit;
+        /// <summary>
+        /// Call to notify onPlayerHit callbacks.
+        /// </summary>
+        public void OnPlayerHit()
+        {
+            if (onPlayerHit != null)
+            {
+                onPlayerHit();
+            }
         }
     }
 }

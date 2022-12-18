@@ -1,4 +1,4 @@
-namespace AKB.Entities.AI.Implementations.Big_Demon.Charge_Only
+namespace akb.Entities.AI.Implementations.Big_Demon.Charge_Only
 {
     public class BigChargerBTHandler : AI_EntityBTHandler
     {

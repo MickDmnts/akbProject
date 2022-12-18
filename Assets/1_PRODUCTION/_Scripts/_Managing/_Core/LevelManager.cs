@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace AKB.Core.Managing.LevelLoading
+namespace akb.Core.Managing.LevelLoading
 {
     /// <summary>
     /// All the game scenes enumerated for ease of access, the index MUST be the same as 

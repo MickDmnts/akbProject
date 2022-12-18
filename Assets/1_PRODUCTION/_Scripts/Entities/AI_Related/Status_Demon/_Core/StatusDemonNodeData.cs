@@ -1,6 +1,6 @@
-using AKB.Core.Managing;
+using akb.Core.Managing;
 
-namespace AKB.Entities.AI.Implementations.Status_Demon
+namespace akb.Entities.AI.Implementations.Status_Demon
 {
     public class StatusDemonNodeData : AI_NodeData
     {

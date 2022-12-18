@@ -1,11 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
-using UnityEngine.UI;
 
-using AKB.Core.Serialization;
+using akb.Core.Serialization;
 
-namespace AKB.Core.Managing.InRunUpdates
+namespace akb.Core.Managing.InRunUpdates
 {
     public class InRunAdvancementHandler : MonoBehaviour
     {
@@ -19,11 +18,13 @@ namespace AKB.Core.Managing.InRunUpdates
 
         [SerializeField] Sprite[] inRunAdvancementsSprites;
 
+        //TODO: LOAD ITEM SPRITES HERE
+
         void SetInRunAdvancementsSprites()
         {
-           //AdvancementTypes[] types = Enum.GetNames(typeof(AdvancementTypes));
+            //AdvancementTypes[] types = Enum.GetNames(typeof(AdvancementTypes));
 
-            for(int i = 0; i < inRunAdvancementsSprites.Length; i++)
+            for (int i = 0; i < inRunAdvancementsSprites.Length; i++)
             {
                 //AdvancementTypes type = Enum.ge
             }
@@ -103,6 +104,8 @@ namespace AKB.Core.Managing.InRunUpdates
 
             //Get the deserialized advancement data from the JSON deserializer
             AdvancementData deserializedData = DataSerializer.DeserializeInRunAdvancements(jsonStr);
+
+            //TODO: LOAD SLOTTED ITEMS HERE
 
             //Parse every string type to its corresponding enum type
             List<AdvancementTypes> types = new List<AdvancementTypes>();

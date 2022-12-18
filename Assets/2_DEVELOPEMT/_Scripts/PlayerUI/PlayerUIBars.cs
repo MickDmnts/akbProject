@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AKB.Core.Managing
+namespace akb.Core.Managing
 {
     public class PlayerUIBars : MonoBehaviour
     {

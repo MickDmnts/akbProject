@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-using AKB.Core.Managing;
-using AKB.Entities.Player;
-using AKB.Entities.Interactions;
-using AKB.Entities.Player.Interactions;
+using akb.Core.Managing;
+using akb.Entities.Player;
+using akb.Entities.Interactions;
+using akb.Entities.Player.Interactions;
 
-namespace AKB.Projectiles
+namespace akb.Projectiles
 {
     public enum Type
     {

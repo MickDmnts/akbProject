@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AKB.Core.Managing.LevelLoading
+namespace akb.Core.Managing.LevelLoading
 {
     [CreateAssetMenu(fileName = "Level Load Packet", menuName = "Level Load Packet/Packet")]
     public class LevelLoadPacket : ScriptableObject

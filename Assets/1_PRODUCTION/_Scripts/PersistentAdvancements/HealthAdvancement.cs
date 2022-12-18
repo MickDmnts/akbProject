@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AKB.Core.Managing.UpdateSystem.Implementations
+namespace akb.Core.Managing.UpdateSystem.Implementations
 {
     /* CLASS DOCUMENTATION *\
      * 

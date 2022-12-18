@@ -1,4 +1,4 @@
-namespace AKB.Entities.AI.Implementations.Ranged_Demon
+namespace akb.Entities.AI.Implementations.Ranged_Demon
 {
     public sealed class RangedDemonActivator : INode
     {

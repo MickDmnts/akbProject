@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AKB.Core.Managing.PCG
+namespace akb.Core.Managing.PCG
 {
     [System.Serializable]
     public struct EnemySpawnInfo

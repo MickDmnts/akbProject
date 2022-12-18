@@ -2,14 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using AKB.Core.Managing;
-using AKB.Entities.Interactions;
+using akb.Core.Managing;
+using akb.Entities.Interactions;
 
 using UnityEngine.AI;
 
-namespace AKB.Entities.Player
+namespace akb.Entities.Player
 {
-    using AKB.Core.Managing.InRunUpdates;
+    using akb.Core.Managing.InRunUpdates;
     [DefaultExecutionOrder(450)]
     public class PlayerDodgeRoll : MonoBehaviour
     {

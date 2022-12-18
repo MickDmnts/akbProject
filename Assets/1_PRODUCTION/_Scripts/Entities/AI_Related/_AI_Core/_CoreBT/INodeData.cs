@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace AKB.Entities.AI
+namespace akb.Entities.AI
 {
     /*
      * This interface is used to ensure type safety of the classes passed throughout the 

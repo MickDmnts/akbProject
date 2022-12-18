@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using Mono.Data.Sqlite;
 
-namespace AKB.Core.Database
+namespace akb.Core.Database
 {
     public class SQLiteHandler
     {
