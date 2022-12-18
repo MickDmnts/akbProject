@@ -20,6 +20,7 @@ namespace AKB.Entities.Player.Interactions
         bool currentlyShocked = false;
         bool currentlyStunned = false;
         bool currentlyCharmed = false;
+        bool takenDamage = false;
         Vector3 inflictedFromDirection;
 
         bool ignoreHit = false;
@@ -65,7 +66,6 @@ namespace AKB.Entities.Player.Interactions
             }
 
             SubtractHealth(damageValue);
-
             //SHOW HURT AND DO STUFF
 
             playerEntity.IsDead = CheckIfDead(playerEntity.GetPlayerHealth());
@@ -79,6 +79,7 @@ namespace AKB.Entities.Player.Interactions
         void SubtractHealth(float subtractionValue)
         {
             playerEntity.SetPlayerHealth(playerEntity.GetPlayerHealth() - subtractionValue);
+            DamageTaken();
         }
 
         bool CheckIfDead(float healthValue)
@@ -95,7 +96,19 @@ namespace AKB.Entities.Player.Interactions
         {
             GameObject temp = GameObject.Instantiate(effect, playerEntity.transform);
         }
+        #region Taken_Damage
+        public bool TookDamage() => takenDamage;
+        public void DamageTaken()
+        {
+            if (takenDamage) return;
 
+            takenDamage = true;
+        }
+        public void DamageTakenReset()
+        {
+            takenDamage = false;
+        }
+        #endregion
         #region SHOCKED_INTERACTION
         public bool IsGettingShocked() => currentlyShocked;
 

@@ -88,6 +88,11 @@ namespace AKB.Core.Managing
         /// Get the PlayerEntity class.
         /// </summary>
         public PlayerEntity PlayerEntity { get; private set; }
+
+        ///<summary>
+        /// Get the OnEnemyDeath class.
+        ///</summary>
+        public OnEnemyDeath OnEnemyDeath { get; private set; }
         #endregion
 
         #region REFERENCE_MUTATORS
@@ -153,6 +158,13 @@ namespace AKB.Core.Managing
         public void SetSlotHandlerReference(SlotsHandler reference)
         {
             SlotsHandler = reference;
+        }
+        /// <summary>
+        /// Sets the OnEnemyDeath class
+        /// </summary>
+        public void SetOnEnemyDeath(OnEnemyDeath reference)
+        {
+            OnEnemyDeath = reference;
         }
         #endregion
     }
