@@ -6,12 +6,14 @@ using akb.Core.Managing.LevelLoading;
 using akb.Core.Managing.UI;
 using akb.Core.Managing.UpdateSystem;
 using akb.Core.Managing.InRunUpdates;
+using akb.Core.Managing.Currencies;
 
 namespace akb.Core.Managing
 {
     /// <summary>
     /// This class holds all the available in-game managers the scripts will need.
     /// </summary>
+    [System.Serializable]
     public class ManagerHUB
     {
         /// <summary>
@@ -26,7 +28,7 @@ namespace akb.Core.Managing
         /// <summary>
         /// Initializes the Manager Hub class.
         /// </summary>
-        public ManagerHUB()
+        public ManagerHUB(GameManager sas)
         {
             if (_s != null) { throw new System.Exception("Tried to create multiple manager hubs!"); }
             else
@@ -34,7 +36,7 @@ namespace akb.Core.Managing
                 _s = this;
 
                 GameEventsHandler = new GameEventsHandler();
-                AdvancementHandler = new AdvancementHandler();
+                AdvancementHandler = new AdvancementHandler(this);
             }
         }
 
@@ -53,6 +55,11 @@ namespace akb.Core.Managing
         /// Get the SlotsHandler class.
         /// </summary>
         public SlotsHandler SlotsHandler { get; private set; }
+
+        /// <summary>
+        /// Get the CurrencyHandler class.
+        /// </summary>
+        public CurrencyHandler CurrencyHandler { get; private set; }
 
         /// <summary>
         /// Get the LevelManager class.
@@ -97,6 +104,11 @@ namespace akb.Core.Managing
         public void SetLevelManagerReference(LevelManager reference)
         {
             LevelManager = reference;
+        }
+
+        public void SetCurrencyHandlerReference(CurrencyHandler reference)
+        {
+            CurrencyHandler = reference;
         }
 
         /// <summary>

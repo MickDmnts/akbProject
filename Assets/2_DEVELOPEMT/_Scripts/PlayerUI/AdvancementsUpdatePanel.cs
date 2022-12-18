@@ -3,10 +3,26 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
+using akb.Core.Managing;
+using akb.Core.Managing.UpdateSystem;
+
 namespace akb.Core.Managing.UI
 {
     public class AdvancementsUpdatePanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
+        enum SinneSoulCostPerTier
+        {
+            Tier1 = 3,
+            Tier2 = 5,
+            Tier3 = 8
+        }
+
+        [Header("Set in inspector")]
+        [SerializeField] AdvancementType typeOfAdvancement;
+        [SerializeField] Image abilityImage;
+        [SerializeField] Image buttonImage;
+        [SerializeField] TextMeshProUGUI lvl;
+
         bool pointerDown;
 
         float pointerDownTimer;
@@ -15,18 +31,10 @@ namespace akb.Core.Managing.UI
 
         int currentlvl = 0;
 
-        [SerializeField] Image abilityImage;
-
-        [SerializeField] Image buttonImage;
-
-        [SerializeField] TextMeshProUGUI lvl;
-
         public void OnPointerDown(PointerEventData pointerEventData)
         {
             pointerDown = true;
-
             buttonImage.color = Color.grey;
-
         }
 
         //Detect if clicks are no longer registering
@@ -62,30 +70,41 @@ namespace akb.Core.Managing.UI
 
                 if (pointerDownTimer > requiredHoldTime)
                 {
-                    if (currentlvl == 0 && GameManager.GetManager.Souls > 3)
+                    if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinneSoulCostPerTier.Tier1)
                     {
                         currentlvl++;
-                        GameManager.GetManager.Souls = GameManager.GetManager.Souls - 3;
+
+                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinneSoulCostPerTier.Tier1);
                         lvl.text = currentlvl + " / " + 3;
-                        Debug.Log(GameManager.GetManager.Souls);
+
+                        ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
+
                         Reset();
                     }
-                    else if (currentlvl == 1 & GameManager.GetManager.Souls > 5)
+                    else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinneSoulCostPerTier.Tier2)
                     {
                         currentlvl++;
-                        GameManager.GetManager.Souls = GameManager.GetManager.Souls - 5;
+                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinneSoulCostPerTier.Tier2);
+
+                        ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
+
                         lvl.text = currentlvl + " / " + 3;
-                        Debug.Log(GameManager.GetManager.Souls);
+
                         Reset();
                     }
-                    else if (currentlvl == 2 & GameManager.GetManager.Souls > 8)
+                    else if (currentlvl == 2 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinneSoulCostPerTier.Tier3)
                     {
                         currentlvl++;
-                        GameManager.GetManager.Souls = GameManager.GetManager.Souls - 8;
+                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinneSoulCostPerTier.Tier3);
+
+                        ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
+
                         lvl.text = currentlvl + " / " + 3;
-                        Debug.Log(GameManager.GetManager.Souls);
+
                         Reset();
                     }
+
+                    Debug.Log(ManagerHUB.GetManager.AdvancementHandler.ToString());
                 }
 
                 if (currentlvl == 0)
@@ -94,12 +113,14 @@ namespace akb.Core.Managing.UI
                     float t = pointerDownTimer / requiredHoldTime;
                     abilityImage.fillAmount = Mathf.Lerp(0, 0.33f, t);
                 }
+
                 if (currentlvl == 1)
                 {
                     //The interpolation value between the two floats.
                     float t = pointerDownTimer / requiredHoldTime;
                     abilityImage.fillAmount = Mathf.Lerp(0.33f, 0.66f, t);
                 }
+
                 if (currentlvl == 2)
                 {
                     //The interpolation value between the two floats.

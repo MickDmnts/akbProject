@@ -7,7 +7,6 @@ namespace akb.Core.Managing.GameEvents
     /// <summary>
     /// A class containing all game-wide events.
     /// </summary>
-    [Serializable]
     public class GameEventsHandler
     {
         /// <summary>
@@ -88,7 +87,7 @@ namespace akb.Core.Managing.GameEvents
         }
 
         /// <summary>
-        /// Add to this event to get notified when an the player gets hit.
+        /// Add to this event to get notified when the player gets hit.
         /// </summary>
         public event Action onPlayerHit;
         /// <summary>
@@ -99,6 +98,36 @@ namespace akb.Core.Managing.GameEvents
             if (onPlayerHit != null)
             {
                 onPlayerHit();
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when the player health changes.
+        /// </summary>
+        public event Action<float> onPlayerHealthChange;
+        /// <summary>
+        /// Call to notify onPlayerHealthChange callbacks.
+        /// </summary>
+        public void OnPlayerHealthChange(float value)
+        {
+            if (onPlayerHealthChange != null)
+            {
+                onPlayerHealthChange(value);
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when the player rage changes.
+        /// </summary>
+        public event Action<float> onPlayerRageChange;
+        /// <summary>
+        /// Call to notify onPlayerRageChange callbacks.
+        /// </summary>
+        public void OnPlayerRageChange(float value)
+        {
+            if (onPlayerRageChange != null)
+            {
+                onPlayerRageChange(value);
             }
         }
     }

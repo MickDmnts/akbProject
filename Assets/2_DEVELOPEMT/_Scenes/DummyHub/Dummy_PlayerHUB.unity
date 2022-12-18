@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -596,7 +596,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &89091221
 GameObject:
@@ -723,7 +723,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &128091373
 GameObject:
@@ -5451,7 +5451,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &213287506
 GameObject:
@@ -6561,7 +6561,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267904025}
-  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.852237}
+  m_LocalRotation: {x: 0.2933253, y: -0.40960622, z: 0.14097942, w: 0.852237}
   m_LocalPosition: {x: -9975, y: 25.115, z: -199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6868,6 +6868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f33d014a67ce4a3fa00d0e1c6659469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfAdvancement: 5
   abilityImage: {fileID: 1310471724}
   buttonImage: {fileID: 297619746}
   lvl: {fileID: 183277598}
@@ -8282,7 +8283,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &432398536
 GameObject:
@@ -9309,6 +9310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f33d014a67ce4a3fa00d0e1c6659469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfAdvancement: 0
   abilityImage: {fileID: 1808330366}
   buttonImage: {fileID: 472371186}
   lvl: {fileID: 2111803583}
@@ -36395,7 +36397,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792142000}
-  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.852237}
+  m_LocalRotation: {x: 0.2933253, y: -0.40960622, z: 0.14097942, w: 0.852237}
   m_LocalPosition: {x: -9975, y: 25.115, z: -199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37369,7 +37371,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &867272437
 GameObject:
@@ -49100,7 +49102,7 @@ RectTransform:
   - {fileID: 1910990360}
   - {fileID: 2038101901}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -49274,7 +49276,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotSize: 5
-  slotImages: []
+  slotImages:
+  - {fileID: 1578594289}
+  - {fileID: 390247921}
+  - {fileID: 1796319706}
+  - {fileID: 659283192}
+  - {fileID: 549270590}
 --- !u!4 &921869617
 Transform:
   m_ObjectHideFlags: 0
@@ -50769,6 +50776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f33d014a67ce4a3fa00d0e1c6659469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfAdvancement: 1
   abilityImage: {fileID: 684884918}
   buttonImage: {fileID: 1017772209}
   lvl: {fileID: 1675313653}
@@ -52300,7 +52308,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1129457084
 GameObject:
@@ -53361,6 +53369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f33d014a67ce4a3fa00d0e1c6659469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfAdvancement: 3
   abilityImage: {fileID: 1824349898}
   buttonImage: {fileID: 1244678413}
   lvl: {fileID: 2092163421}
@@ -53621,6 +53630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f33d014a67ce4a3fa00d0e1c6659469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfAdvancement: 2
   abilityImage: {fileID: 1414340880}
   buttonImage: {fileID: 1254440857}
   lvl: {fileID: 1064670082}
@@ -55851,7 +55861,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1391029529
 GameObject:
@@ -56950,37 +56960,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439882051}
   m_CullTransparentMesh: 1
---- !u!1 &1442613747
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1442613749}
-  m_Layer: 0
-  m_Name: ManagerHUB
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1442613749
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442613747}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1447572635
 GameObject:
   m_ObjectHideFlags: 0
@@ -57630,7 +57609,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1488321479
 GameObject:
@@ -61338,6 +61317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f33d014a67ce4a3fa00d0e1c6659469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfAdvancement: 4
   abilityImage: {fileID: 304383363}
   buttonImage: {fileID: 1739899096}
   lvl: {fileID: 1427862053}
@@ -62675,7 +62655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe29f6e0f67536a4aa19433702754078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Souls: 150
 --- !u!4 &1900708975
 Transform:
   m_ObjectHideFlags: 0
@@ -63508,7 +63487,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh48850
+  m_Name: pb_Mesh88316
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

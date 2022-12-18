@@ -1,5 +1,6 @@
-using akb.Core.Database;
 using UnityEngine;
+
+using akb.Core.Database;
 
 namespace akb.Core.Managing
 {
@@ -21,9 +22,6 @@ namespace akb.Core.Managing
     [DefaultExecutionOrder(-450)]
     public class GameManager : MonoBehaviour
     {
-        //for testing
-        public int Souls = 150;
-
         private int _activeFileID = -1;
         public int ActiveFileID => _activeFileID;
 
@@ -66,7 +64,7 @@ namespace akb.Core.Managing
         /// <param name="state">The current game state</param>
         public void SetGameState(GameState state) => _state = state;
 
-        public void SetFileID(int fileID) => _activeFileID = fileID;
+        public void SetActiveFileID(int id) => _activeFileID = id;
 
         private void Awake()
         {
@@ -75,7 +73,7 @@ namespace akb.Core.Managing
                 _s = this;
 
                 _database = new SQLiteHandler();
-                _managerHUB = new ManagerHUB();
+                _managerHUB = new ManagerHUB(this);
             }
             else
             {

@@ -4,12 +4,12 @@ namespace akb.Core.Managing.Currencies
 {
     public class CurrencyHandler : MonoBehaviour
     {
-        [Header("Set in inspector")]
+        [Header("Set coin multiplier values")]
         [SerializeField] float initialMultiplier;
         [SerializeField] float multiplierValue;
 
         int hellCoins = -1;
-        int sinnerSouls = -1;
+        int sinnerSouls = 100;
 
         public int GetHellCoins => hellCoins;
         public int GetSinnerSouls => sinnerSouls;
@@ -18,6 +18,8 @@ namespace akb.Core.Managing.Currencies
 
         private void Start()
         {
+            ManagerHUB.GetManager.SetCurrencyHandlerReference(this);
+
             coinMultiplier = new CoinMultiplierHandler(initialMultiplier, multiplierValue);
         }
 
@@ -32,12 +34,16 @@ namespace akb.Core.Managing.Currencies
             hellCoins += value;
         }
 
+        public void DecreaseHellCoinsBy(int value) => hellCoins -= value;
+
         public void IncreaseSinnerSoulsBy(int value)
         {
             if (sinnerSouls == 0) value++;
 
             sinnerSouls += value;
         }
+
+        public void DecreaseSinnerSoulsBy(int value) => sinnerSouls -= value;
 
         public void SetHellCoinsValue(int value) => hellCoins = value;
 

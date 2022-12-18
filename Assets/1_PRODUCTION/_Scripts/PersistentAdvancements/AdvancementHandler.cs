@@ -2,20 +2,9 @@
 
 namespace akb.Core.Managing.UpdateSystem
 {
+    using System.Text;
     using akb.Core.Managing.UpdateSystem.Implementations;
-    /* CLASS DOCUMENTATION *\
-     * 
-     * [Variable Specifics]
-     * Inspector values: ___ MUST be set from the inspector
-     * Dynamically changed: These variables dynamically change throughout the game
-     * 
-     * [Class Flow]
-     * 1. ....
-     * 2. ....
-     * 
-     * [Must Know]
-     * 1. ...
-     */
+    using UnityEngine;
 
     public enum AdvancementType
     {
@@ -27,11 +16,9 @@ namespace akb.Core.Managing.UpdateSystem
         DevilRage,
     }
 
+    [System.Serializable]
     public class AdvancementHandler
     {
-        //Sinner souls should be loaded from the save file later
-        public int SinnerSouls { get; private set; }
-
         Dictionary<AdvancementType, Advancement> advancements = new Dictionary<AdvancementType, Advancement>()
         {
             {AdvancementType.Health, new HealthAdvancement(2) },
@@ -42,24 +29,32 @@ namespace akb.Core.Managing.UpdateSystem
             {AdvancementType.DevilRage, new DevilRageAdvancement(2) },
         };
 
-        public AdvancementHandler()
-        {
-            //LoadSinnerSoulsValue();
-        }
-
-        /*void LoadSinnerSoulsValue()
-        {
-            SinnerSouls = SaveDataHandler.ReadSinnerSoulsValue();
-        }*/
+        public AdvancementHandler(ManagerHUB hub) { }
 
         public bool AdvanceTierOf(AdvancementType typeOfAdvancement)
         {
+            Debug.Log("Updated " + typeOfAdvancement);
             return advancements[typeOfAdvancement].AdvanceSkill();
         }
 
         public bool IsAdvancementUnlocked(AdvancementType advancementType, int desiredTier)
         {
             return advancements[advancementType].GetCurrentTier() == desiredTier;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (KeyValuePair<AdvancementType, Advancement> pair in advancements)
+            {
+                sb.Append(pair.Key.ToString());
+                sb.Append(" : ");
+                sb.Append(pair.Value.GetCurrentTier());
+                sb.Append("\n");
+            }
+
+            return sb.ToString();
         }
     }
 }

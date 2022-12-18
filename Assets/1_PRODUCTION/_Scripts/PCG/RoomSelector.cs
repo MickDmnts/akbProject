@@ -20,7 +20,7 @@ namespace akb.Core.Managing.PCG
 
         RoomDataContainer roomDataContainer;
 
-        private void Awake()
+        private void Start()
         {
             roomDataContainer = FindObjectOfType<RoomDataContainer>();
             ManagerHUB.GetManager.SetRoomSelector(this);
