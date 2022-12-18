@@ -36,7 +36,7 @@ namespace akb.Core.Managing.UI
 
         void NewGame()
         {
-            ManagerHUB.GetManager.UIManager.EnablePanel("SaveSlot_UI_Panel");
+            ManagerHUB.GetManager.UIManager.EnablePanel("NewGameSlots_UI_Panel");
         }
 
         void LoadGame()

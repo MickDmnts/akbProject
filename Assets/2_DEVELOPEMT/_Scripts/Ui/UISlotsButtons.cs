@@ -49,18 +49,23 @@ namespace akb.Core.Managing.UI
 
         void ButtonFileID(int buttonIndex)
         {
-            Debug.Log(buttonIndex); ;
-
             switch (buttonType)
             {
                 case ButtonType.newGame:
-                    GameManager.GetManager.SetActiveFileID(buttonIndex);
-                    //Erase previous data from db
+                    NewGameActions(buttonIndex);
                     break;
 
                 case ButtonType.savedGame:
                     throw new NotImplementedException();
             }
+        }
+
+        void NewGameActions(int buttonIndex)
+        {
+            //Erase previous data from db
+            GameManager.GetManager.Database.EraseDataFromFile(buttonIndex);
+            GameManager.GetManager.Database.SetLastUsedFileID(buttonIndex);
+            GameManager.GetManager.SetActiveFileID(buttonIndex);
         }
     }
 }

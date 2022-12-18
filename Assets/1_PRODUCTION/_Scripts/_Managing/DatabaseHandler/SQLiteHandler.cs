@@ -15,6 +15,7 @@ namespace akb.Core.Database
             OnCostruction();
         }
 
+        #region DATABASE_CREATION
         private void OnCostruction()
         {
             if (dbPath == "")
@@ -48,6 +49,10 @@ namespace akb.Core.Database
             //SaveFileInfo
             CreateSaveFileInfoTable();
             SetupSaveFileInfoDB();
+
+            //Create a save file cache table
+            CreateLastPlayedSaveFile();
+            SetupLastPlayedSaveFile();
         }
 
 #if UNITY_EDITOR
@@ -376,7 +381,8 @@ namespace akb.Core.Database
                                                 LastRoom           INTEGER DEFAULT ( -1),
                                                 PlayerHealth       INTEGER DEFAULT ( -1),                                                                         
                                                 UnusedAdvancements VARCHAR (255),
-                                                UnusedRoomIDs      VARCHAR (255)
+                                                UnusedRoomIDs      VARCHAR (255),
+                                                CoinsInRun INTEGER DEFAULT ( -1)
                                             )";
 
                     int result = command.ExecuteNonQuery();
@@ -404,13 +410,14 @@ namespace akb.Core.Database
                                                 LastRoom,
                                                 PlayerHealth,
                                                 UnusedAdvancements,
-                                                UnusedRoomIDs
+                                                UnusedRoomIDs,
+                                                CoinsInRun
                                             )
                                             VALUES
-                                                (0,0,NULL,NULL,NULL,NULL),
-                                                (1,0,NULL,NULL,NULL,NULL),
-                                                (2,0,NULL,NULL,NULL,NULL),
-                                                (3,0,NULL,NULL,NULL,NULL);";
+                                                (0,0,NULL,NULL,NULL,NULL,NULL),
+                                                (1,0,NULL,NULL,NULL,NULL,NULL),
+                                                (2,0,NULL,NULL,NULL,NULL,NULL),
+                                                (3,0,NULL,NULL,NULL,NULL,NULL);";
 
                     int result = command.ExecuteNonQuery();
 #if UNITY_EDITOR
@@ -420,6 +427,94 @@ namespace akb.Core.Database
             }
         }
         #endregion
+
+        void CreateLastPlayedSaveFile()
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"CREATE TABLE IF NOT EXISTS LAST_USED_SAVE_FILE
+                                            (
+                                                LastUsedSaveID INTEGER DEFAULT ( -1)
+                                            )";
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Last played save file table setup: {result.ToString()}");
+#endif
+                }
+            }
+        }
+
+        void SetupLastPlayedSaveFile()
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"INSERT OR IGNORE INTO LAST_USED_SAVE_FILE
+                                            (
+                                                LastUsedSaveID
+                                            )
+                                            VALUES
+                                                (
+                                                    NULL
+                                                )";
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Last played save file table setup: {result.ToString()}");
+#endif
+                }
+            }
+        }
+        #endregion
+
+        #region EXTERNAL_HANDLERS
+        public void EraseDataFromFile(int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"UPDATE SAVE_FILE_RUN_INFO
+                                            SET
+                                                TotalRuns = 0,
+                                                LastRoom = NULL,
+                                                PlayerHealth = NULL,
+                                                UnusedAdvancements = NULL,
+                                                UnusedRoomIDs = NULL,
+                                                CoinsInRun = NULL
+                                            WHERE 
+                                                SaveFileID = @fileID;";
+
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Data erased at {saveFileID}, result: {result.ToString()}");
+#endif
+                }
+            }
+        }
 
         public void UpdateUnusedAdvancementsCell(string jsonString, int saveFileID)
         {
@@ -774,5 +869,66 @@ namespace akb.Core.Database
                 }
             }
         }
+
+        public void SetLastUsedFileID(int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"UPDATE LAST_USED_SAVE_FILE
+                                            SET
+                                                LastUsedSaveID = @saveFileID";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "saveFileID",
+                        Value = saveFileID
+                    });
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Update last used room to {saveFileID}, result: {result.ToString()}");
+#endif
+                }
+            }
+        }
+
+        public int GetLastUsedFileID()
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"SELECT LastUsedSaveID FROM LAST_USED_SAVE_FILE;";
+
+                    int result = -1;
+                    SqliteDataReader reader = command.ExecuteReader();
+
+                    if (reader[0].GetType() != typeof(DBNull))
+                    {
+                        while (reader.Read())
+                        {
+                            result = reader.GetInt32(0);
+                        }
+#if UNITY_EDITOR
+                        AddLoggerEntry($"Get last saved ID result : {result.ToString()}");
+#endif
+                        return result;
+                    }
+
+                    return -1;
+                }
+            }
+        }
+        #endregion
     }
 }

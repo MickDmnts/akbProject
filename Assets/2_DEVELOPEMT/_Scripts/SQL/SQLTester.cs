@@ -41,6 +41,21 @@ namespace akb.Core.Database
             {
                 Debug.Log(GameManager.GetManager.Database.GetUnusedRooms(0));
             }
+
+            if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                GameManager.GetManager.Database.EraseDataFromFile(0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha8))
+            {
+                GameManager.GetManager.Database.SetLastUsedFileID(0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                Debug.Log(GameManager.GetManager.Database.GetLastUsedFileID());
+            }
         }
     }
 }
