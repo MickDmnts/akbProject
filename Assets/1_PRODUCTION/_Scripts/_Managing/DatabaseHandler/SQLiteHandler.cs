@@ -12,12 +12,6 @@ namespace akb.Core.Database
 
         public SQLiteHandler()
         {
-            OnCostruction();
-        }
-
-        #region DATABASE_CREATION
-        private void OnCostruction()
-        {
             if (dbPath == "")
             {
                 dbPath = "URI=file:" + Application.dataPath + "/Resources/akbPlayerDb.db";
@@ -27,6 +21,12 @@ namespace akb.Core.Database
 #endif
             }
 
+            OnCostruction();
+        }
+
+        #region DATABASE_CREATION
+        private void OnCostruction()
+        {
             //Create db Logger
             CreateDBLogger();
 
@@ -56,9 +56,7 @@ namespace akb.Core.Database
         }
 
 #if UNITY_EDITOR
-        /// <summary>
-        /// Creates a table used for logging the database queries.
-        /// </summary>
+        ///<summary>Creates a table used for logging the database queries.</summary>
         void CreateDBLogger()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -77,10 +75,7 @@ namespace akb.Core.Database
             }
         }
 
-        /// <summary>
-        /// Call to add the passed string to the logger table of the database.
-        /// </summary>
-        /// <param name="log"></param>
+        ///<summary>Call to add the passed string to the logger table of the database.</summary>
         public void AddLoggerEntry(string log)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -108,9 +103,7 @@ namespace akb.Core.Database
         }
 #endif
 
-        /// <summary>
-        /// Creates a table to hold the save files of the game.
-        /// </summary>
+        ///<summary>Creates a table to hold the save files of the game.</summary>
         void CreateSaveFiles()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -137,9 +130,7 @@ namespace akb.Core.Database
             }
         }
 
-        /// <summary>
-        /// Inserts the save flles entries to the database.
-        /// </summary>
+        ///<summary>Inserts the save flles entries to the database.</summary>
         void SetupSaveFilesDB()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -167,6 +158,7 @@ namespace akb.Core.Database
         }
 
         #region SINNER_SOULS
+        ///<summary>Creates SINNER_SOULS table.</summary>
         void CreateSoulsTables()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -195,6 +187,7 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Inserts initial entries to SINNER_SOULS table</summary>
         void SetupSinnerSoulsDB()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -226,6 +219,7 @@ namespace akb.Core.Database
         #endregion
 
         #region PERSISTENT_ADVANCEMENT_TYPES
+        ///<summary>Creates EXISTS PERS_ADV_TYPES table.</summary>
         void CreateAdvancementsTypesTable()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -247,6 +241,7 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Inserts initial entries to PERS_ADV_TYPES table.</summary>
         void SetupAdvancementsTypesDB()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -275,6 +270,7 @@ namespace akb.Core.Database
         #endregion
 
         #region PERSISTENT_ADVANCEMENTS
+        ///<summary>Creates PERS_ADVANCEMENTS table</summary>
         void CreateAdvancementsTable()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -306,6 +302,7 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Inserts initial entries at PERS_ADVANCEMENTS table.</summary>
         void SetupAdvancementsDB()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -364,6 +361,7 @@ namespace akb.Core.Database
         #endregion
 
         #region SAVE_FILE_INFO
+        ///<summary>Creates SAVE_FILE_RUN_INFO table.</summary>
         void CreateSaveFileInfoTable()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -380,7 +378,7 @@ namespace akb.Core.Database
                                                 TotalRuns          INTEGER DEFAULT ( 0),      
                                                 LastRoom           INTEGER DEFAULT ( -1),
                                                 PlayerHealth       INTEGER DEFAULT ( -1),                                                                         
-                                                UnusedAdvancements VARCHAR (255),
+                                                InRunAdvancementData VARCHAR (255),
                                                 UnusedRoomIDs      VARCHAR (255),
                                                 CoinsInRun INTEGER DEFAULT ( -1)
                                             )";
@@ -393,6 +391,7 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Inserts initial entries to SAVE_FILE_RUN_INFO table.</summary>
         void SetupSaveFileInfoDB()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -409,7 +408,7 @@ namespace akb.Core.Database
                                                 TotalRuns,
                                                 LastRoom,
                                                 PlayerHealth,
-                                                UnusedAdvancements,
+                                                InRunAdvancementData,
                                                 UnusedRoomIDs,
                                                 CoinsInRun
                                             )
@@ -428,6 +427,7 @@ namespace akb.Core.Database
         }
         #endregion
 
+        ///<summary>Creates table EXISTS LAST_USED_SAVE_FILE at DB.</summary>
         void CreateLastPlayedSaveFile()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -451,6 +451,7 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Creates initial LastUsedSaveID entry at LAST_USED_SAVE_FILE table.</summary>
         void SetupLastPlayedSaveFile()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -480,6 +481,7 @@ namespace akb.Core.Database
         #endregion
 
         #region EXTERNAL_HANDLERS
+        ///<summary>Sets the passed save file ID cells back to default.</summary>
         public void EraseDataFromFile(int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -495,7 +497,7 @@ namespace akb.Core.Database
                                                 TotalRuns = 0,
                                                 LastRoom = NULL,
                                                 PlayerHealth = NULL,
-                                                UnusedAdvancements = NULL,
+                                                InRunAdvancementData = NULL,
                                                 UnusedRoomIDs = NULL,
                                                 CoinsInRun = NULL
                                             WHERE 
@@ -516,7 +518,8 @@ namespace akb.Core.Database
             }
         }
 
-        public void UpdateUnusedAdvancementsCell(string jsonString, int saveFileID)
+        ///<summary>Writes the json string to the corresponding save file ID cell in the DB.</summary>
+        public void UpdateInRunAdvancementDataCell(string jsonString, int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {
@@ -528,7 +531,7 @@ namespace akb.Core.Database
 
                     command.CommandText = @"UPDATE SAVE_FILE_RUN_INFO
                                             SET
-                                                UnusedAdvancements = @jsonStr
+                                                InRunAdvancementData = @jsonStr
                                             WHERE 
                                                 SaveFileID = @fileID;";
 
@@ -546,13 +549,14 @@ namespace akb.Core.Database
 
                     int result = command.ExecuteNonQuery();
 #if UNITY_EDITOR
-                    AddLoggerEntry($"Unused advancement update result: {result.ToString()}");
+                    AddLoggerEntry($"In Run AdvancementData update result: {result.ToString()}");
 #endif
                 }
             }
         }
 
-        public string GetUnusedAdvancements(int saveFileID)
+        ///<summary>Returns the json string saved in the InRunAdvancementData cell of the DB.</summary>
+        public string GetInRunAdvancementData(int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
             {
@@ -562,7 +566,7 @@ namespace akb.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"SELECT UnusedAdvancements FROM SAVE_FILE_RUN_INFO
+                    command.CommandText = @"SELECT InRunAdvancementData FROM SAVE_FILE_RUN_INFO
                                             WHERE SaveFileID = @fileID;";
 
                     command.Parameters.Add(new SqliteParameter()
@@ -587,6 +591,8 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Returns true or false based on LastRoom value of the passed save file ID.</summary>
+        ///<returns>Also, False when the value is NULL</returns>
         public bool GetHasActiveRun(int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -637,6 +643,7 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Writes the passed value to the corresponding save file ID cell.</summary>
         public void UpdatePlayerHealthValue(int playerHealth, int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -673,9 +680,7 @@ namespace akb.Core.Database
             }
         }
 
-        /// <summary>
-        /// Call to get the player health stored in the database.
-        /// </summary>
+        ///<summary>Call to get the player health stored in the database.</summary>
         /// <returns>-1 in case there is not a player health value stored.</returns>
         public int GetPlayerHealthValue(int saveFileID)
         {
@@ -720,6 +725,7 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Writes the passed room ID to the corresponding save file ID cell.</summary>
         public void UpdateLastRoom(int roomID, int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -756,6 +762,8 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Returns the room ID saved in the save file ID corresponding cell.</summary>
+        ///<return>-1 in case the cell is NULL.</return>
         public int GetLastRoom(int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -799,6 +807,7 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Writes the passed JSON string to the corresponding save file ID cell.</summary>
         public void UpdateUnusedRooms(string jsonStr, int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -835,6 +844,8 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Returns the JSON string saved in the corresponding save file ID unused rooms cell.</summary>
+        ///<return>An empty string in case there is no value stored.</return>
         public string GetUnusedRooms(int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -870,6 +881,7 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Writes the passed save file ID to the universal DB table, primarily used to store the last used save file ID.</summary>
         public void SetLastUsedFileID(int saveFileID)
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -898,6 +910,8 @@ namespace akb.Core.Database
             }
         }
 
+        ///<summary>Returns the save file ID stored in the universal DB table.</summary>
+        ///<return>-1 in case there is not ID saved</return>
         public int GetLastUsedFileID()
         {
             using (SqliteConnection connection = new SqliteConnection(dbPath))
@@ -922,9 +936,90 @@ namespace akb.Core.Database
 #if UNITY_EDITOR
                         AddLoggerEntry($"Get last saved ID result : {result.ToString()}");
 #endif
+                    }
+
+                    return result;
+                }
+            }
+        }
+
+        ///<summary>Writes the passed value to the corresponding save file ID cell.</summary>
+        public void UpdateInRunCoinValue(int value, int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"UPDATE SAVE_FILE_RUN_INFO
+                                            SET
+                                                CoinsInRun = @coins
+                                            WHERE 
+                                                SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "coins",
+                        Value = value
+                    });
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Update in run coin value at save file {saveFileID}, result: {result.ToString()}");
+#endif
+                }
+            }
+        }
+
+        ///<summary>Returns the coin value stored in the corresponding save file ID cell.</summary>
+        ///<return>-1 in case there is no value saved</return>
+        public int GetInRunCoinValue(int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"SELECT CoinsInRun FROM SAVE_FILE_RUN_INFO
+                                            WHERE SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = -1;
+                    SqliteDataReader reader = command.ExecuteReader();
+
+                    if (reader[0].GetType() != typeof(DBNull))
+                    {
+                        while (reader.Read())
+                        {
+                            result = reader.GetInt32(0);
+                        }
+
+#if UNITY_EDITOR
+                        AddLoggerEntry($"Get in run coin value at save file {saveFileID}, result : {result.ToString()}");
+#endif
                         return result;
                     }
 
+                    connection.Clone();
+                    connection.Dispose();
+                    AddLoggerEntry($"No coin value saved at {saveFileID}");
                     return -1;
                 }
             }
