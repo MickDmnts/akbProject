@@ -61,7 +61,8 @@ namespace akb.Core.Managing.UI
                     break;
 
                 case ButtonType.savedGame:
-                    throw new NotImplementedException();
+                    LoadGameActions(buttonIndex);
+                    break;
             }
         }
 
@@ -73,20 +74,20 @@ namespace akb.Core.Managing.UI
 
             GameManager.GetManager.SetActiveFileID(buttonIndex);
 
+            //Notify handlers of new game
             int id = GameManager.GetManager.Database.GetLastUsedFileID();
             ManagerHUB.GetManager.GameEventsHandler.OnNewGame(id);
 
+            //Load Hub scene
             ManagerHUB.GetManager.LevelManager.LoadNext(false);
 
-            //Load Hub scene
-            //Notify handlers of new game
-
+            //Open the GamePlayScreenPanel (Health, rage etc)
             ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
         }
 
         void LoadGameActions(int buttonIndex)
         {
-
+            throw new NotImplementedException();
         }
     }
 }

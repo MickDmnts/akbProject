@@ -29,7 +29,7 @@ namespace akb.Core.Managing.UI
 
         void Continue()
         {
-            ManagerHUB.GetManager.LevelManager.TransitToHub();
+            throw new System.NotImplementedException();
             //TODO: Load save file ID from coresponding db field, pass it through the same methods of the save buttons
             //to load the game info correctly.
         }
@@ -47,6 +47,9 @@ namespace akb.Core.Managing.UI
         void Exit()
         {
             Application.Quit();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
         }
     }
 }
