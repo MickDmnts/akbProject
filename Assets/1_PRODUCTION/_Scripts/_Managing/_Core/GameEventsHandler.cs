@@ -1,6 +1,7 @@
 using System;
 
 using akb.Core.Managing.LevelLoading;
+using akb.Core.Managing.PCG;
 
 namespace akb.Core.Managing.GameEvents
 {
@@ -53,6 +54,36 @@ namespace akb.Core.Managing.GameEvents
             if (onLoadGame != null)
             {
                 onLoadGame(saveFileID);
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when the player gets in the hub.
+        /// </summary>
+        public event Action onPlayerHubEntry;
+        /// <summary>
+        /// Call to notify the onPlayerHubEntry callbacks.
+        /// </summary>
+        public void OnPlayerHubEntry()
+        {
+            if (onPlayerHubEntry != null)
+            {
+                onPlayerHubEntry();
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when a new room needs to be generated
+        /// </summary>
+        public event Action<RoomWorld> onGenerateNextRoom;
+        /// <summary>
+        /// Call to notify the onGenerateNextRoom callbacks.
+        /// </summary>
+        public void OnGenerateNextRoom(RoomWorld world)
+        {
+            if (onGenerateNextRoom != null)
+            {
+                onGenerateNextRoom(world);
             }
         }
 
