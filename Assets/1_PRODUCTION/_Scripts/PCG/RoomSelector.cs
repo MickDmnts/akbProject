@@ -9,31 +9,57 @@ namespace akb.Core.Managing.PCG
         const int BATTLE_MAX = 6;
         const int HEAL_LEVEL = 7;
 
+        [Header("Coins needed for store room")]
+        [SerializeField] int coinsNeeded = 50;
+
         //Player values
         private int playerCurrentHealth = 0;
         private int playerMaxHealth = 0;
 
         int accumulatedCoins = 0;
-        int coinsNeeded = 50;
 
         int currentLevel = 0;
 
         RoomDataContainer roomDataContainer;
+        GameObject previousRoom;
 
         private void Start()
         {
             roomDataContainer = FindObjectOfType<RoomDataContainer>();
             ManagerHUB.GetManager.SetRoomSelector(this);
+
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry += ResetPCG;
+        }
+
+        void ResetPCG()
+        {
+            currentLevel = 0;
+            playerCurrentHealth = 0;
+            playerMaxHealth = 0;
         }
 
         #region PCG
-        //called externally from the each level transition to determine next room.
+        ///<summary>Call to place the next generated room in the game world and get the rooms entry point in return.</summary>
+        public Vector3 PlaceNextRoom(RoomWorld roomWorld)
+        {
+            if (previousRoom != null)
+                Destroy(previousRoom);
+
+            RoomData nextRoom = SelectNextRoom(roomWorld);
+
+            GameObject roomGO = Instantiate(nextRoom.GetRoomPrefab(), new Vector3(currentLevel * 100, 0f, 0f), Quaternion.identity);
+            roomGO.gameObject.SetActive(true);
+            Vector3 spawnPos = roomGO.GetComponent<RoomData>().GetRoomEntryPoint().position;
+
+            previousRoom = roomGO;
+
+            return spawnPos;
+        }
 
         /// <summary>
         /// Determines the next room.
-        /// <para>Return null if the generated room was already used.</para>
         /// </summary>
-        public RoomData SelectNextRoom(RoomWorld roomWorld)
+        RoomData SelectNextRoom(RoomWorld roomWorld)
         {
             RoomData nextRoom;
 
@@ -155,9 +181,15 @@ namespace akb.Core.Managing.PCG
         void UpdateCoinValues()
         {
             //This should feed the values from the currency system during the run
-            accumulatedCoins = 10;
+            accumulatedCoins = ManagerHUB.GetManager.CurrencyHandler.GetHellCoins;
         }
 
+        public RoomWorld GetActiveWorld => roomDataContainer.ActiveWorld;
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry -= ResetPCG;
+        }
         #endregion
     }
 }

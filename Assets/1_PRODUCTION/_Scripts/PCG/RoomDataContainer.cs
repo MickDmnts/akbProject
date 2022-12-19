@@ -99,7 +99,7 @@ namespace akb.Core.Managing.PCG
             ManagerHUB.GetManager.GameEventsHandler.onNewGame += NewGameBehaviour;
             ManagerHUB.GetManager.GameEventsHandler.onLoadGame += LoadGameBehaviour;
 
-            SetupRoomsForUse();
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry += ResetWorlds;
         }
 
         void NewGameBehaviour(int saveFileID)
@@ -266,10 +266,14 @@ namespace akb.Core.Managing.PCG
             }
         }
 
+        public RoomWorld ActiveWorld => activeWorld;
+
         private void OnDestroy()
         {
             ManagerHUB.GetManager.GameEventsHandler.onNewGame -= NewGameBehaviour;
             ManagerHUB.GetManager.GameEventsHandler.onLoadGame -= LoadGameBehaviour;
+
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry -= ResetWorlds;
         }
     }
 }

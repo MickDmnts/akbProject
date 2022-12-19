@@ -10,6 +10,9 @@ namespace akb.Core.Managing.LevelLoading.Hub
         private void Start()
         {
             ManagerHUB.GetManager.PlayerEntity.PlayerMovement.TeleportEntity(entryPoint.position);
+
+            //Notify scripts of hub entry
+            ManagerHUB.GetManager.GameEventsHandler.OnPlayerHubEntry();
         }
     }
 }

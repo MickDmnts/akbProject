@@ -895,7 +895,7 @@ namespace akb.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"UPDATE LAST_USED_SAVE_FILE
+                    command.CommandText = @"UPDATE OR IGNORE LAST_USED_SAVE_FILE
                                             SET
                                                 LastUsedSaveID = -1";
 
