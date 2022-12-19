@@ -47,6 +47,7 @@ namespace akb.Entities.Player
             if (rageActive)
             {
                 rageFill -= rageDecreaseValue * Time.deltaTime;
+                ManagerHUB.GetManager.GameEventsHandler.OnPlayerRageChange(rageFill);
 
                 if (rageFill <= 0f)
                 {
@@ -66,6 +67,7 @@ namespace akb.Entities.Player
             //if (!isUnlocked) return;
 
             rageFill += rageFillRate;
+            ManagerHUB.GetManager.GameEventsHandler.OnPlayerRageChange(rageFill);
 
             if (rageFill >= currentRageMax)
             {

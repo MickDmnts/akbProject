@@ -10,7 +10,7 @@ namespace akb.Core.Managing.UI
 {
     public class AdvancementsUpdatePanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        enum SinneSoulCostPerTier
+        enum SinnerSoulCostPerTier
         {
             Tier1 = 3,
             Tier2 = 5,
@@ -31,11 +31,20 @@ namespace akb.Core.Managing.UI
 
         int currentlvl = 0;
 
+        [SerializeField]int lvlsCanUpgade;
+
+        int maxLvlCanReach;
+
+        private void Start()
+        {
+            maxLvlCanReach = lvlsCanUpgade;
+        }
+
         public void OnPointerDown(PointerEventData pointerEventData)
         {
             pointerDown = true;
             buttonImage.color = Color.grey;
-        }
+                    }
 
         //Detect if clicks are no longer registering
         public void OnPointerUp(PointerEventData pointerEventData)
@@ -70,21 +79,21 @@ namespace akb.Core.Managing.UI
 
                 if (pointerDownTimer > requiredHoldTime)
                 {
-                    if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinneSoulCostPerTier.Tier1)
+                    if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier1)
                     {
                         currentlvl++;
 
-                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinneSoulCostPerTier.Tier1);
+                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier1);
                         lvl.text = currentlvl + " / " + 3;
 
                         ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
 
                         Reset();
                     }
-                    else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinneSoulCostPerTier.Tier2)
+                    else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier2)
                     {
                         currentlvl++;
-                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinneSoulCostPerTier.Tier2);
+                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier2);
 
                         ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
 
@@ -92,10 +101,10 @@ namespace akb.Core.Managing.UI
 
                         Reset();
                     }
-                    else if (currentlvl == 2 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinneSoulCostPerTier.Tier3)
+                    else if (currentlvl == 2 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier3)
                     {
                         currentlvl++;
-                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinneSoulCostPerTier.Tier3);
+                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier3);
 
                         ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
 

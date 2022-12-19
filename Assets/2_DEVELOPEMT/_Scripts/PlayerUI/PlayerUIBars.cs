@@ -20,24 +20,21 @@ namespace akb.Core.Managing
 
         [SerializeField] Image redSplatterImage;
 
-        //public void SetMaxHealthValue(float maxHealthValue)
-        //{
-        //    healthSlider.maxValue = maxHealthValue;
-        //}
 
-        //public void SetHealthValue(float healthValue)
-        //{
-        //    healthSlider.value = healthValue;
+        private void Start()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHealthChange += SetHealthValue;
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerRageChange += SetRageValue;
 
-        //    healthbar.color = healthBarGradient.Evaluate(healthSlider.normalizedValue);
-        //}
+        }
 
-        //public void SetRageValue(float rageValue)
-        //{
-        //    rageSlider.value = rageValue;
-        //}
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHealthChange -= SetHealthValue;
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerRageChange -= SetRageValue;
+        }
 
-        public void SetHealthValue(float currentHealth, float maxHealth)
+        void SetHealthValue(float currentHealth, float maxHealth)
         {
             healthbar.fillAmount = currentHealth / maxHealth;
 
@@ -50,7 +47,7 @@ namespace akb.Core.Managing
             }
         }
 
-        public void SetRageValue(float rageValue)
+        void SetRageValue(float rageValue)
         {
             ragebar.fillAmount = rageValue;
         }

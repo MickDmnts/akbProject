@@ -135,15 +135,15 @@ namespace akb.Core.Managing.GameEvents
         /// <summary>
         /// Add to this event to get notified when the player health changes.
         /// </summary>
-        public event Action<float> onPlayerHealthChange;
+        public event Action<float, float> onPlayerHealthChange;
         /// <summary>
         /// Call to notify onPlayerHealthChange callbacks.
         /// </summary>
-        public void OnPlayerHealthChange(float value)
+        public void OnPlayerHealthChange(float value, float maxValue)
         {
             if (onPlayerHealthChange != null)
             {
-                onPlayerHealthChange(value);
+                onPlayerHealthChange(value, maxValue);
             }
         }
 

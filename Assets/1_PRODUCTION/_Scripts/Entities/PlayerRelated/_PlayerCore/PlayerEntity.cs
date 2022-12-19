@@ -97,7 +97,14 @@ namespace akb.Entities.Player
         }
 
         public int GetPlayerHealth() => (int)EntityLife;
-        public void SetPlayerHealth(float value) => EntityLife = value;
+
+        public void SetPlayerHealth(float value)
+        {
+            EntityLife = value;
+
+            ManagerHUB.GetManager.GameEventsHandler.OnPlayerHealthChange(EntityLife, playerMaxHealth);
+        }
+
         public int GetPlayerMaxHealth() => (int)playerMaxHealth;
 
         public void IncrementPlayerHealthBy(int value)

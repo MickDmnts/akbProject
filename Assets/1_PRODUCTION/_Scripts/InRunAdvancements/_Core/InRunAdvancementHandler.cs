@@ -8,6 +8,9 @@ namespace akb.Core.Managing.InRunUpdates
 {
     public class InRunAdvancementHandler : MonoBehaviour
     {
+        [Header("Set in inspector")]
+        [SerializeField] Sprite[] inRunAdvancementsSprites;
+
         /// <summary>
         /// All the runtime created gameObjects created based on the AdvancementTypes enum names.
         /// *Remark: None values gets ommited*
@@ -16,23 +19,11 @@ namespace akb.Core.Managing.InRunUpdates
 
         Dictionary<AdvancementTypes, Sprite> inRunAdvancementsSpritesPairs = new Dictionary<AdvancementTypes, Sprite>();
 
-        [SerializeField] Sprite[] inRunAdvancementsSprites;
-
-        //TODO: LOAD ITEM SPRITES HERE
-
-        void SetInRunAdvancementsSprites()
-        {
-            //AdvancementTypes[] types = Enum.GetNames(typeof(AdvancementTypes));
-
-            for (int i = 0; i < inRunAdvancementsSprites.Length; i++)
-            {
-                //AdvancementTypes type = Enum.ge
-            }
-        }
 
         private void Start()
         {
             SaveDependentBehaviour();
+            SetInRunAdvancementsSprites();
         }
 
         /// <summary>
@@ -53,6 +44,21 @@ namespace akb.Core.Managing.InRunUpdates
 
                 //FOR DEBUGGING
                 SaveMidRun();
+            }
+        }
+
+        void SetInRunAdvancementsSprites()
+        {
+            string[] enumTypes = Enum.GetNames(typeof(AdvancementTypes));
+
+            for (int i = 0; i < enumTypes.Length; i++)
+            {
+                AdvancementTypes advType = Enum.Parse<AdvancementTypes>(enumTypes[i]);
+
+                //Bypass the none enum type.
+                if (Enum.Parse<AdvancementTypes>(enumTypes[i]).Equals(AdvancementTypes.None)) continue;
+
+                inRunAdvancementsSpritesPairs.Add(advType, inRunAdvancementsSprites[i]);
             }
         }
 
@@ -150,6 +156,12 @@ namespace akb.Core.Managing.InRunUpdates
         {
             GameObject copy = inRunAdvancementPairs[type];
             return copy;
+        }
+
+        public Sprite GetAdvacementSprite(AdvancementTypes type)
+        {
+            Sprite sprite = inRunAdvancementsSpritesPairs[type];
+            return sprite;
         }
     }
 }
