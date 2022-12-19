@@ -248,37 +248,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &785879757
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 785879758}
-  m_Layer: 0
-  m_Name: DATA_MIDDLEMAN
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &785879758
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785879757}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &936654929
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,16 +623,15 @@ MonoBehaviour:
     entry: {fileID: 5480419412266862194, guid: ccc07f48eaca20244a553cf597c816d1, type: 3}
     battleRooms:
     - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
-    - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
-    - {fileID: 5480419412266862194, guid: ccc07f48eaca20244a553cf597c816d1, type: 3}
-    - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
+    - {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9, type: 3}
+    - {fileID: -8114173449490702392, guid: af1565f6fcfe7cb448907e3cb9224a12, type: 3}
     battleRoomsCopy: []
     usedBattleRooms: []
     healRoom: {fileID: 0}
     storeRoom: {fileID: 0}
     bossRoom: {fileID: 0}
   - WorldName: World 2
-    entry: {fileID: 0}
+    entry: {fileID: 7850676220468382700, guid: ec5f630f20777854fb16d0fe12bc4014, type: 3}
     battleRooms: []
     battleRoomsCopy: []
     usedBattleRooms: []

@@ -1885,6 +1885,26 @@ MonoBehaviour:
   - {fileID: 605806060}
   - {fileID: 1089257390}
   - {fileID: 708627707}
+  buttonTimePlayed:
+  - {fileID: 108665848}
+  - {fileID: 756154570}
+  - {fileID: 1645212701}
+  - {fileID: 1996443873}
+  buttonTotalRuns:
+  - {fileID: 2088008993}
+  - {fileID: 145149873}
+  - {fileID: 773369383}
+  - {fileID: 730323378}
+  buttonTotalUpgradesMade:
+  - {fileID: 668459688}
+  - {fileID: 920440394}
+  - {fileID: 857083086}
+  - {fileID: 127420899}
+  buttonSinnerSoulsInHand:
+  - {fileID: 452900211}
+  - {fileID: 728647700}
+  - {fileID: 1063504473}
+  - {fileID: 537340399}
 --- !u!4 &204958975
 Transform:
   m_ObjectHideFlags: 0
@@ -8396,7 +8416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -875.0002}
+  m_AnchoredPosition: {x: 0, y: -875.00024}
   m_SizeDelta: {x: 0, y: 1750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798312109
@@ -8870,6 +8890,26 @@ MonoBehaviour:
   - {fileID: 843600959}
   - {fileID: 1504486550}
   - {fileID: 695127329}
+  buttonTimePlayed:
+  - {fileID: 393164042}
+  - {fileID: 1035107830}
+  - {fileID: 506335636}
+  - {fileID: 1331219205}
+  buttonTotalRuns:
+  - {fileID: 421189092}
+  - {fileID: 25616726}
+  - {fileID: 1098328728}
+  - {fileID: 2036357316}
+  buttonTotalUpgradesMade:
+  - {fileID: 1053310582}
+  - {fileID: 1337663890}
+  - {fileID: 1530593088}
+  - {fileID: 1190596575}
+  buttonSinnerSoulsInHand:
+  - {fileID: 1435278262}
+  - {fileID: 561448623}
+  - {fileID: 1387472570}
+  - {fileID: 1984811662}
 --- !u!4 &826036606
 Transform:
   m_ObjectHideFlags: 0

@@ -14,8 +14,6 @@ namespace akb.Core.Managing.Currencies
         float initialMultiplier;
         float multiplierValue;
 
-        bool comboStart;
-        int deadEnemies;
         float currentMultiplier;
 
         public float GetMultiplierValue => currentMultiplier;

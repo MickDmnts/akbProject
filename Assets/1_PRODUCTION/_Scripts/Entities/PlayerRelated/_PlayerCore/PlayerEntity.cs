@@ -72,8 +72,6 @@ namespace akb.Entities.Player
 
         void SetMovementStatesBasedOnRoom(GameScenes gameScenes)
         {
-            Debug.Log(gameScenes);
-
             if (gameScenes == GameScenes.PlayerScene)
             {
                 PlayerAttack.SetAttackInputActiveState(false);
@@ -84,6 +82,9 @@ namespace akb.Entities.Player
             else if (gameScenes == GameScenes.PlayerHUB)
             {
                 PlayerMovement.SetMovementInputActiveState(true);
+                PlayerAttack.SetAttackInputActiveState(false);
+                PlayerSpearThrow.SetThrowInputActiveState(false);
+                PlayerDodgeRoll.SetDodgeInputActiveState(false);
             }
             else if (gameScenes == GameScenes.World1Scene
                 || gameScenes == GameScenes.TutorialArena)

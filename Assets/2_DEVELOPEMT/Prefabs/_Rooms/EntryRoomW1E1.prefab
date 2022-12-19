@@ -155,10 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomEntryPoint: {fileID: 6972717829661869580}
-  enemySpawnPairs:
-  - PairID: 0
-    Enemy: {fileID: 0}
-    EnemySpawn: {fileID: 0}
+  enemySpawnPairs: []
   correspondingWorld: 0
   roomType: 0
 --- !u!1 &6050371786479876132

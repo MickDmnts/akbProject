@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1360098998142497087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2752245861683089827}
+  m_Layer: 0
+  m_Name: PlayerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2752245861683089827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360098998142497087}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -17.03, y: 5.76, z: 13.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9051338512314134454}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9051338511316914688
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,13 +272,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9051338512314134454}
+  - component: {fileID: -8114173449490702392}
   m_Layer: 0
   m_Name: BattleRoom3W1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9051338512314134454
 Transform:
   m_ObjectHideFlags: 0
@@ -267,9 +299,26 @@ Transform:
   - {fileID: 9051338512936282148}
   - {fileID: 9051338513284328656}
   - {fileID: 9051338513225704046}
+  - {fileID: 2752245861683089827}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8114173449490702392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9051338512314134455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be72bc5d4067f418290575f09bc33076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomEntryPoint: {fileID: 2752245861683089827}
+  enemySpawnPairs: []
+  correspondingWorld: 0
+  roomType: 3
 --- !u!1 &9051338512365894124
 GameObject:
   m_ObjectHideFlags: 0
@@ -10128,7 +10177,7 @@ MonoBehaviour:
   - {x: -5.50003, y: 16.500002}
   - {x: -0.50000143, y: 7.499979}
   - {x: -0.50000143, y: 15.499977}
-  - {x: 3.5000007, y: 7.4999733}
+  - {x: 3.5000007, y: 7.499974}
   - {x: 3.5000007, y: 15.499976}
   - {x: -16, y: 11.000008}
   - {x: -16, y: 12.000006}
@@ -11673,9 +11722,9 @@ MonoBehaviour:
   - {x: -0.00000005960791, y: -1, z: -0.0000014305108, w: -1}
   - {x: -0.00000005960791, y: -1, z: -0.0000014305108, w: -1}
   - {x: -0.00000011921264, y: -1, z: -0.0000014305108, w: -1}
-  - {x: -0.00000011920872, y: -1, z: -0.0000014305112, w: -1}
-  - {x: -0.00000014901124, y: -1, z: -0.000001430511, w: -1}
-  - {x: -0.00000014901124, y: -1, z: -0.000001430511, w: -1}
+  - {x: -0.000000238418, y: -1, z: -0.0000014305112, w: -1}
+  - {x: -0.00000020861589, y: -1, z: -0.000001430511, w: -1}
+  - {x: -0.00000020861589, y: -1, z: -0.000001430511, w: -1}
   - {x: -0.00000017881376, y: -1, z: -0.0000014305109, w: -1}
   - {x: -0.00000041723231, y: -1, z: 0, w: -1}
   - {x: -0.00000040233107, y: -1, z: 0, w: -1}

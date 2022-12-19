@@ -21973,13 +21973,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6689751105350279827}
+  - component: {fileID: -3159115323029371462}
   m_Layer: 0
   m_Name: BattleRoom2W1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6689751105350279827
 Transform:
   m_ObjectHideFlags: 0
@@ -21999,9 +22000,26 @@ Transform:
   - {fileID: 6689751106272117956}
   - {fileID: 6689751105340649197}
   - {fileID: 5715299267111043245}
+  - {fileID: 1594986724108748334}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3159115323029371462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6689751105350279826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be72bc5d4067f418290575f09bc33076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomEntryPoint: {fileID: 1594986724108748334}
+  enemySpawnPairs: []
+  correspondingWorld: 0
+  roomType: 3
 --- !u!1 &6689751105927451216
 GameObject:
   m_ObjectHideFlags: 0
@@ -22140,6 +22158,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5715299267111043245}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7796543012113344983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1594986724108748334}
+  m_Layer: 0
+  m_Name: PlayerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1594986724108748334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7796543012113344983}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.47, y: 3.25, z: -5.020541}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6689751105350279827}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8480152389600944851
 GameObject:

@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace akb.Core.Managing.Currencies
 {
+    [DefaultExecutionOrder(-393)]
     public class CurrencyHandler : MonoBehaviour
     {
         [Header("Set coin multiplier values")]
@@ -21,10 +22,24 @@ namespace akb.Core.Managing.Currencies
             ManagerHUB.GetManager.SetCurrencyHandlerReference(this);
 
             coinMultiplier = new CoinMultiplierHandler(initialMultiplier, multiplierValue);
+
+            ManagerHUB.GetManager.GameEventsHandler.onNewGame += NewGameBehaviour;
+            ManagerHUB.GetManager.GameEventsHandler.onLoadGame += LoadGameBehaviour;
         }
 
-        //ERASE VALUES ON NEW GAME EVENT
-        //LOAD VALUES ON LOAD EVENT
+        void NewGameBehaviour(int saveFileID)
+        {
+            hellCoins = 0;
+            sinnerSouls = 0;
+
+            GameManager.GetManager.Database.UpdateSoulsValue(saveFileID, sinnerSouls);
+        }
+
+        void LoadGameBehaviour(int saveFileID)
+        {
+            sinnerSouls = GameManager.GetManager.Database.GetSoulsValue(saveFileID);
+            hellCoins = 0;
+        }
 
         #region UTILITIES
         public void IncreaseHellCoinsBy(int value)
@@ -50,7 +65,14 @@ namespace akb.Core.Managing.Currencies
         public void SetSinnerSoulsValue(int value) => sinnerSouls = value;
 
         public float GetMultiplierValue() => coinMultiplier.GetMultiplierValue;
-
         #endregion
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onNewGame -= NewGameBehaviour;
+            ManagerHUB.GetManager.GameEventsHandler.onLoadGame -= LoadGameBehaviour;
+
+            coinMultiplier.UnsubEvents();
+        }
     }
 }

@@ -67,7 +67,7 @@ namespace akb.Core.Database
                 {
                     command.CommandType = CommandType.Text;
                     command.CommandText = @"CREATE TABLE IF NOT EXISTS DB_LOGGER(
-                                                LogFile VARCHAR(255) PRIMARY KEY
+                                                LogFile VARCHAR(255) 
                                             );";
 
                     command.ExecuteNonQuery();
@@ -97,8 +97,11 @@ namespace akb.Core.Database
                         Value = $"{DateTime.Now.ToString()} {log}"
                     });
 
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                 }
+
+                connection.Close();
+                connection.Dispose();
             }
         }
 #endif
@@ -440,7 +443,7 @@ namespace akb.Core.Database
 
                     command.CommandText = @"CREATE TABLE IF NOT EXISTS LAST_USED_SAVE_FILE
                                             (
-                                                LastUsedSaveID INTEGER DEFAULT ( -1)
+                                                LastUsedSaveID INTEGER PRIMARY KEY DEFAULT (-1)
                                             )";
 
                     int result = command.ExecuteNonQuery();
@@ -468,7 +471,7 @@ namespace akb.Core.Database
                                             )
                                             VALUES
                                                 (
-                                                    NULL
+                                                    -1
                                                 )";
 
                     int result = command.ExecuteNonQuery();
@@ -894,6 +897,12 @@ namespace akb.Core.Database
 
                     command.CommandText = @"UPDATE LAST_USED_SAVE_FILE
                                             SET
+                                                LastUsedSaveID = -1";
+
+                    _ = command.ExecuteNonQuery();
+
+                    command.CommandText = @"UPDATE OR IGNORE LAST_USED_SAVE_FILE
+                                            SET
                                                 LastUsedSaveID = @saveFileID";
 
                     command.Parameters.Add(new SqliteParameter()
@@ -1020,6 +1029,170 @@ namespace akb.Core.Database
                     connection.Clone();
                     connection.Dispose();
                     AddLoggerEntry($"No coin value saved at {saveFileID}");
+                    return -1;
+                }
+            }
+        }
+
+        ///<summary>Writes the passed value to the corresponding save file ID cell.</summary>
+        public void UpdateTotalRunsValue(int value, int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"UPDATE SAVE_FILE_RUN_INFO
+                                            SET
+                                                TotalRuns = @value
+                                            WHERE 
+                                                SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "value",
+                        Value = value
+                    });
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Update total runs value at save file {saveFileID}, result: {result.ToString()}");
+#endif
+                }
+            }
+        }
+
+        ///<summary>Returns the total runs value stored in the corresponding save file ID cell.</summary>
+        ///<return>-1 in case there is no value saved</return>
+        public int GetTotalRunsValue(int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"SELECT TotalRuns FROM SAVE_FILE_RUN_INFO
+                                            WHERE SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = -1;
+                    SqliteDataReader reader = command.ExecuteReader();
+
+                    if (reader[0].GetType() != typeof(DBNull))
+                    {
+                        while (reader.Read())
+                        {
+                            result = reader.GetInt32(0);
+                        }
+
+#if UNITY_EDITOR
+                        AddLoggerEntry($"Get total run value at save file {saveFileID}, result : {result.ToString()}");
+#endif
+                        return result;
+                    }
+
+                    connection.Clone();
+                    connection.Dispose();
+                    AddLoggerEntry($"No total run value saved at {saveFileID}");
+                    return -1;
+                }
+            }
+        }
+
+        ///<summary>Writes the passed value to the corresponding save file ID cell.</summary>
+        public void UpdateSoulsValue(int value, int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"UPDATE SINNER_SOULS
+                                            SET
+                                                SoulsValue = @value
+                                            WHERE 
+                                                SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "value",
+                        Value = value
+                    });
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Update souls value at save file {saveFileID}, result: {result.ToString()}");
+#endif
+                }
+            }
+        }
+
+        ///<summary>Returns the souls value stored in the corresponding save file ID cell.</summary>
+        ///<return>-1 in case there is no value saved</return>
+        public int GetSoulsValue(int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"SELECT SoulsValue FROM SINNER_SOULS
+                                            WHERE SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = -1;
+                    SqliteDataReader reader = command.ExecuteReader();
+
+                    if (reader[0].GetType() != typeof(DBNull))
+                    {
+                        while (reader.Read())
+                        {
+                            result = reader.GetInt32(0);
+                        }
+
+#if UNITY_EDITOR
+                        AddLoggerEntry($"Get souls value at save file {saveFileID}, result : {result.ToString()}");
+#endif
+                        return result;
+                    }
+
+                    connection.Clone();
+                    connection.Dispose();
+                    AddLoggerEntry($"No souls value saved at {saveFileID}");
                     return -1;
                 }
             }

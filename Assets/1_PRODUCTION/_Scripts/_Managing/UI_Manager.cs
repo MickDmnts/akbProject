@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 using akb.Core.Managing.LevelLoading;
 
@@ -25,6 +26,9 @@ namespace akb.Core.Managing.UI
         /// Get the games' paused state.
         /// </summary>
         public bool IsPaused => isPaused;
+
+        UIInputs uiInputs;
+        InputAction uiBack;
 
         #region AWAKE_CALLED_EXTERNALLY
         /// <summary>
@@ -57,12 +61,27 @@ namespace akb.Core.Managing.UI
         {
             //Pass the UI_Manager reference to the Manager HUB for ease of access.
             ManagerHUB.GetManager.SetUI_ManagerReference(this);
+            uiInputs = new UIInputs();
         }
 
-        private void Update()
+        private void Start()
         {
+            uiBack = uiInputs.UI.Cancel;
+            uiBack.Enable();
+
+            uiBack.started += _ => CheckForPauseGame();
+        }
+
+        void CheckForPauseGame()
+        {
+            if (IsInMainMenu())
+            {
+                EnablePanel("MainMenuScreen_UI_Panel");
+                return;
+            }
+
             //For game pausing
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (!IsInInvalidScene())
             {
                 PauseGame();
             }
@@ -108,6 +127,14 @@ namespace akb.Core.Managing.UI
             return false;
         }
 
+        bool IsInMainMenu()
+        {
+            if (ManagerHUB.GetManager.LevelManager.FocusedScene == GameScenes.PlayerScene)
+                return true;
+
+            return false;
+        }
+
         /// <summary>
         /// Call to enable the passed UI panel.
         /// </summary>
@@ -136,6 +163,11 @@ namespace akb.Core.Managing.UI
         void QuitGame()
         {
             Application.Quit();
+        }
+
+        private void OnDestroy()
+        {
+            uiBack.started -= _ => CheckForPauseGame();
         }
     }
 }

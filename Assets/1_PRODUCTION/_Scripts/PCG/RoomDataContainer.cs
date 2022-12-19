@@ -96,12 +96,23 @@ namespace akb.Core.Managing.PCG
 
         private void Start()
         {
-            SetupRoomsForUse();
+            ManagerHUB.GetManager.GameEventsHandler.onNewGame += NewGameBehaviour;
+            ManagerHUB.GetManager.GameEventsHandler.onLoadGame += LoadGameBehaviour;
 
-            /*if (we have a save)
+            SetupRoomsForUse();
+        }
+
+        void NewGameBehaviour(int saveFileID)
+        {
+            Debug.Log(("New game from room data"));
+        }
+
+        void LoadGameBehaviour(int saveFileID)
+        {
+            if (GameManager.GetManager.Database.GetHasActiveRun(saveFileID))
             {
-                LoadSavedRooms();
-            }*/
+                LoadSavedRooms(saveFileID);
+            }
         }
 
         /// <summary>
@@ -211,19 +222,8 @@ namespace akb.Core.Managing.PCG
             SetupRoomsForUse();
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                LoadSavedRooms();
-            }
-        }
-
-        //OH Its its time to save;
         void SaveRoomIDs()
         {
-            Debug.Log("Saving unused battle rooms to db.");
-
             List<int> ids = new List<int>();
 
             for (int i = 0; i < worldData[(int)activeWorld].battleRoomsCopy.Count; i++)
@@ -244,10 +244,10 @@ namespace akb.Core.Managing.PCG
             GameManager.GetManager.Database.UpdateUnusedRooms(jsonStr, 0); //0 being the save file index.
         }
 
-        void LoadSavedRooms()
+        void LoadSavedRooms(int saveFileID)
         {
             //zero represents the active save
-            string dbStr = GameManager.GetManager.Database.GetUnusedRooms(0);
+            string dbStr = GameManager.GetManager.Database.GetUnusedRooms(saveFileID);
 
             Debug.Log($"Loading json string {dbStr}");
 
@@ -264,6 +264,12 @@ namespace akb.Core.Managing.PCG
                 RoomData roomToAdd = worldData[(int)activeWorld].battleRooms[data.unusedRooms[i]]; //Cache the original room from the pcg list
                 worldData[(int)activeWorld].battleRoomsCopy.Add(roomToAdd); //and insert it into the battle copy list.
             }
+        }
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onNewGame -= NewGameBehaviour;
+            ManagerHUB.GetManager.GameEventsHandler.onLoadGame -= LoadGameBehaviour;
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 namespace akb.Core.Managing.UI
 {
@@ -18,6 +19,10 @@ namespace akb.Core.Managing.UI
 
         [Header("Assign buttons")]
         [SerializeField] Button[] buttons;
+        [SerializeField] TextMeshProUGUI[] buttonTimePlayed;
+        [SerializeField] TextMeshProUGUI[] buttonTotalRuns;
+        [SerializeField] TextMeshProUGUI[] buttonTotalUpgradesMade;
+        [SerializeField] TextMeshProUGUI[] buttonSinnerSoulsInHand;
 
         private void Start()
         {
@@ -34,17 +39,17 @@ namespace akb.Core.Managing.UI
                 int assigne = i;
 
                 buttons[assigne].onClick.AddListener(new UnityAction(() => ButtonFileID(assigne)));
-                LoadButtonInfo(assigne, buttons[assigne]);
+                LoadButtonInfo(assigne, i);
                 _ = assigne;
             }
         }
 
-        void LoadButtonInfo(int saveFileID, Button button)
+        void LoadButtonInfo(int saveFileID, int buttonIndex)
         {
-            //-Each save slot shows the time played
-            //-Each save slot shows the total number of runs made
-            //-Each save slot has a number denoting the number of permanent upgrades made
-            //-Each save slot shows the number of remaining sinner’s souls
+            buttonTimePlayed[buttonIndex].SetText("Time Played: File" + saveFileID);
+            buttonTotalRuns[buttonIndex].SetText("Total Runs: " + GameManager.GetManager.Database.GetTotalRunsValue(saveFileID));
+            buttonTotalUpgradesMade[buttonIndex].SetText("Total Advancements: File" + saveFileID);
+            buttonSinnerSoulsInHand[buttonIndex].SetText("Sinner Souls: " + GameManager.GetManager.Database.GetSoulsValue(saveFileID));
         }
 
         void ButtonFileID(int buttonIndex)
@@ -65,7 +70,23 @@ namespace akb.Core.Managing.UI
             //Erase previous data from db
             GameManager.GetManager.Database.EraseDataFromFile(buttonIndex);
             GameManager.GetManager.Database.SetLastUsedFileID(buttonIndex);
+
             GameManager.GetManager.SetActiveFileID(buttonIndex);
+
+            int id = GameManager.GetManager.Database.GetLastUsedFileID();
+            ManagerHUB.GetManager.GameEventsHandler.OnNewGame(id);
+
+            ManagerHUB.GetManager.LevelManager.LoadNext(false);
+
+            //Load Hub scene
+            //Notify handlers of new game
+
+            ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
+        }
+
+        void LoadGameActions(int buttonIndex)
+        {
+
         }
     }
 }

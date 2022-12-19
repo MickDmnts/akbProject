@@ -28,7 +28,7 @@ namespace akb.Core.Managing
         /// <summary>
         /// Initializes the Manager Hub class.
         /// </summary>
-        public ManagerHUB(GameManager sas)
+        public ManagerHUB(GameManager manager)
         {
             if (_s != null) { throw new System.Exception("Tried to create multiple manager hubs!"); }
             else
