@@ -31,7 +31,7 @@ namespace akb.Core.Managing.UI
 
         int currentlvl = 0;
 
-        [SerializeField]int lvlsCanUpgade;
+        [SerializeField] int lvlsCanUpgade;
 
         int maxLvlCanReach;
 
@@ -44,7 +44,7 @@ namespace akb.Core.Managing.UI
         {
             pointerDown = true;
             buttonImage.color = Color.grey;
-                    }
+        }
 
         //Detect if clicks are no longer registering
         public void OnPointerUp(PointerEventData pointerEventData)
@@ -113,7 +113,7 @@ namespace akb.Core.Managing.UI
                         Reset();
                     }
 
-                    Debug.Log(ManagerHUB.GetManager.AdvancementHandler.ToString());
+                    Reset();
                 }
 
                 if (currentlvl == 0)

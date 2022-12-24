@@ -1,5 +1,5 @@
-using akb.Core.Managing;
 using UnityEngine;
+using akb.Core.Managing;
 
 namespace akb.Core.Database
 {

@@ -10,6 +10,8 @@ namespace akb.Core.Database
     {
         private static string dbPath = "";
 
+        int lastUsedIdentifier = 0;
+
         public SQLiteHandler()
         {
             if (dbPath == "")
@@ -53,6 +55,10 @@ namespace akb.Core.Database
             //Create a save file cache table
             CreateLastPlayedSaveFile();
             SetupLastPlayedSaveFile();
+
+            //Monster entries
+            CreateMonsterEntriesTable();
+            SetupMonsterEntriesDB();
         }
 
 #if UNITY_EDITOR
@@ -430,6 +436,7 @@ namespace akb.Core.Database
         }
         #endregion
 
+        #region LAST_USED_SAVE_FILE
         ///<summary>Creates table EXISTS LAST_USED_SAVE_FILE at DB.</summary>
         void CreateLastPlayedSaveFile()
         {
@@ -443,7 +450,8 @@ namespace akb.Core.Database
 
                     command.CommandText = @"CREATE TABLE IF NOT EXISTS LAST_USED_SAVE_FILE
                                             (
-                                                LastUsedSaveID INTEGER PRIMARY KEY DEFAULT (-1)
+                                                Identifier INTEGER PRIMARY KEY DEFAULT (0),
+                                                LastUsedSaveID INTEGER DEFAULT (-1)
                                             )";
 
                     int result = command.ExecuteNonQuery();
@@ -467,12 +475,20 @@ namespace akb.Core.Database
 
                     command.CommandText = @"INSERT OR IGNORE INTO LAST_USED_SAVE_FILE
                                             (
+                                                Identifier,
                                                 LastUsedSaveID
                                             )
                                             VALUES
                                                 (
+                                                    @identifier,
                                                     -1
-                                                )";
+                                                );";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "identifier",
+                        Value = lastUsedIdentifier
+                    });
 
                     int result = command.ExecuteNonQuery();
 #if UNITY_EDITOR
@@ -481,6 +497,110 @@ namespace akb.Core.Database
                 }
             }
         }
+        #endregion
+
+        #region MONSTER_GRIMOIRE_ENTRIES
+        ///<summary>Creates table MONSTER_ENTRIES at DB.</summary>
+        void CreateMonsterEntriesTable()
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"CREATE TABLE IF NOT EXISTS MONSTER_ENTRIES
+                                            (
+                                                SaveFileID  INTEGER REFERENCES SAVE_FILE (SaveFileID),
+                                                MonsterID INTEGER,
+                                                MonsterDescription VARCHAR(255),
+                                                IsFound INTEGER DEFAULT (0),
+
+                                                PRIMARY KEY (SaveFileID, MonsterID)
+                                            );";
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Monster entries table creation: {result.ToString()}");
+#endif
+                }
+            }
+        }
+
+        ///<summary>Inserts initial entries to MONSTER_ENTRIES table.</summary>
+        void SetupMonsterEntriesDB()
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"INSERT OR IGNORE INTO MONSTER_ENTRIES
+                                            (
+                                                SaveFileID,
+                                                MonsterID,
+                                                MonsterDescription,
+                                                IsFound
+                                            )
+                                            VALUES
+                                                (0, 0, 'Simple Demon Desc', 0),
+                                                (1, 0, 'Simple Demon Desc', 0),
+                                                (2, 0, 'Simple Demon Desc', 0),
+                                                (3, 0, 'Simple Demon Desc', 0),
+
+                                                (0, 1, 'Fire Demon Desc', 0),
+                                                (1, 1, 'Fire Demon Desc', 0),
+                                                (2, 1, 'Fire Demon Desc', 0),
+                                                (3, 1, 'Fire Demon Desc', 0),
+                                                
+                                                (0, 2, 'Big Demon Desc', 0),
+                                                (1, 2, 'Big Demon Desc', 0),
+                                                (2, 2, 'Big Demon Desc', 0),
+                                                (3, 2, 'Big Demon Desc', 0),
+                                                
+                                                (0, 3, 'Big Charger Desc', 0),
+                                                (1, 3, 'Big Charger Desc', 0),
+                                                (2, 3, 'Big Charger Desc', 0),
+                                                (3, 3, 'Big Charger Desc', 0),
+                                                
+                                                (0, 4, 'Ranged Demon Desc', 0),
+                                                (1, 4, 'Ranged Demon Desc', 0),
+                                                (2, 4, 'Ranged Demon Desc', 0),
+                                                (3, 4, 'Ranged Demon Desc', 0),
+                                                
+                                                (0, 5, 'Electro Demon Desc', 0),
+                                                (1, 5, 'Electro Demon Desc', 0),
+                                                (2, 5, 'Electro Demon Desc', 0),
+                                                (3, 5, 'Electro Demon Desc', 0),
+                                                
+                                                (0, 6, 'Status Demon Desc', 0),
+                                                (1, 6, 'Status Demon Desc', 0),
+                                                (2, 6, 'Status Demon Desc', 0),
+                                                (3, 6, 'Status Demon Desc', 0),
+                                                
+                                                (0, 7, 'Charm Demon Desc', 0),
+                                                (1, 7, 'Charm Demon Desc', 0),
+                                                (2, 7, 'Charm Demon Desc', 0),
+                                                (3, 7, 'Charm Demon Desc', 0),
+                                                
+                                                (0, 8, 'Confuse Demon Desc', 0),
+                                                (1, 8, 'Confuse Demon Desc', 0),
+                                                (2, 8, 'Confuse Demon Desc', 0),
+                                                (3, 8, 'Confuse Demon Desc', 0);";
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Monster entries table setup: {result.ToString()}");
+#endif
+                }
+            }
+        }
+        #endregion
         #endregion
 
         #region EXTERNAL_HANDLERS
@@ -897,13 +1017,15 @@ namespace akb.Core.Database
 
                     command.CommandText = @"UPDATE OR IGNORE LAST_USED_SAVE_FILE
                                             SET
-                                                LastUsedSaveID = -1";
+                                                LastUsedSaveID = @saveFileID
+                                            WHERE 
+                                                Identifier = @identifier;";
 
-                    _ = command.ExecuteNonQuery();
-
-                    command.CommandText = @"UPDATE OR IGNORE LAST_USED_SAVE_FILE
-                                            SET
-                                                LastUsedSaveID = @saveFileID";
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "identifier",
+                        Value = lastUsedIdentifier
+                    });
 
                     command.Parameters.Add(new SqliteParameter()
                     {
@@ -931,7 +1053,14 @@ namespace akb.Core.Database
                 {
                     command.CommandType = CommandType.Text;
 
-                    command.CommandText = @"SELECT LastUsedSaveID FROM LAST_USED_SAVE_FILE;";
+                    command.CommandText = @"SELECT LastUsedSaveID FROM LAST_USED_SAVE_FILE
+                                            WHERE Identifier = @identifier;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "identifier",
+                        Value = lastUsedIdentifier
+                    });
 
                     int result = -1;
                     SqliteDataReader reader = command.ExecuteReader();
@@ -1193,6 +1322,106 @@ namespace akb.Core.Database
                     connection.Clone();
                     connection.Dispose();
                     AddLoggerEntry($"No souls value saved at {saveFileID}");
+                    return -1;
+                }
+            }
+        }
+
+        ///<summary>Writes the passed value to the corresponding save file ID - monster ID pair cell.</summary>
+        public void UpdateIsMonsterFound(int saveFileID, int monsterID, bool isFound)
+        {
+            int isFoundParsed = isFound ? 1 : 0;
+
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"UPDATE MONSTER_ENTRIES
+                                            SET
+                                                IsFound = @isFound
+                                            WHERE 
+                                                SaveFileID = @fileID,
+                                                MonsterID = @monsterID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "isFound",
+                        Value = isFoundParsed
+                    });
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "monsterID",
+                        Value = monsterID.ToString()
+                    });
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Update is found value at save file {saveFileID} with monster ID {monsterID}, result: {result.ToString()}");
+#endif
+                }
+            }
+        }
+
+        ///<summary>Returns the is found value stored in the corresponding save file ID cell.</summary>
+        ///<return>-1 in case there is no value saved</return>
+        public int GetIsMonsterFoundValue(int saveFileID, int monsterID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"SELECT IsFound FROM MONSTER_ENTRIES
+                                            WHERE 
+                                                SaveFileID = @fileID,
+                                                MonsterID = @monsterID";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "monsterID",
+                        Value = monsterID.ToString()
+                    });
+
+                    int result = -1;
+                    SqliteDataReader reader = command.ExecuteReader();
+
+                    if (reader[0].GetType() != typeof(DBNull))
+                    {
+                        while (reader.Read())
+                        {
+                            result = reader.GetInt32(0);
+                        }
+
+#if UNITY_EDITOR
+                        AddLoggerEntry($"Get is found value at save file {saveFileID} for monster ID {monsterID}, result : {result.ToString()}");
+#endif
+                        return result;
+                    }
+
+                    connection.Clone();
+                    connection.Dispose();
+
+                    AddLoggerEntry($"No is found value saved at {saveFileID}, monster ID {monsterID}");
                     return -1;
                 }
             }
