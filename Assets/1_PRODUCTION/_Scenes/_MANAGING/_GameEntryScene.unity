@@ -636,12 +636,18 @@ MonoBehaviour:
       type: 3}
   - WorldName: World 2
     entry: {fileID: 7850676220468382700, guid: ec5f630f20777854fb16d0fe12bc4014, type: 3}
-    battleRooms: []
+    battleRooms:
+    - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
+    - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
+    - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
     battleRoomsCopy: []
     usedBattleRooms: []
-    healRoom: {fileID: 0}
-    storeRoom: {fileID: 0}
-    bossRoom: {fileID: 0}
+    healRoom: {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9,
+      type: 3}
+    storeRoom: {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9,
+      type: 3}
+    bossRoom: {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9,
+      type: 3}
 --- !u!4 &1856625620
 Transform:
   m_ObjectHideFlags: 0

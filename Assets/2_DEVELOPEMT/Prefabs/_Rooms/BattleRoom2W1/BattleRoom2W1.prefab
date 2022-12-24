@@ -21950,7 +21950,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 888
+  m_VersionIndex: 891
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -22408,6 +22408,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6689751105350279827}
     m_Modifications:
+    - target: {fileID: 5976264288546230274, guid: 9c721723a2df78d48b4c1ca1d1e0240e,
+        type: 3}
+      propertyPath: transistorType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5976264288546230275, guid: 9c721723a2df78d48b4c1ca1d1e0240e,
         type: 3}
       propertyPath: m_RootOrder
@@ -22491,7 +22496,7 @@ PrefabInstance:
     - target: {fileID: 2577803074277683562, guid: 6becf92d394c33c40b76c121e1359f22,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 156
+      value: 159
       objectReference: {fileID: 0}
     - target: {fileID: 4625881123312538178, guid: 6becf92d394c33c40b76c121e1359f22,
         type: 3}
@@ -22746,7 +22751,7 @@ PrefabInstance:
     - target: {fileID: 7783725690235095050, guid: 5fa69967f083f754c99e786266473fcc,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 129
+      value: 132
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fa69967f083f754c99e786266473fcc, type: 3}
@@ -24702,7 +24707,7 @@ PrefabInstance:
     - target: {fileID: 7783725690235095050, guid: 5fa69967f083f754c99e786266473fcc,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 132
+      value: 135
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fa69967f083f754c99e786266473fcc, type: 3}
@@ -25616,7 +25621,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 135
+  m_VersionIndex: 138
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -26602,7 +26607,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 132
+  m_VersionIndex: 135
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -28145,7 +28150,7 @@ PrefabInstance:
     - target: {fileID: 7783725690235095050, guid: 5fa69967f083f754c99e786266473fcc,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 135
+      value: 138
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fa69967f083f754c99e786266473fcc, type: 3}

@@ -1398,7 +1398,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1407
+  m_VersionIndex: 1410
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2793,7 +2793,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1439
+  m_VersionIndex: 1442
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3648,7 +3648,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2132
+  m_VersionIndex: 2135
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4946,6 +4946,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 254730060803170163}
     m_Modifications:
+    - target: {fileID: 5976264288546230274, guid: 9c721723a2df78d48b4c1ca1d1e0240e,
+        type: 3}
+      propertyPath: transistorType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5976264288546230275, guid: 9c721723a2df78d48b4c1ca1d1e0240e,
         type: 3}
       propertyPath: m_RootOrder
