@@ -539,7 +539,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97877564}
-  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.8522369}
+  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.852237}
   m_LocalPosition: {x: -9975, y: 25.115, z: -199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1023,7 +1023,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6ffb41b95d9ae4b8dc2df3c3040d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotSize: 5
   slotImages:
   - {fileID: 253718724}
   - {fileID: 991730452}
@@ -1300,6 +1299,7 @@ MonoBehaviour:
   abilityImage: {fileID: 465037737}
   buttonImage: {fileID: 477078283}
   lvl: {fileID: 1782313949}
+  lvlsCanUpgade: 0
 --- !u!114 &477078282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3366,6 +3366,7 @@ MonoBehaviour:
   abilityImage: {fileID: 37266565}
   buttonImage: {fileID: 965051134}
   lvl: {fileID: 813520325}
+  lvlsCanUpgade: 0
 --- !u!114 &965051133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4933,6 +4934,7 @@ MonoBehaviour:
   abilityImage: {fileID: 218640202}
   buttonImage: {fileID: 1555731909}
   lvl: {fileID: 250007515}
+  lvlsCanUpgade: 0
 --- !u!114 &1555731908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5077,7 +5079,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587757400}
-  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.8522369}
+  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.852237}
   m_LocalPosition: {x: -9975, y: 25.115, z: -199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5143,6 +5145,7 @@ MonoBehaviour:
   abilityImage: {fileID: 1529115549}
   buttonImage: {fileID: 1641933029}
   lvl: {fileID: 1164510531}
+  lvlsCanUpgade: 0
 --- !u!114 &1641933028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5578,6 +5581,7 @@ MonoBehaviour:
   abilityImage: {fileID: 890286095}
   buttonImage: {fileID: 1698576327}
   lvl: {fileID: 585262236}
+  lvlsCanUpgade: 0
 --- !u!114 &1698576326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5930,6 +5934,7 @@ MonoBehaviour:
   abilityImage: {fileID: 1718598114}
   buttonImage: {fileID: 1937515960}
   lvl: {fileID: 909415949}
+  lvlsCanUpgade: 0
 --- !u!114 &1937515959
 MonoBehaviour:
   m_ObjectHideFlags: 0

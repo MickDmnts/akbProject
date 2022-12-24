@@ -10,6 +10,8 @@ namespace akb.Core.Managing.InRunUpdates
     /// </summary>
     public enum SlotType
     {
+        None = -1,
+
         Attack = 0,
         Throw = 1,
         DodgeRoll = 2,
@@ -53,12 +55,6 @@ namespace akb.Core.Managing.InRunUpdates
     public class SlotsHandler : MonoBehaviour
     {
         /// <summary>
-        /// The advancement slots number of the player.
-        /// </summary>
-        /// <returns></returns>
-        [Header("Set in inspector")]
-        [SerializeField, Tooltip("The advancement slots number of the player.")] int slotSize = 5;
-        /// <summary>
         /// The images holding the slots in the user HUD.
         /// </summary>
         /// <returns></returns>
@@ -67,7 +63,7 @@ namespace akb.Core.Managing.InRunUpdates
         /// <summary>
         /// The player slots containg the advancement handlers.
         /// </summary>
-        IAdvanceable[] slots;
+        Dictionary<SlotType, IAdvanceable> slotHandlerPairs;
 
         #region IN_RUN_ADVANCEMENT_HANDLERS
         /// <summary>
@@ -105,45 +101,47 @@ namespace akb.Core.Managing.InRunUpdates
 
         /// <summary>
         /// Creates IAdvanceable instances from every handler 
-        /// (AttackAdvancementHandler, SpearInRunAdvancements, DodgeInRunAdvancements, 
-        /// PassiveRunAdvancements, PassiveRunAdvancements, DevilRageRunAdvancements)
+        /// (AttackInRunAdvancements, SpearInRunAdvancements, DodgeInRunAdvancements, 
+        /// PassiveInRunAdvancements, DevilRageInRunAdvancements)
         /// </summary>
         void EntrySetup()
         {
-            slots = new IAdvanceable[slotSize];
+            slotHandlerPairs = new Dictionary<SlotType, IAdvanceable>()
+            {
+                {SlotType.Attack, AttackInRunAdvancements = new AttackRunAdvancements()},
+                {SlotType.Throw, SpearInRunAdvancements = new SpearRunAdvancements()},
+                {SlotType.DodgeRoll, DodgeInRunAdvancements = new DodgeRunAdvancements()},
+                {SlotType.Passive, PassiveInRunAdvancements = new PassiveRunAdvancements()},
+                {SlotType.DevilRage, DevilRageInRunAdvancements = new DevilRageRunAdvancements()},
 
-            AttackInRunAdvancements = new AttackRunAdvancements();
-            SpearInRunAdvancements = new SpearRunAdvancements();
-            DodgeInRunAdvancements = new DodgeRunAdvancements();
-            PassiveInRunAdvancements = new PassiveRunAdvancements();
-            DevilRageInRunAdvancements = new DevilRageRunAdvancements();
-
-            slots[0] = AttackInRunAdvancements;
-            slots[1] = SpearInRunAdvancements;
-            slots[2] = DodgeInRunAdvancements;
-            slots[3] = PassiveInRunAdvancements;
-            slots[4] = DevilRageInRunAdvancements;
+            };
         }
 
         public string[] GetSlottedAdvancementTypes()
         {
             List<string> parsedTypes = new List<string>();
 
-            for (int i = 0; i < slots.Length; i++)
+            foreach (KeyValuePair<SlotType, IAdvanceable> pair in slotHandlerPairs)
             {
-                string name = slots[i].GetActiveName();
+                string name = pair.Value.GetActiveName();
                 parsedTypes.Add(name);
             }
 
             return parsedTypes.ToArray();
         }
 
-        /*FUTURE DEVELOPMENT*/
-        void NullifyAbilitiesOnDeath()
+        ///<summary>Sets the passed type to the corresponding slot AdvancementSlot passed.</summary>
+        public void SetAdvancement(SlotType slot, AdvancementTypes type)
         {
-            for (int i = 0; i < slots.Length; i++)
+            slotHandlerPairs[slot].SetActiveAdvancement(type);
+        }
+
+        /*FUTURE DEVELOPMENT*/
+        void ResetAbilitiesOnDeath()
+        {
+            foreach (KeyValuePair<SlotType, IAdvanceable> pair in slotHandlerPairs)
             {
-                slots[i].SetActiveAdvancement(AdvancementTypes.None);
+                pair.Value.SetActiveAdvancement(AdvancementTypes.None);
             }
         }
 

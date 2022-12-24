@@ -3,23 +3,12 @@ using UnityEngine;
 
 namespace akb.Core.Managing.InRunUpdates
 {
-    public enum AdvancementSlot
-    {
-        None,
-
-        Attack,
-        Spear,
-        Dodge,
-        Passive,
-        DevilRage
-    }
-
     public class AdvancementPickUp : MonoBehaviour
     {
         /// <summary>
         /// The advancement slot THIS gameObject corresponds to.
         /// </summary>
-        AdvancementSlot slot = AdvancementSlot.None;
+        SlotType slot = SlotType.None;
 
         /// <summary>
         /// The advancement type THIS gameObject represents in the world.
@@ -31,44 +20,14 @@ namespace akb.Core.Managing.InRunUpdates
             if (other.GetComponent<PlayerEntity>())
             {
                 Debug.Log("Is player");
-                DetermineSlot(slot, advType);
+
+                ManagerHUB.GetManager.SlotsHandler.SetAdvancement(slot, advType);
+
                 Destroy(transform.root.gameObject);
             }
             else
             {
                 Debug.Log("Not player");
-            }
-        }
-
-        void DetermineSlot(AdvancementSlot slot, AdvancementTypes type)
-        {
-            switch (slot)
-            {
-                case AdvancementSlot.Attack:
-                    {
-                        ManagerHUB.GetManager.SlotsHandler.AttackInRunAdvancements.SetActiveAdvancement(type);
-                    }
-                    break;
-                case AdvancementSlot.Spear:
-                    {
-                        ManagerHUB.GetManager.SlotsHandler.SpearInRunAdvancements.SetActiveAdvancement(type);
-                    }
-                    break;
-                case AdvancementSlot.Dodge:
-                    {
-                        ManagerHUB.GetManager.SlotsHandler.DodgeInRunAdvancements.SetActiveAdvancement(type);
-                    }
-                    break;
-                case AdvancementSlot.Passive:
-                    {
-                        ManagerHUB.GetManager.SlotsHandler.PassiveInRunAdvancements.SetActiveAdvancement(type);
-                    }
-                    break;
-                case AdvancementSlot.DevilRage:
-                    {
-                        ManagerHUB.GetManager.SlotsHandler.DevilRageInRunAdvancements.SetActiveAdvancement(type);
-                    }
-                    break;
             }
         }
 
@@ -79,11 +38,11 @@ namespace akb.Core.Managing.InRunUpdates
 
         public AdvancementTypes GetAdvancementType() => advType;
 
-        public void SetAdvancementSlot(AdvancementSlot slot)
+        public void SetAdvancementSlot(SlotType slot)
         {
             this.slot = slot;
         }
 
-        public AdvancementSlot GetAdvancementSlot() => slot;
+        public SlotType GetAdvancementSlot() => slot;
     }
 }

@@ -19,7 +19,6 @@ namespace akb.Core.Managing.InRunUpdates
 
         Dictionary<AdvancementTypes, Sprite> inRunAdvancementsSpritesPairs = new Dictionary<AdvancementTypes, Sprite>();
 
-
         private void Start()
         {
             SaveDependentBehaviour();
@@ -111,21 +110,37 @@ namespace akb.Core.Managing.InRunUpdates
             //Get the deserialized advancement data from the JSON deserializer
             AdvancementData deserializedData = DataSerializer.DeserializeInRunAdvancements(jsonStr);
 
-            //TODO: LOAD SLOTTED ITEMS HERE
+            //Parse the slotted items back to enums
+            List<AdvancementTypes> slottedTypes = ParseToEnumTypes(deserializedData.slottedTypes);
+            //Parse the unused types back to enums
+            List<AdvancementTypes> unusedTypes = ParseToEnumTypes(deserializedData.unusedTypes);
 
-            //Parse every string type to its corresponding enum type
-            List<AdvancementTypes> types = new List<AdvancementTypes>();
-            foreach (string str in deserializedData.unusedTypes)
+            //Write the slotted types to the inRunAdvancements list.
+            string[] slotTypes = Enum.GetNames(typeof(SlotType));
+            for (int i = 0; i < slotTypes.Length; i++)
+            {
+                ManagerHUB.GetManager.SlotsHandler.SetAdvancement(Enum.Parse<SlotType>(slotTypes[i]), slottedTypes[i]);
+            }
+
+            //Write the unused types to the inRunAdvancements list.
+            foreach (AdvancementTypes unusedType in unusedTypes)
+            {
+                inRunAdvancementPairs.Add(unusedType, CreateAdvancementGameobject(unusedType));
+            }
+        }
+
+        ///<summary>Parses the passed array to AdvancementTypes object type.</summary>
+        List<AdvancementTypes> ParseToEnumTypes(string[] toBeParsed)
+        {
+            //Parse the slotted items back to enums
+            List<AdvancementTypes> enumTypes = new List<AdvancementTypes>();
+            foreach (string str in toBeParsed)
             {
                 AdvancementTypes parsedType = Enum.Parse<AdvancementTypes>(str);
-                types.Add(parsedType);
+                enumTypes.Add(parsedType);
             }
 
-            //Finaly write the loaded enum types to the inRunAdvancements list.
-            foreach (AdvancementTypes type in types)
-            {
-                inRunAdvancementPairs.Add(type, CreateAdvancementGameobject(type));
-            }
+            return enumTypes;
         }
 
         /// <summary>
