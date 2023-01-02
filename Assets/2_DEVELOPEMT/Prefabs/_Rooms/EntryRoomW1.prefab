@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 6050371786444503248}
   - component: {fileID: 5480419412266862194}
   m_Layer: 0
-  m_Name: EntryRoomW1E1
+  m_Name: EntryRoomW1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
