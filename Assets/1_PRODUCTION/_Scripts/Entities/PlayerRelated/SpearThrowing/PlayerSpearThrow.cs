@@ -149,7 +149,6 @@ namespace akb.Entities.Player.SpearHandling
             if (!hasSpear || playerEntity.PlayerDodgeRoll.GetIsDodging()) return;
 
             throwActionValue = input.ReadValue<float>();
-
             if (DetermineIsHoldingState(throwActionValue))
             {
                 IncreaseHoldTimer();

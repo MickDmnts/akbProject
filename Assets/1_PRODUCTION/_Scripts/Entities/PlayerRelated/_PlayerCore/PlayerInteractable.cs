@@ -20,7 +20,7 @@ namespace akb.Entities.Player.Interactions
         bool currentlyShocked = false;
         bool currentlyStunned = false;
         bool currentlyCharmed = false;
-        //bool takenDamage = false;
+
         Vector3 inflictedFromDirection;
 
         bool ignoreHit = false;
@@ -98,22 +98,6 @@ namespace akb.Entities.Player.Interactions
         {
             GameObject temp = GameObject.Instantiate(effect, playerEntity.transform);
         }
-
-        /* #region Taken_Damage
-        public bool TookDamage() => takenDamage;
-
-        public void DamageTaken()
-        {
-            if (takenDamage) return;
-
-            takenDamage = true;
-        }
-
-        public void DamageTakenReset()
-        {
-            takenDamage = false;
-        }
-        #endregion */
 
         #region SHOCKED_INTERACTION
         public bool IsGettingShocked() => currentlyShocked;

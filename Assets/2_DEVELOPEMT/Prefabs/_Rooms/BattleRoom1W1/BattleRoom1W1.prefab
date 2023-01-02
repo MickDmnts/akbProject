@@ -78,7 +78,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &254730060803170163
 Transform:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 254730060914925337}
   - component: {fileID: 254730060914925338}
   - component: {fileID: 3570765457348878008}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: GroundRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1398,7 +1398,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1410
+  m_VersionIndex: 1416
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1522,7 +1522,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: d5ddf9c8838ab6c42a5e85658942fd79, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: a820789a44a8a2145b42bb89cc97b597, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &254730061108363386
 GameObject:
@@ -1539,7 +1539,7 @@ GameObject:
   - component: {fileID: 254730061108363391}
   - component: {fileID: 254730061108363384}
   - component: {fileID: 351919847517939219}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: GroundLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2793,7 +2793,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1442
+  m_VersionIndex: 1448
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2917,7 +2917,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 6877d308b795fb1499240a046050171f, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 03e1eb9b111f76e4f94063b52969ffae, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &254730062884684674
 GameObject:
@@ -2934,7 +2934,7 @@ GameObject:
   - component: {fileID: 254730062884684679}
   - component: {fileID: 254730062884684672}
   - component: {fileID: 163794573652318864}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: GroundMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3648,7 +3648,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2135
+  m_VersionIndex: 2141
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3772,7 +3772,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: e8ef9ea59ed3bf54f8af65a559a035e2, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: fe637245693387f43a7560ed98811ab3, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1033618893912600725
 GameObject:
@@ -4904,8 +4904,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4785805599666376977}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &2248673246223202791
-BoxCollider:
+--- !u!64 &3356272996017496928
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4914,9 +4914,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 39.874153, y: 49.998814, z: 105.12438}
-  m_Center: {x: -5.321002, y: -0.25867754, z: 52.56219}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ebe6fe26371a1b04eb066cd3d9c92e15, type: 3}
 --- !u!208 &7241006284829756971
 NavMeshObstacle:
   m_ObjectHideFlags: 0
