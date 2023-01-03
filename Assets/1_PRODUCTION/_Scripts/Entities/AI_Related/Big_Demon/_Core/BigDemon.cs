@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 namespace akb.Entities.AI.Implementations.Big_Demon
 {
+    using akb.Core.Database.Monsters;
+    using akb.Core.Managing;
     using akb.Entities.Interactions;
     using Charge_Only;
 
@@ -183,12 +185,21 @@ namespace akb.Entities.AI.Implementations.Big_Demon
                 GetDemonAnimations().PlayDeathAnimation();
 
                 MoveLayerOnDeath();
+                UpdateDatabaseEntry();
             }
         }
 
         public void ApplyStatusEffect(GameObject effect)
         {
             Instantiate<GameObject>(effect, transform);
+        }
+
+        void UpdateDatabaseEntry()
+        {
+            if (demonType == BigDemonType.BigDemonChargeSlam)
+            { ManagerHUB.GetManager.GameEventsHandler.OnEnemyEntryUpdate(MonsterIDs.BigDemon); } // Big demon
+            else
+            { ManagerHUB.GetManager.GameEventsHandler.OnEnemyEntryUpdate(MonsterIDs.ChargerDemon); } //Charge only demon
         }
 
         #region STUNNED_INTERACTION

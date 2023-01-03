@@ -1,3 +1,4 @@
+using akb.Core.Database.Monsters;
 using akb.Core.Managing;
 using akb.Entities.Interactions;
 using System;
@@ -171,12 +172,22 @@ namespace akb.Entities.AI.Implementations.Status_Demon
                 GetDemonAnimations().PlayDeathAnimation();
 
                 MoveLayerOnDeath();
+
+                UpdateDatabaseEntry();
             }
         }
 
         public void ApplyStatusEffect(GameObject effect)
         {
             Instantiate<GameObject>(effect, transform);
+        }
+
+        void UpdateDatabaseEntry()
+        {
+            if (effectType == EffectType.Charmed)
+            { ManagerHUB.GetManager.GameEventsHandler.OnEnemyEntryUpdate(MonsterIDs.CharmDemon); } // charmed demon
+            else
+            { ManagerHUB.GetManager.GameEventsHandler.OnEnemyEntryUpdate(MonsterIDs.ConfuseDemon); } // confused demon
         }
 
         #region SHOCKED_INTERACTION

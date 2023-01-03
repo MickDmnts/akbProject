@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 using akb.Core.Managing;
 using akb.Entities.Interactions;
+using akb.Core.Database.Monsters;
 
 namespace akb.Entities.AI.Implementations.Ranged_Demon
 {
@@ -248,12 +249,22 @@ namespace akb.Entities.AI.Implementations.Ranged_Demon
                 GetDemonAnimations().PlayDeathAnimation();
 
                 MoveLayerOnDeath();
+
+                UpdateDatabaseEntry();
             }
         }
 
         public void ApplyStatusEffect(GameObject effect)
         {
             Instantiate<GameObject>(effect, transform);
+        }
+
+        void UpdateDatabaseEntry()
+        {
+            if (projectileType == ProjectileType.Normal)
+            { ManagerHUB.GetManager.GameEventsHandler.OnEnemyEntryUpdate(MonsterIDs.RangedDemon); } // ranged demon
+            else
+            { ManagerHUB.GetManager.GameEventsHandler.OnEnemyEntryUpdate(MonsterIDs.ElectroDemon); } //electro ranged demon
         }
 
         #region SHOCKED_INTERACTION

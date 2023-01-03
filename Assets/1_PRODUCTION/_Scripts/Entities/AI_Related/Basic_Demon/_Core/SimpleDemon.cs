@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 namespace akb.Entities.AI.Implementations.Simple_Demon
 {
+    using akb.Core.Database.Monsters;
     using akb.Core.Managing;
 
     using akb.Entities.Interactions;
@@ -144,12 +145,21 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
 
                 //Notify subs for an agent death
                 ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
+                UpdateDatabaseEntry();
             }
         }
 
         public void ApplyStatusEffect(GameObject effect)
         {
             Instantiate<GameObject>(effect, transform);
+        }
+
+        void UpdateDatabaseEntry()
+        {
+            if (demonType == SimpleDemonType.SimpleDemon)
+            { ManagerHUB.GetManager.GameEventsHandler.OnEnemyEntryUpdate(MonsterIDs.BasicDemon); } // Simple demon
+            else
+            { ManagerHUB.GetManager.GameEventsHandler.OnEnemyEntryUpdate(MonsterIDs.FireDemon); } //Fire demon
         }
 
         #region SHOCKED_INTERACTION

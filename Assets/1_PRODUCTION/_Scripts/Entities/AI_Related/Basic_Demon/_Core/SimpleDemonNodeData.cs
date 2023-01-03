@@ -9,9 +9,6 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
     [System.Serializable]
     public class SimpleDemonNodeData : AI_NodeData
     {
-        //SimpleDemon ai_entity;
-        ///SimpleDemonAnimations demonAnimations;
-
         float timeUntilAttack;
         float attackCooldown;
         float attackRange;

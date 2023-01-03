@@ -118,6 +118,21 @@ namespace akb.Core.Managing.GameEvents
         }
 
         /// <summary>
+        /// Add to this event to get notified when an enemy dies.
+        /// </summary>
+        public event Action<int> onEnemyEntryUpdate;
+        /// <summary>
+        /// Call to notify onEnemyEntryUpdate callbacks.
+        /// </summary>
+        public void OnEnemyEntryUpdate(int enemyID)
+        {
+            if (onEnemyEntryUpdate != null)
+            {
+                onEnemyEntryUpdate(enemyID);
+            }
+        }
+
+        /// <summary>
         /// Add to this event to get notified when the player gets hit.
         /// </summary>
         public event Action onPlayerHit;
