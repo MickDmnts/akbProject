@@ -11,5 +11,7 @@ namespace akb.Core.Database.Monsters
         public const int StatusDemon = 6;
         public const int CharmDemon = 7;
         public const int ConfuseDemon = 8;
+        public const int BossAstaroth = 9;
+        public const int BossBeelzebub = 10;
     }
 }

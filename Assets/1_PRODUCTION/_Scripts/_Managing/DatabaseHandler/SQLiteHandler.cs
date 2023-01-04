@@ -592,7 +592,17 @@ namespace akb.Core.Database
                                                 (0, 8, 'Confuse Demon Desc', 0),
                                                 (1, 8, 'Confuse Demon Desc', 0),
                                                 (2, 8, 'Confuse Demon Desc', 0),
-                                                (3, 8, 'Confuse Demon Desc', 0);";
+                                                (3, 8, 'Confuse Demon Desc', 0),
+                                                
+                                                (0, 9, 'Boss Astaroth Desc', 0),
+                                                (1, 9, 'Boss Astaroth Desc', 0),
+                                                (2, 9, 'Boss Astaroth Desc', 0),
+                                                (3, 9, 'Boss Astaroth Desc', 0),
+                                                
+                                                (0, 10, 'Boss Beelzebub Desc', 0),
+                                                (1, 10, 'Boss Beelzebub Desc', 0),
+                                                (2, 10, 'Boss Beelzebub Desc', 0),
+                                                (3, 10, 'Boss Beelzebub Desc', 0);";
 
                     int result = command.ExecuteNonQuery();
 #if UNITY_EDITOR
@@ -1424,6 +1434,48 @@ namespace akb.Core.Database
 
                     AddLoggerEntry($"No is found value saved at {saveFileID}, monster ID {monsterID}");
                     return -1;
+                }
+            }
+        }
+
+        ///<summary>Returns the monster description from the passed mosnter ID.</summary>
+        public string GetMonsterDescription(int saveFileID, int monsterID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"SELECT MonsterDescription FROM MONSTER_ENTRIES
+                                            WHERE 
+                                                SaveFileID = @fileID,
+                                                MonsterID = @monsterID";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "monsterID",
+                        Value = monsterID.ToString()
+                    });
+
+                    string result = "";
+                    StringBuilder sb = new StringBuilder();
+                    SqliteDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result = sb.Append(reader.GetString(0)).ToString();
+                    }
+
+                    AddLoggerEntry($"Returned: Monster description value at {saveFileID}, monster ID {monsterID}");
+                    return result;
                 }
             }
         }
