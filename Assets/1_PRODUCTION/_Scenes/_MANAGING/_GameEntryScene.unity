@@ -626,27 +626,17 @@ MonoBehaviour:
     - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
     - {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9, type: 3}
     - {fileID: -8114173449490702392, guid: af1565f6fcfe7cb448907e3cb9224a12, type: 3}
+    - {fileID: 301268969464681728, guid: 31524192ef42d2c4f96ff00abc7044bb, type: 3}
+    - {fileID: 996877800819291466, guid: aace9ca7987a2cd4d9eb9d724c91eab1, type: 3}
+    - {fileID: 1871666260943613966, guid: fcf6a53c7e7d73d438ff5d3c1fb3c2a4, type: 3}
+    - {fileID: 3973654885308923643, guid: 0e9c614e107c40a449778c52cdf1165a, type: 3}
     battleRoomsCopy: []
     usedBattleRooms: []
-    healRoom: {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736,
+    healRoom: {fileID: 7850676220468382700, guid: ec5f630f20777854fb16d0fe12bc4014,
       type: 3}
-    storeRoom: {fileID: -8114173449490702392, guid: af1565f6fcfe7cb448907e3cb9224a12,
+    storeRoom: {fileID: 7850676220468382700, guid: ec5f630f20777854fb16d0fe12bc4014,
       type: 3}
-    bossRoom: {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9,
-      type: 3}
-  - WorldName: World 2
-    entry: {fileID: 7850676220468382700, guid: ec5f630f20777854fb16d0fe12bc4014, type: 3}
-    battleRooms:
-    - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
-    - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
-    - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
-    battleRoomsCopy: []
-    usedBattleRooms: []
-    healRoom: {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9,
-      type: 3}
-    storeRoom: {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9,
-      type: 3}
-    bossRoom: {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9,
+    bossRoom: {fileID: 7850676220468382700, guid: ec5f630f20777854fb16d0fe12bc4014,
       type: 3}
 --- !u!4 &1856625620
 Transform:
