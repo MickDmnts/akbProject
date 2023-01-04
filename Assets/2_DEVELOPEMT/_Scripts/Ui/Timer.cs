@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 using akb.Core.Managing;
 using akb.Core.Managing.LevelLoading;
-using akb.Core.Managing.PCG;
 
 public class Timer : MonoBehaviour
 {
@@ -15,39 +12,49 @@ public class Timer : MonoBehaviour
 
     bool canActivateTimer = false;
 
+    private void Start()
+    {
+        ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += HandleWorldEntranceTimer;
+        ManagerHUB.GetManager.GameEventsHandler.onNextRoomEntry += TimerReset;
+    }
+
+    void HandleWorldEntranceTimer(GameScenes currentScene)
+    {
+        if (currentScene == GameScenes.World1Scene || currentScene == GameScenes.World2Scene)
+        {
+            _ = currentScene;
+            canActivateTimer = true;
+            startTime = 0;
+            timer.SetText("Time: " + startTime.ToString());
+        }
+        else
+        {
+            _ = currentScene;
+            canActivateTimer = false;
+            startTime = 0;
+            timer.SetText("");
+        }
+    }
+
+    void TimerReset()
+    {
+        startTime = 0;
+        timer.SetText("Time: " + startTime.ToString());
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (canActivateTimer == true)
-        { 
+        {
             startTime += Time.deltaTime;
-            timer.SetText(startTime.ToString());
+            timer.SetText("Time: " + startTime.ToString());
         }
     }
-    private void Start()
-    {
-        ManagerHUB.GetManager.GameEventsHandler.onGenerateNextRoom += StartRunTimer;
-        ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += StopRunTimer;
-    }
+
     private void OnDestroy()
     {
-        ManagerHUB.GetManager.GameEventsHandler.onGenerateNextRoom -= StartRunTimer;
-        ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= StopRunTimer;
-    }
-
-    void StartRunTimer(RoomWorld empty)
-    {
-        _ = empty;
-        canActivateTimer = true;
-        startTime = 0;
-        timer.SetText(startTime.ToString());
-    }
-
-    void StopRunTimer(GameScenes empty)
-    {
-        _ = empty;
-        canActivateTimer = false;
-        startTime = 0;
-        timer.SetText(startTime.ToString());
+        ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= HandleWorldEntranceTimer;
+        ManagerHUB.GetManager.GameEventsHandler.onNextRoomEntry -= TimerReset;
     }
 }
