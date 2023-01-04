@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine;
+
 using akb.Core.Managing;
 using akb.Core.Managing.PCG;
-using UnityEngine;
 
 namespace akb.Gameplay
 {
     public class WorldEntry : MonoBehaviour
     {
-        // Start is called before the first frame update
         void Start()
         {
             CreateRoomAndMovePlayer();

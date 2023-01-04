@@ -1,7 +1,9 @@
+using System.Collections;
 using akb.Core.Managing;
 using akb.Core.Managing.LevelLoading;
-using akb.Core.Managing.PCG;
 using UnityEngine;
+
+using akb.Core.Managing.PCG;
 
 namespace akb.Gameplay
 {
@@ -14,7 +16,10 @@ namespace akb.Gameplay
             LevelsToHub
         }
 
+        [Header("Select transistor type")]
         [SerializeField] TransistorType transistorType;
+
+        IEnumerator activeBehaviour;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -36,7 +41,8 @@ namespace akb.Gameplay
                     break;
                 case TransistorType.LevelToLevel:
                     {
-                        CreateRoomAndMovePlayer();
+                        activeBehaviour = CreateRoomAndMovePlayer();
+                        StartCoroutine(activeBehaviour);
                     }
                     break;
                 case TransistorType.LevelsToHub:
@@ -53,12 +59,23 @@ namespace akb.Gameplay
             }
         }
 
-        void CreateRoomAndMovePlayer()
+        IEnumerator CreateRoomAndMovePlayer()
         {
             RoomWorld activeWorld = ManagerHUB.GetManager.RoomSelector.GetActiveWorld;
             Vector3 nextRoomEntry = ManagerHUB.GetManager.RoomSelector.PlaceNextRoom(activeWorld);
 
             ManagerHUB.GetManager.PlayerEntity.PlayerMovement.TeleportEntity(nextRoomEntry);
+
+            //Waits until the player is properly moved
+            while (ManagerHUB.GetManager.PlayerEntity.transform.position != nextRoomEntry)
+            { yield return null; }
+
+            ManagerHUB.GetManager.GameEventsHandler.OnNextRoomEntry();
+        }
+
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
         }
     }
 }

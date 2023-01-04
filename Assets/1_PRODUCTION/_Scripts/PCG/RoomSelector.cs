@@ -12,16 +12,13 @@ namespace akb.Core.Managing.PCG
         [Header("Coins needed for store room")]
         [SerializeField] int coinsNeeded = 50;
 
-        //Player values
-        private int playerCurrentHealth = 0;
-        private int playerMaxHealth = 0;
-
-        int accumulatedCoins = 0;
-
         int currentLevel = 0;
 
         RoomDataContainer roomDataContainer;
         GameObject previousRoom;
+
+        ///<summary>Returns the current internal level the player is at (0 being entry - 9 being the boss)</summary>
+        public int CurrentLevel => currentLevel;
 
         private void Start()
         {
@@ -34,8 +31,6 @@ namespace akb.Core.Managing.PCG
         void ResetPCG()
         {
             currentLevel = 0;
-            playerCurrentHealth = 0;
-            playerMaxHealth = 0;
         }
 
         #region PCG
@@ -47,6 +42,7 @@ namespace akb.Core.Managing.PCG
 
             RoomData nextRoom = SelectNextRoom(roomWorld);
 
+            //Effectively moves each room next to another by 100 units.
             GameObject roomGO = Instantiate(nextRoom.GetRoomPrefab(), new Vector3(currentLevel * 100, 0f, 0f), Quaternion.identity);
             roomGO.gameObject.SetActive(true);
             Vector3 spawnPos = roomGO.GetComponent<RoomData>().GetRoomEntryPoint().position;
@@ -63,8 +59,7 @@ namespace akb.Core.Managing.PCG
         {
             RoomData nextRoom;
 
-            UpdateHealthValues();
-            UpdateCoinValues();
+            int accumulatedCoins = ManagerHUB.GetManager.CurrencyHandler.GetHellCoins;
 
             //Entry room
             if (currentLevel == ENTRY_LEVEL)
@@ -80,7 +75,7 @@ namespace akb.Core.Managing.PCG
             {
                 Debug.Log("Entered Battle sequence");
 
-                if (IsHealthAboveFiftyPercent(playerCurrentHealth, playerMaxHealth))
+                if (IsHealthAboveFiftyPercent(ManagerHUB.GetManager.PlayerEntity.GetPlayerHealth(), ManagerHUB.GetManager.PlayerEntity.GetPlayerMaxHealth()))
                 {
                     if (HasEnoughMoney(accumulatedCoins, coinsNeeded))
                     {
@@ -109,7 +104,7 @@ namespace akb.Core.Managing.PCG
 
                 currentLevel++;
 
-                if (playerCurrentHealth == playerMaxHealth)
+                if (ManagerHUB.GetManager.PlayerEntity.GetPlayerHealth() == ManagerHUB.GetManager.PlayerEntity.GetPlayerMaxHealth())
                 {
                     nextRoom = GetRoomBasedOnPercentages(roomWorld, 0, 0, 100);
                 }
@@ -167,21 +162,6 @@ namespace akb.Core.Managing.PCG
             {
                 return roomDataContainer.GetRoomData(roomWorld, RoomType.Store);
             }
-        }
-
-        /// <summary>
-        /// Updates health values
-        /// </summary>
-        void UpdateHealthValues()
-        {
-            playerCurrentHealth = (int)ManagerHUB.GetManager.PlayerEntity.GetPlayerHealth();
-            playerMaxHealth = (int)ManagerHUB.GetManager.PlayerEntity.GetPlayerMaxHealth();
-        }
-
-        void UpdateCoinValues()
-        {
-            //This should feed the values from the currency system during the run
-            accumulatedCoins = ManagerHUB.GetManager.CurrencyHandler.GetHellCoins;
         }
 
         public RoomWorld GetActiveWorld => roomDataContainer.ActiveWorld;

@@ -73,17 +73,17 @@ namespace akb.Core.Managing.GameEvents
         }
 
         /// <summary>
-        /// Add to this event to get notified when a new room needs to be generated
+        /// Add to this event to get notified when a new room gets placed.
         /// </summary>
-        public event Action<RoomWorld> onGenerateNextRoom;
+        public event Action onNextRoomEntry;
         /// <summary>
-        /// Call to notify the onGenerateNextRoom callbacks.
+        /// Call to notify the onNextRoomEntry callbacks.
         /// </summary>
-        public void OnGenerateNextRoom(RoomWorld world)
+        public void OnNextRoomEntry()
         {
-            if (onGenerateNextRoom != null)
+            if (onNextRoomEntry != null)
             {
-                onGenerateNextRoom(world);
+                onNextRoomEntry();
             }
         }
 
