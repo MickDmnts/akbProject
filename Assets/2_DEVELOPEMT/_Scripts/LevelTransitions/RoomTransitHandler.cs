@@ -27,25 +27,32 @@ namespace akb.Gameplay
         private void Awake()
         {
             transistorCollider = GetComponent<Collider>();
-
-            if (ManagerHUB.GetManager.LevelManager.FocusedScene == GameScenes.World1Scene
-                || ManagerHUB.GetManager.LevelManager.FocusedScene == GameScenes.World2Scene)
-            { transistorCollider.isTrigger = isTransistorActive; }
-            {
-                isTransistorActive = true;
-            }
         }
 
         private void Start()
         {
-            ManagerHUB.GetManager.GameEventsHandler.onRoomClear += ActivateTranstistor;
+            ManagerHUB.GetManager.GameEventsHandler.onSceneLoaded += CheckForAutoActivation;
+            CheckForAutoActivation();
+        }
 
+        void CheckForAutoActivation()
+        {
+            if (ManagerHUB.GetManager.RoomSelector.CurrentLevel == 0
+                || ManagerHUB.GetManager.LevelManager.FocusedScene != GameScenes.PlayerHUB)
+            {
+                ActivateTranstistor();
+            }
+            else
+            {
+                transistorCollider.isTrigger = false;
+                isTransistorActive = false;
+            }
         }
 
         void ActivateTranstistor()
         {
             isTransistorActive = true;
-            transistorCollider.isTrigger = isTransistorActive;
+            transistorCollider.isTrigger = true;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -64,22 +71,25 @@ namespace akb.Gameplay
             {
                 case TransistorType.HubToLevels:
                     {
-                        ManagerHUB.GetManager.LevelManager.LoadNext(false);
                         ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
+                        ManagerHUB.GetManager.LevelManager.LoadNext(false);
                     }
                     break;
+
                 case TransistorType.LevelToLevel:
                     {
                         activeBehaviour = CreateRoomAndMovePlayer();
                         StartCoroutine(activeBehaviour);
                     }
                     break;
+
                 case TransistorType.LevelsToHub:
                     {
                         ManagerHUB.GetManager.LevelManager.TransitToHub();
                         ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
                     }
                     break;
+
                 default:
                     {
                         Debug.LogWarning("Invalid type");
@@ -104,8 +114,7 @@ namespace akb.Gameplay
 
         private void OnDestroy()
         {
-            ManagerHUB.GetManager.GameEventsHandler.onRoomClear -= ActivateTranstistor;
-
+            ManagerHUB.GetManager.GameEventsHandler.onSceneLoaded -= CheckForAutoActivation;
             StopAllCoroutines();
         }
     }

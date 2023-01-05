@@ -28,8 +28,6 @@ namespace akb.Core.Managing.UI
             saveExit.onClick.AddListener(SaveExit);
         }
 
-        //prepei na kratane kapoies plhrofories tis opoies kai prepei na deiksoume on runtime
-
         void ClosePauseMenu()
         {
             ManagerHUB.GetManager.UIManager.PauseGame();
@@ -47,12 +45,14 @@ namespace akb.Core.Managing.UI
 
         void AbandonRun()
         {
+            ManagerHUB.GetManager.UIManager.DisableAllPanels();
+            ManagerHUB.GetManager.UIManager.PauseGame();
             ManagerHUB.GetManager.LevelManager.TransitToHub();
         }
 
         void SaveExit()
         {
-            Debug.Log("Wow i savedd");
+            Debug.Log("Wow i saved");
             Application.Quit();
         }
     }

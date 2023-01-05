@@ -118,8 +118,6 @@ namespace akb.Core.Managing.LevelLoading
         /// </summary>
         public void LoadNext(bool fromForceLoad, int packetIndex = 0)
         {
-            Debug.Log("called");
-
             activeCoroutine = InitiateUnloadLoadSequence(fromForceLoad, _LoadPassedScenes, packetIndex);
             StartCoroutine(activeCoroutine);
         }
@@ -228,6 +226,7 @@ namespace akb.Core.Managing.LevelLoading
             }
 
             ManagerHUB.GetManager.GameEventsHandler.OnSceneChanged(FocusedScene);
+            ManagerHUB.GetManager.GameEventsHandler.OnSceneLoaded();
 
             if (fader != null) fader.FadeOut();
         }

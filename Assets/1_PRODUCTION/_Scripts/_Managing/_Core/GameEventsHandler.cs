@@ -1,7 +1,6 @@
 using System;
 
 using akb.Core.Managing.LevelLoading;
-using akb.Core.Managing.PCG;
 
 namespace akb.Core.Managing.GameEvents
 {
@@ -10,6 +9,22 @@ namespace akb.Core.Managing.GameEvents
     /// </summary>
     public class GameEventsHandler
     {
+        /// <summary>
+        /// Add to this event to get notified when a a Focused Scene gets changed.
+        /// (Through the SceneLoader)
+        /// </summary>
+        public event Action onSceneLoaded;
+        /// <summary>
+        /// Call to notify the onSceneLoaded callbacks.
+        /// </summary>
+        public void OnSceneLoaded()
+        {
+            if (onSceneLoaded != null)
+            {
+                onSceneLoaded();
+            }
+        }
+
         /// <summary>
         /// Add to this event to get notified when a a Focused Scene gets changed.
         /// (Through the SceneLoader)

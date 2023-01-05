@@ -22,7 +22,7 @@ namespace akb.Core.Managing.PCG
 
         RoomData currentRoom;
 
-        ///<summary>Returns the current internal level the player is at (0 being entry - 9 being the boss)</summary>
+        ///<summary>Returns the current internal level the player is at (1 being entry - 9 being the boss)</summary>
         public int CurrentLevel => currentLevel;
 
         private void Start()
@@ -37,11 +37,17 @@ namespace akb.Core.Managing.PCG
         void ResetPCG()
         {
             currentLevel = 0;
+            previousRoom = null;
+            currentRoom = null;
         }
 
         void ResetPCG(GameScenes currentScene)
         {
+            _ = currentScene;
+
             currentLevel = 0;
+            previousRoom = null;
+            currentRoom = null;
         }
 
         #region PCG
@@ -157,7 +163,6 @@ namespace akb.Core.Managing.PCG
         {
             return accumulatedGold >= moneyNeeded ? true : false;
         }
-
 
         RoomData GetRoomBasedOnPercentages(RoomWorld roomWorld, int battleRoomChance, int healRoomChance, int storeRoomChace)
         {

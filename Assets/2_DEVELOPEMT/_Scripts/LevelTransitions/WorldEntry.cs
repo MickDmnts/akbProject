@@ -2,24 +2,14 @@ using UnityEngine;
 
 using akb.Core.Managing;
 using akb.Core.Managing.PCG;
-using akb.Core.Managing.LevelLoading;
 
 namespace akb.Gameplay
 {
     public class WorldEntry : MonoBehaviour
     {
-        void Start()
+        private void Awake()
         {
-            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += WorldEntryBehaviour;
-        }
-
-        void WorldEntryBehaviour(GameScenes currentScene)
-        {
-            if (currentScene == GameScenes.World1Scene
-                || currentScene == GameScenes.World2Scene)
-            {
-                CreateRoomAndMovePlayer();
-            }
+            ManagerHUB.GetManager.GameEventsHandler.onSceneLoaded += CreateRoomAndMovePlayer;
         }
 
         void CreateRoomAndMovePlayer()
@@ -28,6 +18,11 @@ namespace akb.Gameplay
             Vector3 nextRoomEntry = ManagerHUB.GetManager.RoomSelector.PlaceNextRoom(activeWorld);
 
             ManagerHUB.GetManager.PlayerEntity.PlayerMovement.TeleportEntity(nextRoomEntry);
+        }
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onSceneLoaded -= CreateRoomAndMovePlayer;
         }
     }
 }
