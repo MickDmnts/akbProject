@@ -22165,10 +22165,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomEntryPoint: {fileID: 1594986724108748334}
-  enemySpawnPairs: []
+  enemySpawnPairs:
+  - PairID: 0
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 8731882275263466389}
+  - PairID: 1
+    Enemy: {fileID: 3980709000932686829, guid: 67e57c0c239077d4ca3cbc3bd69758de, type: 3}
+    EnemySpawn: {fileID: 3482479277966666192}
+  - PairID: 2
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 7499375539254108422}
+  - PairID: 3
+    Enemy: {fileID: 1703481393246642498, guid: d44967fbc3306a8418e93db8ccc6e321, type: 3}
+    EnemySpawn: {fileID: 4998683335737715017}
+  - PairID: 4
+    Enemy: {fileID: 5440863929184355347, guid: cac3802df1d3b6b488fada71fd33c948, type: 3}
+    EnemySpawn: {fileID: 6753756634443156339}
+  - PairID: 5
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 4015270801907237692}
+  - PairID: 6
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 2817507183341253742}
   correspondingWorld: 0
   roomType: 3
-  navMeshSurface: {fileID: 8966881819113704302}
 --- !u!1 &6689751105927451216
 GameObject:
   m_ObjectHideFlags: 0

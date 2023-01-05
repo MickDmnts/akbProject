@@ -125,10 +125,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomEntryPoint: {fileID: 5280206296500565249}
-  enemySpawnPairs: []
+  enemySpawnPairs:
+  - PairID: 0
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 6933967027257120752}
+  - PairID: 1
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 4835579567657030276}
+  - PairID: 2
+    Enemy: {fileID: 5440863929184355347, guid: cac3802df1d3b6b488fada71fd33c948, type: 3}
+    EnemySpawn: {fileID: 2330312857482652021}
+  - PairID: 3
+    Enemy: {fileID: 5440863929184355347, guid: cac3802df1d3b6b488fada71fd33c948, type: 3}
+    EnemySpawn: {fileID: 1257319853427171510}
+  - PairID: 4
+    Enemy: {fileID: 5440863929184355347, guid: cac3802df1d3b6b488fada71fd33c948, type: 3}
+    EnemySpawn: {fileID: 5438507629418247326}
+  - PairID: 5
+    Enemy: {fileID: 1703481393246642498, guid: d44967fbc3306a8418e93db8ccc6e321, type: 3}
+    EnemySpawn: {fileID: 6328968811642259952}
+  - PairID: 6
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 930022509718152201}
+  - PairID: 7
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 8948616924359207789}
+  - PairID: 8
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 2941700586572418333}
+  - PairID: 9
+    Enemy: {fileID: 5359578898832522955, guid: deecddd984860b94cb579c417311a945, type: 3}
+    EnemySpawn: {fileID: 6392805359880216305}
   correspondingWorld: 0
   roomType: 3
-  navMeshSurface: {fileID: 3570765457348878008}
 --- !u!1 &254730060914925412
 GameObject:
   m_ObjectHideFlags: 0
@@ -4463,7 +4492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 710046458125d2040abbd5ed4b2debd4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.27
+      value: -9.59
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 710046458125d2040abbd5ed4b2debd4, type: 3}
       propertyPath: m_LocalRotation.w

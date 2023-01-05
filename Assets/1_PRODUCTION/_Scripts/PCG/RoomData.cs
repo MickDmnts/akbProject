@@ -37,10 +37,6 @@ namespace akb.Core.Managing.PCG
         /// </summary>
         [SerializeField, Tooltip("The type of this room.")] RoomType roomType;
 
-        ///<summary>The initial nav mesh surface to generate the nav mesh</summary>
-        [SerializeField, Tooltip("The initial nav mesh surface to generate the nav mesh")]
-        NavMeshSurface navMeshSurface;
-
         #region ROOM_INIT
         /// <summary>
         /// THIS rooms' ID set from the RoomDataContainer initializer.
@@ -81,9 +77,7 @@ namespace akb.Core.Managing.PCG
         /// <summary>
         /// Get this rooms list of spawn points.
         /// </summary>
-        public List<EnemySpawnInfo> GetRoomSpawnPoints() => enemySpawnPairs;
-
-        public void GenerateNavMesh() => navMeshSurface.BuildNavMesh();
+        public List<EnemySpawnInfo> GetRoomSpawnPairs() => enemySpawnPairs;
         #endregion
     }
 }
