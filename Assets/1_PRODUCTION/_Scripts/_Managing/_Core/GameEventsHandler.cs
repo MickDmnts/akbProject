@@ -118,6 +118,21 @@ namespace akb.Core.Managing.GameEvents
         }
 
         /// <summary>
+        /// Add to this event to get notified when all the room enemies die
+        /// </summary>
+        public event Action onRoomClear;
+        /// <summary>
+        /// Call to notify onRoomClear callbacks.
+        /// </summary>
+        public void OnRoomClear()
+        {
+            if (onRoomClear != null)
+            {
+                onRoomClear();
+            }
+        }
+
+        /// <summary>
         /// Add to this event to get notified when an enemy dies.
         /// </summary>
         public event Action<int> onEnemyEntryUpdate;

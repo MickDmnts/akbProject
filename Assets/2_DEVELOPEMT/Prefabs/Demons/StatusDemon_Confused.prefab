@@ -31,7 +31,7 @@ PrefabInstance:
         type: 3}
       propertyPath: circleGraphic
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2979965702927866545}
     - target: {fileID: 5359578898832522955, guid: deecddd984860b94cb579c417311a945,
         type: 3}
       propertyPath: m_Name
@@ -104,3 +104,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecddd984860b94cb579c417311a945, type: 3}
+--- !u!1 &2979965702927866545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5726705616178932772, guid: deecddd984860b94cb579c417311a945,
+    type: 3}
+  m_PrefabInstance: {fileID: 7359919103240877717}
+  m_PrefabAsset: {fileID: 0}

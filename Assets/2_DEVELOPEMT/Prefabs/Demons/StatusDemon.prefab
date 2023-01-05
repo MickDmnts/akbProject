@@ -122,9 +122,8 @@ MonoBehaviour:
   EntityName: StatusDemon
   EntityLife: 200
   deathLayerID: 29
-  target: {fileID: 0}
   effectType: 4
-  circleGraphic: {fileID: 0}
+  circleGraphic: {fileID: 5726705616178932772}
   maxDistanceFromTarget: 10
   maxAttackBeforeAutoTeleport: 2
   timeUntilTPout: 2
@@ -1897,6 +1896,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a06996397863534b9ba3e0afdcad193, type: 3}
+--- !u!1 &5726705616178932772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 367136785609699947, guid: 6a06996397863534b9ba3e0afdcad193,
+    type: 3}
+  m_PrefabInstance: {fileID: 5359578898850569807}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5726705616178932779 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 367136785609699940, guid: 6a06996397863534b9ba3e0afdcad193,

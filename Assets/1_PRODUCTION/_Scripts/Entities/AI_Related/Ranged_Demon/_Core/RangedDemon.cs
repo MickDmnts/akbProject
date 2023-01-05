@@ -14,10 +14,7 @@ namespace akb.Entities.AI.Implementations.Ranged_Demon
     public class RangedDemon : AI_Entity, IInteractable,
         IStunnable, IShockable
     {
-        [Header("Set in inspector")]
-        [SerializeField] Transform target;
-
-        [Header("- Jumping specifics")]
+        [Header("Jumping specifics")]
         [SerializeField] float jumpSpeed = 1f;
         [SerializeField] float maxJumpDistance;
 
@@ -35,6 +32,8 @@ namespace akb.Entities.AI.Implementations.Ranged_Demon
         [SerializeField] ProjectileType projectileType;
         [SerializeField] Transform bezierStart;
         [SerializeField] Transform bezierHint;
+
+        Transform target;
 
         bool isShocked = false;
         float jumpSpeedCache;
@@ -58,6 +57,8 @@ namespace akb.Entities.AI.Implementations.Ranged_Demon
         #region NODE_DATA_CREATION
         void Start()
         {
+            target = ManagerHUB.GetManager.PlayerEntity.transform;
+
             entityNodeData = SetupNodeData<RangedDemonNodeData>();
 
             CreateAppropriateBTHandler(out ai_BTHandler);
@@ -250,6 +251,7 @@ namespace akb.Entities.AI.Implementations.Ranged_Demon
 
                 MoveLayerOnDeath();
 
+                ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
                 UpdateDatabaseEntry();
             }
         }

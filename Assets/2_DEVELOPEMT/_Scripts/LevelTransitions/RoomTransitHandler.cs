@@ -19,10 +19,38 @@ namespace akb.Gameplay
         [Header("Select transistor type")]
         [SerializeField] TransistorType transistorType;
 
+        bool isTransistorActive = false;
+        Collider transistorCollider;
         IEnumerator activeBehaviour;
+
+        private void Awake()
+        {
+            transistorCollider = GetComponent<Collider>();
+
+            if (ManagerHUB.GetManager.LevelManager.FocusedScene == GameScenes.World1Scene
+                || ManagerHUB.GetManager.LevelManager.FocusedScene == GameScenes.World2Scene)
+            { transistorCollider.isTrigger = isTransistorActive; }
+            {
+                isTransistorActive = true;
+            }
+        }
+
+        private void Start()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onRoomClear += ActivateTranstistor;
+
+        }
+
+        void ActivateTranstistor()
+        {
+            isTransistorActive = true;
+            transistorCollider.isTrigger = isTransistorActive;
+        }
 
         private void OnTriggerEnter(Collider other)
         {
+            if (!isTransistorActive) { return; }
+
             if (other.CompareTag("Player"))
             {
                 TransitBehaviour();
@@ -75,6 +103,8 @@ namespace akb.Gameplay
 
         private void OnDestroy()
         {
+            ManagerHUB.GetManager.GameEventsHandler.onRoomClear -= ActivateTranstistor;
+
             StopAllCoroutines();
         }
     }

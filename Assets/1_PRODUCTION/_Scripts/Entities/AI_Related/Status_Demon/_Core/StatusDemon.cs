@@ -13,7 +13,6 @@ namespace akb.Entities.AI.Implementations.Status_Demon
         IStunnable, IShockable
     {
         [Header("Set in inspector")]
-        [SerializeField] Transform target;
         [SerializeField] EffectType effectType;
         [SerializeField] GameObject circleGraphic;
 
@@ -24,6 +23,7 @@ namespace akb.Entities.AI.Implementations.Status_Demon
         [SerializeField] float teleportCooldown;
 
         StatusDemonAOEHandler AOEHandler;
+        Transform target;
 
         bool isShocked = false;
         float teleportCooldownCache;
@@ -47,6 +47,8 @@ namespace akb.Entities.AI.Implementations.Status_Demon
         #region NODE_DATA_CREATION
         void Start()
         {
+            target = ManagerHUB.GetManager.PlayerEntity.transform;
+
             entityNodeData = SetupNodeData<StatusDemonNodeData>();
 
             CreateAppropriateBTHandler(out ai_BTHandler);
@@ -173,6 +175,7 @@ namespace akb.Entities.AI.Implementations.Status_Demon
 
                 MoveLayerOnDeath();
 
+                ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
                 UpdateDatabaseEntry();
             }
         }

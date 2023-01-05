@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace akb.Core.Managing.PCG
@@ -16,6 +17,8 @@ namespace akb.Core.Managing.PCG
 
         RoomDataContainer roomDataContainer;
         GameObject previousRoom;
+
+        RoomData currentRoom;
 
         ///<summary>Returns the current internal level the player is at (0 being entry - 9 being the boss)</summary>
         public int CurrentLevel => currentLevel;
@@ -41,6 +44,8 @@ namespace akb.Core.Managing.PCG
                 Destroy(previousRoom);
 
             RoomData nextRoom = SelectNextRoom(roomWorld);
+
+            currentRoom = nextRoom;
 
             //Effectively moves each room next to another by 100 units.
             GameObject roomGO = Instantiate(nextRoom.GetRoomPrefab(), new Vector3(currentLevel * 100, 0f, 0f), Quaternion.identity);
@@ -171,5 +176,13 @@ namespace akb.Core.Managing.PCG
             ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry -= ResetPCG;
         }
         #endregion
+
+        public List<EnemySpawnInfo> GetCurrentRoomEnemies()
+        {
+            if (currentRoom != null)
+            { return currentRoom.GetRoomSpawnPairs(); }
+
+            return null;
+        }
     }
 }

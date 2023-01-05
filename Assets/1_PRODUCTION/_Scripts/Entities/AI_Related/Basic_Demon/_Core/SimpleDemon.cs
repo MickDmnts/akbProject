@@ -25,7 +25,6 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
         [Header("Set in inspector")]
         [SerializeField] SimpleDemonType demonType;
 
-        [SerializeField] Transform target;
         [SerializeField] GameObject coneGraphic;
         [SerializeField] float timeUntilAttack;
         [SerializeField] float attackCooldown;
@@ -36,6 +35,7 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
         [SerializeField] float fireAoeRadious = 7f;
 
         SimpleDemonAttackHandler attackHandler;
+        Transform target;
 
         bool isShocked = false;
         float agentSpeedCache;
@@ -63,6 +63,8 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
         #region NODE_DATA_CREATION
         void Start()
         {
+            target = ManagerHUB.GetManager.PlayerEntity.transform;
+
             entityNodeData = SetupNodeData<SimpleDemonNodeData>();
 
             CreateAppropriateBTHandler(out ai_BTHandler);

@@ -24,7 +24,6 @@ namespace akb.Entities.AI.Implementations.Big_Demon
 
         [Header("Set in inspector")]
         [SerializeField] BigDemonType demonType;
-        [SerializeField] Transform target;
 
         [Header("Universal Settings")]
         [SerializeField] GameObject lineGraphic;
@@ -42,6 +41,7 @@ namespace akb.Entities.AI.Implementations.Big_Demon
 
         BigDemonNodeData _nodeData;
         BigDemonAttackHandler attackHandler;
+        Transform target;
 
         private void Awake()
         {
@@ -58,6 +58,8 @@ namespace akb.Entities.AI.Implementations.Big_Demon
 
         private void Start()
         {
+            target = ManagerHUB.GetManager.PlayerEntity.transform;
+
             entityNodeData = SetupNodeData<BigDemonNodeData>();
             _nodeData = entityNodeData as BigDemonNodeData;
 
@@ -185,6 +187,8 @@ namespace akb.Entities.AI.Implementations.Big_Demon
                 GetDemonAnimations().PlayDeathAnimation();
 
                 MoveLayerOnDeath();
+
+                ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
                 UpdateDatabaseEntry();
             }
         }
