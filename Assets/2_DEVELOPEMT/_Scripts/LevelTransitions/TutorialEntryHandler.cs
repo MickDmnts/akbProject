@@ -15,7 +15,7 @@ namespace akb.Core.Managing.LevelLoading.Hub
             //DEBUG------------------------------------------------------------
             if (Input.GetKeyDown(KeyCode.G))
             {
-                ManagerHUB.GetManager.LevelManager.LoadNext(false);
+                ManagerHUB.GetManager.LevelManager.TransitToHub();
             }
             //-----------------------------------------------------------------
         }

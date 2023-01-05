@@ -589,6 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef773f3fe5cedb74cbbac3d4be29ff9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawnEffect: {fileID: 0}
 --- !u!1 &1856625618
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,10 +715,10 @@ MonoBehaviour:
   levelsInLoadOrder:
   - {fileID: 11400000, guid: 9554815653d48f9418feef6618e011c4, type: 2}
   - {fileID: 11400000, guid: b6d22bb1d4c7e014d8d7ff8e7bfc51ac, type: 2}
-  - {fileID: 11400000, guid: 199bd1a4b8a45f343a449d1e66006b6d, type: 2}
   - {fileID: 11400000, guid: af614040a1e3eec4299a7158e80aed6f, type: 2}
+  - {fileID: 11400000, guid: 199bd1a4b8a45f343a449d1e66006b6d, type: 2}
   - {fileID: 11400000, guid: 9c150e30182db564fb48d7a5b0f3166a, type: 2}
   - {fileID: 11400000, guid: 2119a3ac88cf0284cac0407bcd0b4ee4, type: 2}
-  - {fileID: 11400000, guid: 7c25eabd1716a5147bf868bd6e081d78, type: 2}
   - {fileID: 11400000, guid: 5be3d39344069fc419bc4ed3ce01d8fa, type: 2}
+  - {fileID: 11400000, guid: 7c25eabd1716a5147bf868bd6e081d78, type: 2}
   hubPacket: {fileID: 11400000, guid: 2119a3ac88cf0284cac0407bcd0b4ee4, type: 2}

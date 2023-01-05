@@ -1,7 +1,8 @@
 using System.Collections;
+using UnityEngine;
+
 using akb.Core.Managing;
 using akb.Core.Managing.LevelLoading;
-using UnityEngine;
 
 using akb.Core.Managing.PCG;
 

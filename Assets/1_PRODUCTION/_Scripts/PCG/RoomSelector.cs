@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using akb.Core.Managing.LevelLoading;
+
 namespace akb.Core.Managing.PCG
 {
     public class RoomSelector : MonoBehaviour
@@ -29,9 +31,15 @@ namespace akb.Core.Managing.PCG
             ManagerHUB.GetManager.SetRoomSelector(this);
 
             ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry += ResetPCG;
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetPCG;
         }
 
         void ResetPCG()
+        {
+            currentLevel = 0;
+        }
+
+        void ResetPCG(GameScenes currentScene)
         {
             currentLevel = 0;
         }
