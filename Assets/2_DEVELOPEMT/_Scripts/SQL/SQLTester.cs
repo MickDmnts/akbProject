@@ -56,6 +56,37 @@ namespace akb.Core.Database
             {
                 Debug.Log(GameManager.GetManager.Database.GetLastUsedFileID());
             }
+
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                GameManager.GetManager.Database.UpdateSoulsValue(5, 0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Debug.Log(GameManager.GetManager.Database.GetSoulsValue(0));
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                GameManager.GetManager.Database.UpdateIsMonsterFound(0, 5, false);
+                GameManager.GetManager.Database.UpdateIsMonsterFound(0, 2, true);
+                GameManager.GetManager.Database.UpdateIsMonsterFound(0, 3, false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                Debug.Log(GameManager.GetManager.Database.GetIsMonsterFoundValue(0, 5));
+                Debug.Log(GameManager.GetManager.Database.GetIsMonsterFoundValue(0, 2));
+                Debug.Log(GameManager.GetManager.Database.GetIsMonsterFoundValue(0, 3));
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log(GameManager.GetManager.Database.GetMonsterDescription(0, 5));
+                Debug.Log(GameManager.GetManager.Database.GetMonsterDescription(0, 2));
+                Debug.Log(GameManager.GetManager.Database.GetMonsterDescription(0, 3));
+            }
         }
     }
 }

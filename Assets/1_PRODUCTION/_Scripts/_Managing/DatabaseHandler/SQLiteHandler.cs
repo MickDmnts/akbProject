@@ -1355,7 +1355,8 @@ namespace akb.Core.Database
                                             SET
                                                 IsFound = @isFound
                                             WHERE 
-                                                SaveFileID = @fileID,
+                                                SaveFileID = @fileID
+                                                AND
                                                 MonsterID = @monsterID;";
 
                     command.Parameters.Add(new SqliteParameter()
@@ -1398,8 +1399,9 @@ namespace akb.Core.Database
 
                     command.CommandText = @"SELECT IsFound FROM MONSTER_ENTRIES
                                             WHERE 
-                                                SaveFileID = @fileID,
-                                                MonsterID = @monsterID";
+                                                SaveFileID = @fileID
+                                                AND
+                                                MonsterID = @monsterID;";
 
                     command.Parameters.Add(new SqliteParameter()
                     {
@@ -1451,7 +1453,8 @@ namespace akb.Core.Database
 
                     command.CommandText = @"SELECT MonsterDescription FROM MONSTER_ENTRIES
                                             WHERE 
-                                                SaveFileID = @fileID,
+                                                SaveFileID = @fileID 
+                                                AND
                                                 MonsterID = @monsterID";
 
                     command.Parameters.Add(new SqliteParameter()
