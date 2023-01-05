@@ -1,6 +1,7 @@
 using System.Data;
 using System.Text;
 using System;
+using System.IO;
 using Mono.Data.Sqlite;
 
 using UnityEngine;
@@ -17,14 +18,28 @@ namespace akb.Core.Database
         {
             if (dbPath == "")
             {
+#if UNITY_EDITOR
                 dbPath = "URI=file:" + Application.dataPath + "/Resources/akbPlayerDb.db";
+#endif
 
 #if UNITY_STANDALONE && !UNITY_EDITOR
-            dbPath = "URI=file:" + Application.dataPath + "/akbPlayerDb.db";
+                            dbPath = "URI=file:" + Application.dataPath + "/akbPlayerDb.db";
 #endif
             }
 
+            ConstructDB();
+
             OnCostruction();
+        }
+
+        void ConstructDB()
+        {
+            string trimmedPath = dbPath.Substring(9);
+
+            if (!File.Exists(trimmedPath))
+            {
+                using (System.IO.FileStream fs = System.IO.File.Create(trimmedPath)) { }
+            }
         }
 
         #region DATABASE_CREATION
@@ -62,7 +77,6 @@ namespace akb.Core.Database
             SetupMonsterEntriesDB();
         }
 
-#if UNITY_EDITOR
         ///<summary>Creates a table used for logging the database queries.</summary>
         void CreateDBLogger()
         {
@@ -111,7 +125,6 @@ namespace akb.Core.Database
                 connection.Dispose();
             }
         }
-#endif
 
         ///<summary>Creates a table to hold the save files of the game.</summary>
         void CreateSaveFiles()
