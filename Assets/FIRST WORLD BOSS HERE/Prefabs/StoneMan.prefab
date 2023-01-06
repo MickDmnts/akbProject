@@ -401,7 +401,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100024}
-  m_LocalRotation: {x: -0.0000000046708872, y: -0.0000000066572627, z: -0.19808497, w: 0.98018485}
+  m_LocalRotation: {x: -0.0000000046708872, y: -0.0000000066572627, z: -0.19808497,
+    w: 0.98018485}
   m_LocalPosition: {x: -0.27721083, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.9999999, z: 1.0000001}
   m_ConstrainProportionsScale: 0
@@ -594,7 +595,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100036}
-  m_LocalRotation: {x: 0.0000000018626449, y: -2.7755569e-17, z: -0.000000014901159, w: 1}
+  m_LocalRotation: {x: 0.0000000018626449, y: -2.7755569e-17, z: -0.000000014901159,
+    w: 1}
   m_LocalPosition: {x: -0.33384642, y: 0.00000015258789, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1810,7 +1812,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0bc8852a76b339b4b85ed58b45e25f17, type: 2}
+  - {fileID: 2100000, guid: 0e109c637870942498651d74fe556a19, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1922,7 +1924,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0bc8852a76b339b4b85ed58b45e25f17, type: 2}
+  - {fileID: 2100000, guid: 0e109c637870942498651d74fe556a19, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2039,9 +2041,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100116}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 217.64104, y: 0, z: 226.97224}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 5.364931, y: 5.364931, z: 5.364931}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 400114}
@@ -2049,7 +2051,7 @@ Transform:
   - {fileID: 400110}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 4
