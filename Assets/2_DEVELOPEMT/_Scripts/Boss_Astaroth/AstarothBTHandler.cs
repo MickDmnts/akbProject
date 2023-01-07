@@ -5,7 +5,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
         BehaviourTree entryBT;
         BehaviourTree attackPattern;
 
-        public AstarothBTHandler(Astaroth ai_entity, INodeData nodeData)
+        public AstarothBTHandler(BossAstaroth ai_entity, INodeData nodeData)
         {
             this.ai_parentEntity = ai_entity;
             this.ai_nodeData = nodeData;
@@ -15,19 +15,19 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             AstarothNodeData data = ai_nodeData as AstarothNodeData;
 
-            Selector astarothBrancher = new(data);
+            //Selector astarothBrancher = new(data);
             //Rotator
             FaceTargetAction faceTargetAction = new FaceTargetAction(data, ai_nodeData.GetTarget());
             //Orded matters - left executes first
             INode[] nodesToParallel = new INode[]
             {
-                faceTargetAction, astarothBrancher
+                faceTargetAction, 
             };
             ParallerExecutor parallerExecutor = new ParallerExecutor(nodesToParallel, ai_nodeData);
             //Activator
-            CheckIfDead checkIfDead = new (data);
+            //CheckIfDead checkIfDead = new (data);
             //Entry
-            entryBT = new BehaviourTree(checkIfDead, ai_nodeData);
+            //entryBT = new BehaviourTree(checkIfDead, ai_nodeData);
             entryNode = entryBT;
         }
 
