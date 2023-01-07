@@ -18,12 +18,16 @@ namespace akb.Core.Managing.PCG
         int currentLevel = 0;
 
         RoomDataContainer roomDataContainer;
-        GameObject previousRoom;
 
-        RoomData currentRoom;
+        GameObject currentRoomGO;
+        RoomData currentRoomData;
 
         ///<summary>Returns the current internal level the player is at (1 being entry - 9 being the boss)</summary>
         public int CurrentLevel => currentLevel;
+
+        public RoomWorld GetActiveWorld => roomDataContainer.ActiveWorld;
+
+        public GameObject CurrentRoomGO => currentRoomGO;
 
         private void Start()
         {
@@ -34,41 +38,43 @@ namespace akb.Core.Managing.PCG
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetPCG;
         }
 
+        //Reset when the room changes
         void ResetPCG()
         {
             currentLevel = 0;
-            previousRoom = null;
-            currentRoom = null;
+            currentRoomGO = null;
+            currentRoomData = null;
         }
 
+        //Reset when the scene changes
         void ResetPCG(GameScenes currentScene)
         {
             _ = currentScene;
 
             currentLevel = 0;
-            previousRoom = null;
-            currentRoom = null;
+            currentRoomGO = null;
+            currentRoomData = null;
         }
 
         #region PCG
-        ///<summary>Call to place the next generated room in the game world and get the rooms entry point in return.</summary>
-        public Vector3 PlaceNextRoom(RoomWorld roomWorld)
+        ///<summary>Call to place the next generated room in the game world and returns its position in the world.</summary>
+        public GameObject PlaceNextRoom(RoomWorld roomWorld)
         {
-            if (previousRoom != null)
-                Destroy(previousRoom);
+            if (currentRoomGO != null)
+                Destroy(currentRoomGO);
 
             RoomData nextRoom = SelectNextRoom(roomWorld);
 
-            currentRoom = nextRoom;
+            currentRoomData = nextRoom;
 
             //Effectively moves each room next to another by 100 units.
             GameObject roomGO = Instantiate(nextRoom.GetRoomPrefab(), new Vector3(currentLevel * 100, 0f, 0f), Quaternion.identity);
             roomGO.gameObject.SetActive(true);
-            Vector3 spawnPos = roomGO.GetComponent<RoomData>().GetRoomEntryPoint().position;
+            Vector3 spawnPos = roomGO.transform.position;
 
-            previousRoom = roomGO;
+            currentRoomGO = roomGO;
 
-            return spawnPos;
+            return currentRoomGO;
         }
 
         /// <summary>
@@ -181,21 +187,19 @@ namespace akb.Core.Managing.PCG
                 return roomDataContainer.GetRoomData(roomWorld, RoomType.Store);
             }
         }
-
-        public RoomWorld GetActiveWorld => roomDataContainer.ActiveWorld;
-
-        private void OnDestroy()
-        {
-            ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry -= ResetPCG;
-        }
         #endregion
 
         public List<EnemySpawnInfo> GetCurrentRoomEnemies()
         {
-            if (currentRoom != null)
-            { return currentRoom.GetRoomSpawnPairs(); }
+            if (currentRoomData != null)
+            { return currentRoomData.GetRoomSpawnPairs(); }
 
             return null;
+        }
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry -= ResetPCG;
         }
     }
 }

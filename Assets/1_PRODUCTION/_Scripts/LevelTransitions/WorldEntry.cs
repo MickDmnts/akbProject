@@ -15,7 +15,9 @@ namespace akb.Gameplay
         void CreateRoomAndMovePlayer()
         {
             RoomWorld activeWorld = ManagerHUB.GetManager.RoomSelector.GetActiveWorld;
-            Vector3 nextRoomEntry = ManagerHUB.GetManager.RoomSelector.PlaceNextRoom(activeWorld);
+
+            GameObject nextRoom = ManagerHUB.GetManager.RoomSelector.PlaceNextRoom(activeWorld);
+            Vector3 nextRoomEntry = nextRoom.GetComponent<RoomData>().GetRoomEntryPoint().position;
 
             ManagerHUB.GetManager.PlayerEntity.PlayerMovement.TeleportEntity(nextRoomEntry);
         }

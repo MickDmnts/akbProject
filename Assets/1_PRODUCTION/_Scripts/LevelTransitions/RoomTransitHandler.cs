@@ -101,8 +101,11 @@ namespace akb.Gameplay
         IEnumerator CreateRoomAndMovePlayer()
         {
             RoomWorld activeWorld = ManagerHUB.GetManager.RoomSelector.GetActiveWorld;
-            Vector3 nextRoomEntry = ManagerHUB.GetManager.RoomSelector.PlaceNextRoom(activeWorld);
 
+            GameObject nextRoom = ManagerHUB.GetManager.RoomSelector.PlaceNextRoom(activeWorld);
+            Vector3 nextRoomEntry = nextRoom.GetComponent<RoomData>().GetRoomEntryPoint().position;
+
+            //Move the player
             ManagerHUB.GetManager.PlayerEntity.PlayerMovement.TeleportEntity(nextRoomEntry);
 
             //Waits until the player is properly moved
