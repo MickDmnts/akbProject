@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+using akb.Core.Database.Monsters;
+
 namespace akb.Core.Managing.UI
 {
     public class MonstersButtons : MonoBehaviour
@@ -10,8 +12,11 @@ namespace akb.Core.Managing.UI
         [SerializeField] Image monsterSpriteTemplate;
         [SerializeField] TextMeshProUGUI monsterDescriptionTempalte;
 
+        [SerializeField] Sprite lockedMonstersSprite;
+        [SerializeField] string lockedMonstersDescripton;
+
         [SerializeField] List<Sprite> monsterSprite;
-        [SerializeField] List<string> monsterDescription;
+        List<string> monsterDescription = new List<string>();
 
         List<Button> monsterButtons = new List<Button>();
 
@@ -42,17 +47,17 @@ namespace akb.Core.Managing.UI
         void EntrySetup()
         {
             //Monsters Buttons
-            basicDemonButton.onClick.AddListener(delegate { Setter(0); });
-            fireBasicDemonButton.onClick.AddListener(delegate { Setter(1); });
-            bigDemonButton.onClick.AddListener(delegate { Setter(2); });
-            bigChargersButton.onClick.AddListener(delegate { Setter(3); });
-            rangedDemonsButton.onClick.AddListener(delegate { Setter(4); });
-            electroDemonsButton.onClick.AddListener(delegate { Setter(5); });
-            statusDemonsButton.onClick.AddListener(delegate { Setter(6); });
-            charmDemonsButton.onClick.AddListener(delegate { Setter(7); });
-            confuseDemonsButton.onClick.AddListener(delegate { Setter(8); });
-            beelzebubButton.onClick.AddListener(delegate { Setter(9); });
-            astarothButton.onClick.AddListener(delegate { Setter(10); });
+            basicDemonButton.onClick.AddListener(delegate { Setter(MonsterIDs.BasicDemon); });
+            fireBasicDemonButton.onClick.AddListener(delegate { Setter(MonsterIDs.FireDemon); });
+            bigDemonButton.onClick.AddListener(delegate { Setter(MonsterIDs.BigDemon); });
+            bigChargersButton.onClick.AddListener(delegate { Setter(MonsterIDs.ChargerDemon); });
+            rangedDemonsButton.onClick.AddListener(delegate { Setter(MonsterIDs.RangedDemon); });
+            electroDemonsButton.onClick.AddListener(delegate { Setter(MonsterIDs.ElectroDemon); });
+            statusDemonsButton.onClick.AddListener(delegate { Setter(MonsterIDs.StatusDemon); });
+            charmDemonsButton.onClick.AddListener(delegate { Setter(MonsterIDs.CharmDemon); });
+            confuseDemonsButton.onClick.AddListener(delegate { Setter(MonsterIDs.ConfuseDemon); });
+            beelzebubButton.onClick.AddListener(delegate { Setter(MonsterIDs.BossBeelzebub); });
+            astarothButton.onClick.AddListener(delegate { Setter(MonsterIDs.BossAstaroth); });
         }
 
         void AddButtonsToList()
@@ -72,8 +77,28 @@ namespace akb.Core.Managing.UI
 
         void Setter(int buttonIndex)
         {
-            monsterSpriteTemplate.sprite = monsterSprite[buttonIndex];
-            monsterDescriptionTempalte.text = monsterDescription[buttonIndex];
+
+            if(GameManager.GetManager.Database.GetIsMonsterFoundValue(GameManager.GetManager.ActiveFileID, buttonIndex) == 0)
+            {
+                monsterSpriteTemplate.sprite = lockedMonstersSprite;
+                monsterDescriptionTempalte.text = lockedMonstersDescripton;
+            }
+            else
+            {
+                monsterSpriteTemplate.sprite = monsterSprite[buttonIndex];
+
+                monsterDescriptionTempalte.text = GameManager.GetManager.Database.GetMonsterDescription(GameManager.GetManager.ActiveFileID, buttonIndex);
+            }
+        }
+
+        void LockMonstersUI()
+        {
+            // sto start tha einai oloi locked
+        }
+
+        void UnlockMonstersUI()
+        {
+            // otan synantas kapoion to knaies unlock
         }
     }
 }
