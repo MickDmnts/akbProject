@@ -1,6 +1,4 @@
-﻿using akb.Entities.AI.Implementations.Astaroth;
-
-namespace akb.Entities.AI.Implementations
+﻿namespace akb.Entities.AI.Implementations
 {
     /* [Node documentation]
      * 

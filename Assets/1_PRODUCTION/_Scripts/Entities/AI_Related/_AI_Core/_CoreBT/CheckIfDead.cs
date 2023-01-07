@@ -1,6 +1,3 @@
-using akb.Entities.AI.Implementations.Astaroth;
-using System;
-
 namespace akb.Entities.AI
 {
     /* [Node Documentation]
