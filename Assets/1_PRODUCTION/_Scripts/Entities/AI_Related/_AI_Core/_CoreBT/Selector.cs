@@ -1,4 +1,6 @@
-﻿namespace akb.Entities.AI.Implementations
+﻿using akb.Entities.AI.Implementations.Astaroth;
+
+namespace akb.Entities.AI.Implementations
 {
     /* [Node documentation]
      * 
@@ -14,6 +16,12 @@
 
         protected INode nodeOne;
         protected INode nodeTwo;
+        private AstarothNodeData data;
+
+        public Selector(AstarothNodeData data)
+        {
+            this.data = data;
+        }
 
         public Selector(INodeData nodeData, INode nodeOne, INode nodeTwo)
         {
