@@ -12,6 +12,16 @@ namespace akb.Entities.AI.Implementations.Astaroth
             //nop...
         }
 
+        public void PlayGotHitAnimation()
+        {
+            //nop...
+        }
+
+        public void PlayDeathAnimation()
+        {
+            //nop...
+        }
+
         public override void ResetAttackVariables()
         {
             //nop...

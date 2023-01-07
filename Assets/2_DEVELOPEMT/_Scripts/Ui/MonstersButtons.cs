@@ -77,8 +77,7 @@ namespace akb.Core.Managing.UI
 
         void Setter(int buttonIndex)
         {
-
-            if(GameManager.GetManager.Database.GetIsMonsterFoundValue(GameManager.GetManager.ActiveFileID, buttonIndex) == 0)
+            if (GameManager.GetManager.Database.GetIsMonsterFoundValue(GameManager.GetManager.ActiveFileID, buttonIndex) == 0)
             {
                 monsterSpriteTemplate.sprite = lockedMonstersSprite;
                 monsterDescriptionTempalte.text = lockedMonstersDescripton;
@@ -89,16 +88,6 @@ namespace akb.Core.Managing.UI
 
                 monsterDescriptionTempalte.text = GameManager.GetManager.Database.GetMonsterDescription(GameManager.GetManager.ActiveFileID, buttonIndex);
             }
-        }
-
-        void LockMonstersUI()
-        {
-            // sto start tha einai oloi locked
-        }
-
-        void UnlockMonstersUI()
-        {
-            // otan synantas kapoion to knaies unlock
         }
     }
 }

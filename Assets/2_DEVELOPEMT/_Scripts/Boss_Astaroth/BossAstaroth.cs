@@ -17,16 +17,23 @@ namespace akb.Entities.AI.Implementations.Astaroth
 
     public class BossAstaroth : AI_Entity, IInteractable
     {
+        [Header("Astaroth specific")]
         [SerializeField] GameObject projectilePrefab;
         [SerializeField] ParticleSystem flamePillarPs;
-        [SerializeField] float phase1ProjectileRps = 3f;
+        [SerializeField] float phase1ProjectileCd = 3f;
+        [SerializeField] float phase2EnemiesCd = 5f;
+        [SerializeField] float phase3ProjectileCd = 10f;
 
         //BossAstarothAttackHandler attackHandler;
         Transform target;
 
+        float maxHealth;
+
         private void Awake()
         {
             CacheNeededComponents();
+
+            maxHealth = EntityLife;
         }
 
         /// <summary>
@@ -47,7 +54,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
 
             entityNodeData = SetupNodeData<AstarothNodeData>();
 
-            //CreateAppropriateBTHandler(out ai_BTHandler);
+            CreateAppropriateBTHandler(out ai_BTHandler);
         }
 
         /// <summary>
@@ -58,11 +65,12 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             AstarothNodeData tempData = new T() as AstarothNodeData;
 
-            //tempData.SetEnemyEntity(this);
-            //tempData.SetEnemyAnimations(GetDemonAnimations());
+            tempData.SetEnemyEntity(this);
+            tempData.SetEnemyAnimations(GetDemonAnimations());
             tempData.SetNavMeshAgent(ai_agent);
 
-            tempData.SetIsStunned(false);
+            //Add more things here
+            tempData.SetCurrentPhase(AstarothPhases.Phase1);
 
             tempData.SetCanRotate(true);
             tempData.SetTarget(target);
@@ -71,14 +79,9 @@ namespace akb.Entities.AI.Implementations.Astaroth
         }
         #endregion
 
-        /* protected override void CreateAppropriateBTHandler(out IBehaviourTreeHandler handlerVar)
-        {
-            handlerVar = new AstarothNodeData(this, entityNodeData);
-        } */
-
         protected override void CreateAppropriateBTHandler(out IBehaviourTreeHandler handlerVar)
         {
-            throw new NotImplementedException();
+            handlerVar = new AstarothBTHandler(this, entityNodeData);
         }
 
         //Sole purpose is to update the behaviour tree of the entity
@@ -90,25 +93,51 @@ namespace akb.Entities.AI.Implementations.Astaroth
             }
         }
 
+        #region ENTITY_INTERACTIONS
         public void AttackInteraction(float damageValue)
         {
             if (GetDemonData().GetIsDead()) return;
 
             SubtractHealth(damageValue);
-            //GetDemonAnimations().PlayGotHitAnimation();
+            GetDemonAnimations().PlayGotHitAnimation();
+
+            //Updates the bosses phase if the health is in phase change.
+            CheckForPhaseChange();
 
             isDead = CheckIfDead(EntityLife);
 
             if (isDead)
             {
                 UpdateNodeDataIsDead(isDead);
-                //GetDemonAnimations().PlayDeathAnimation();
+                GetDemonAnimations().PlayDeathAnimation();
 
                 MoveLayerOnDeath();
+
+                //DO EXTRA STUFF HERE 
+                //REWARD SOULS AND OPEN TRANSISTOR.
 
                 //Notify subs for an agent death
                 ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
                 UpdateDatabaseEntry();
+            }
+        }
+
+        ///<summary>Changes the phase of the boss based on its health value
+        /// <para>Phase 1: Max Helth - 75%</para>
+        /// <para>Phase 2: 74% - 25%</para>
+        /// <para>Phase 3: 25% - death</para>
+        /// </summary>
+        void CheckForPhaseChange()
+        {
+            if ((EntityLife / maxHealth) * 100 < 75)
+            {
+                GetDemonData().SetCurrentPhase(AstarothPhases.Phase2);
+                Debug.Log("Changed to phase 2");
+            }
+            else if ((EntityLife / maxHealth) * 100 <= 25)
+            {
+                GetDemonData().SetCurrentPhase(AstarothPhases.Phase3);
+                Debug.Log("Changed to phase 3");
             }
         }
 
@@ -126,6 +155,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             GetDemonData().SetIsDead(value);
         }
+        #endregion
 
         public BossAstarothAnimations GetDemonAnimations()
         {

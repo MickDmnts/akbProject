@@ -1,4 +1,3 @@
-using akb.Core.Managing;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -26,7 +25,7 @@ namespace akb.Entities.AI
         protected abstract T SetupNodeData<T>() where T : class, INodeData, new();
 
         /// <summary>
-        /// Call to create the corresponding Simple demon variant based on demonType passed
+        /// Call to create the corresponding demon variant based on demonType passed
         /// and assign it to the ai_BTHandler variable.
         /// </summary>
         protected abstract void CreateAppropriateBTHandler(out IBehaviourTreeHandler handlerVar);
