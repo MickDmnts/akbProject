@@ -15,12 +15,6 @@ namespace akb.Entities.AI
     {
         protected INodeData nodeData;
         protected INode child;
-        private AstarothNodeData data;
-
-        public CheckIfDead(AstarothNodeData data)
-        {
-            this.data = data;
-        }
 
         public CheckIfDead(INodeData nodeData, INode child)
         {
