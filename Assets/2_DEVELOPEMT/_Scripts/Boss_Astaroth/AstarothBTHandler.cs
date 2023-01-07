@@ -3,6 +3,9 @@ namespace akb.Entities.AI.Implementations.Astaroth
     public class AstarothBTHandler : AI_EntityBTHandler
     {
         BehaviourTree entryBT;
+        BehaviourTree phase1;
+        BehaviourTree phase2;
+        BehaviourTree phase3;
         BehaviourTree attackPattern;
 
         public AstarothBTHandler(BossAstaroth ai_entity, INodeData nodeData)
@@ -15,7 +18,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             AstarothNodeData data = ai_nodeData as AstarothNodeData;
 
-            //Selector astarothBrancher = new(data);
+            AstarothSelector astarothBrancher = new AstarothSelector(data,phase1,phase2,phase3);
             //Rotator
             FaceTargetAction faceTargetAction = new FaceTargetAction(data, ai_nodeData.GetTarget());
             //Orded matters - left executes first
@@ -25,9 +28,9 @@ namespace akb.Entities.AI.Implementations.Astaroth
             };
             ParallerExecutor parallerExecutor = new ParallerExecutor(nodesToParallel, ai_nodeData);
             //Activator
-            //CheckIfDead checkIfDead = new (data);
+            AstarothCheckIfDead checkIfDead = new AstarothCheckIfDead(data,phase3);
             //Entry
-            //entryBT = new BehaviourTree(checkIfDead, ai_nodeData);
+            entryBT = new BehaviourTree(checkIfDead, ai_nodeData);
             entryNode = entryBT;
         }
 
