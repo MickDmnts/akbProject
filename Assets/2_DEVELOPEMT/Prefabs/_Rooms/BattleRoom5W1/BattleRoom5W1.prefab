@@ -946,7 +946,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 7a9e7532f2e132947aca90bc61b675b9, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 6be589fb030f3e349a8603934dc17bb4, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &3345255907533615782
 GameObject:
@@ -1631,7 +1631,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 7912b39f0f7f51845987280dd67c3969, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: f40edcc4b089cd347950d529ff40081c, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &4051206009384673814
 GameObject:
@@ -2554,7 +2554,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 7a7961599df8cd045926093f4cbc91fb, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 1abacf4cf5ab2474d9665453db1debbe, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &5182545436077360734
 GameObject:
@@ -3229,7 +3229,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: b1a14cff53c7b594ab0fab83a089b280, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 9cdee021b01716e4fae6cf69928709cb, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &5591058038427848845
 GameObject:
@@ -3271,6 +3271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5338602838060391735}
+  - component: {fileID: 7907759588940549336}
   m_Layer: 0
   m_Name: BattleRoom5W1
   m_TagString: Untagged
@@ -3302,6 +3303,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7907759588940549336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623936683643292331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be72bc5d4067f418290575f09bc33076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomEntryPoint: {fileID: 1048945324083918215}
+  enemySpawnPairs:
+  - PairID: 0
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 3641927363505667781}
+  - PairID: 1
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 5927800840950655598}
+  - PairID: 2
+    Enemy: {fileID: 3980709000932686829, guid: 67e57c0c239077d4ca3cbc3bd69758de, type: 3}
+    EnemySpawn: {fileID: 9016784579076303709}
+  - PairID: 3
+    Enemy: {fileID: 7508001895045123962, guid: 0e8393a3e4e5c8242b37a47ede43f7df, type: 3}
+    EnemySpawn: {fileID: 8440583936649035108}
+  - PairID: 4
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 2992487727810348466}
+  - PairID: 5
+    Enemy: {fileID: 1091281319840441285, guid: fd36a919ae3ab9f48af8013acb96dffb, type: 3}
+    EnemySpawn: {fileID: 5271489744931749116}
+  correspondingWorld: 0
+  roomType: 3
 --- !u!1 &5817663984137698239
 GameObject:
   m_ObjectHideFlags: 0
@@ -4090,7 +4125,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: f3787c541a64ef04e8247f75cefeeeb2, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 603785e6f5cd86349ace9d0ce458936d, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &6449946359982258893
 GameObject:
@@ -5288,7 +5323,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 5fb607abadf0ec7479b529e58f42cf60, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 972bc53d4ad934a48b4bda851396731b, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &8766422690254879640
 GameObject:
@@ -5963,7 +5998,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 3ded48168bf1e8c40837f2d424e2a06a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2613cfc1718c690409f389eb8e975204, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &8955644112751665806
 GameObject:
@@ -6638,7 +6673,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 2d0162f594d84894585331665e5f7ed7, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 4b086f93fb3b9744b8a6050425b348b3, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &9211338665676762792
 GameObject:
