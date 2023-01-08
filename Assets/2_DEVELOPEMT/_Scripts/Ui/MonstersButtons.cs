@@ -27,7 +27,6 @@ namespace akb.Core.Managing.UI
         [SerializeField] Button bigChargersButton;
         [SerializeField] Button rangedDemonsButton;
         [SerializeField] Button electroDemonsButton;
-        [SerializeField] Button statusDemonsButton;
         [SerializeField] Button charmDemonsButton;
         [SerializeField] Button confuseDemonsButton;
         [SerializeField] Button beelzebubButton;
@@ -53,7 +52,6 @@ namespace akb.Core.Managing.UI
             bigChargersButton.onClick.AddListener(delegate { Setter(MonsterIDs.ChargerDemon); });
             rangedDemonsButton.onClick.AddListener(delegate { Setter(MonsterIDs.RangedDemon); });
             electroDemonsButton.onClick.AddListener(delegate { Setter(MonsterIDs.ElectroDemon); });
-            statusDemonsButton.onClick.AddListener(delegate { Setter(MonsterIDs.StatusDemon); });
             charmDemonsButton.onClick.AddListener(delegate { Setter(MonsterIDs.CharmDemon); });
             confuseDemonsButton.onClick.AddListener(delegate { Setter(MonsterIDs.ConfuseDemon); });
             beelzebubButton.onClick.AddListener(delegate { Setter(MonsterIDs.BossBeelzebub); });
@@ -68,7 +66,6 @@ namespace akb.Core.Managing.UI
             monsterButtons.Add(bigDemonButton);
             monsterButtons.Add(rangedDemonsButton);
             monsterButtons.Add(electroDemonsButton);
-            monsterButtons.Add(statusDemonsButton);
             monsterButtons.Add(charmDemonsButton);
             monsterButtons.Add(confuseDemonsButton);
             monsterButtons.Add(beelzebubButton);

@@ -562,60 +562,63 @@ namespace akb.Core.Database
                                                 IsFound
                                             )
                                             VALUES
-                                                (0, 0, 'Simple Demon Desc', 0),
-                                                (1, 0, 'Simple Demon Desc', 0),
-                                                (2, 0, 'Simple Demon Desc', 0),
-                                                (3, 0, 'Simple Demon Desc', 0),
+                                                (0, 0, 'The main workforce of Hell, these mindless creatures dig new pits and tunes for hell every day, while getting a taste of the daily soul coming too close. They will approach on sight to get a tasty bite but are quite easy to fend off.', 0),
+                                                (1, 0, 'The main workforce of Hell, these mindless creatures dig new pits and tunes for hell every day, while getting a taste of the daily soul coming too close. They will approach on sight to get a tasty bite but are quite easy to fend off.', 0),
+                                                (2, 0, 'The main workforce of Hell, these mindless creatures dig new pits and tunes for hell every day, while getting a taste of the daily soul coming too close. They will approach on sight to get a tasty bite but are quite easy to fend off.', 0),
+                                                (3, 0, 'The main workforce of Hell, these mindless creatures dig new pits and tunes for hell every day, while getting a taste of the daily soul coming too close. They will approach on sight to get a tasty bite but are quite easy to fend off.', 0),
 
-                                                (0, 1, 'Fire Demon Desc', 0),
-                                                (1, 1, 'Fire Demon Desc', 0),
-                                                (2, 1, 'Fire Demon Desc', 0),
-                                                (3, 1, 'Fire Demon Desc', 0),
+                                                (0, 1, 'Every place has its pests and Hell is no exception. Attracted to heat, these giant bugs will gnaw and bite you to get their sweet sweet taste. You need to be careful around those things because if you swat them too hard they will explode on your face.', 0),
+                                                (1, 1, 'Every place has its pests and Hell is no exception. Attracted to heat, these giant bugs will gnaw and bite you to get their sweet sweet taste. You need to be careful around those things because if you swat them too hard they will explode on your face.', 0),
+                                                (2, 1, 'Every place has its pests and Hell is no exception. Attracted to heat, these giant bugs will gnaw and bite you to get their sweet sweet taste. You need to be careful around those things because if you swat them too hard they will explode on your face.', 0),
+                                                (3, 1, 'Every place has its pests and Hell is no exception. Attracted to heat, these giant bugs will gnaw and bite you to get their sweet sweet taste. You need to be careful around those things because if you swat them too hard they will explode on your face.', 0),
                                                 
-                                                (0, 2, 'Big Demon Desc', 0),
-                                                (1, 2, 'Big Demon Desc', 0),
-                                                (2, 2, 'Big Demon Desc', 0),
-                                                (3, 2, 'Big Demon Desc', 0),
+                                                (0, 2, 'These wraiths were created by Beelzebub himself after his short trip to Stygia. At least I think that is where he got the idea. They serve as guards for the greater demons and see threat everywhere, charging on you and slaming their giant swords, ignoring any collateral damage.', 0),
+                                                (1, 2, 'These wraiths were created by Beelzebub himself after his short trip to Stygia. At least I think that is where he got the idea. They serve as guards for the greater demons and see threat everywhere, charging on you and slaming their giant swords, ignoring any collateral damage.', 0),
+                                                (2, 2, 'These wraiths were created by Beelzebub himself after his short trip to Stygia. At least I think that is where he got the idea. They serve as guards for the greater demons and see threat everywhere, charging on you and slaming their giant swords, ignoring any collateral damage.', 0),
+                                                (3, 2, 'These wraiths were created by Beelzebub himself after his short trip to Stygia. At least I think that is where he got the idea. They serve as guards for the greater demons and see threat everywhere, charging on you and slaming their giant swords, ignoring any collateral damage.', 0),
                                                 
-                                                (0, 3, 'Big Charger Desc', 0),
-                                                (1, 3, 'Big Charger Desc', 0),
-                                                (2, 3, 'Big Charger Desc', 0),
-                                                (3, 3, 'Big Charger Desc', 0),
+                                                (0, 3, 'Maybe the most ambitious of the lesser demons, they are overzealous with creating the most chaos and havoc. They need to be the best and they will, litterally, stop at nothing. Maybe too literally since , when they start charging at you, only a rock solid wall will stop them.', 0),
+                                                (1, 3, 'Maybe the most ambitious of the lesser demons, they are overzealous with creating the most chaos and havoc. They need to be the best and they will, litterally, stop at nothing. Maybe too literally since , when they start charging at you, only a rock solid wall will stop them.', 0),
+                                                (2, 3, 'Maybe the most ambitious of the lesser demons, they are overzealous with creating the most chaos and havoc. They need to be the best and they will, litterally, stop at nothing. Maybe too literally since , when they start charging at you, only a rock solid wall will stop them.', 0),
+                                                (3, 3, 'Maybe the most ambitious of the lesser demons, they are overzealous with creating the most chaos and havoc. They need to be the best and they will, litterally, stop at nothing. Maybe too literally since , when they start charging at you, only a rock solid wall will stop them.', 0),
                                                 
-                                                (0, 4, 'Ranged Demon Desc', 0),
-                                                (1, 4, 'Ranged Demon Desc', 0),
-                                                (2, 4, 'Ranged Demon Desc', 0),
-                                                (3, 4, 'Ranged Demon Desc', 0),
+                                                (0, 4, 'Vile creatures made by the condensed sins of our guests. They are devious with foul intentions, hating everything that exists in the realm. But they get the job done so I keep them around. If they see you from afar they will spit on you, and its going to hurt like HELL! 
+Warning: Do not try to pet them!', 0),
+                                                (1, 4, 'Vile creatures made by the condensed sins of our guests. They are devious with foul intentions, hating everything that exists in the realm. But they get the job done so I keep them around. If they see you from afar they will spit on you, and its going to hurt like HELL! 
+Warning: Do not try to pet them!', 0),
+                                                (2, 4, 'Vile creatures made by the condensed sins of our guests. They are devious with foul intentions, hating everything that exists in the realm. But they get the job done so I keep them around. If they see you from afar they will spit on you, and its going to hurt like HELL! 
+Warning: Do not try to pet them!', 0),
+                                                (3, 4, 'Vile creatures made by the condensed sins of our guests. They are devious with foul intentions, hating everything that exists in the realm. But they get the job done so I keep them around. If they see you from afar they will spit on you, and its going to hurt like HELL! 
+Warning: Do not try to pet them!', 0),
                                                 
-                                                (0, 5, 'Electro Demon Desc', 0),
-                                                (1, 5, 'Electro Demon Desc', 0),
-                                                (2, 5, 'Electro Demon Desc', 0),
-                                                (3, 5, 'Electro Demon Desc', 0),
+                                                (0, 5, 'The thing some demons do not understand is, we are not here to have fun. We are here for work!
+These guys find it funny to play pranks on other demons as they do with the souls of humans. They throw around these little rocks that jolt you through and through.', 0),
+                                                (1, 5, 'The thing some demons do not understand is, we are not here to have fun. We are here for work!
+These guys find it funny to play pranks on other demons as they do with the souls of humans. They throw around these little rocks that jolt you through and through.', 0),
+                                                (2, 5, 'The thing some demons do not understand is, we are not here to have fun. We are here for work!
+These guys find it funny to play pranks on other demons as they do with the souls of humans. They throw around these little rocks that jolt you through and through.', 0),
+                                                (3, 5, 'The thing some demons do not understand is, we are not here to have fun. We are here for work!
+These guys find it funny to play pranks on other demons as they do with the souls of humans. They throw around these little rocks that jolt you through and through.', 0),
                                                 
-                                                (0, 6, 'Status Demon Desc', 0),
-                                                (1, 6, 'Status Demon Desc', 0),
-                                                (2, 6, 'Status Demon Desc', 0),
-                                                (3, 6, 'Status Demon Desc', 0),
+                                                (0, 6, 'These demons seem elegant but they are the greatest tricksters in the kingdom. Beautiful, elegant and most certainly deadly. Their song will make you lose your mind, calling you ever closer. Do not be fooled. Their charms are only a means to a deadly end.', 0),
+                                                (1, 6, 'These demons seem elegant but they are the greatest tricksters in the kingdom. Beautiful, elegant and most certainly deadly. Their song will make you lose your mind, calling you ever closer. Do not be fooled. Their charms are only a means to a deadly end.', 0),
+                                                (2, 6, 'These demons seem elegant but they are the greatest tricksters in the kingdom. Beautiful, elegant and most certainly deadly. Their song will make you lose your mind, calling you ever closer. Do not be fooled. Their charms are only a means to a deadly end.', 0),
+                                                (3, 6, 'These demons seem elegant but they are the greatest tricksters in the kingdom. Beautiful, elegant and most certainly deadly. Their song will make you lose your mind, calling you ever closer. Do not be fooled. Their charms are only a means to a deadly end.', 0),
                                                 
-                                                (0, 7, 'Charm Demon Desc', 0),
-                                                (1, 7, 'Charm Demon Desc', 0),
-                                                (2, 7, 'Charm Demon Desc', 0),
-                                                (3, 7, 'Charm Demon Desc', 0),
+                                                (0, 7, 'These creature’s origin is unknown even to me. No one remembers when or how they came to be here, because they own the ability to shape and erase memories. If you stare in their eyes too long, you will most certainly forget even your basic body functions.', 0),
+                                                (1, 7, 'These creature’s origin is unknown even to me. No one remembers when or how they came to be here, because they own the ability to shape and erase memories. If you stare in their eyes too long, you will most certainly forget even your basic body functions.', 0),
+                                                (2, 7, 'These creature’s origin is unknown even to me. No one remembers when or how they came to be here, because they own the ability to shape and erase memories. If you stare in their eyes too long, you will most certainly forget even your basic body functions.', 0),
+                                                (3, 7, 'These creature’s origin is unknown even to me. No one remembers when or how they came to be here, because they own the ability to shape and erase memories. If you stare in their eyes too long, you will most certainly forget even your basic body functions.', 0),
                                                 
-                                                (0, 8, 'Confuse Demon Desc', 0),
-                                                (1, 8, 'Confuse Demon Desc', 0),
-                                                (2, 8, 'Confuse Demon Desc', 0),
-                                                (3, 8, 'Confuse Demon Desc', 0),
+                                                (0, 8, 'Boss Astaroth Desc', 0),
+                                                (1, 8, 'Boss Astaroth Desc', 0),
+                                                (2, 8, 'Boss Astaroth Desc', 0),
+                                                (3, 8, 'Boss Astaroth Desc', 0),
                                                 
-                                                (0, 9, 'Boss Astaroth Desc', 0),
-                                                (1, 9, 'Boss Astaroth Desc', 0),
-                                                (2, 9, 'Boss Astaroth Desc', 0),
-                                                (3, 9, 'Boss Astaroth Desc', 0),
-                                                
-                                                (0, 10, 'Boss Beelzebub Desc', 0),
-                                                (1, 10, 'Boss Beelzebub Desc', 0),
-                                                (2, 10, 'Boss Beelzebub Desc', 0),
-                                                (3, 10, 'Boss Beelzebub Desc', 0);";
+                                                (0, 9, 'Boss Beelzebub Desc', 0),
+                                                (1, 9, 'Boss Beelzebub Desc', 0),
+                                                (2, 9, 'Boss Beelzebub Desc', 0),
+                                                (3, 9, 'Boss Beelzebub Desc', 0);";
 
                     int result = command.ExecuteNonQuery();
 #if UNITY_EDITOR

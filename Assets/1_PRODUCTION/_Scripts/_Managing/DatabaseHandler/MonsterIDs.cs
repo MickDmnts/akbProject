@@ -8,10 +8,9 @@ namespace akb.Core.Database.Monsters
         public const int ChargerDemon = 3;
         public const int RangedDemon = 4;
         public const int ElectroDemon = 5;
-        public const int StatusDemon = 6;
-        public const int CharmDemon = 7;
-        public const int ConfuseDemon = 8;
-        public const int BossAstaroth = 9;
-        public const int BossBeelzebub = 10;
+        public const int CharmDemon = 6;
+        public const int ConfuseDemon = 7;
+        public const int BossAstaroth = 8;
+        public const int BossBeelzebub = 9;
     }
 }
