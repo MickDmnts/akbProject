@@ -9755,7 +9755,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -875.0004}
+  m_AnchoredPosition: {x: 0, y: -875.00037}
   m_SizeDelta: {x: 0, y: 1750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &829525297
@@ -10366,6 +10366,119 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902080456}
   m_CullTransparentMesh: 1
+--- !u!1 &902145516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 902145520}
+  - component: {fileID: 902145519}
+  - component: {fileID: 902145518}
+  - component: {fileID: 902145517}
+  - component: {fileID: 902145521}
+  m_Layer: 8
+  m_Name: BreakableRock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!136 &902145517
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902145516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!23 &902145518
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902145516}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &902145519
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902145516}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &902145520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902145516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: -18.5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &902145521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902145516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398d71621cb9d7c4f901dcffa870f869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockID: 0
+  rockHits: 999999999
 --- !u!1 &911283203
 GameObject:
   m_ObjectHideFlags: 0
@@ -14654,7 +14767,8 @@ GameObject:
   - component: {fileID: 1324522692}
   - component: {fileID: 1324522694}
   - component: {fileID: 1324522693}
-  m_Layer: 0
+  - component: {fileID: 1324522695}
+  m_Layer: 8
   m_Name: Boss_Astaroth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14669,7 +14783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324522691}
   m_LocalRotation: {x: -0, y: 0.9551464, z: -0, w: 0.2961343}
-  m_LocalPosition: {x: 0.30936956, y: 0, z: -0.99586403}
+  m_LocalPosition: {x: -0.5, y: 0, z: 5.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14690,7 +14804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityName: Astaroth
-  EntityLife: 250
+  EntityLife: 1000
   deathLayerID: 29
   projectilePrefab: {fileID: 0}
   flamePillarPs: {fileID: 0}
@@ -14719,6 +14833,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1324522695
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324522691}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.14, y: 6.3, z: 3.76}
+  m_Center: {x: 0, y: 3.17, z: 0}
 --- !u!1 &1337161700
 GameObject:
   m_ObjectHideFlags: 0
@@ -16292,6 +16419,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481494439}
   m_CullTransparentMesh: 1
+--- !u!1 &1491510784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1491510786}
+  - component: {fileID: 1491510785}
+  m_Layer: 0
+  m_Name: AstarothRocksHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1491510785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491510784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6480fb3c26cdf140b26968d4393fcf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  astarothRocks:
+  - {fileID: 902145521}
+--- !u!4 &1491510786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491510784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1492129869
 GameObject:
   m_ObjectHideFlags: 0
@@ -22731,6 +22904,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: ce6d635294fc4db4f9bd72be9c328baa, type: 2}
+  - {fileID: 2100000, guid: daf6a57fd945a4c4a929184dc115dfd7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22892,7 +23066,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3098519204543610553}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -24882,7 +25056,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571233}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_E_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24898,7 +25072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571235}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_E_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24914,7 +25088,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571237}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_E_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24930,7 +25104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571239}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_E_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24946,7 +25120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571241}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_A_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24962,7 +25136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571243}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_A_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24978,7 +25152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571245}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_A_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24994,7 +25168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571247}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_A_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25010,7 +25184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571249}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_B_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25026,7 +25200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571251}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_A_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25042,7 +25216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571253}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_B_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25058,7 +25232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571255}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_B_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25074,7 +25248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571257}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_B_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25090,7 +25264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571259}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_B_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25106,7 +25280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571261}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_C_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25122,7 +25296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571263}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_C_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25138,7 +25312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570625}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_B_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25154,7 +25328,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570627}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_B_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25170,7 +25344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570629}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_B_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25186,7 +25360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570631}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_B_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25202,7 +25376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570633}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_C_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25218,7 +25392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570635}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_B_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25234,7 +25408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570637}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_C_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25250,7 +25424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570639}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_C_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25266,7 +25440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570641}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_C_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25282,7 +25456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570643}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_C_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25298,7 +25472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570645}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_D_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25314,7 +25488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570647}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_D_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25330,7 +25504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570649}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_D_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25346,7 +25520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570651}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_D_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25362,7 +25536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570653}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_E_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25378,7 +25552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570655}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_D_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25394,7 +25568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571297}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_A_Left_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25410,7 +25584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571299}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_A_Left_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25426,7 +25600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571301}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_A_Right_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25442,7 +25616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571303}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_A_Right_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25458,7 +25632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571305}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_B_Left_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25474,7 +25648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571307}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_A_Right_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25490,7 +25664,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571309}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_B_Left_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25506,7 +25680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571311}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_B_Left_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25522,7 +25696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_B_Right_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25538,7 +25712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571315}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_B_Right_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25554,7 +25728,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571317}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_A_Left_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25570,7 +25744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571319}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_B_Right_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25586,7 +25760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571321}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_A_Left_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25602,7 +25776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571323}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_A_Left_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25618,7 +25792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571325}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_A_Right_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25634,7 +25808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571327}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_A_Right_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25650,7 +25824,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571201}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_C_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25666,7 +25840,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571203}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_C_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25682,7 +25856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571205}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_D_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25698,7 +25872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_C_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25714,7 +25888,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571209}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_D_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25730,7 +25904,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_D_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25746,7 +25920,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571213}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_D_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25762,7 +25936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571215}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_D_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25778,7 +25952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571217}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_E_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25794,7 +25968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571219}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_E_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25810,7 +25984,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571221}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_E_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25826,7 +26000,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571223}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_E_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25842,7 +26016,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571225}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_UpperArm_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25858,7 +26032,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571227}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_R_E_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25874,7 +26048,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571229}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_bottom_A_Left_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25890,7 +26064,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571231}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_UpperArm_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25906,7 +26080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571265}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_B_Left_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25922,7 +26096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571267}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_A_Right_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25938,7 +26112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_B_Left_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25954,7 +26128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571271}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_B_Left_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25970,7 +26144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571273}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_B_Right_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25986,7 +26160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_B_Right_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26002,7 +26176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571277}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26018,7 +26192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543571279}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyelid_Top_B_Right_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26035,7 +26209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3098519204543571283}
   - component: {fileID: 3098519204540494465}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SK_EvilWatcher_2sided
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26051,7 +26225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570593}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_L_B_Eyelid_Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26067,7 +26241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570595}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_L_A_Eyelid_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26083,7 +26257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570597}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_L_C_Eyelid_Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26099,7 +26273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570599}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_L_B_Eyelid_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26115,7 +26289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570601}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_L_D_Eyelid_Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26131,7 +26305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570603}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_L_C_Eyelid_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26147,7 +26321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570605}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_L_E_Eyelid_Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26163,7 +26337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_L_D_Eyelid_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26179,7 +26353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570609}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_R_A_Eyelid_Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26195,7 +26369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570611}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_L_E_Eyelid_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26211,7 +26385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_R_B_Eyelid_Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26227,7 +26401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570615}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_R_A_Eyelid_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26243,7 +26417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570617}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_R_C_Eyelid_Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26259,7 +26433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570619}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_R_B_Eyelid_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26275,7 +26449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570621}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_R_D_Eyelid_Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26291,7 +26465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570623}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_R_C_Eyelid_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26309,7 +26483,7 @@ GameObject:
   - component: {fileID: 3098519204543570521}
   - component: {fileID: 3098519204536339523}
   - component: {fileID: 3098519204543610554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26337,7 +26511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_L_A_Eyelid_Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26353,7 +26527,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570527}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26369,7 +26543,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570657}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_C_02_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26385,7 +26559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570659}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_C_01_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26401,7 +26575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570661}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_C_03_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26417,7 +26591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_C_02_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26433,7 +26607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570665}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_ForeArm_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26449,7 +26623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570667}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_C_03_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26465,7 +26639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570669}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Hand_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26481,7 +26655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570671}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_ForeArm_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26497,7 +26671,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570673}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Jaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26513,7 +26687,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570675}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Hand_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26529,7 +26703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570677}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_A_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26545,7 +26719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570679}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Middle_Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26561,7 +26735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570681}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_A_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26577,7 +26751,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570683}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_A_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26593,7 +26767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570685}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_A_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26609,7 +26783,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570687}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Tentacle_L_A_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26625,7 +26799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570561}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_R_E_Eyelid_Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26641,7 +26815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570563}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_R_D_Eyelid_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26657,7 +26831,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570565}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_A_01_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26673,7 +26847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570567}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Evilwatcher_Eye_R_E_Eyelid_Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26689,7 +26863,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570569}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_A_02_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26705,7 +26879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570571}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_A_01_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26721,7 +26895,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570573}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_A_03_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26737,7 +26911,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570575}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_A_02_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26753,7 +26927,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570577}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_B_01_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26769,7 +26943,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_A_03_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26785,7 +26959,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570581}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_B_02_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26801,7 +26975,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570583}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_B_01_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26817,7 +26991,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570585}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_B_03_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26833,7 +27007,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570587}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_B_02_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26849,7 +27023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570589}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_C_01_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26865,7 +27039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098519204543570591}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EvilWatcher_Finger_B_03_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}

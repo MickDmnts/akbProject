@@ -129,12 +129,15 @@ namespace akb.Entities.AI.Implementations.Astaroth
         /// </summary>
         void CheckForPhaseChange()
         {
-            if ((EntityLife / maxHealth) * 100 < 75)
+            float currentLifePercent = (EntityLife / maxHealth) * 100;
+
+            if (currentLifePercent < 75 && currentLifePercent > 25 && GetDemonData().GetCurrentPhase() == AstarothPhases.Phase1)
             {
                 GetDemonData().SetCurrentPhase(AstarothPhases.Phase2);
+                ManagerHUB.GetManager.GameEventsHandler.OnAstarothSecondPhase();
                 Debug.Log("Changed to phase 2");
             }
-            else if ((EntityLife / maxHealth) * 100 <= 25)
+            else if (currentLifePercent <= 25 && GetDemonData().GetCurrentPhase() == AstarothPhases.Phase2)
             {
                 GetDemonData().SetCurrentPhase(AstarothPhases.Phase3);
                 Debug.Log("Changed to phase 3");

@@ -206,5 +206,35 @@ namespace akb.Core.Managing.GameEvents
                 onPlayerRageChange(value);
             }
         }
+
+        /// <summary>
+        /// Add to this event to get notified when Astaroth enters his second phase.
+        /// </summary>
+        public event Action onAstarothSecondPhase;
+        /// <summary>
+        /// Call to notify onAstarothSecondPhase callbacks.
+        /// </summary>
+        public void OnAstarothSecondPhase()
+        {
+            if (onAstarothSecondPhase != null)
+            {
+                onAstarothSecondPhase();
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when an astaroth rock breaks.
+        /// </summary>
+        public event Action<int> onRockBroken;
+        /// <summary>
+        /// Call to notify onRockBroken callbacks.
+        /// </summary>
+        public void OnRockBroken(int value)
+        {
+            if (onRockBroken != null)
+            {
+                onRockBroken(value);
+            }
+        }
     }
 }
