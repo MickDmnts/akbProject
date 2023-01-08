@@ -28,12 +28,16 @@ namespace akb.Entities.AI.Implementations.Astaroth
         Transform target;
 
         float maxHealth;
+        bool canTakeDamage = false;
 
         private void Awake()
         {
+            ManagerHUB.GetManager.GameEventsHandler.onAllRocksBroken += EnableTakeDamage;
+
             CacheNeededComponents();
 
             maxHealth = EntityLife;
+            canTakeDamage = true;
         }
 
         /// <summary>
@@ -98,6 +102,8 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             if (GetDemonData().GetIsDead()) return;
 
+            if (!canTakeDamage) { return; }
+
             SubtractHealth(damageValue);
             GetDemonAnimations().PlayGotHitAnimation();
 
@@ -135,6 +141,8 @@ namespace akb.Entities.AI.Implementations.Astaroth
             {
                 GetDemonData().SetCurrentPhase(AstarothPhases.Phase2);
                 ManagerHUB.GetManager.GameEventsHandler.OnAstarothSecondPhase();
+                canTakeDamage = false;
+
                 Debug.Log("Changed to phase 2");
             }
             else if (currentLifePercent <= 25 && GetDemonData().GetCurrentPhase() == AstarothPhases.Phase2)
@@ -158,6 +166,8 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             GetDemonData().SetIsDead(value);
         }
+
+        void EnableTakeDamage() => canTakeDamage = true;
         #endregion
 
         public BossAstarothAnimations GetDemonAnimations()
@@ -168,6 +178,11 @@ namespace akb.Entities.AI.Implementations.Astaroth
         AstarothNodeData GetDemonData()
         {
             return (AstarothNodeData)entityNodeData;
+        }
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onAllRocksBroken -= EnableTakeDamage;
         }
     }
 }

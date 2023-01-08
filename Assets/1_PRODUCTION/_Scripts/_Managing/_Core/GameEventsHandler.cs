@@ -236,5 +236,20 @@ namespace akb.Core.Managing.GameEvents
                 onRockBroken(value);
             }
         }
+
+        /// <summary>
+        /// Add to this event to get notified when all astaroth guardian stones are broken.
+        /// </summary>
+        public event Action onAllRocksBroken;
+        /// <summary>
+        /// Call to notify onRockBroken callbacks.
+        /// </summary>
+        public void OnAllRocksBroken()
+        {
+            if (onAllRocksBroken != null)
+            {
+                onAllRocksBroken();
+            }
+        }
     }
 }

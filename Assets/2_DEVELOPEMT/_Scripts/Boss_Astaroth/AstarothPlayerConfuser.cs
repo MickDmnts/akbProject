@@ -17,6 +17,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
         private void Start()
         {
             ManagerHUB.GetManager.GameEventsHandler.onAstarothSecondPhase += StartConfusing;
+            ManagerHUB.GetManager.GameEventsHandler.onAllRocksBroken += StopConfusing;
 
             playerInteractable = ManagerHUB.GetManager.PlayerEntity.PlayerInteractable;
         }
@@ -26,12 +27,17 @@ namespace akb.Entities.AI.Implementations.Astaroth
             canConfuse = true;
         }
 
+        void StopConfusing()
+        {
+            canConfuse = false;
+        }
+
         void Update()
         {
             if (!canConfuse) { return; }
-            currentInterval += Time.deltaTime;
 
-            if (confusionInterval % currentInterval <= 0.1f)
+            currentInterval += Time.deltaTime;
+            if (currentInterval >= confusionInterval)
             {
                 playerInteractable.ApplyConfusedInteraction();
                 currentInterval = 0f;
@@ -41,6 +47,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
         private void OnDestroy()
         {
             ManagerHUB.GetManager.GameEventsHandler.onAstarothSecondPhase -= StartConfusing;
+            ManagerHUB.GetManager.GameEventsHandler.onAllRocksBroken -= StopConfusing;
         }
     }
 }
