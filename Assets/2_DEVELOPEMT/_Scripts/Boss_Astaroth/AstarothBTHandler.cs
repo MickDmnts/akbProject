@@ -3,7 +3,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
     public class AstarothBTHandler : AI_EntityBTHandler
     {
         BehaviourTree entryBT;
-
+        BehaviourTree attackPattern;
         BehaviourTree phase1;
         BehaviourTree phase2;
         BehaviourTree phase3;
@@ -29,7 +29,11 @@ namespace akb.Entities.AI.Implementations.Astaroth
             #endregion
 
             #region PHASE_1
+            //Attack Pattern phase 1
+            AstarothAttackAction attackAction = new AstarothAttackAction(data);
+            AstarothCountDownAction attackCooldown = new AstarothCountDownAction(data,attackAction);
 
+            attackPattern = new BehaviourTree(attackCooldown, ai_nodeData);
             #endregion
 
             AstarothPhaseSelector astarothBrancher = new AstarothPhaseSelector(data, phase1, phase2, phase3);

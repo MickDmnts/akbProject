@@ -24,7 +24,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
         [SerializeField] float phase2EnemiesCd = 5f;
         [SerializeField] float phase3ProjectileCd = 10f;
 
-        //BossAstarothAttackHandler attackHandler;
+        AstarothAttackHandler attackHandler;
         Transform target;
 
         float maxHealth;
@@ -164,7 +164,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             return ai_entityAnimations as BossAstarothAnimations;
         }
-
+        public AstarothAttackHandler GetAttackHandler() => attackHandler;
         AstarothNodeData GetDemonData()
         {
             return (AstarothNodeData)entityNodeData;
