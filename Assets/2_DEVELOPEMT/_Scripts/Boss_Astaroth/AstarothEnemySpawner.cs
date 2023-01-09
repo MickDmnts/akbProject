@@ -83,7 +83,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
             ManagerHUB.GetManager.GameEventsHandler.onAllRocksBroken -= StopSpawning;
             ManagerHUB.GetManager.GameEventsHandler.onEnemyDeath -= SubtractActiveEnemy;
 
-            StopCoroutine(activeBehaviour);
+            StopAllCoroutines();
         }
     }
 }

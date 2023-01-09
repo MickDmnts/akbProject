@@ -251,5 +251,35 @@ namespace akb.Core.Managing.GameEvents
                 onAllRocksBroken();
             }
         }
+
+        /// <summary>
+        /// Add to this event to get notified when Astaroth enters his third phase.
+        /// </summary>
+        public event Action onAstarothThirdPhase;
+        /// <summary>
+        /// Call to notify onAstarothThirdPhase callbacks.
+        /// </summary>
+        public void OnAstarothThirdPhase()
+        {
+            if (onAstarothThirdPhase != null)
+            {
+                onAstarothThirdPhase();
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when Astaroth dies.
+        /// </summary>
+        public event Action onAstarothDeath;
+        /// <summary>
+        /// Call to notify onAstarothDeath callbacks.
+        /// </summary>
+        public void OnAstarothDeath()
+        {
+            if (onAstarothDeath != null)
+            {
+                onAstarothDeath();
+            }
+        }
     }
 }

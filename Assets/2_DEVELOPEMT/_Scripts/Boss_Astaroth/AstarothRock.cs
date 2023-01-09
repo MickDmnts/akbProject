@@ -24,6 +24,8 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             isBreakable = true;
             rockHits = 6;
+
+            GetComponent<MeshRenderer>().material.color = Color.cyan;
         }
 
         public void AttackInteraction(float damageValue)
@@ -58,7 +60,11 @@ namespace akb.Entities.AI.Implementations.Astaroth
             return false;
         }
 
-        public void MarkBroken() => isBreakable = false;
+        public void MarkBroken()
+        {
+            GetComponent<MeshRenderer>().material.color = Color.red;
+            isBreakable = false;
+        }
 
         public void ApplyStatusEffect(GameObject effect)
         {

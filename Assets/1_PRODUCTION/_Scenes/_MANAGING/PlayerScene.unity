@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731689, g: 0.13414702, b: 0.1210784, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 97877566}
   - component: {fileID: 97877565}
   - component: {fileID: 97877570}
+  - component: {fileID: 97877571}
   m_Layer: 0
   m_Name: _MainCamera
   m_TagString: MainCamera
@@ -520,7 +521,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4026532823
+    m_Bits: 4160750551
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -539,7 +540,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97877564}
-  m_LocalRotation: {x: 0.29332533, y: -0.40960628, z: 0.14097945, w: 0.8522369}
+  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.852237}
   m_LocalPosition: {x: -9975, y: 25.115, z: -199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -555,6 +556,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97877564}
   m_Enabled: 1
+--- !u!114 &97877571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97877564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e72ae9c8269f16459280bea1c4a88ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 720961643}
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 134217728
 --- !u!1 &158926545
 GameObject:
   m_ObjectHideFlags: 0
@@ -4301,7 +4318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -251.40793, y: 34.680626}
+  m_AnchoredPosition: {x: -251.4079, y: 34.680626}
   m_SizeDelta: {x: -574.76697, y: -0.4118538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1397236696
@@ -5128,7 +5145,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587757400}
-  m_LocalRotation: {x: 0.29332533, y: -0.40960628, z: 0.14097945, w: 0.8522369}
+  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.852237}
   m_LocalPosition: {x: -9975, y: 25.115, z: -199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6459,7 +6476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -251.40793, y: 34.680626}
+  m_AnchoredPosition: {x: -251.4079, y: 34.680626}
   m_SizeDelta: {x: -574.76697, y: -0.4118538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2120505816

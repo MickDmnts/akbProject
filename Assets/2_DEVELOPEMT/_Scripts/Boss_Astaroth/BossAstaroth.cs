@@ -19,20 +19,24 @@ namespace akb.Entities.AI.Implementations.Astaroth
     {
         [Header("Astaroth specific")]
         [SerializeField] GameObject projectilePrefab;
-        [SerializeField] ParticleSystem flamePillarPs;
         [SerializeField] float phase1ProjectileCd = 3f;
         [SerializeField] float phase2EnemiesCd = 5f;
         [SerializeField] float phase3ProjectileCd = 10f;
+
+        [Header("GFXs")]
+        [SerializeField] GameObject secondPhaseShield;
 
         AstarothAttackHandler attackHandler;
         Transform target;
 
         float maxHealth;
         bool canTakeDamage = false;
+        GameObject activeShield;
 
         private void Awake()
         {
             ManagerHUB.GetManager.GameEventsHandler.onAllRocksBroken += EnableTakeDamage;
+            ManagerHUB.GetManager.GameEventsHandler.onAllRocksBroken += DisableSecondPhaseShield;
 
             CacheNeededComponents();
 
@@ -141,13 +145,15 @@ namespace akb.Entities.AI.Implementations.Astaroth
             {
                 GetDemonData().SetCurrentPhase(AstarothPhases.Phase2);
                 ManagerHUB.GetManager.GameEventsHandler.OnAstarothSecondPhase();
+
                 canTakeDamage = false;
 
-                Debug.Log("Changed to phase 2");
+                activeShield = Instantiate(secondPhaseShield, transform.position + new Vector3(0f, 3f, 0f), Quaternion.identity);
             }
             else if (currentLifePercent <= 25 && GetDemonData().GetCurrentPhase() == AstarothPhases.Phase2)
             {
                 GetDemonData().SetCurrentPhase(AstarothPhases.Phase3);
+                ManagerHUB.GetManager.GameEventsHandler.OnAstarothThirdPhase();
                 Debug.Log("Changed to phase 3");
             }
         }
@@ -168,13 +174,17 @@ namespace akb.Entities.AI.Implementations.Astaroth
         }
 
         void EnableTakeDamage() => canTakeDamage = true;
+
+        void DisableSecondPhaseShield() => Destroy(activeShield);
         #endregion
 
         public BossAstarothAnimations GetDemonAnimations()
         {
             return ai_entityAnimations as BossAstarothAnimations;
         }
+
         public AstarothAttackHandler GetAttackHandler() => attackHandler;
+
         AstarothNodeData GetDemonData()
         {
             return (AstarothNodeData)entityNodeData;
@@ -183,6 +193,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
         private void OnDestroy()
         {
             ManagerHUB.GetManager.GameEventsHandler.onAllRocksBroken -= EnableTakeDamage;
+            ManagerHUB.GetManager.GameEventsHandler.onAllRocksBroken -= DisableSecondPhaseShield;
         }
     }
 }
