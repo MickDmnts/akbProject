@@ -33,13 +33,6 @@ namespace akb.Core.Managing.UI
 
         [SerializeField] int lvlsCanUpgade;
 
-        int maxLvlCanReach;
-
-        private void Start()
-        {
-            maxLvlCanReach = lvlsCanUpgade;
-        }
-
         public void OnPointerDown(PointerEventData pointerEventData)
         {
             pointerDown = true;
@@ -51,23 +44,42 @@ namespace akb.Core.Managing.UI
         {
             buttonImage.color = Color.white;
 
-            if (currentlvl == 0)
+            if (lvlsCanUpgade == 2)
             {
-                Reset();
+                if (currentlvl == 0)
+                {
+                    Reset();
 
-                abilityImage.fillAmount = 0;
+                    abilityImage.fillAmount = 0;
+                }
+                else if (currentlvl == 1)
+                {
+                    Reset();
+
+                    abilityImage.fillAmount = 0.50f;
+                }
             }
-            else if (currentlvl == 1)
-            {
-                Reset();
 
-                abilityImage.fillAmount = 0.33f;
-            }
-            else if (currentlvl == 2)
+            if(lvlsCanUpgade == 3)
             {
-                Reset();
+                if (currentlvl == 0)
+                {
+                    Reset();
 
-                abilityImage.fillAmount = 0.66f;
+                    abilityImage.fillAmount = 0;
+                }
+                else if (currentlvl == 1)
+                {
+                    Reset();
+
+                    abilityImage.fillAmount = 0.33f;
+                }
+                else if (currentlvl == 2)
+                {
+                    Reset();
+
+                    abilityImage.fillAmount = 0.66f;
+                }
             }
         }
 
@@ -79,62 +91,111 @@ namespace akb.Core.Managing.UI
 
                 if (pointerDownTimer > requiredHoldTime)
                 {
-                    if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier1)
+                    if (lvlsCanUpgade == 2)
                     {
-                        currentlvl++;
+                        if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier1)
+                        {
+                            currentlvl++;
 
-                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier1);
-                        lvl.text = currentlvl + " / " + 3;
+                            ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier1);
+                            lvl.text = currentlvl + " / " + 2;
 
-                        ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
+                            ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
 
-                        Reset();
+                            Reset();
+                        }
+                        else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier2)
+                        {
+                            currentlvl++;
+                            ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier2);
+
+                            ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
+
+                            lvl.text = currentlvl + " / " + 2;
+
+                            Reset();
+                        }
                     }
-                    else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier2)
+
+                        if (lvlsCanUpgade == 3)
                     {
-                        currentlvl++;
-                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier2);
+                        if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier1)
+                        {
+                            currentlvl++;
 
-                        ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
+                            ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier1);
+                            lvl.text = currentlvl + " / " + 3;
 
-                        lvl.text = currentlvl + " / " + 3;
+                            ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
 
-                        Reset();
-                    }
-                    else if (currentlvl == 2 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier3)
-                    {
-                        currentlvl++;
-                        ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier3);
+                            Reset();
+                        }
+                        else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier2)
+                        {
+                            currentlvl++;
+                            ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier2);
 
-                        ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
+                            ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
 
-                        lvl.text = currentlvl + " / " + 3;
+                            lvl.text = currentlvl + " / " + 3;
 
-                        Reset();
+                            Reset();
+                        }
+                        else if (currentlvl == 2 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier3)
+                        {
+                            currentlvl++;
+                            ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier3);
+
+                            ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
+
+                            lvl.text = currentlvl + " / " + 3;
+
+                            Reset();
+                        }
                     }
 
                     Reset();
                 }
 
-                if (currentlvl == 0)
+                if (lvlsCanUpgade == 2)
                 {
-                    //The interpolation value between the two floats.
-                    float t = pointerDownTimer / requiredHoldTime;
-                    abilityImage.fillAmount = Mathf.Lerp(0, 0.33f, t);
+                    if (currentlvl == 0)
+                    {
+                        //The interpolation value between the two floats.
+                        float t = pointerDownTimer / requiredHoldTime;
+                        abilityImage.fillAmount = Mathf.Lerp(0, 0.5f, t);
+                    }
+
+                    if (currentlvl == 1)
+                    {
+                        //The interpolation value between the two floats.
+                        float t = pointerDownTimer / requiredHoldTime;
+                        abilityImage.fillAmount = Mathf.Lerp(0.5f, 1, t);
+                    }
                 }
 
-                if (currentlvl == 1)
+                if (lvlsCanUpgade == 3)
                 {
-                    //The interpolation value between the two floats.
-                    float t = pointerDownTimer / requiredHoldTime;
-                    abilityImage.fillAmount = Mathf.Lerp(0.33f, 0.66f, t);
-                }
+                    if (currentlvl == 0)
+                    {
+                        //The interpolation value between the two floats.
+                        float t = pointerDownTimer / requiredHoldTime;
+                        abilityImage.fillAmount = Mathf.Lerp(0, 0.33f, t);
+                    }
 
-                if (currentlvl == 2)
-                {
-                    //The interpolation value between the two floats.
-                    float t = pointerDownTimer / requiredHoldTime;
-                    abilityImage.fillAmount = Mathf.Lerp(0.66f, 1, t);
+                    if (currentlvl == 1)
+                    {
+                        //The interpolation value between the two floats.
+                        float t = pointerDownTimer / requiredHoldTime;
+                        abilityImage.fillAmount = Mathf.Lerp(0.33f, 0.66f, t);
+                    }
+
+                    if (currentlvl == 2)
+                    {
+                        //The interpolation value between the two floats.
+                        float t = pointerDownTimer / requiredHoldTime;
+                        abilityImage.fillAmount = Mathf.Lerp(0.66f, 1, t);
+                    }
                 }
             }
         }
