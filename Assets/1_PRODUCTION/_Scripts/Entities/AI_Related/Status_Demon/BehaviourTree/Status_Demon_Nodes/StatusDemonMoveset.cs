@@ -29,7 +29,7 @@ namespace akb.Entities.AI.Implementations.Status_Demon
 
                 //The demon is close to the target so move near him.
                 _data.GetEnemyEntity().Initiate_TeleportCloseToPlayer(_data.GetTarget().position, 5f);
-
+                
                 currentRun = false;
             }
 

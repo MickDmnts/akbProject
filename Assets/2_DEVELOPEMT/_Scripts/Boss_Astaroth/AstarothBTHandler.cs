@@ -32,7 +32,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
             //Attack Pattern phase 1
             AstarothAttackAction attackAction = new AstarothAttackAction(data);
             AstarothCountDownAction attackCooldown = new AstarothCountDownAction(data,attackAction);
-
+            
             attackPattern = new BehaviourTree(attackCooldown, ai_nodeData);
             #endregion
 

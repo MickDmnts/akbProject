@@ -26,6 +26,9 @@ namespace akb.Entities.AI.Implementations.Astaroth
         [Header("GFXs")]
         [SerializeField] GameObject secondPhaseShield;
 
+        [Header("Distance Check Specifics")]
+        [SerializeField] float maxDistanceFromTarget;
+
         AstarothAttackHandler attackHandler;
         Transform target;
 
@@ -80,6 +83,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
             //Add more things here
             tempData.SetCurrentPhase(AstarothPhases.Phase1);
 
+            tempData.SetMaxDistance(maxDistanceFromTarget);
             tempData.SetCanRotate(true);
             tempData.SetTarget(target);
 
