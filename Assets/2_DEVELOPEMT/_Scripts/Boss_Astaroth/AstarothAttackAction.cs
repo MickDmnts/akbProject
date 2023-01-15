@@ -1,13 +1,10 @@
-using UnityEngine;
-
 namespace akb.Entities.AI.Implementations.Astaroth
 {
-
-
     public class AstarothAttackAction : AttackAction
     {
         bool playedAttackAnimation = false;
         AstarothNodeData _data;
+
         public AstarothAttackAction(AstarothNodeData nodeData) : base(nodeData)
         {
             this.nodeData = nodeData;
@@ -25,12 +22,11 @@ namespace akb.Entities.AI.Implementations.Astaroth
                 _data.SetCanRotate(false);
             }
 
-            if(currentTimer <= 0f)
+            if (currentTimer <= 0f)
             {
                 _data.GetEnemyEntity().GetAttackHandler().InitiateAttack();
 
                 _data.SetCanRotate(true);
-                _data.SetCanMove(true);
 
                 _data.GetDemonAnimations().PlayAttackAnimation();
 

@@ -31,9 +31,9 @@ namespace akb.Entities.AI.Implementations.Astaroth
             #region PHASE_1
             //Attack Pattern phase 1
             AstarothAttackAction attackAction = new AstarothAttackAction(data);
-            AstarothCountDownAction attackCooldown = new AstarothCountDownAction(data,attackAction);
-            
-            attackPattern = new BehaviourTree(attackCooldown, ai_nodeData);
+            AstarothCountDownAction attackCooldown = new AstarothCountDownAction(data, attackAction);
+
+            phase1 = new BehaviourTree(attackCooldown, ai_nodeData);
             #endregion
 
             AstarothPhaseSelector astarothBrancher = new AstarothPhaseSelector(data, phase1, phase2, phase3);

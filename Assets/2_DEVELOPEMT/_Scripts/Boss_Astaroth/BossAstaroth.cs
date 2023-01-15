@@ -55,7 +55,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
             ai_agent = GetComponent<NavMeshAgent>();
             ai_entityAnimations = GetComponentInChildren<BossAstarothAnimations>();
 
-            //attackHandler = GetComponentInChildren<BossAstarothAttackHandler>();
+            attackHandler = GetComponentInChildren<AstarothAttackHandler>();
         }
 
         #region NODE_DATA_CREATION
