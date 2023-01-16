@@ -90,6 +90,8 @@ namespace akb.Projectiles
 
                 p012 = (1 - uCurrent) * p01 + uCurrent * p12;
 
+                if (tempCircleGraphic == null) StopAllCoroutines();
+
                 tempCircleGraphic.transform.position = p012;
 
                 transform.position = p012;

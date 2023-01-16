@@ -68,6 +68,7 @@ namespace akb.Entities.Player
             _isActive = true;
 
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += SetMovementStatesBasedOnRoom;
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetPlayerAttributes;
         }
 
         void SetMovementStatesBasedOnRoom(GameScenes gameScenes)
@@ -93,6 +94,14 @@ namespace akb.Entities.Player
                 PlayerMovement.SetMovementInputActiveState(true);
                 PlayerSpearThrow.SetThrowInputActiveState(true);
                 PlayerDodgeRoll.SetDodgeInputActiveState(true);
+            }
+        }
+
+        void ResetPlayerAttributes(GameScenes gameScenes)
+        {
+            if (gameScenes == GameScenes.PlayerHUB)
+            {
+                EntityLife = playerMaxHealth;
             }
         }
 
@@ -124,6 +133,7 @@ namespace akb.Entities.Player
         private void OnDisable()
         {
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= SetMovementStatesBasedOnRoom;
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= ResetPlayerAttributes;
         }
     }
 }

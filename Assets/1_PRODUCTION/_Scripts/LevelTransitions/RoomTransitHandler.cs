@@ -27,6 +27,7 @@ namespace akb.Gameplay
         private void Awake()
         {
             transistorCollider = GetComponent<Collider>();
+            isTransistorActive = false;
         }
 
         private void Start()

@@ -38,6 +38,9 @@ namespace akb.Core.Managing
 
             foreach (EnemySpawnInfo enemyPosPair in enemyPairs)
             {
+                if (enemyPosPair.Enemy == null || enemyPosPair.EnemySpawn == null)
+                    break;
+
                 Vector3 roomPos = enemyPosPair.EnemySpawn.position + anchor.position;
 
                 Instantiate(enemyPosPair.Enemy, roomPos, enemyPosPair.EnemySpawn.rotation);

@@ -147,6 +147,9 @@ namespace akb.Core.Managing.PCG
                 nextRoom = roomDataContainer.GetRoomData(roomWorld, RoomType.Boss);
 
                 roomDataContainer.ResetWorlds();
+
+                //For debug
+                ManagerHUB.GetManager.LevelManager.TransitToHub();
             }
 
             return nextRoom;
