@@ -138,7 +138,7 @@ MonoBehaviour:
     type: 3}
   circleGraphicSize: {x: 1, y: 1, z: 1}
   projectileDamage: 5
-  projectileSpeed: 0.5
+  projectileSpeed: 0.8
   projectileDodgeFactor: 1
   projectileHitParticle: {fileID: 4694847495438713577, guid: 8d5a2e535d8cb25468409630dba51fa0,
     type: 3}
