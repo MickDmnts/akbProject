@@ -78,7 +78,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &254730060803170163
 Transform:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ Transform:
   m_GameObject: {fileID: 254730060803170172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 254730062884684673}
@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1440
+  m_VersionIndex: 1443
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2821,7 +2821,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1472
+  m_VersionIndex: 1475
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3676,7 +3676,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2165
+  m_VersionIndex: 2168
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5119,12 +5119,16 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b0eae96a598e0274b8aa1ce0788ddd90, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.053870834
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: b0eae96a598e0274b8aa1ce0788ddd90, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.08333333
+      value: 0.053870827
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b0eae96a598e0274b8aa1ce0788ddd90, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.08333333
+      value: 0.053870827
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b0eae96a598e0274b8aa1ce0788ddd90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5132,7 +5136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b0eae96a598e0274b8aa1ce0788ddd90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.985
+      value: 8.2729
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b0eae96a598e0274b8aa1ce0788ddd90, type: 3}
       propertyPath: m_LocalPosition.z
