@@ -44,41 +44,44 @@ namespace akb.Core.Managing.UI
         {
             buttonImage.color = Color.white;
 
-            if (lvlsCanUpgade == 2)
+            if (currentlvl <= lvlsCanUpgade)
             {
-                if (currentlvl == 0)
+                if (lvlsCanUpgade == 2)
                 {
-                    Reset();
+                    if (currentlvl == 0)
+                    {
+                        Reset();
 
-                    abilityImage.fillAmount = 0;
+                        abilityImage.fillAmount = 0;
+                    }
+                    else if (currentlvl == 1)
+                    {
+                        Reset();
+
+                        abilityImage.fillAmount = 0.50f;
+                    }
                 }
-                else if (currentlvl == 1)
+
+                if (lvlsCanUpgade == 3)
                 {
-                    Reset();
+                    if (currentlvl == 0)
+                    {
+                        Reset();
 
-                    abilityImage.fillAmount = 0.50f;
-                }
-            }
+                        abilityImage.fillAmount = 0;
+                    }
+                    else if (currentlvl == 1)
+                    {
+                        Reset();
 
-            if(lvlsCanUpgade == 3)
-            {
-                if (currentlvl == 0)
-                {
-                    Reset();
+                        abilityImage.fillAmount = 0.33f;
+                    }
+                    else if (currentlvl == 2)
+                    {
+                        Reset();
 
-                    abilityImage.fillAmount = 0;
-                }
-                else if (currentlvl == 1)
-                {
-                    Reset();
-
-                    abilityImage.fillAmount = 0.33f;
-                }
-                else if (currentlvl == 2)
-                {
-                    Reset();
-
-                    abilityImage.fillAmount = 0.66f;
+                        abilityImage.fillAmount = 0.66f;
+                    }
                 }
             }
         }
@@ -117,7 +120,7 @@ namespace akb.Core.Managing.UI
                         }
                     }
 
-                        if (lvlsCanUpgade == 3)
+                    if (lvlsCanUpgade == 3)
                     {
                         if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier1)
                         {

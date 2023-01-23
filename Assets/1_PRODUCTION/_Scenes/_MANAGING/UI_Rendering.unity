@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731689, g: 0.13414702, b: 0.1210784, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1223,7 +1223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0.3}
   m_AnchorMax: {x: 0.7, y: 0.35}
-  m_AnchoredPosition: {x: 72.33, y: -2.1500053}
+  m_AnchoredPosition: {x: 72.33, y: -2.1500015}
   m_SizeDelta: {x: 144.68, y: 32.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &127420899
@@ -6120,8 +6120,8 @@ RectTransform:
   m_Father: {fileID: 843600958}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0.85}
-  m_AnchorMax: {x: 0.7, y: 0.95}
+  m_AnchorMin: {x: 0.2, y: 0.85}
+  m_AnchorMax: {x: 0.8, y: 0.95}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6145,7 +6145,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'New Game
+  m_text: 'New Game 2
 
 '
   m_isRightToLeft: 0
@@ -7032,7 +7032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.51, y: 0.2}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -16.559998, y: -19.079983}
+  m_AnchoredPosition: {x: -16.559998, y: -19.079987}
   m_SizeDelta: {x: -33.121, y: 38.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695127329
@@ -7372,7 +7372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.51, y: 0.2}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -12.337006, y: -15.458004}
+  m_AnchoredPosition: {x: -12.337006, y: -15.458008}
   m_SizeDelta: {x: -24.685, y: 30.915}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &708627707
@@ -8292,7 +8292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &777611665
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9359,7 +9359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0.3}
   m_AnchorMax: {x: 0.7, y: 0.35}
-  m_AnchoredPosition: {x: 61.06, y: -3.46}
+  m_AnchoredPosition: {x: 61.059998, y: -3.4599953}
   m_SizeDelta: {x: 122.1, y: 22.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &857083086
@@ -10080,7 +10080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0.3}
   m_AnchorMax: {x: 0.7, y: 0.35}
-  m_AnchoredPosition: {x: 32.61, y: -2.01}
+  m_AnchoredPosition: {x: 32.61, y: -2.0100021}
   m_SizeDelta: {x: 65.21, y: 24.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &920440394
@@ -10846,7 +10846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.2}
   m_AnchorMax: {x: 0.49, y: 0.5}
-  m_AnchoredPosition: {x: 10.315002, y: -15.459988}
+  m_AnchoredPosition: {x: 10.315002, y: -15.459991}
   m_SizeDelta: {x: -20.63, y: 30.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1089257390
@@ -11188,7 +11188,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115997702}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -11509,7 +11509,7 @@ GameObject:
   - component: {fileID: 1134541698}
   - component: {fileID: 1134541697}
   m_Layer: 5
-  m_Name: New Game
+  m_Name: 'Save Slot '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11530,8 +11530,8 @@ RectTransform:
   m_Father: {fileID: 1089257389}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0.85}
-  m_AnchorMax: {x: 0.7, y: 0.95}
+  m_AnchorMin: {x: 0.2, y: 0.85}
+  m_AnchorMax: {x: 0.8, y: 0.95}
   m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11555,9 +11555,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'New Game
-
-'
+  m_text: Save Slot 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 920440844877945eba91a8af14a1d82c, type: 2}
   m_sharedMaterial: {fileID: 3248246577172908705, guid: 920440844877945eba91a8af14a1d82c,
@@ -14491,9 +14489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'New Game
-
-'
+  m_text: New Game 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 920440844877945eba91a8af14a1d82c, type: 2}
   m_sharedMaterial: {fileID: 3248246577172908705, guid: 920440844877945eba91a8af14a1d82c,
@@ -14967,8 +14963,8 @@ RectTransform:
   m_Father: {fileID: 695127328}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0.85}
-  m_AnchorMax: {x: 0.7, y: 0.95}
+  m_AnchorMin: {x: 0.2, y: 0.85}
+  m_AnchorMax: {x: 0.8, y: 0.95}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -14992,9 +14988,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'New Game
-
-'
+  m_text: New Game 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 920440844877945eba91a8af14a1d82c, type: 2}
   m_sharedMaterial: {fileID: 3248246577172908705, guid: 920440844877945eba91a8af14a1d82c,
@@ -15113,7 +15107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.2}
   m_AnchorMax: {x: 0.49, y: 0.5}
-  m_AnchoredPosition: {x: 12.721985, y: -19.079983}
+  m_AnchoredPosition: {x: 12.721985, y: -19.079987}
   m_SizeDelta: {x: -25.447, y: 38.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504486550
@@ -17182,13 +17176,14 @@ GameObject:
   - component: {fileID: 1619141402}
   - component: {fileID: 1619141404}
   - component: {fileID: 1619141403}
+  - component: {fileID: 1619141405}
   m_Layer: 5
   m_Name: PauseMenu_UI_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1619141402
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17256,6 +17251,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619141401}
   m_CullTransparentMesh: 1
+--- !u!114 &1619141405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619141401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adeec6771e60a45deaa8f2804bdd1484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HellsCoinsText: {fileID: 1588095148}
+  SinnersSoulsText: {fileID: 381322984}
 --- !u!1 &1641910238
 GameObject:
   m_ObjectHideFlags: 0
@@ -18606,7 +18615,7 @@ GameObject:
   - component: {fileID: 1774220152}
   - component: {fileID: 1774220151}
   m_Layer: 5
-  m_Name: New Game
+  m_Name: 'Save Slot '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18652,7 +18661,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'New Game
+  m_text: 'Save Slot 1
 
 '
   m_isRightToLeft: 0
@@ -19180,7 +19189,7 @@ GameObject:
   - component: {fileID: 1873692591}
   - component: {fileID: 1873692590}
   m_Layer: 5
-  m_Name: New Game
+  m_Name: Save Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19201,8 +19210,8 @@ RectTransform:
   m_Father: {fileID: 708627706}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0.85}
-  m_AnchorMax: {x: 0.7, y: 0.95}
+  m_AnchorMin: {x: 0.2, y: 0.85}
+  m_AnchorMax: {x: 0.8, y: 0.95}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19226,9 +19235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'New Game
-
-'
+  m_text: Save Slot 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 920440844877945eba91a8af14a1d82c, type: 2}
   m_sharedMaterial: {fileID: 3248246577172908705, guid: 920440844877945eba91a8af14a1d82c,
@@ -19566,9 +19573,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'New Game
-
-'
+  m_text: New Game 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 920440844877945eba91a8af14a1d82c, type: 2}
   m_sharedMaterial: {fileID: 3248246577172908705, guid: 920440844877945eba91a8af14a1d82c,
@@ -19735,7 +19740,7 @@ GameObject:
   - component: {fileID: 1952834467}
   - component: {fileID: 1952834466}
   m_Layer: 5
-  m_Name: New Game
+  m_Name: Save slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19756,8 +19761,8 @@ RectTransform:
   m_Father: {fileID: 605806059}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0.85}
-  m_AnchorMax: {x: 0.7, y: 0.95}
+  m_AnchorMin: {x: 0.2, y: 0.85}
+  m_AnchorMax: {x: 0.8, y: 0.95}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19781,9 +19786,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'New Game
-
-'
+  m_text: Save Slot 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 920440844877945eba91a8af14a1d82c, type: 2}
   m_sharedMaterial: {fileID: 3248246577172908705, guid: 920440844877945eba91a8af14a1d82c,

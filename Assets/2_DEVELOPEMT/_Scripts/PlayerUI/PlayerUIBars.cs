@@ -43,5 +43,12 @@ namespace akb.Core.Managing
             ManagerHUB.GetManager.GameEventsHandler.onPlayerHealthChange -= SetHealthValue;
             ManagerHUB.GetManager.GameEventsHandler.onPlayerRageChange -= SetRageValue;
         }
+
+        void UpdateBloodEffect(float currentHealth)
+        {
+            Color splatterAlpha = redSplatterImage.color;
+            splatterAlpha.a = 1 - (currentHealth / 30);
+            redSplatterImage.color = splatterAlpha;
+        }
     }
 }
