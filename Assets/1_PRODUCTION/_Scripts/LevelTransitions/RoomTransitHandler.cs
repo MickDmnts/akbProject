@@ -2,8 +2,6 @@ using System.Collections;
 using UnityEngine;
 
 using akb.Core.Managing;
-using akb.Core.Managing.LevelLoading;
-
 using akb.Core.Managing.PCG;
 
 namespace akb.Gameplay
@@ -32,22 +30,11 @@ namespace akb.Gameplay
 
         private void Start()
         {
-            ManagerHUB.GetManager.GameEventsHandler.onSceneLoaded += CheckForAutoActivation;
-            CheckForAutoActivation();
-        }
+            //Sub to activation event
+            ManagerHUB.GetManager.GameEventsHandler.onRoomClear += ActivateTranstistor;
 
-        void CheckForAutoActivation()
-        {
-            if (ManagerHUB.GetManager.RoomSelector.CurrentLevel == 0
-                || ManagerHUB.GetManager.LevelManager.FocusedScene != GameScenes.PlayerHUB)
-            {
-                ActivateTranstistor();
-            }
-            else
-            {
-                transistorCollider.isTrigger = false;
-                isTransistorActive = false;
-            }
+            transistorCollider.isTrigger = false;
+            isTransistorActive = false;
         }
 
         void ActivateTranstistor()
@@ -118,7 +105,7 @@ namespace akb.Gameplay
 
         private void OnDestroy()
         {
-            ManagerHUB.GetManager.GameEventsHandler.onSceneLoaded -= CheckForAutoActivation;
+            ManagerHUB.GetManager.GameEventsHandler.onRoomClear -= ActivateTranstistor;
             StopAllCoroutines();
         }
     }

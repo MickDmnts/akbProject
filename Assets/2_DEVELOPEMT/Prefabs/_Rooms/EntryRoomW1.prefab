@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6050371786444503248}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 49.7, y: 247.11, z: 0}
 --- !u!108 &7392140723362444404
 Light:
@@ -254,8 +254,8 @@ Transform:
   - {fileID: 3771409179083200900}
   - {fileID: 6972717829661869580}
   - {fileID: 3739460636380054200}
-  - {fileID: 4534305160551883262}
   - {fileID: 7667819234691916979}
+  - {fileID: 4534305160551883262}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1310
+  m_VersionIndex: 1313
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2052,7 +2052,7 @@ PrefabInstance:
     - target: {fileID: 5976264288546230275, guid: 9c721723a2df78d48b4c1ca1d1e0240e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5976264288546230275, guid: 9c721723a2df78d48b4c1ca1d1e0240e,
         type: 3}
@@ -2109,8 +2109,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: ROOM_TRANSISTOR
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5976264288546230274, guid: 9c721723a2df78d48b4c1ca1d1e0240e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c721723a2df78d48b4c1ca1d1e0240e, type: 3}
+--- !u!1 &4534305160551883248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5976264288546230285, guid: 9c721723a2df78d48b4c1ca1d1e0240e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7783031810414146045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2386030407905848793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4534305160551883248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b16feb148ae3d3419251266bc6cb14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transistorType: 1
 --- !u!4 &4534305160551883262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5976264288546230275, guid: 9c721723a2df78d48b4c1ca1d1e0240e,
