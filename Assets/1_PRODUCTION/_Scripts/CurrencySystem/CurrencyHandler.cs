@@ -10,7 +10,7 @@ namespace akb.Core.Managing.Currencies
         [SerializeField] float multiplierValue;
 
         int hellCoins = -1;
-        int sinnerSouls = 100;
+        [SerializeField] int sinnerSouls = 100;
 
         public int GetHellCoins => hellCoins;
         public int GetSinnerSouls => sinnerSouls;
