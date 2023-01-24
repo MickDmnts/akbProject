@@ -20,7 +20,7 @@ namespace akb.Core.Managing.Currencies
 
         void HookEvents()
         {
-            ManagerHUB.GetManager.GameEventsHandler.onEnemyDeath += IncreaseMultiplier; //Multiply
+            ManagerHUB.GetManager.GameEventsHandler.onEnemyDeath += IncreaseMultiplier;
             ManagerHUB.GetManager.GameEventsHandler.onPlayerHit += ResetMultiplier;
         }
 

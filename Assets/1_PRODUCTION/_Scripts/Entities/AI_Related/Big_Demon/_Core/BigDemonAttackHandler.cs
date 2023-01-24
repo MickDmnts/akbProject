@@ -11,6 +11,8 @@ namespace akb.Entities.AI.Implementations.Big_Demon
 
         BigDemon parentEntity;
         EntityAttackFOV attackFOV;
+        bool attacked = false;
+
 
         private void Start()
         {
@@ -18,8 +20,10 @@ namespace akb.Entities.AI.Implementations.Big_Demon
             attackFOV = GetComponent<EntityAttackFOV>();
         }
 
-        public void InitiateAttack()
+        public bool InitiateAttack()
         {
+            if (attacked) { return false; }
+
             List<Transform> hits = attackFOV.GetHitsInsideFrustrum(0);
 
             foreach (Transform hit in hits)
@@ -28,8 +32,14 @@ namespace akb.Entities.AI.Implementations.Big_Demon
                 if (interactable != null)
                 {
                     interactable.AttackInteraction(attackDamage);
+                    attacked = true;
+                    return true;
                 }
             }
+
+            return false;
         }
+
+        public void ResetAttack() => attacked = false;
     }
 }

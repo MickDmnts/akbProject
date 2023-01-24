@@ -27,7 +27,7 @@ PrefabInstance:
     - target: {fileID: 4586559697381791810, guid: 8231d7743eb1f024994468cacd6c85c2,
         type: 3}
       propertyPath: projectileSpeed
-      value: 0.8
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 4586559697381791810, guid: 8231d7743eb1f024994468cacd6c85c2,
         type: 3}
@@ -42,7 +42,7 @@ PrefabInstance:
     - target: {fileID: 4586559697381791810, guid: 8231d7743eb1f024994468cacd6c85c2,
         type: 3}
       propertyPath: projectileDodgeFactor
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4586559697381791810, guid: 8231d7743eb1f024994468cacd6c85c2,
         type: 3}

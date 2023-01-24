@@ -159,6 +159,7 @@ namespace akb.Entities.AI.Implementations.Big_Demon
             }
 
             Destroy(tempGraphic);
+            attackHandler.ResetAttack();
 
             ai_agent.velocity = Vector3.zero;
             ai_agent.isStopped = false;
@@ -186,9 +187,13 @@ namespace akb.Entities.AI.Implementations.Big_Demon
                 UpdateNodeDataIsDead(isDead);
                 GetDemonAnimations().PlayDeathAnimation();
 
+                GameObject gfx = Instantiate(deathGFX);
+                gfx.transform.position = transform.position;
+
                 MoveLayerOnDeath();
 
                 ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
+                ManagerHUB.GetManager.GameEventsHandler.OnCoinReceive(coinsOnDeath);
                 UpdateDatabaseEntry();
             }
         }

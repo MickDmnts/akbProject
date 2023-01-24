@@ -10,7 +10,7 @@ namespace akb.Core.Managing.Currencies
         [SerializeField] float multiplierValue;
 
         int hellCoins = -1;
-        [SerializeField] int sinnerSouls = 100;
+        int sinnerSouls = 100;
 
         public int GetHellCoins => hellCoins;
         public int GetSinnerSouls => sinnerSouls;
@@ -25,6 +25,8 @@ namespace akb.Core.Managing.Currencies
 
             ManagerHUB.GetManager.GameEventsHandler.onNewGame += NewGameBehaviour;
             ManagerHUB.GetManager.GameEventsHandler.onLoadGame += LoadGameBehaviour;
+
+            ManagerHUB.GetManager.GameEventsHandler.onCoinReceive += AddCoinsToPlayer;
         }
 
         void NewGameBehaviour(int saveFileID)
@@ -42,6 +44,13 @@ namespace akb.Core.Managing.Currencies
         }
 
         #region UTILITIES
+        void AddCoinsToPlayer(int coinValue)
+        {
+            coinValue = coinValue * (int)coinMultiplier.GetMultiplierValue;
+
+            hellCoins += coinValue;
+        }
+
         public void IncreaseHellCoinsBy(int value)
         {
             if (hellCoins == 0) value++;
@@ -71,6 +80,8 @@ namespace akb.Core.Managing.Currencies
         {
             ManagerHUB.GetManager.GameEventsHandler.onNewGame -= NewGameBehaviour;
             ManagerHUB.GetManager.GameEventsHandler.onLoadGame -= LoadGameBehaviour;
+
+            ManagerHUB.GetManager.GameEventsHandler.onCoinReceive -= AddCoinsToPlayer;
 
             coinMultiplier.UnsubEvents();
         }

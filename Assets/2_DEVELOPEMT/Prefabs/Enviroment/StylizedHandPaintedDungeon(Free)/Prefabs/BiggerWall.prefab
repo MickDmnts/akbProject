@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1148705040396593954}
   - component: {fileID: 143887004271370174}
   - component: {fileID: 7783725690235095050}
+  - component: {fileID: 7617404158608717331}
   m_Layer: 0
   m_Name: BiggerWall
   m_TagString: Untagged
@@ -694,3 +695,16 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &7617404158608717331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721259226060370547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.9999993, y: 2.9990404, z: 0.39999998}
+  m_Center: {x: 0.5, y: 1.5004798, z: 4.656614e-10}

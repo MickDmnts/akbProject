@@ -251,7 +251,11 @@ namespace akb.Entities.AI.Implementations.Ranged_Demon
 
                 MoveLayerOnDeath();
 
+                GameObject gfx = Instantiate(deathGFX);
+                gfx.transform.position = transform.position;
+
                 ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
+                ManagerHUB.GetManager.GameEventsHandler.OnCoinReceive(coinsOnDeath);
                 UpdateDatabaseEntry();
             }
         }

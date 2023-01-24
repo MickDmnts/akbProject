@@ -1,6 +1,8 @@
-using akb.Core.Managing;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+using akb.Core.Managing;
+using akb.Core.Managing.LevelLoading;
 
 namespace akb.Entities.Player
 {
@@ -33,6 +35,7 @@ namespace akb.Entities.Player
         void EntrySetup()
         {
             ManagerHUB.GetManager.GameEventsHandler.onEnemyHit += IncreaseRageFill;
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetRage;
 
             playerEntity = transform.root.GetComponent<PlayerEntity>();
 
@@ -40,6 +43,16 @@ namespace akb.Entities.Player
             rageInput.Enable();
 
             rageInput.started += _ => ActivateRage();
+        }
+
+        void ResetRage(GameScenes scene)
+        {
+            if (scene != GameScenes.PlayerHUB) { return; }
+
+            rageFill = RAGE_MIN;
+            rageActive = false;
+
+            ResetDamageToDefault();
         }
 
         private void Update()
@@ -64,7 +77,7 @@ namespace akb.Entities.Player
         /// </summary>
         void IncreaseRageFill()
         {
-            //if (!isUnlocked) return;
+            if (!isUnlocked) return;
 
             rageFill += rageFillRate;
             ManagerHUB.GetManager.GameEventsHandler.OnPlayerRageChange(rageFill);
@@ -124,7 +137,10 @@ namespace akb.Entities.Player
         private void OnDisable()
         {
             if (ManagerHUB.GetManager != null)
+            {
                 ManagerHUB.GetManager.GameEventsHandler.onEnemyHit -= IncreaseRageFill;
+                ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= ResetRage;
+            }
         }
     }
 }

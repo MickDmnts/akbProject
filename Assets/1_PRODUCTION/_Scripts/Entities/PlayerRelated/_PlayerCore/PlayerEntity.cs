@@ -29,6 +29,8 @@ namespace akb.Entities.Player
             set { _isDead = value; }
         }
 
+        public GameObject DeathGFX => deathGFX;
+
         #region BEHAVIOUR_CACHING
         public PlayerInteractable PlayerInteractable { get; private set; }
 
@@ -82,6 +84,7 @@ namespace akb.Entities.Player
             }
             else if (gameScenes == GameScenes.PlayerHUB)
             {
+
                 PlayerMovement.SetMovementInputActiveState(true);
                 PlayerAttack.SetAttackInputActiveState(false);
                 PlayerSpearThrow.SetThrowInputActiveState(false);
@@ -101,6 +104,9 @@ namespace akb.Entities.Player
         {
             if (gameScenes == GameScenes.PlayerHUB)
             {
+                _isDead = false;
+                _isActive = true;
+
                 EntityLife = playerMaxHealth;
             }
         }

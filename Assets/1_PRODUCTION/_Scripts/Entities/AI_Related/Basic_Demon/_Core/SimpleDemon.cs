@@ -145,8 +145,12 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
 
                 MoveLayerOnDeath();
 
+                GameObject gfx = Instantiate(deathGFX);
+                gfx.transform.position = transform.position;
+
                 //Notify subs for an agent death
                 ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
+                ManagerHUB.GetManager.GameEventsHandler.OnCoinReceive(coinsOnDeath);
                 UpdateDatabaseEntry();
             }
         }

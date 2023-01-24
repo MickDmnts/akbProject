@@ -15,9 +15,14 @@ namespace akb.Core.Managing
         IEnumerator activeBehaviour;
         int roomEnemyCounter = -1;
 
+        List<GameObject> spawnedEnemies;
+
         private void Start()
         {
+            spawnedEnemies = new List<GameObject>();
+
             ManagerHUB.GetManager.GameEventsHandler.onNextRoomEntry += SpawnRoomEnemies;
+            ManagerHUB.GetManager.GameEventsHandler.onNextRoomEntry += KillCachedEnemies;
             ManagerHUB.GetManager.GameEventsHandler.onEnemyEntryUpdate += UpdateEnemyEntry;
             ManagerHUB.GetManager.GameEventsHandler.onEnemyDeath += SubtractActiveEnemy;
         }
@@ -32,21 +37,36 @@ namespace akb.Core.Managing
         {
             List<EnemySpawnInfo> enemyPairs = ManagerHUB.GetManager.RoomSelector.GetCurrentRoomEnemies();
 
+            Debug.Log(enemyPairs.Count);
+
             Transform anchor = ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform;
+
+            Debug.Log(anchor.name);
 
             roomEnemyCounter = enemyPairs.Count;
 
             foreach (EnemySpawnInfo enemyPosPair in enemyPairs)
             {
-                if (enemyPosPair.Enemy == null || enemyPosPair.EnemySpawn == null)
-
-                    break;
+                Debug.Log(enemyPosPair.Enemy.name);
+                Debug.Log(enemyPosPair.EnemySpawn.name);
 
                 Vector3 roomPos = enemyPosPair.EnemySpawn.position + anchor.position;
 
-                Instantiate(enemyPosPair.Enemy, roomPos, enemyPosPair.EnemySpawn.rotation);
+                GameObject spawnedEnemy = Instantiate(enemyPosPair.Enemy, roomPos, enemyPosPair.EnemySpawn.rotation);
+                GameObject spawnVfx = Instantiate(enemySpawnEffect);
+                spawnVfx.transform.position = spawnedEnemy.transform.position;
+
+                spawnedEnemies.Add(spawnedEnemy);
 
                 yield return new WaitForSeconds(0.8f);
+            }
+        }
+
+        void KillCachedEnemies()
+        {
+            foreach (GameObject enemy in spawnedEnemies)
+            {
+                Destroy(enemy);
             }
         }
 
@@ -80,6 +100,7 @@ namespace akb.Core.Managing
         private void OnDestroy()
         {
             ManagerHUB.GetManager.GameEventsHandler.onNextRoomEntry -= SpawnRoomEnemies;
+            ManagerHUB.GetManager.GameEventsHandler.onNextRoomEntry -= KillCachedEnemies;
             ManagerHUB.GetManager.GameEventsHandler.onEnemyEntryUpdate -= UpdateEnemyEntry;
             ManagerHUB.GetManager.GameEventsHandler.onEnemyDeath -= SubtractActiveEnemy;
 

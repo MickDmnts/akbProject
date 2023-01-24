@@ -27,7 +27,8 @@ namespace akb.Entities.Interactions
             particleHolder = new GameObject("Effect particles");
             particleHolder.transform.SetParent(attachedEntity.transform, false);
 
-            Instantiate(effectParticle, particleHolder.transform);
+            GameObject vfx = Instantiate(effectParticle, particleHolder.transform);
+            vfx.transform.position += new Vector3(0f, 2f, 0f);
         }
 
         public abstract void Update();

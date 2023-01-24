@@ -2142,9 +2142,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityName: Simple Demon
   EntityLife: 50
+  deathGFX: {fileID: 1221293952758510, guid: 21e3fa923d4f261409d83b8d0f6e81c7, type: 3}
   deathLayerID: 29
   demonType: 0
-  target: {fileID: 0}
   coneGraphic: {fileID: 5440863929645889910}
   timeUntilAttack: 1
   attackCooldown: 2

@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+using akb.Core.Managing.LevelLoading;
+
 namespace akb.Core.Managing
 {
     public class PlayerUIBars : MonoBehaviour
@@ -19,6 +21,16 @@ namespace akb.Core.Managing
         {
             ManagerHUB.GetManager.GameEventsHandler.onPlayerHealthChange += SetHealthValue;
             ManagerHUB.GetManager.GameEventsHandler.onPlayerRageChange += SetRageValue;
+
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetOnHub;
+        }
+
+        void ResetOnHub(GameScenes scene)
+        {
+            if (scene != GameScenes.PlayerHUB) { return; }
+
+            healthbar.fillAmount = 1;
+            healthbar.color = maxHealthColor;
         }
 
         void SetHealthValue(float currentHealth, float maxHealth)
@@ -42,6 +54,7 @@ namespace akb.Core.Managing
         {
             ManagerHUB.GetManager.GameEventsHandler.onPlayerHealthChange -= SetHealthValue;
             ManagerHUB.GetManager.GameEventsHandler.onPlayerRageChange -= SetRageValue;
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= ResetOnHub;
         }
 
         void UpdateBloodEffect(float currentHealth)

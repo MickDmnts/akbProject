@@ -15,13 +15,23 @@ public class EntryToRoomTransit : MonoBehaviour
 
     [Header("Select transistor type")]
     [SerializeField] TransistorType transistorType;
+    [SerializeField] GameObject portalActivatedGFX;
 
     Collider transistorCollider;
     IEnumerator activeBehaviour;
 
+    GameObject particleEffectCache;
+
     private void Awake()
     {
         transistorCollider = GetComponent<Collider>();
+    }
+
+    private void Start()
+    {
+        if (particleEffectCache != null) Destroy(particleEffectCache.gameObject);
+        particleEffectCache = Instantiate(portalActivatedGFX);
+        particleEffectCache.transform.position = transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -80,5 +90,10 @@ public class EntryToRoomTransit : MonoBehaviour
         { yield return null; }
 
         ManagerHUB.GetManager.GameEventsHandler.OnNextRoomEntry();
+    }
+
+    private void OnDestroy()
+    {
+        if (particleEffectCache != null) Destroy(particleEffectCache.gameObject);
     }
 }

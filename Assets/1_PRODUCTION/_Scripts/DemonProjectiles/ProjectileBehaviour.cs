@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 
 using akb.Core.Managing;
-using akb.Entities.Player;
 using akb.Entities.Interactions;
 using akb.Entities.Player.Interactions;
 
@@ -92,7 +91,8 @@ namespace akb.Projectiles
 
                 if (tempCircleGraphic == null) StopAllCoroutines();
 
-                tempCircleGraphic.transform.position = p012;
+                if (tempCircleGraphic != null)
+                    tempCircleGraphic.transform.position = p012;
 
                 transform.position = p012;
 

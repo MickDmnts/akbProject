@@ -132,6 +132,15 @@ namespace akb.Core.Managing.GameEvents
             }
         }
 
+        public event Action<int> onCoinReceive;
+        public void OnCoinReceive(int coinValue)
+        {
+            if (onCoinReceive != null)
+            {
+                onCoinReceive(coinValue);
+            }
+        }
+
         /// <summary>
         /// Add to this event to get notified when all the room enemies die
         /// </summary>

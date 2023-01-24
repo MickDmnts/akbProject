@@ -946,7 +946,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1313
+  m_VersionIndex: 1316
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2131,6 +2131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transistorType: 1
+  portalActivatedGFX: {fileID: 1947331358871186, guid: a18a6c3e551caf646949139288c40a8e,
+    type: 3}
 --- !u!4 &4534305160551883262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5976264288546230275, guid: 9c721723a2df78d48b4c1ca1d1e0240e,

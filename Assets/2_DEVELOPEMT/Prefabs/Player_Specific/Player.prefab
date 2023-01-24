@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84a9b40bfbd3ec4a80880443982799c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthRegenOnRoomEntry: 0
+  healthRegenOnRoomEntry: 0.5
 --- !u!114 &2972379026712878069
 MonoBehaviour:
   m_ObjectHideFlags: 0

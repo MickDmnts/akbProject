@@ -777,3 +777,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transistorType: 0
+  portalActivatedGFX: {fileID: 1947331358871186, guid: a18a6c3e551caf646949139288c40a8e,
+    type: 3}

@@ -173,9 +173,13 @@ namespace akb.Entities.AI.Implementations.Status_Demon
 
                 GetDemonAnimations().PlayDeathAnimation();
 
+                GameObject gfx = Instantiate(deathGFX);
+                gfx.transform.position = transform.position;
+
                 MoveLayerOnDeath();
 
                 ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
+                ManagerHUB.GetManager.GameEventsHandler.OnCoinReceive(coinsOnDeath);
                 UpdateDatabaseEntry();
             }
         }

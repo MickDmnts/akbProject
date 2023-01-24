@@ -72,7 +72,10 @@ namespace akb.Entities.Player.Interactions
 
             if (playerEntity.IsDead)
             {
-                //PLAY DEATH ANIMA AND DO TRANSITION STUFF TO HUB
+                //PLAY DEATH ANIMATION
+                ManagerHUB.GetManager.LevelManager.TransitToHub();
+                GameObject deathGfx = Instantiate(playerEntity.DeathGFX);
+                deathGfx.transform.position = transform.position;
             }
         }
 

@@ -2455,9 +2455,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityName: Big Demon
   EntityLife: 150
+  deathGFX: {fileID: 1221293952758510, guid: 21e3fa923d4f261409d83b8d0f6e81c7, type: 3}
   deathLayerID: 29
   demonType: 0
-  target: {fileID: 0}
   lineGraphic: {fileID: 7579397528920188246}
   lineGraphicSize: {x: 5, y: 30, z: 1}
   chargeRange: 15

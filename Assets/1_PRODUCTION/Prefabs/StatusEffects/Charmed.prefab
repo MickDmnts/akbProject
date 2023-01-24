@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeTime: 0.5
   effectType: 4
-  effectParticle: {fileID: 100006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+  effectParticle: {fileID: 120732, guid: 9e3b6489a85bfa04e844964c8c1e12ed, type: 3}
   moveSpeed: 1

@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using akb.Core.Managing;
+using akb.Core.Managing.LevelLoading;
 
 namespace akb.Entities.Player
 {
@@ -40,6 +42,8 @@ namespace akb.Entities.Player
             mouseInput.Enable();
 
             canMove = true;
+
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetOnHub;
         }
 
         /// <summary>
@@ -60,6 +64,13 @@ namespace akb.Entities.Player
             mouseInput = playerEntity.PlayerInputs.Player.Look;
 
             moveSpeedCache = moveSpeed;
+        }
+
+        void ResetOnHub(GameScenes scene)
+        {
+            if (scene != GameScenes.PlayerHUB) { return; }
+
+            moveSpeed = moveSpeedCache;
         }
         #endregion
 
@@ -236,6 +247,11 @@ namespace akb.Entities.Player
         {
             moveAction.Disable();
             mouseInput.Disable();
+        }
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= ResetOnHub;
         }
     }
 }

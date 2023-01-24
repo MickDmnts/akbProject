@@ -10,6 +10,7 @@ namespace akb.Entities.AI
     public abstract class AI_Entity : Entity
     {
         [SerializeField] int deathLayerID;
+        [SerializeField] protected int coinsOnDeath = 15;
 
         protected INodeData entityNodeData;
         protected IBehaviourTreeHandler ai_BTHandler;

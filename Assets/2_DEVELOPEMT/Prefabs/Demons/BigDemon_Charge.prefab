@@ -109,6 +109,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7508001895045123963, guid: 0e8393a3e4e5c8242b37a47ede43f7df,
         type: 3}
+      propertyPath: deathGFX
+      value: 
+      objectReference: {fileID: 1221293952758510, guid: 21e3fa923d4f261409d83b8d0f6e81c7,
+        type: 3}
+    - target: {fileID: 7508001895045123963, guid: 0e8393a3e4e5c8242b37a47ede43f7df,
+        type: 3}
       propertyPath: demonType
       value: 1
       objectReference: {fileID: 0}

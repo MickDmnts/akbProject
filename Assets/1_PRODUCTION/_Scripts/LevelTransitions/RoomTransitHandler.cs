@@ -17,13 +17,17 @@ namespace akb.Gameplay
 
         [Header("Select transistor type")]
         [SerializeField] TransistorType transistorType;
+        [SerializeField] GameObject portalActivatedGFX;
 
         bool isTransistorActive = false;
         Collider transistorCollider;
         IEnumerator activeBehaviour;
 
+        GameObject particleEffectCache;
+
         private void Awake()
         {
+            ManagerHUB.GetManager.GameEventsHandler.onRoomClear += ActivateTranstistor;
             transistorCollider = GetComponent<Collider>();
             isTransistorActive = false;
         }
@@ -31,7 +35,7 @@ namespace akb.Gameplay
         private void Start()
         {
             //Sub to activation event
-            ManagerHUB.GetManager.GameEventsHandler.onRoomClear += ActivateTranstistor;
+            if (particleEffectCache != null) Destroy(particleEffectCache.gameObject);
 
             transistorCollider.isTrigger = false;
             isTransistorActive = false;
@@ -41,6 +45,9 @@ namespace akb.Gameplay
         {
             isTransistorActive = true;
             transistorCollider.isTrigger = true;
+
+            particleEffectCache = Instantiate(portalActivatedGFX);
+            particleEffectCache.transform.position = transform.position;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -105,6 +112,8 @@ namespace akb.Gameplay
 
         private void OnDestroy()
         {
+            if (particleEffectCache != null) Destroy(particleEffectCache.gameObject);
+
             ManagerHUB.GetManager.GameEventsHandler.onRoomClear -= ActivateTranstistor;
             StopAllCoroutines();
         }

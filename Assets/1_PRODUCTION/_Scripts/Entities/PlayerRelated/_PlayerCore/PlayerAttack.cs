@@ -13,7 +13,7 @@ namespace akb.Entities.Player
     {
         #region INSPECTOR_VARS
         [Header("Set in inspector")]
-        [SerializeField] int attackDamage;
+        [SerializeField] int attackDamage = 25;
         [SerializeField] float attackCooldown = 0.2f;
         [SerializeField, Range(0f, 1f)] float rotateToAttackDir = 0.5f;
         #endregion
@@ -34,6 +34,11 @@ namespace akb.Entities.Player
         int attackDamageCache;
         #endregion
         #endregion
+
+        private void Awake()
+        {
+            attackDamageCache = attackDamage;
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -205,7 +210,7 @@ namespace akb.Entities.Player
         public void SetAttackDamage(int value, bool cachePastValue = false)
         {
             if (cachePastValue)
-                attackDamageCache = attackDamage;
+            { attackDamageCache = attackDamage; }
 
             attackDamage = value;
         }
