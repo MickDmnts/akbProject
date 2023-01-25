@@ -767,7 +767,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelWideClips: []
-  sfxClips: []
+  sfxClips:
+  - {fileID: 8300000, guid: 35eb159b5f3a7d240ada575ceee33757, type: 3}
+  - {fileID: 8300000, guid: 1390ab39b0311274dad54f6cc2c299c1, type: 3}
+  - {fileID: 8300000, guid: 26efba332e8d8054b9db1a64ec947398, type: 3}
+  - {fileID: 8300000, guid: 349c9cd6e3ae43f468341cfb74dec5a5, type: 3}
+  - {fileID: 8300000, guid: d6616bb7bd9e8234b89ddf1b93a014e6, type: 3}
+  - {fileID: 8300000, guid: f81a7a61c31057247ada6402798e1ee7, type: 3}
+  - {fileID: 8300000, guid: 4241f3c9c7e48594d9304006f99b5c61, type: 3}
+  - {fileID: 8300000, guid: 2842dc820956dc348a4ad4e4abced4ed, type: 3}
+  - {fileID: 8300000, guid: 011f219bd28298549b57f9d63f5c4bbe, type: 3}
+  - {fileID: 8300000, guid: d0a6554905b2c9549a66a7a6e43f73a1, type: 3}
+  - {fileID: 8300000, guid: 2feb740c7c4e9834c8f743363db3b4c6, type: 3}
+  - {fileID: 8300000, guid: 3c6162830d25f7642ad3c14276c5a7cb, type: 3}
+  - {fileID: 8300000, guid: 2e5e244b7c267d3498800b8be6e21f4a, type: 3}
+  - {fileID: 8300000, guid: eb6f0b8f25fa1414c90b6de7112cb4dd, type: 3}
+  - {fileID: 8300000, guid: 2102703c8dbb3a749a02c65f53e750ae, type: 3}
+  - {fileID: 8300000, guid: 520e9ceba6dc5d74292b43a4fe4f27a6, type: 3}
+  - {fileID: 8300000, guid: 1faccac643e0daf41a1c744b30daa548, type: 3}
   mainAudioSource: {fileID: 751186646}
   sfxSource: {fileID: 2116169467}
 --- !u!1 &1711773611
