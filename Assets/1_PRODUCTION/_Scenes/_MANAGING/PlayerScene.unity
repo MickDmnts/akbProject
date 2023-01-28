@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731689, g: 0.13414702, b: 0.1210784, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -579,7 +579,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97877564}
-  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.8522369}
+  m_LocalRotation: {x: 0.29332533, y: -0.40960622, z: 0.14097942, w: 0.852237}
   m_LocalPosition: {x: -9975, y: 25.115, z: -199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1795,6 +1795,7 @@ RectTransform:
   - {fileID: 1096415551}
   - {fileID: 619745938}
   - {fileID: 1687588130}
+  - {fileID: 1417024251}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1819,6 +1820,7 @@ MonoBehaviour:
   - {fileID: 1096415548}
   - {fileID: 619745937}
   - {fileID: 1687588127}
+  - {fileID: 1417024248}
 --- !u!1 &562705817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3192,7 +3194,6 @@ MonoBehaviour:
   maxHealthColor: {r: 0, g: 1, b: 0, a: 1}
   lowHealthColor: {r: 1, g: 0, b: 0, a: 1}
   ragebar: {fileID: 596972908}
-  redSplatterImage: {fileID: 1417024249}
 --- !u!4 &794678282
 Transform:
   m_ObjectHideFlags: 0
@@ -4234,7 +4235,6 @@ RectTransform:
   - {fileID: 693036725}
   - {fileID: 2110390394}
   - {fileID: 47890782}
-  - {fileID: 1417024251}
   m_Father: {fileID: 561433312}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4788,7 +4788,7 @@ GameObject:
   - component: {fileID: 1417024250}
   - component: {fileID: 1417024249}
   m_Layer: 5
-  m_Name: BloodEffect
+  m_Name: BloodEffectPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4807,7 +4807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4839,12 +4839,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417024248}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1096415551}
+  m_Father: {fileID: 561433312}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5378,7 +5378,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587757400}
-  m_LocalRotation: {x: 0.29332533, y: -0.40960625, z: 0.14097944, w: 0.8522369}
+  m_LocalRotation: {x: 0.29332533, y: -0.40960622, z: 0.14097942, w: 0.852237}
   m_LocalPosition: {x: -9975, y: 25.115, z: -199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5578,7 +5578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1687588128
 MonoBehaviour:
   m_ObjectHideFlags: 0

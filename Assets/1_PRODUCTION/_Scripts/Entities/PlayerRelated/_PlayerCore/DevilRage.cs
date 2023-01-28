@@ -52,7 +52,7 @@ namespace akb.Entities.Player
             rageFill = RAGE_MIN;
             rageActive = false;
 
-            ResetDamageToDefault();
+            ResetDevilRageAttributes();
         }
 
         private void Update()
@@ -67,7 +67,7 @@ namespace akb.Entities.Player
                     rageFill = RAGE_MIN;
                     rageActive = false;
 
-                    ResetDamageToDefault();
+                    ResetDevilRageAttributes();
                 }
             }
         }
@@ -104,6 +104,7 @@ namespace akb.Entities.Player
                 currentDamage *= rageDamageMultiplier;
 
                 ManagerHUB.GetManager.PlayerEntity.PlayerAttack.SetAttackDamage(currentDamage, true);
+                //activate flame here
             }
         }
 
@@ -115,9 +116,10 @@ namespace akb.Entities.Player
             return rageFill == currentRageMax;
         }
 
-        void ResetDamageToDefault()
+        void ResetDevilRageAttributes()
         {
             ManagerHUB.GetManager.PlayerEntity.PlayerAttack.SetAttackDamageToCache();
+            //deactivate flame animation here
         }
 
         #region UTILITIES

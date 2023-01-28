@@ -27,6 +27,8 @@ namespace akb.Core.Managing.UI
             AddButtonsToList();
 
             EntrySetup();
+
+            ManagerHUB.GetManager.GameEventsHandler.onTutorialButtonPanelOpen += SetDefault;
         }
 
         /// <summary>
@@ -56,6 +58,17 @@ namespace akb.Core.Managing.UI
         {
             tutorialSpriteTemplate.sprite = tutorialSprite[buttonIndex];
             tutorialDescriptionTempalte.text = tutorialDescription[buttonIndex];
+        }
+
+        void SetDefault()
+        {
+            tutorialSpriteTemplate.sprite = tutorialSprite[0];
+            tutorialDescriptionTempalte.text = tutorialDescription[0];
+        }
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onTutorialButtonPanelOpen -= SetDefault;
         }
     }
 }

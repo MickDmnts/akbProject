@@ -15,12 +15,10 @@ namespace akb.Core.Managing
 
         [SerializeField] Image ragebar;
 
-        [SerializeField] Image redSplatterImage;
-
         private void Start()
         {
-            ManagerHUB.GetManager.GameEventsHandler.onPlayerHealthChange += SetHealthValue;
-            ManagerHUB.GetManager.GameEventsHandler.onPlayerRageChange += SetRageValue;
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHealthChange += SetHealthBarValue;
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerRageChange += SetRageBarValue;
 
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetOnHub;
         }
@@ -31,37 +29,41 @@ namespace akb.Core.Managing
 
             healthbar.fillAmount = 1;
             healthbar.color = maxHealthColor;
+
+            ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
+
         }
 
-        void SetHealthValue(float currentHealth, float maxHealth)
+        void SetHealthBarValue(float currentHealth, float maxHealth)
         {
             healthbar.fillAmount = currentHealth / maxHealth;
 
             healthbar.color = maxHealthColor;
 
-            if (currentHealth < 30)
+
+            if (healthbar.fillAmount < 0.25f)
             {
                 healthbar.color = lowHealthColor;
+
+                ManagerHUB.GetManager.UIManager.EnablePanels("BloodEffectPanel","GamePlayScreenPanel"); 
+            }
+            else
+            {
+                ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
             }
         }
 
-        void SetRageValue(float rageValue)
+        void SetRageBarValue(float rageValue)
         {
             ragebar.fillAmount = rageValue;
+            // i can use this method  to play the animation too
         }
 
         private void OnDestroy()
         {
-            ManagerHUB.GetManager.GameEventsHandler.onPlayerHealthChange -= SetHealthValue;
-            ManagerHUB.GetManager.GameEventsHandler.onPlayerRageChange -= SetRageValue;
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHealthChange -= SetHealthBarValue;
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerRageChange -= SetRageBarValue;
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= ResetOnHub;
-        }
-
-        void UpdateBloodEffect(float currentHealth)
-        {
-            Color splatterAlpha = redSplatterImage.color;
-            splatterAlpha.a = 1 - (currentHealth / 30);
-            redSplatterImage.color = splatterAlpha;
         }
     }
 }

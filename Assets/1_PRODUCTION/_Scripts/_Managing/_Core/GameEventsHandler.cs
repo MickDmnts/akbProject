@@ -290,5 +290,51 @@ namespace akb.Core.Managing.GameEvents
                 onAstarothDeath();
             }
         }
+
+
+        /// <summary>
+        /// Add to this event to get notified when Hells Grimoire panel opens.
+        /// </summary>
+        public event Action onHellsGrimoirePanelOpen;
+        /// <summary>
+        /// Call to notify onHellsGrimoirePanelOpen callbacks.
+        /// </summary>
+        public void OnHellsGrimoirePanelOpen()
+        {
+            if (onHellsGrimoirePanelOpen != null)
+            {
+                onHellsGrimoirePanelOpen();
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when Hells Grimoire panel opens.
+        /// </summary>
+        public event Action onTutorialButtonPanelOpen;
+        /// <summary>
+        /// Call to notify onHellsGrimoirePanelOpen callbacks.
+        /// </summary>
+        public void OnTutorialButtonPanelOpen()
+        {
+            if (onTutorialButtonPanelOpen != null)
+            {
+                onTutorialButtonPanelOpen();
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when Hells Grimoire panel opens.
+        /// </summary>
+        public event Action onMonsterButtonPanelOpen;
+        /// <summary>
+        /// Call to notify onHellsGrimoirePanelOpen callbacks.
+        /// </summary>
+        public void OnMonsterButtonPanelOpen()
+        {
+            if (onMonsterButtonPanelOpen != null)
+            {
+                onMonsterButtonPanelOpen();
+            }
+        }
     }
 }

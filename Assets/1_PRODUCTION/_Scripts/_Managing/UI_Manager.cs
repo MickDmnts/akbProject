@@ -146,6 +146,20 @@ namespace akb.Core.Managing.UI
             }
         }
 
+        public void EnablePanels(params string[] panelNames)
+        {
+            foreach (string param in panelNames)
+            {
+                for(int i = 0; i != uiPanels.Count; i++)
+                {
+                    if (uiPanels[i].name.Equals(param))
+                    {
+                        uiPanels[i].SetActive(true);
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Call to disable all UI panels.
         /// </summary>

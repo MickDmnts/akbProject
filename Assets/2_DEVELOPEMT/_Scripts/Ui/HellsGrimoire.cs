@@ -16,9 +16,10 @@ namespace akb.Core.Managing.UI
         private void Start()
         {
             EntrySetup();
-        }
 
-        //we need a back button to return to pause menu screen
+            ManagerHUB.GetManager.GameEventsHandler.onHellsGrimoirePanelOpen += Tutorials;
+
+        }
 
         /// <summary>
         /// Call to set up the default script behaviour.
@@ -50,6 +51,11 @@ namespace akb.Core.Managing.UI
             Tutorials_UI_Panel.SetActive(panelToBeActivated.Equals(Tutorials_UI_Panel.name));
             Monsters_UI_Panel.SetActive(panelToBeActivated.Equals(Monsters_UI_Panel.name));
             PastRuns_UI_Panel.SetActive(panelToBeActivated.Equals(PastRuns_UI_Panel.name));
+        }
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onHellsGrimoirePanelOpen -= Tutorials;
         }
     }
 }

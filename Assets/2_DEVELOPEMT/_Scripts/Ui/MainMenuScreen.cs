@@ -29,6 +29,8 @@ namespace akb.Core.Managing.UI
 
         void Continue()
         {
+            //if isnt nothing to load make the button is interactable == false , else is interactable == true
+            
             throw new System.NotImplementedException();
             //TODO: Load save file ID from coresponding db field, pass it through the same methods of the save buttons
             //to load the game info correctly.

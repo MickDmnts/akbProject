@@ -2,12 +2,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 using akb.Core.Database.Monsters;
 
 namespace akb.Core.Managing.UI
 {
-    public class MonstersButtons : MonoBehaviour
+    public class MonstersButtons : MonoBehaviour , IEventSystemHandler
     {
         [SerializeField] Image monsterSpriteTemplate;
         [SerializeField] TextMeshProUGUI monsterDescriptionTempalte;
@@ -38,6 +39,8 @@ namespace akb.Core.Managing.UI
 
 
             EntrySetup();
+
+            ManagerHUB.GetManager.GameEventsHandler.onMonsterButtonPanelOpen += SetDefault;
         }
 
         /// <summary>
@@ -85,6 +88,27 @@ namespace akb.Core.Managing.UI
 
                 monsterDescriptionTempalte.text = GameManager.GetManager.Database.GetMonsterDescription(GameManager.GetManager.ActiveFileID, buttonIndex);
             }
+        }
+
+
+        void SetDefault()
+        {
+            if (GameManager.GetManager.Database.GetIsMonsterFoundValue(GameManager.GetManager.ActiveFileID, MonsterIDs.BasicDemon) == 0)
+            {
+                monsterSpriteTemplate.sprite = lockedMonstersSprite;
+                monsterDescriptionTempalte.text = lockedMonstersDescripton;
+            }
+            else
+            {
+                monsterSpriteTemplate.sprite = monsterSprite[MonsterIDs.BasicDemon];
+
+                monsterDescriptionTempalte.text = GameManager.GetManager.Database.GetMonsterDescription(GameManager.GetManager.ActiveFileID, MonsterIDs.BasicDemon);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onMonsterButtonPanelOpen -= SetDefault;
         }
     }
 }
