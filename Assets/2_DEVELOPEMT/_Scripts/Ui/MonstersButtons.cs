@@ -2,13 +2,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 using akb.Core.Database.Monsters;
 
 namespace akb.Core.Managing.UI
 {
-    public class MonstersButtons : MonoBehaviour , IEventSystemHandler
+    public class MonstersButtons : MonoBehaviour
     {
         [SerializeField] Image monsterSpriteTemplate;
         [SerializeField] TextMeshProUGUI monsterDescriptionTempalte;
