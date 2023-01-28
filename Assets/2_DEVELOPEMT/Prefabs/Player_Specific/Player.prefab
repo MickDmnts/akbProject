@@ -344,6 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityName: Player
   EntityLife: 100
+  deathGFX: {fileID: 0}
   playerMaxHealth: 100
   mitigateDamageAfter: 0.3
 --- !u!114 &2032473210
@@ -405,7 +406,7 @@ MonoBehaviour:
   startingDodgeCount: 1
   maxStartingDodgeCount: 1
   dodgeCooldown: 0.8
-  pushForce: 20
+  pushForce: 10
   movementThresholdToDodge: 1
   effectToApply: 1
   demonsHitLayer:
