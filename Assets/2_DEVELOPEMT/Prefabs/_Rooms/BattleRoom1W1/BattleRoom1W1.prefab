@@ -1423,7 +1423,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1452
+  m_VersionIndex: 1455
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2818,7 +2818,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1484
+  m_VersionIndex: 1487
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3673,7 +3673,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2177
+  m_VersionIndex: 2180
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4812,6 +4812,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 710046458125d2040abbd5ed4b2debd4, type: 3}
       propertyPath: m_Name
       value: LargeDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 710046458125d2040abbd5ed4b2debd4, type: 3}
+      propertyPath: m_Layer
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 710046458125d2040abbd5ed4b2debd4, type: 3}
       propertyPath: m_RootOrder

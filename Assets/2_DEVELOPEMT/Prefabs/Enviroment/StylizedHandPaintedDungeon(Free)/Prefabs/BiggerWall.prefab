@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 143887004271370174}
   - component: {fileID: 7783725690235095050}
   - component: {fileID: 7617404158608717331}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: BiggerWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 770d874acb2e37f4dbb0943d5ef8a660, type: 2}
+  - {fileID: 2100000, guid: 585b4cc0792602d4a9dac00b0463d06f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
