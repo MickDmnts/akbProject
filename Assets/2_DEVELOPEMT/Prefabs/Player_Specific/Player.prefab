@@ -406,7 +406,7 @@ MonoBehaviour:
   startingDodgeCount: 1
   maxStartingDodgeCount: 1
   dodgeCooldown: 0.8
-  pushForce: 10
+  pushForce: 15
   movementThresholdToDodge: 1
   effectToApply: 1
   demonsHitLayer:
