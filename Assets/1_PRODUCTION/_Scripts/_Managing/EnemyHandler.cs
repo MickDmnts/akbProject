@@ -35,28 +35,25 @@ namespace akb.Core.Managing
 
         IEnumerator SequencialySpawnEnemies()
         {
+            yield return new WaitForSeconds(2f);
+
             List<EnemySpawnInfo> enemyPairs = ManagerHUB.GetManager.RoomSelector.GetCurrentRoomEnemies();
 
-            Debug.Log(enemyPairs.Count);
-
             Transform anchor = ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform;
-
-            Debug.Log(anchor.name);
 
             roomEnemyCounter = enemyPairs.Count;
 
             foreach (EnemySpawnInfo enemyPosPair in enemyPairs)
             {
-                Debug.Log(enemyPosPair.Enemy.name);
-                Debug.Log(enemyPosPair.EnemySpawn.name);
-
                 Vector3 roomPos = enemyPosPair.EnemySpawn.position + anchor.position;
 
                 GameObject spawnedEnemy = Instantiate(enemyPosPair.Enemy, roomPos, enemyPosPair.EnemySpawn.rotation);
                 GameObject spawnVfx = Instantiate(enemySpawnEffect);
-                spawnVfx.transform.position = spawnedEnemy.transform.position;
+                spawnVfx.transform.position = spawnedEnemy.transform.position + (Vector3.up / 2);
 
                 spawnedEnemies.Add(spawnedEnemy);
+
+                spawnedEnemy.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
 
                 yield return new WaitForSeconds(0.8f);
             }
@@ -68,6 +65,8 @@ namespace akb.Core.Managing
             {
                 Destroy(enemy);
             }
+
+            spawnedEnemies = new List<GameObject>();
         }
 
         ///<summary>Updates the database entry of the passed enemy ID to "found".

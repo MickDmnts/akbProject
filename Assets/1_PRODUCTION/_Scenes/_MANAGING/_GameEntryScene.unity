@@ -874,9 +874,9 @@ MonoBehaviour:
     - {fileID: 3973654885308923643, guid: 0e9c614e107c40a449778c52cdf1165a, type: 3}
     battleRoomsCopy: []
     usedBattleRooms: []
-    healRoom: {fileID: 5480419412266862194, guid: ccc07f48eaca20244a553cf597c816d1,
+    healRoom: {fileID: 2951224918391202315, guid: 2726ee1a916837c4cb0f725e8b8f97d8,
       type: 3}
-    storeRoom: {fileID: 5480419412266862194, guid: ccc07f48eaca20244a553cf597c816d1,
+    storeRoom: {fileID: 5480419412266862194, guid: 7624b228756a4be4c9e4bf7c3fd56974,
       type: 3}
     bossRoom: {fileID: 5480419412266862194, guid: ccc07f48eaca20244a553cf597c816d1,
       type: 3}

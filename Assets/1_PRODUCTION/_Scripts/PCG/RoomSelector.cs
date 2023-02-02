@@ -37,8 +37,21 @@ namespace akb.Core.Managing.PCG
             roomDataContainer = FindObjectOfType<RoomDataContainer>();
             ManagerHUB.GetManager.SetRoomSelector(this);
 
+            ManagerHUB.GetManager.GameEventsHandler.onSaveInitialized += SaveLastRoom;
+            ManagerHUB.GetManager.GameEventsHandler.onLoadGame += LoadSaveGameData;
+
             ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry += ResetPCG;
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetPCG;
+        }
+
+        void LoadSaveGameData(int saveFileID)
+        {
+            currentLevel = GameManager.GetManager.Database.GetLastRoom(saveFileID);
+        }
+
+        void SaveLastRoom()
+        {
+            GameManager.GetManager.Database.UpdateLastRoom(currentLevel, GameManager.GetManager.ActiveFileID);
         }
 
         //Reset when the room changes
@@ -196,7 +209,7 @@ namespace akb.Core.Managing.PCG
                     mayGetHealRoom = true;
                     return roomDataContainer.GetRoomData(roomWorld, RoomType.Battle);
                 }
-                
+
             }
             else
             {
@@ -224,7 +237,11 @@ namespace akb.Core.Managing.PCG
 
         private void OnDestroy()
         {
+            ManagerHUB.GetManager.GameEventsHandler.onSaveInitialized -= SaveLastRoom;
+            ManagerHUB.GetManager.GameEventsHandler.onLoadGame -= LoadSaveGameData;
+
             ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry -= ResetPCG;
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= ResetPCG;
         }
     }
 }

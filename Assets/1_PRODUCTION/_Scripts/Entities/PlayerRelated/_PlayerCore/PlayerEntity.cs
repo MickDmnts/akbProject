@@ -71,6 +71,19 @@ namespace akb.Entities.Player
 
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += SetMovementStatesBasedOnRoom;
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetPlayerAttributes;
+
+            ManagerHUB.GetManager.GameEventsHandler.onSaveInitialized += OnSaveGame;
+            ManagerHUB.GetManager.GameEventsHandler.onLoadGame += OnLoadGame;
+        }
+
+        void OnSaveGame()
+        {
+            GameManager.GetManager.Database.UpdatePlayerHealthValue((int)EntityLife, GameManager.GetManager.ActiveFileID);
+        }
+
+        void OnLoadGame(int saveFileID)
+        {
+            EntityLife = GameManager.GetManager.Database.GetPlayerHealthValue(saveFileID);
         }
 
         void SetMovementStatesBasedOnRoom(GameScenes gameScenes)
@@ -138,6 +151,9 @@ namespace akb.Entities.Player
 
         private void OnDisable()
         {
+            ManagerHUB.GetManager.GameEventsHandler.onSaveInitialized -= OnSaveGame;
+            ManagerHUB.GetManager.GameEventsHandler.onLoadGame -= OnLoadGame;
+
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= SetMovementStatesBasedOnRoom;
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= ResetPlayerAttributes;
         }

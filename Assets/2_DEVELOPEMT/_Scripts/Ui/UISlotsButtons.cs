@@ -87,7 +87,15 @@ namespace akb.Core.Managing.UI
 
         void LoadGameActions(int buttonIndex)
         {
-            throw new NotImplementedException();
+            GameManager.GetManager.Database.SetLastUsedFileID(buttonIndex);
+            GameManager.GetManager.SetActiveFileID(buttonIndex);
+            ManagerHUB.GetManager.GameEventsHandler.OnLoadGame(buttonIndex);
+
+            //Load Hub scene
+            ManagerHUB.GetManager.LevelManager.TransitToHub();
+
+            //Open the GamePlayScreenPanel (Health, rage etc)
+            ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
         }
     }
 }

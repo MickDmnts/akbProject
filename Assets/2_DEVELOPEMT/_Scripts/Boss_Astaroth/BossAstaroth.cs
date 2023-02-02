@@ -19,9 +19,6 @@ namespace akb.Entities.AI.Implementations.Astaroth
     {
         [Header("Astaroth specific")]
         [SerializeField] GameObject projectilePrefab;
-        [SerializeField] float phase1ProjectileCd = 3f;
-        [SerializeField] float phase2EnemiesCd = 5f;
-        [SerializeField] float phase3ProjectileCd = 10f;
 
         [Header("GFXs")]
         [SerializeField] GameObject secondPhaseShield;
@@ -29,7 +26,6 @@ namespace akb.Entities.AI.Implementations.Astaroth
         [Header("Distance Check Specifics")]
         [SerializeField] float maxDistanceFromTarget;
 
-        AstarothAttackHandler attackHandler;
         Transform target;
 
         float maxHealth;
@@ -54,8 +50,6 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             ai_agent = GetComponent<NavMeshAgent>();
             ai_entityAnimations = GetComponentInChildren<BossAstarothAnimations>();
-
-            attackHandler = GetComponentInChildren<AstarothAttackHandler>();
         }
 
         #region NODE_DATA_CREATION
@@ -186,8 +180,6 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             return ai_entityAnimations as BossAstarothAnimations;
         }
-
-        public AstarothAttackHandler GetAttackHandler() => attackHandler;
 
         AstarothNodeData GetDemonData()
         {

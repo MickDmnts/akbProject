@@ -7,7 +7,6 @@ namespace akb.Entities.AI.Implementations.Astaroth
         float attackCooldown;
         float maxDistanceFromTarget;
 
-
         #region MUTATORS
         public void SetMaxDistance(float value) => maxDistanceFromTarget = value;
         public void SetEnemyEntity(BossAstaroth value) => ai_entity = value;
@@ -20,7 +19,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
         #region ACCESSORS
         public BossAstaroth GetEnemyEntity() => ai_entity as BossAstaroth;
         public BossAstarothAnimations GetDemonAnimations() => ai_animations as BossAstarothAnimations;
-        public float GetTimeUntilAttack() =>timeUntilAttack;
+        public float GetTimeUntilAttack() => timeUntilAttack;
         public float GetAttackCooldown() => attackCooldown;
         public AstarothPhases GetCurrentPhase() => bossPhase;
         public float GetMaxDistance() => maxDistanceFromTarget;

@@ -21,28 +21,27 @@ namespace akb.Core.Managing.InRunUpdates
 
         private void Start()
         {
-            SaveDependentBehaviour();
+            SaveDependentBehaviour(GameManager.GetManager.ActiveFileID);
             SetInRunAdvancementsSprites();
+
+            ManagerHUB.GetManager.GameEventsHandler.onSaveInitialized += SaveMidRun;
         }
 
         /// <summary>
         /// Creates a new copy or loads the previous unused advancements from the database based on
         /// If the save file was saved during run.
         /// </summary>
-        void SaveDependentBehaviour()
+        void SaveDependentBehaviour(int saveFileID)
         {
-            if (GameManager.GetManager.Database.GetHasActiveRun(0))
+            if (GameManager.GetManager.Database.GetHasActiveRun(saveFileID))
             {
                 Debug.Log("Had save");
-                LoadUnusedAdvancements();
+                LoadUnusedAdvancements(saveFileID);
             }
             else
             {
                 Debug.Log("Had NO save");
                 InitializeAdvancements();
-
-                //FOR DEBUGGING
-                SaveMidRun();
             }
         }
 
@@ -102,10 +101,10 @@ namespace akb.Core.Managing.InRunUpdates
             GameManager.GetManager.Database.UpdateInRunAdvancementDataCell(jsonStr, 0); //zero gets replaced from the active save file.
         }
 
-        void LoadUnusedAdvancements()
+        void LoadUnusedAdvancements(int saveFileID)
         {
             //Read the json string from the db
-            string jsonStr = GameManager.GetManager.Database.GetInRunAdvancementData(0);
+            string jsonStr = GameManager.GetManager.Database.GetInRunAdvancementData(saveFileID);
 
             //Get the deserialized advancement data from the JSON deserializer
             AdvancementData deserializedData = DataSerializer.DeserializeInRunAdvancements(jsonStr);
@@ -177,6 +176,11 @@ namespace akb.Core.Managing.InRunUpdates
         {
             Sprite sprite = inRunAdvancementsSpritesPairs[type];
             return sprite;
+        }
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onSaveInitialized -= SaveMidRun;
         }
     }
 }

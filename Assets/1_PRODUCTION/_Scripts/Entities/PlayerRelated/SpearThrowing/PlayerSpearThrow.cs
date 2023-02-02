@@ -22,6 +22,8 @@ namespace akb.Entities.Player.SpearHandling
         [SerializeField] float spearThrowMinimumPressTime = 0.5f;
         [SerializeField] float triggerHoldDeadzone = 0.5f;
 
+        [SerializeField, Range(1f, 10f)] float holdCounterChargeMultiplier;
+
         [Header("Set spear graphic settings")]
         [SerializeField] Vector3 spearGraphicSize;
 
@@ -189,7 +191,7 @@ namespace akb.Entities.Player.SpearHandling
         {
             if (holdCounter < maxHoldTime)
             {
-                holdCounter += Time.deltaTime;
+                holdCounter += Time.deltaTime * holdCounterChargeMultiplier;
 
                 spearGraphic.size = new Vector3(spearGraphicSize.x, spearGraphicSize.y * holdCounter, spearGraphicSize.z);
             }

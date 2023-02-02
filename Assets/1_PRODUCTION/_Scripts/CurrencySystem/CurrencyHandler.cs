@@ -49,6 +49,9 @@ namespace akb.Core.Managing.Currencies
             coinValue = coinValue * (int)coinMultiplier.GetMultiplierValue;
 
             hellCoins += coinValue;
+
+            //Update the database value
+            GameManager.GetManager.Database.UpdateInRunCoinValue(hellCoins, GameManager.GetManager.ActiveFileID);
         }
 
         public void IncreaseHellCoinsBy(int value)

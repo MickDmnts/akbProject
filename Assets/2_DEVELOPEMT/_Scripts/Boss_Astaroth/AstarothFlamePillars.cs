@@ -17,6 +17,9 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             canSpawn = false;
 
+            ManagerHUB.GetManager.GameEventsHandler.onAstarothFirstPhase += StartPillarSpawn;
+            ManagerHUB.GetManager.GameEventsHandler.onAstarothSecondPhase += StopPillarSpawn;
+
             ManagerHUB.GetManager.GameEventsHandler.onAstarothThirdPhase += StartPillarSpawn;
             ManagerHUB.GetManager.GameEventsHandler.onAstarothDeath += StopPillarSpawn;
         }
@@ -52,6 +55,9 @@ namespace akb.Entities.AI.Implementations.Astaroth
 
         private void OnDestroy()
         {
+            ManagerHUB.GetManager.GameEventsHandler.onAstarothFirstPhase -= StartPillarSpawn;
+            ManagerHUB.GetManager.GameEventsHandler.onAstarothSecondPhase -= StopPillarSpawn;
+
             ManagerHUB.GetManager.GameEventsHandler.onAstarothThirdPhase -= StartPillarSpawn;
             ManagerHUB.GetManager.GameEventsHandler.onAstarothDeath -= StopPillarSpawn;
         }

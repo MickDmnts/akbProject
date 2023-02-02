@@ -73,6 +73,21 @@ namespace akb.Core.Managing.GameEvents
         }
 
         /// <summary>
+        /// Add to this event to get notified when it's time to save.
+        /// </summary>
+        public event Action onSaveInitialized;
+        /// <summary>
+        /// Call to notify the onSaveInitialized callbacks.
+        /// </summary>
+        public void OnSaveInitialized()
+        {
+            if (onSaveInitialized != null)
+            {
+                onSaveInitialized();
+            }
+        }
+
+        /// <summary>
         /// Add to this event to get notified when the player gets in the hub.
         /// </summary>
         public event Action onPlayerHubEntry;
@@ -132,7 +147,13 @@ namespace akb.Core.Managing.GameEvents
             }
         }
 
+        /// <summary>
+        /// Add to this event to get notified when the player must receive coins
+        /// </summary>
         public event Action<int> onCoinReceive;
+        /// <summary>
+        /// Call to notify onCoinReceive callbacks.
+        /// </summary>
         public void OnCoinReceive(int coinValue)
         {
             if (onCoinReceive != null)
@@ -213,6 +234,21 @@ namespace akb.Core.Managing.GameEvents
             if (onPlayerRageChange != null)
             {
                 onPlayerRageChange(value);
+            }
+        }
+
+        /// <summary>
+        /// Add to this event to get notified when Astaroth enters his first phase.
+        /// </summary>
+        public event Action onAstarothFirstPhase;
+        /// <summary>
+        /// Call to notify onAstarothFirstPhase callbacks.
+        /// </summary>
+        public void OnAstarothFirstPhase()
+        {
+            if (onAstarothFirstPhase != null)
+            {
+                onAstarothFirstPhase();
             }
         }
 

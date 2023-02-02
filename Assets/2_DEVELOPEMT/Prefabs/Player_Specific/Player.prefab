@@ -344,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityName: Player
   EntityLife: 100
-  deathGFX: {fileID: 0}
+  deathGFX: {fileID: 1221293952758510, guid: 21e3fa923d4f261409d83b8d0f6e81c7, type: 3}
   playerMaxHealth: 100
   mitigateDamageAfter: 0.3
 --- !u!114 &2032473210

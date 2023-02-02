@@ -97,6 +97,7 @@ namespace akb.Core.Managing.PCG
         {
             ManagerHUB.GetManager.GameEventsHandler.onNewGame += NewGameBehaviour;
             ManagerHUB.GetManager.GameEventsHandler.onLoadGame += LoadGameBehaviour;
+            ManagerHUB.GetManager.GameEventsHandler.onSaveInitialized += SaveRoomIDs;
 
             ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry += ResetWorlds;
         }
@@ -238,14 +239,11 @@ namespace akb.Core.Managing.PCG
 
             string jsonStr = DataSerializer.SerializeUnusedRooms(ids.ToArray(), activeWorld);
 
-            Debug.Log(jsonStr);
-
-            GameManager.GetManager.Database.UpdateUnusedRooms(jsonStr, 0); //0 being the save file index.
+            GameManager.GetManager.Database.UpdateUnusedRooms(jsonStr, GameManager.GetManager.ActiveFileID);
         }
 
         void LoadSavedRooms(int saveFileID)
         {
-            //zero represents the active save
             string dbStr = GameManager.GetManager.Database.GetUnusedRooms(saveFileID);
 
             Debug.Log($"Loading json string {dbStr}");
@@ -271,6 +269,7 @@ namespace akb.Core.Managing.PCG
         {
             ManagerHUB.GetManager.GameEventsHandler.onNewGame -= NewGameBehaviour;
             ManagerHUB.GetManager.GameEventsHandler.onLoadGame -= LoadGameBehaviour;
+            ManagerHUB.GetManager.GameEventsHandler.onSaveInitialized -= SaveRoomIDs;
 
             ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry -= ResetWorlds;
         }

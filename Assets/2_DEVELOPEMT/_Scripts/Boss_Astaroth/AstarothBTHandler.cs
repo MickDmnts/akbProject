@@ -5,8 +5,6 @@ namespace akb.Entities.AI.Implementations.Astaroth
         BehaviourTree entryBT;
         BehaviourTree attackPattern;
         BehaviourTree phase1;
-        BehaviourTree phase2;
-        BehaviourTree phase3;
 
         public AstarothBTHandler(BossAstaroth ai_entity, INodeData nodeData)
         {
@@ -20,24 +18,6 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             AstarothNodeData data = ai_nodeData as AstarothNodeData;
 
-            #region PHASE_3
-
-            #endregion
-
-            #region PHASE_2
-
-            #endregion
-
-            #region PHASE_1
-            //Attack Pattern phase 1
-            AstarothAttackAction attackAction = new AstarothAttackAction(data);
-            AstarothCountDownAction attackCooldown = new AstarothCountDownAction(data, attackAction);
-
-            phase1 = new BehaviourTree(attackCooldown, ai_nodeData);
-            #endregion
-
-            AstarothPhaseSelector astarothBrancher = new AstarothPhaseSelector(data, phase1, phase2, phase3);
-
             //Rotator
             FaceTargetAction faceTargetAction = new FaceTargetAction(data, ai_nodeData.GetTarget());
 
@@ -45,7 +25,6 @@ namespace akb.Entities.AI.Implementations.Astaroth
             INode[] nodesToParallel = new INode[]
             {
                 faceTargetAction,
-                astarothBrancher,
             };
 
             ParallerExecutor parallerExecutor = new ParallerExecutor(nodesToParallel, ai_nodeData);
