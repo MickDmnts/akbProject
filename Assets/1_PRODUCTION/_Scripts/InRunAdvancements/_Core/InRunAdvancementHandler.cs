@@ -98,7 +98,7 @@ namespace akb.Core.Managing.InRunUpdates
 
             //Write the serialized json string to the corresponding save file in the DB.
             string jsonStr = DataSerializer.SerializeInRunAdvancements(unusedAdvs, activeAdvs);
-            GameManager.GetManager.Database.UpdateInRunAdvancementDataCell(jsonStr, 0); //zero gets replaced from the active save file.
+            GameManager.GetManager.Database.UpdateInRunAdvancementDataCell(jsonStr, GameManager.GetManager.ActiveFileID); //zero gets replaced from the active save file.
         }
 
         void LoadUnusedAdvancements(int saveFileID)

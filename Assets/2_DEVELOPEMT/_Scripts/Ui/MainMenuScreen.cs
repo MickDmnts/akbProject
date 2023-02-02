@@ -29,8 +29,19 @@ namespace akb.Core.Managing.UI
 
         void Continue()
         {
+            int lastSavedFile = GameManager.GetManager.Database.GetLastUsedFileID();
+
+            GameManager.GetManager.Database.SetLastUsedFileID(lastSavedFile);
+            GameManager.GetManager.SetActiveFileID(lastSavedFile);
+            ManagerHUB.GetManager.GameEventsHandler.OnLoadGame(lastSavedFile);
+
+            //Load Hub scene
+            ManagerHUB.GetManager.LevelManager.TransitToHub();
+
+            //Open the GamePlayScreenPanel (Health, rage etc)
+            ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
             //if isnt nothing to load make the button is interactable == false , else is interactable == true
-            
+
             throw new System.NotImplementedException();
             //TODO: Load save file ID from coresponding db field, pass it through the same methods of the save buttons
             //to load the game info correctly.
