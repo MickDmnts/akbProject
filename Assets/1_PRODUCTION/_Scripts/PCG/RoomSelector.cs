@@ -17,6 +17,9 @@ namespace akb.Core.Managing.PCG
 
         int currentLevel = 0;
 
+        bool mayGetHealRoom = true;
+        bool mayGetStoreRoom = true;
+
         RoomDataContainer roomDataContainer;
 
         GameObject currentRoomGO;
@@ -183,11 +186,30 @@ namespace akb.Core.Managing.PCG
             }
             else if (randomInt > battleRoomChance && randomInt <= (healRoomChance + battleRoomChance))
             {
-                return roomDataContainer.GetRoomData(roomWorld, RoomType.Heal);
+                if (mayGetHealRoom)
+                {
+                    mayGetHealRoom = false;
+                    return roomDataContainer.GetRoomData(roomWorld, RoomType.Heal);
+                }
+                else
+                {
+                    mayGetHealRoom = true;
+                    return roomDataContainer.GetRoomData(roomWorld, RoomType.Battle);
+                }
+                
             }
             else
             {
-                return roomDataContainer.GetRoomData(roomWorld, RoomType.Store);
+                if (mayGetStoreRoom)
+                {
+                    mayGetStoreRoom = false;
+                    return roomDataContainer.GetRoomData(roomWorld, RoomType.Store);
+                }
+                else
+                {
+                    mayGetStoreRoom = true;
+                    return roomDataContainer.GetRoomData(roomWorld, RoomType.Battle);
+                }
             }
         }
         #endregion
