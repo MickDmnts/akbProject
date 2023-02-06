@@ -6,14 +6,18 @@ public class Player_Movement : MonoBehaviour
 {
     public float speed;
     public float rotationSpeed;
+    public float cooldown;
 
+    private float lastDodge;
     private Animator animator;
     private CharacterController charController;
+
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         charController = GetComponent<CharacterController>();
+        
     }
 
     void Update()
@@ -37,5 +41,32 @@ public class Player_Movement : MonoBehaviour
         {
             animator.SetBool("IsRunning", false);
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Dodge();
+        }
+
     }
+
+    IEnumerator Cooldown()
+    {
+        animator.SetBool("IsDodging", true);
+        yield return new WaitForSeconds(1f);
+        animator.SetBool("IsDodging", false);
+    }
+
+    public void Dodge()
+    {
+        if(Time.time-lastDodge<cooldown)
+        {
+            return;
+        }
+        lastDodge = Time.time;
+        StartCoroutine(Cooldown());
+    }
+
+    
+
+
 }

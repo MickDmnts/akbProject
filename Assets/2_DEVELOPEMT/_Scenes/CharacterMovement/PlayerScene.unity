@@ -636,6 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rotationSpeed: 720
+  cooldown: 2
 --- !u!4 &1569723481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8654250720420943610, guid: 34115fd4eff069845a47d22ce756724e,
