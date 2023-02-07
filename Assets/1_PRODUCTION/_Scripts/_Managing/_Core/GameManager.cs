@@ -38,6 +38,9 @@ namespace akb.Core.Managing
         /// </summary>
         public ManagerHUB ManagerHUB => _managerHUB;
 
+        ///<summary>Is dev mode enabled in the options?</summary>
+        public bool IsDevMode { get; set; }
+
         public void SetActiveFileID(int id) => _activeFileID = id;
 
         private void Awake()

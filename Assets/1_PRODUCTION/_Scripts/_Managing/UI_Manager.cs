@@ -27,6 +27,10 @@ namespace akb.Core.Managing.UI
         /// </summary>
         public bool IsPaused => isPaused;
 
+        public bool CanScreenShake { get; set; }
+        public bool CanShowScreenTint { get; set; }
+        public bool CanShowUIElements { get; set; }
+
         UIInputs uiInputs;
         InputAction uiBack;
 
@@ -150,7 +154,7 @@ namespace akb.Core.Managing.UI
         {
             foreach (string param in panelNames)
             {
-                for(int i = 0; i != uiPanels.Count; i++)
+                for (int i = 0; i != uiPanels.Count; i++)
                 {
                     if (uiPanels[i].name.Equals(param))
                     {

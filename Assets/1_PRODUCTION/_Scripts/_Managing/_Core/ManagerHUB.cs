@@ -7,6 +7,7 @@ using akb.Core.Managing.UI;
 using akb.Core.Managing.UpdateSystem;
 using akb.Core.Managing.InRunUpdates;
 using akb.Core.Managing.Currencies;
+using akb.Core.Sounds;
 
 namespace akb.Core.Managing
 {
@@ -95,6 +96,11 @@ namespace akb.Core.Managing
         /// Get the PlayerEntity class.
         /// </summary>
         public PlayerEntity PlayerEntity { get; private set; }
+
+        /// <summary>
+        /// Get the SoundsHandler class.
+        /// </summary>
+        public SoundsHandler SoundsHandler { get; private set; }
         #endregion
 
         #region REFERENCE_MUTATORS
@@ -165,6 +171,14 @@ namespace akb.Core.Managing
         public void SetSlotHandlerReference(SlotsHandler reference)
         {
             SlotsHandler = reference;
+        }
+
+        /// <summary>
+        /// Sets the SoundsHandler class
+        /// </summary>
+        public void SetSoundsHandlerReference(SoundsHandler reference)
+        {
+            SoundsHandler = reference;
         }
         #endregion
     }
