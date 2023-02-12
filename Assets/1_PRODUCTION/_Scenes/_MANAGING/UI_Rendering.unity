@@ -683,7 +683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -776.5467}
+  m_AnchoredPosition: {x: 0, y: -776.54663}
   m_SizeDelta: {x: 0.000015258789, y: 1553.0928}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65890476
@@ -875,7 +875,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1311,7 +1311,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1350,7 +1350,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0.3}
   m_AnchorMax: {x: 0.7, y: 0.35}
-  m_AnchoredPosition: {x: 72.33, y: -2.1500244}
+  m_AnchoredPosition: {x: 72.33, y: -2.150032}
   m_SizeDelta: {x: 144.68, y: 32.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &127420899
@@ -7310,7 +7310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.51, y: 0.2}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -16.559998, y: -19.079964}
+  m_AnchoredPosition: {x: -16.559998, y: -19.079956}
   m_SizeDelta: {x: -33.121, y: 38.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695127329
@@ -8843,7 +8843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -875.00037}
+  m_AnchoredPosition: {x: 0, y: -875.0003}
   m_SizeDelta: {x: 0, y: 1750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798312109
@@ -12619,7 +12619,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0.3}
   m_AnchorMax: {x: 0.7, y: 0.35}
-  m_AnchoredPosition: {x: 41.240005, y: -2.079998}
+  m_AnchoredPosition: {x: 41.240005, y: -2.0799904}
   m_SizeDelta: {x: 82.47, y: 34.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1190596575
@@ -12770,7 +12770,7 @@ MonoBehaviour:
   screenShakeToggle: {fileID: 221745152}
   redScreenTintToggle: {fileID: 1615865091}
   hideUIElementToggle: {fileID: 2105238595}
-  DevModeToggle: {fileID: 1253498440}
+  devModeToggle: {fileID: 1253498440}
   backButton: {fileID: 14125474}
 --- !u!1 &1223709695
 GameObject:
@@ -15418,7 +15418,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.2}
   m_AnchorMax: {x: 0.49, y: 0.5}
-  m_AnchoredPosition: {x: 12.721985, y: -19.079964}
+  m_AnchoredPosition: {x: 12.721985, y: -19.079956}
   m_SizeDelta: {x: -25.447, y: 38.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504486550
@@ -15760,7 +15760,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.25
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15946,7 +15946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0.3}
   m_AnchorMax: {x: 0.7, y: 0.35}
-  m_AnchoredPosition: {x: 87.89, y: -0.8300133}
+  m_AnchoredPosition: {x: 87.89, y: -0.83000565}
   m_SizeDelta: {x: 175.78, y: 21.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1530593088

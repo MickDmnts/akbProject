@@ -15,7 +15,7 @@ namespace akb.Entities.Interactions
 
         private void OnTriggerEnter(Collider other)
         {
-            if(TryGetComponent<IInteractable>(out IInteractable interactable))
+            if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 Debug.Log("I do damage");
                 TrapDamageInteraction();

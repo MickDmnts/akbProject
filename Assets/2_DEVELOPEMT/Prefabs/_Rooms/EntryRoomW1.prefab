@@ -224,7 +224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6050371786444503248
 Transform:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 6050371786479876184}
   - component: {fileID: 6050371786479876185}
   - component: {fileID: 6050371786479876134}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1322
+  m_VersionIndex: 1325
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

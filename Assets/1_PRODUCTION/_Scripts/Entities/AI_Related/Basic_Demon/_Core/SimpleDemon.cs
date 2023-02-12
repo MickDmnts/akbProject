@@ -145,6 +145,9 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
 
                 MoveLayerOnDeath();
 
+                coneGraphic = null;
+                circleGraphic = null;
+
                 GameObject gfx = Instantiate(deathGFX);
                 gfx.transform.position = transform.position;
 
@@ -163,7 +166,7 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
         void UpdateDatabaseEntry()
         {
             if (demonType == SimpleDemonType.SimpleDemon)
-            { ManagerHUB.GetManager.GameEventsHandler.OnEnemyEntryUpdate(MonsterIDs.BasicDemon); } // Simple demon
+            { ManagerHUB.GetManager.GameEventsHandler.OnEnemyEntryUpdate(MonsterIDs.BasicDemon); } //Simple demon
             else
             { ManagerHUB.GetManager.GameEventsHandler.OnEnemyEntryUpdate(MonsterIDs.FireDemon); } //Fire demon
         }

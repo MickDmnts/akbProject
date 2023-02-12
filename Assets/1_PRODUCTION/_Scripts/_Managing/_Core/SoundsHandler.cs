@@ -88,6 +88,8 @@ namespace akb.Core.Sounds
             ManagerHUB.GetManager.GameEventsHandler.onAstarothFirstPhase += PlayAstarothOST;
 
             mainAudioSource.loop = true;
+
+            SetMasterVolume(0.25f);
         }
 
         void ChangeSoundtrack(GameScenes scenes)
@@ -97,8 +99,6 @@ namespace akb.Core.Sounds
                 case GameScenes.PlayerScene: //What plays in the main menu
                     mainAudioSource.clip = levelWideClips[0];
                     mainAudioSource.Play();
-
-                    Debug.Log(scenes);
                     break;
 
                 case GameScenes.PlayerHUB: //What plays in the hub
@@ -132,8 +132,10 @@ namespace akb.Core.Sounds
 
         public void SetMasterVolume(float value)
         {
-            mainAudioSource.volume = value;
-            sfxSource.volume = value;
+            ControlMainAudioSource(value);
+            ControlSFXAudioSource(value);
+
+            AudioListener.volume = value;
         }
 
         public void ControlMainAudioSource(float value)
