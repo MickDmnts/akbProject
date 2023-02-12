@@ -81,7 +81,7 @@ namespace akb.Entities.Player
 
             rageFill += rageFillRate;
             ManagerHUB.GetManager.GameEventsHandler.OnPlayerRageChange(rageFill);
-
+            Debug.Log(rageFill);
             if (rageFill >= currentRageMax)
             {
                 rageFill = currentRageMax;
@@ -119,7 +119,6 @@ namespace akb.Entities.Player
         void ResetDevilRageAttributes()
         {
             ManagerHUB.GetManager.PlayerEntity.PlayerAttack.SetAttackDamageToCache();
-            //deactivate flame animation here
         }
 
         #region UTILITIES
