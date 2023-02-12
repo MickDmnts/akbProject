@@ -15,12 +15,16 @@ namespace akb.Core.Managing
 
         [SerializeField] Image ragebar;
 
+        Animator animator;
+
         private void Start()
         {
             ManagerHUB.GetManager.GameEventsHandler.onPlayerHealthChange += SetHealthBarValue;
             ManagerHUB.GetManager.GameEventsHandler.onPlayerRageChange += SetRageBarValue;
 
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetOnHub;
+
+            //animator = ragebar.GetComponent<Animator>();
         }
 
         void ResetOnHub(GameScenes scene)
@@ -55,7 +59,13 @@ namespace akb.Core.Managing
 
         void SetRageBarValue(float rageValue)
         {
-            ragebar.fillAmount = rageValue;
+            ragebar.fillAmount = rageValue / 1;
+            Debug.Log(rageValue);
+
+            if (ragebar.fillAmount == 1)
+            {
+                animator.SetBool("burning",true);
+            }
             // i can use this method  to play the animation too
         }
 

@@ -8,7 +8,7 @@ namespace akb.Core.Managing.PCG
     public class RoomSelector : MonoBehaviour
     {
         const int ENTRY_LEVEL = 0;
-        const int FIRST_BATTLE = 1
+        const int FIRST_BATTLE = 1;
         const int BATTLE_MIN = 2;
         const int BATTLE_MAX = 6;
         const int HEAL_LEVEL = 7;

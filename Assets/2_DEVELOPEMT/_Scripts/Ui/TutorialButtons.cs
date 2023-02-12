@@ -16,11 +16,21 @@ namespace akb.Core.Managing.UI
         List<Button> tutorialButtons = new List<Button>();
 
         //Tutorials Buttons
-        [SerializeField] Button meleeAttackButton;
+        [SerializeField] Button movementButton;
+        [SerializeField] Button attackButton;
         [SerializeField] Button dodgeRollButton;
         [SerializeField] Button throwButton;
-        [SerializeField] Button teleportationButton;
+        [SerializeField] Button teleportButton;
         [SerializeField] Button recallButton;
+        [SerializeField] Button devilRageButton;
+        [SerializeField] Button abilitiesButton;
+        [SerializeField] Button battleRoomButton;
+        [SerializeField] Button healRoomButton;
+        [SerializeField] Button storeRoomButton;
+        [SerializeField] Button hellCoinsButton;
+        [SerializeField] Button sinnersSoulButton;
+
+
 
         private void Start()
         {
@@ -37,20 +47,36 @@ namespace akb.Core.Managing.UI
         void EntrySetup()
         {
             //Tutorials Buttons
-            meleeAttackButton.onClick.AddListener(delegate { Setter(0); });
-            dodgeRollButton.onClick.AddListener(delegate { Setter(1); });
-            throwButton.onClick.AddListener(delegate { Setter(2); });
-            teleportationButton.onClick.AddListener(delegate { Setter(3); });
-            recallButton.onClick.AddListener(delegate { Setter(4); });
+            movementButton.onClick.AddListener(delegate { Setter(0); });
+            attackButton.onClick.AddListener(delegate { Setter(1); });
+            dodgeRollButton.onClick.AddListener(delegate { Setter(2); });
+            throwButton.onClick.AddListener(delegate { Setter(3); });
+            teleportButton.onClick.AddListener(delegate { Setter(4); });
+            recallButton.onClick.AddListener(delegate { Setter(5); });
+            devilRageButton.onClick.AddListener(delegate { Setter(6); });
+            abilitiesButton.onClick.AddListener(delegate { Setter(7); });
+            battleRoomButton.onClick.AddListener(delegate { Setter(8); });
+            healRoomButton.onClick.AddListener(delegate { Setter(9); });
+            storeRoomButton.onClick.AddListener(delegate { Setter(10); });
+            hellCoinsButton.onClick.AddListener(delegate { Setter(11); });
+            sinnersSoulButton.onClick.AddListener(delegate { Setter(12); });
         }
 
         void AddButtonsToList()
         {
-            tutorialButtons.Add(meleeAttackButton);
+            tutorialButtons.Add(movementButton);
+            tutorialButtons.Add(attackButton);
             tutorialButtons.Add(dodgeRollButton);
             tutorialButtons.Add(throwButton);
-            tutorialButtons.Add(teleportationButton);
+            tutorialButtons.Add(teleportButton);
             tutorialButtons.Add(recallButton);
+            tutorialButtons.Add(devilRageButton);
+            tutorialButtons.Add(abilitiesButton);
+            tutorialButtons.Add(battleRoomButton);
+            tutorialButtons.Add(healRoomButton);
+            tutorialButtons.Add(storeRoomButton);
+            tutorialButtons.Add(hellCoinsButton);
+            tutorialButtons.Add(sinnersSoulButton);
         }
 
 
