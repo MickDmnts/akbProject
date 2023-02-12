@@ -8,7 +8,8 @@ namespace akb.Core.Managing.PCG
     public class RoomSelector : MonoBehaviour
     {
         const int ENTRY_LEVEL = 0;
-        const int BATTLE_MIN = 1;
+        const int FIRST_BATTLE = 1
+        const int BATTLE_MIN = 2;
         const int BATTLE_MAX = 6;
         const int HEAL_LEVEL = 7;
 
@@ -111,6 +112,13 @@ namespace akb.Core.Managing.PCG
 
                 nextRoom = roomDataContainer.GetRoomData(roomWorld, RoomType.Entry);
             }
+            //First Battle Room
+            else if (currentLevel == FIRST_BATTLE)
+            {
+                currentLevel++;
+                nextRoom = roomDataContainer.GetRoomData(roomWorld, RoomType.Battle);
+            }
+
             //Battle - store - Heal rooms
             else if (currentLevel >= BATTLE_MIN && currentLevel <= BATTLE_MAX)
             {
