@@ -48,6 +48,7 @@ namespace akb.Core.Managing.PCG
         void LoadSaveGameData(int saveFileID)
         {
             currentLevel = GameManager.GetManager.Database.GetLastRoom(saveFileID);
+            Debug.Log(currentLevel);
         }
 
         void SaveLastRoom()
@@ -66,8 +67,6 @@ namespace akb.Core.Managing.PCG
         //Reset when the scene changes
         void ResetPCG(GameScenes currentScene)
         {
-            _ = currentScene;
-
             currentLevel = 0;
             currentRoomGO = null;
             currentRoomData = null;

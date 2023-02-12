@@ -10,21 +10,46 @@ namespace akb.Core.Managing.InRunUpdates
     {
         [Header("Set in inspector")]
         [SerializeField] Sprite[] inRunAdvancementsSprites;
+        [SerializeField] GameObject prefabCase;
 
         /// <summary>
-        /// All the runtime created gameObjects created based on the AdvancementTypes enum names.
+        /// All the runtime created gameObjects based on the AdvancementTypes enum names.
         /// *Remark: None values gets ommited*
         /// </summary>
         Dictionary<AdvancementTypes, GameObject> inRunAdvancementPairs = new Dictionary<AdvancementTypes, GameObject>();
 
         Dictionary<AdvancementTypes, Sprite> inRunAdvancementsSpritesPairs = new Dictionary<AdvancementTypes, Sprite>();
 
+        public int InRunAdvancementPairsCount => inRunAdvancementPairs.Count;
+
+        private void Awake()
+        {
+            ManagerHUB.GetManager.InRunAdvancementHandler = this;
+        }
+
         private void Start()
         {
             SaveDependentBehaviour(GameManager.GetManager.ActiveFileID);
             SetInRunAdvancementsSprites();
 
+            ManagerHUB.GetManager.GameEventsHandler.onNewGame += SaveDependentBehaviour;
+            ManagerHUB.GetManager.GameEventsHandler.onLoadGame += SaveDependentBehaviour;
+
             ManagerHUB.GetManager.GameEventsHandler.onSaveInitialized += SaveMidRun;
+            ManagerHUB.GetManager.GameEventsHandler.onRoomClear += DropReward;
+        }
+
+        void DropReward()
+        {
+            int rng = UnityEngine.Random.Range(0, inRunAdvancementPairs.Count);
+
+            AdvancementTypes type = (AdvancementTypes)rng;
+
+            GameObject advancement = GetAdvancementGameObject(type);
+
+            advancement.GetComponent<AdvancementPickUp>().SetPickupType(AdvancementPickUp.PickType.AutoPickup, 0);
+
+            advancement.transform.position = ManagerHUB.GetManager.PlayerEntity.transform.position;
         }
 
         /// <summary>
@@ -150,7 +175,8 @@ namespace akb.Core.Managing.InRunUpdates
         GameObject CreateAdvancementGameobject(AdvancementTypes type)
         {
             //Create a new gameObject with a pick up data
-            GameObject newAdv = new GameObject($"{type}");
+            GameObject newAdv = Instantiate(prefabCase);
+            newAdv.name = $"{type}";
             AdvancementPickUp advPickUp = newAdv.AddComponent<AdvancementPickUp>();
 
             advPickUp.SetAdvancementType(type);
@@ -181,6 +207,7 @@ namespace akb.Core.Managing.InRunUpdates
         private void OnDestroy()
         {
             ManagerHUB.GetManager.GameEventsHandler.onSaveInitialized -= SaveMidRun;
+            ManagerHUB.GetManager.GameEventsHandler.onRoomClear -= DropReward;
         }
     }
 }

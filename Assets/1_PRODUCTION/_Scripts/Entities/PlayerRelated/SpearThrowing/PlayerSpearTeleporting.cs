@@ -42,6 +42,8 @@ namespace akb.Entities.Player.SpearHandling
             EntrySetup();
 
             canTeleport = true;
+
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry += EntrySetup;
         }
 
         void CacheNeededComponents()
@@ -223,6 +225,8 @@ namespace akb.Entities.Player.SpearHandling
             StopAllCoroutines();
 
             teleportAction.Disable();
+
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry -= EntrySetup;
         }
     }
 }

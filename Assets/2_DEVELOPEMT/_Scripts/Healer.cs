@@ -5,7 +5,7 @@ public class Healer : MonoBehaviour
 {
     [Header("Set in inspector")]
     [SerializeField] GameObject healEffect;
-    [SerializeField] int healAmount;
+    [SerializeField] int healAmount = 15;
     [SerializeField] float healInterval;
 
     bool canHeal = false;

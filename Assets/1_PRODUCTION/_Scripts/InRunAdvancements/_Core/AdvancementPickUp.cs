@@ -1,11 +1,12 @@
-using akb.Entities.Player;
 using UnityEngine;
+
+using akb.Entities.Player;
 
 namespace akb.Core.Managing.InRunUpdates
 {
     public class AdvancementPickUp : MonoBehaviour
     {
-        enum PickType
+        public enum PickType
         {
             PromptPickup,
             AutoPickup
@@ -14,6 +15,10 @@ namespace akb.Core.Managing.InRunUpdates
         [Header("Set in inspector")]
         [SerializeField] PickType pickType = PickType.AutoPickup;
         [SerializeField] GameObject UI_Notifier;
+
+        bool canPickup = false;
+
+        int price = 0;
 
         /// <summary>
         /// The advancement slot THIS gameObject corresponds to.
@@ -33,6 +38,7 @@ namespace akb.Core.Managing.InRunUpdates
                     if (other.GetComponent<PlayerEntity>())
                     {
                         UI_Notifier.SetActive(true);
+                        canPickup = true;
                     }
                     break;
 
@@ -47,11 +53,40 @@ namespace akb.Core.Managing.InRunUpdates
             }
         }
 
+        private void Update()
+        {
+            if (canPickup)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (ManagerHUB.GetManager.CurrencyHandler.GetHellCoins >= price)
+                    {
+                        ManagerHUB.GetManager.SlotsHandler.SetAdvancement(slot, advType);
+
+                        ManagerHUB.GetManager.CurrencyHandler.DecreaseHellCoinsBy(price);
+
+                        Destroy(transform.root.gameObject);
+                    }
+                }
+            }
+        }
+
         private void OnTriggerExit(Collider other)
         {
             if (other.GetComponent<PlayerEntity>())
             {
                 UI_Notifier.SetActive(true);
+                canPickup = true;
+            }
+        }
+
+        public void SetPickupType(PickType type, int price)
+        {
+            pickType = type;
+
+            if (type == PickType.PromptPickup)
+            {
+                this.price = price;
             }
         }
 

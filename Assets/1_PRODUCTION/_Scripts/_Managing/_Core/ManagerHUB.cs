@@ -101,6 +101,11 @@ namespace akb.Core.Managing
         /// Get the SoundsHandler class.
         /// </summary>
         public SoundsHandler SoundsHandler { get; private set; }
+
+        /// <summary>
+        /// Get the SoundsHandler class.
+        /// </summary>
+        public InRunAdvancementHandler InRunAdvancementHandler { get; set; }
         #endregion
 
         #region REFERENCE_MUTATORS
