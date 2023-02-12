@@ -2,47 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikeAnimationScript : MonoBehaviour
+namespace akb.Entities.Interactions
 {
-    [SerializeField] float spikeHitRate = 2f;
-
-    float nextSpikeHit;
-    Animator animator;
-    bool played = false;
-
-    void Start()
+    public class SpikeAnimationScript : MonoBehaviour
     {
-        animator = GetComponent<Animator>();
-        nextSpikeHit = Time.time + spikeHitRate;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (Time.time > nextSpikeHit)
+        [SerializeField] float spikeHitRate = 2f;
+        [SerializeField] float damageValue = 10f;
+        float nextSpikeHit;
+        Animator animator;
+        bool played = false;
+        void Start()
         {
-            if (other.gameObject.CompareTag("Player"))
+            animator = GetComponent<Animator>();
+            nextSpikeHit = Time.time + spikeHitRate;
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (Time.time > nextSpikeHit)
             {
-                animator.SetTrigger("Up");
-                played = true;
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    animator.SetTrigger("Up");
+                    played = true;
+                }
             }
         }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        animator.SetTrigger("Down");
-        if (Time.time > nextSpikeHit)
+        private void OnTriggerStay(Collider other)
         {
-            nextSpikeHit = Time.time + spikeHitRate;
-            animator.SetTrigger("Up");
-            played = false;
+            animator.SetTrigger("Down");
+            if (Time.time > nextSpikeHit)
+            {
+                nextSpikeHit = Time.time + spikeHitRate;
+                animator.SetTrigger("Up");
+                played = false;
+            }
         }
-    }
+        private void OnTriggerExit(Collider other)
+        {
+            if (!played) return;
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (!played) return;
-
-        animator.SetTrigger("Down");
+            animator.SetTrigger("Down");
+        }
     }
 }

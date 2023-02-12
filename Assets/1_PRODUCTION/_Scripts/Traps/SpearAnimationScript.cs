@@ -2,49 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpearAnimationScript : MonoBehaviour
+namespace akb.Entities.Interactions
 {
-    [SerializeField] float spearHitRate = 2f;
-
-    float nextSpikeHit;
-    Animator animator;
-    bool played = false;
-
-    void Start()
+    public class SpearAnimationScript : MonoBehaviour
     {
-        animator = GetComponent<Animator>();
-        nextSpikeHit = Time.time + spearHitRate;
-    }
+        [SerializeField] float spearHitRate = 2f;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (Time.time > nextSpikeHit)
+        float nextSpikeHit;
+        Animator animator;
+        bool played = false;
+
+        void Start()
         {
-            if (other.gameObject.CompareTag("Player"))
+            animator = GetComponent<Animator>();
+            nextSpikeHit = Time.time + spearHitRate;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (Time.time > nextSpikeHit)
             {
-                animator.SetTrigger("TrapAttack");
-                played = true;
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    animator.SetTrigger("TrapAttack");
+                    played = true;
+                }
             }
         }
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (Time.time > nextSpikeHit)
+        private void OnTriggerStay(Collider other)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (Time.time > nextSpikeHit)
             {
-                nextSpikeHit = Time.time + spearHitRate;
-                animator.SetTrigger("TrapAttack");
-                played = false;
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    nextSpikeHit = Time.time + spearHitRate;
+                    animator.SetTrigger("TrapAttack");
+                    played = false;
+                }
             }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (!played) return;
+        private void OnTriggerExit(Collider other)
+        {
+            if (!played) return;
 
-        animator.ResetTrigger("TrapAttack");
+            animator.ResetTrigger("TrapAttack");
+        }
+        //public void TrapDamageInteraction(Collider other)
+        //{
+        //    if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
+        //    {
+        //        Debug.Log("I do damage");
+        //        interactable.AttackInteraction(damageValue);
+        //    }
+        //    //if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
+        //    //{
+        //    //    Debug.Log("I do damage");
+        //    //    interactable.AttackInteraction(damageValue);
+        //    //}
+        //}
     }
 }
