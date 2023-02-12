@@ -78,12 +78,12 @@ namespace akb.Core.Managing.UI
         {
             if (GameManager.GetManager.Database.GetIsMonsterFoundValue(GameManager.GetManager.ActiveFileID, buttonIndex) == 0)
             {
-                monsterSpriteTemplate.sprite = lockedMonstersSprite;
+                //monsterSpriteTemplate.sprite = lockedMonstersSprite;
                 monsterDescriptionTempalte.text = lockedMonstersDescripton;
             }
             else
             {
-                monsterSpriteTemplate.sprite = monsterSprite[buttonIndex];
+                //monsterSpriteTemplate.sprite = monsterSprite[buttonIndex];
 
                 monsterDescriptionTempalte.text = GameManager.GetManager.Database.GetMonsterDescription(GameManager.GetManager.ActiveFileID, buttonIndex);
             }
@@ -94,12 +94,12 @@ namespace akb.Core.Managing.UI
         {
             if (GameManager.GetManager.Database.GetIsMonsterFoundValue(GameManager.GetManager.ActiveFileID, MonsterIDs.BasicDemon) == 0)
             {
-                monsterSpriteTemplate.sprite = lockedMonstersSprite;
+                //monsterSpriteTemplate.sprite = lockedMonstersSprite;
                 monsterDescriptionTempalte.text = lockedMonstersDescripton;
             }
             else
             {
-                monsterSpriteTemplate.sprite = monsterSprite[MonsterIDs.BasicDemon];
+                //monsterSpriteTemplate.sprite = monsterSprite[MonsterIDs.BasicDemon];
 
                 monsterDescriptionTempalte.text = GameManager.GetManager.Database.GetMonsterDescription(GameManager.GetManager.ActiveFileID, MonsterIDs.BasicDemon);
             }

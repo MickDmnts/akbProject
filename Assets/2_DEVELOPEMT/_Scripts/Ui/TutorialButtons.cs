@@ -82,13 +82,13 @@ namespace akb.Core.Managing.UI
 
         void Setter(int buttonIndex)
         {
-            tutorialSpriteTemplate.sprite = tutorialSprite[buttonIndex];
+            //tutorialSpriteTemplate.sprite = tutorialSprite[buttonIndex];
             tutorialDescriptionTempalte.text = tutorialDescription[buttonIndex];
         }
 
         void SetDefault()
         {
-            tutorialSpriteTemplate.sprite = tutorialSprite[0];
+            //tutorialSpriteTemplate.sprite = tutorialSprite[0];
             tutorialDescriptionTempalte.text = tutorialDescription[0];
         }
 
