@@ -490,7 +490,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &776475853
 PrefabInstance:
@@ -697,7 +697,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2359669328553085706, guid: 097a1ad95d9c4a94aa3255469c1eaa55,
+        type: 3}
+      propertyPath: m_Name
+      value: BlockGuard
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2359669328703932614, guid: 097a1ad95d9c4a94aa3255469c1eaa55, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 097a1ad95d9c4a94aa3255469c1eaa55, type: 3}
 --- !u!1001 &1449880486
 PrefabInstance:
@@ -798,7 +804,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1617458622
 MonoBehaviour:

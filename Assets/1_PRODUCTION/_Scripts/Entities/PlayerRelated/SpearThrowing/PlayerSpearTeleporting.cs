@@ -2,6 +2,7 @@ using akb.Core.Managing;
 using akb.Entities.Interactions;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 namespace akb.Entities.Player.SpearHandling
@@ -70,10 +71,55 @@ namespace akb.Entities.Player.SpearHandling
         {
             if (currentTeleportationCharges <= 0) return;
 
+            if (spearThrowHandler.GetThrownSpearGameobject() != null)
+            {
+                if (spearThrowHandler.GetThrownSpearGameobject().transform.position.y <= 0)
+                {
+                    StartCoroutine(SearchPosition(spearThrowHandler.GetThrownSpearGameobject().transform.position, 15f));
+                    return;
+                }
+            }
+
             if (teleportAction.ReadValue<float>() > 0.1f)
             {
                 TeleportToSpear();
             }
+        }
+
+        IEnumerator SearchPosition(Vector3 center, float range)
+        {
+            int reps = 30;
+            Vector3 possiblePos = Vector3.zero;
+
+            for (int i = 0; i < reps; i++)
+            {
+                //Translate XY to XZ
+                Vector2 randomHit = Random.insideUnitCircle;
+                Vector3 xzTranslation = new Vector3(randomHit.x, 0f, randomHit.y);
+
+                //set random point
+                Vector3 randomPoint = center + xzTranslation * range;
+
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(randomPoint, out hit, 15, NavMesh.AllAreas))
+                {
+                    if ((hit.position - transform.position).magnitude >= range / 1.5f)
+                    {
+                        Debug.DrawRay(hit.position, Vector3.up, UnityEngine.Color.blue, 1.0f);
+                        possiblePos = hit.position;
+                    }
+                }
+
+                yield return null;
+            }
+
+            StopAllCoroutines();
+            BringSpearToGround(possiblePos);
+        }
+
+        void BringSpearToGround(Vector3 possiblePos)
+        {
+            spearThrowHandler.GetThrownSpearGameobject().transform.position = possiblePos;
         }
 
         void TeleportToSpear()

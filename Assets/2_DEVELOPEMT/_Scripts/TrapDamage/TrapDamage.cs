@@ -1,15 +1,15 @@
 using UnityEngine;
 
-
 namespace akb.Entities.Interactions
 {
     public class TrapDamage : MonoBehaviour
     {
         [SerializeField] Collider boxCollider;
         [SerializeField] float damageValue;
+
         private void Start()
         {
-            boxCollider.enabled = true;
+            boxCollider.enabled = false;
             boxCollider.isTrigger = true;
         }
 
@@ -18,14 +18,16 @@ namespace akb.Entities.Interactions
             if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 Debug.Log("I do damage");
-                TrapDamageInteraction();
                 interactable.AttackInteraction(damageValue);
+                StopTrapDamageInteraction();
             }
         }
+
         public void TrapDamageInteraction()
         {
             boxCollider.enabled = true;
         }
+
         public void StopTrapDamageInteraction()
         {
             boxCollider.enabled = false;

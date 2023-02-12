@@ -146,7 +146,6 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
                 MoveLayerOnDeath();
 
                 coneGraphic = null;
-                circleGraphic = null;
 
                 GameObject gfx = Instantiate(deathGFX);
                 gfx.transform.position = transform.position;
