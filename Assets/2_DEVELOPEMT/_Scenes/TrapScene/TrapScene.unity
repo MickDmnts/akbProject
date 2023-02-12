@@ -596,7 +596,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1859302365
 Rigidbody:
@@ -667,7 +667,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 68636e2e79e9c9441824b6fa4ae79de2, type: 2}
+  - {fileID: 2100000, guid: f8439c18e39149c4786c82841da3b176, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -791,7 +791,12 @@ PrefabInstance:
     - target: {fileID: 82170639951723572, guid: 85ef8637cb3689f48af7264836152cdf,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.000010018718
+      value: 0.000007629394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306662207092562865, guid: 85ef8637cb3689f48af7264836152cdf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.000007629394
       objectReference: {fileID: 0}
     - target: {fileID: 8798206202877900340, guid: 85ef8637cb3689f48af7264836152cdf,
         type: 3}
@@ -801,7 +806,7 @@ PrefabInstance:
     - target: {fileID: 8798206202877900343, guid: 85ef8637cb3689f48af7264836152cdf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8798206202877900343, guid: 85ef8637cb3689f48af7264836152cdf,
         type: 3}

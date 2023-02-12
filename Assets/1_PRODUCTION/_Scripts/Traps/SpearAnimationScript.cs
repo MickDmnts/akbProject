@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpearAnimationScript : MonoBehaviour
 {
-    [SerializeField] float spikeHitRate = 2f;
+    [SerializeField] float spearHitRate = 2f;
 
     float nextSpikeHit;
     Animator animator;
@@ -13,7 +13,7 @@ public class SpearAnimationScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        nextSpikeHit = Time.time + spikeHitRate;
+        nextSpikeHit = Time.time + spearHitRate;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,9 +32,12 @@ public class SpearAnimationScript : MonoBehaviour
     {
         if (Time.time > nextSpikeHit)
         {
-            nextSpikeHit = Time.time + spikeHitRate;
-            animator.SetTrigger("TrapAttack");
-            played = false;
+            if (other.gameObject.CompareTag("Player"))
+            {
+                nextSpikeHit = Time.time + spearHitRate;
+                animator.SetTrigger("TrapAttack");
+                played = false;
+            }
         }
     }
 

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2359669328488453000}
+  - component: {fileID: 9096940562099718605}
   m_Layer: 0
   m_Name: ArcTrap
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9096940562099718605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2359669328488452999}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.8643458, z: 1.6228149}
+  m_Center: {x: 0, y: 0.7994813, z: 1.120866}
 --- !u!1 &2359669328553085600
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,6 +636,7 @@ GameObject:
   - component: {fileID: 2359669328545839304}
   - component: {fileID: 2359669328396764959}
   - component: {fileID: 2359669328396764958}
+  - component: {fileID: 6996007954545514037}
   m_Layer: 0
   m_Name: Block_Guard
   m_TagString: Untagged
@@ -648,7 +663,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2359669328545839304
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -665,7 +680,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!135 &2359669328396764959
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -691,7 +706,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bac5ec24093c5489d73761dd16338f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeHitRate: 2
+  spearHitRate: 2
+--- !u!114 &6996007954545514037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2359669328553085704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25f7c3c1d34e764a9bb22d79b5309de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCollider: {fileID: 9096940562099718605}
+  damageValue: 10
 --- !u!1 &2359669328553085706
 GameObject:
   m_ObjectHideFlags: 0
