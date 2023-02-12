@@ -5,6 +5,16 @@ namespace akb.Core.Managing.InRunUpdates
 {
     public class AdvancementPickUp : MonoBehaviour
     {
+        enum PickType
+        {
+            PromptPickup,
+            AutoPickup
+        }
+
+        [Header("Set in inspector")]
+        [SerializeField] PickType pickType = PickType.AutoPickup;
+        [SerializeField] GameObject UI_Notifier;
+
         /// <summary>
         /// The advancement slot THIS gameObject corresponds to.
         /// </summary>
@@ -17,17 +27,31 @@ namespace akb.Core.Managing.InRunUpdates
 
         private void OnTriggerEnter(Collider other)
         {
+            switch (pickType)
+            {
+                case PickType.PromptPickup:
+                    if (other.GetComponent<PlayerEntity>())
+                    {
+                        UI_Notifier.SetActive(true);
+                    }
+                    break;
+
+                case PickType.AutoPickup:
+                    if (other.GetComponent<PlayerEntity>())
+                    {
+                        ManagerHUB.GetManager.SlotsHandler.SetAdvancement(slot, advType);
+
+                        Destroy(transform.root.gameObject);
+                    }
+                    break;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
             if (other.GetComponent<PlayerEntity>())
             {
-                Debug.Log("Is player");
-
-                ManagerHUB.GetManager.SlotsHandler.SetAdvancement(slot, advType);
-
-                Destroy(transform.root.gameObject);
-            }
-            else
-            {
-                Debug.Log("Not player");
+                UI_Notifier.SetActive(true);
             }
         }
 

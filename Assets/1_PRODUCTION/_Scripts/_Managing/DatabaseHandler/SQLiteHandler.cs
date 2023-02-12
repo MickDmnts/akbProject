@@ -770,7 +770,7 @@ These guys find it funny to play pranks on other demons as they do with the soul
                     {
                         while (reader.Read())
                         {
-                            string readStr = reader.GetString(0).ToString();
+                            string readStr = reader.GetInt32(0).ToString();
 
                             result = sb.Append(readStr).ToString();
                         }
