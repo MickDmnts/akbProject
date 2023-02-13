@@ -49,7 +49,8 @@ namespace akb.Core.Managing
             {
                 healthbar.color = lowHealthColor;
 
-                ManagerHUB.GetManager.UIManager.EnablePanels("BloodEffectPanel","GamePlayScreenPanel"); 
+                if (ManagerHUB.GetManager.UIManager.CanShowScreenTint)
+                { ManagerHUB.GetManager.UIManager.EnablePanels("BloodEffectPanel", "GamePlayScreenPanel"); }
             }
             else
             {
