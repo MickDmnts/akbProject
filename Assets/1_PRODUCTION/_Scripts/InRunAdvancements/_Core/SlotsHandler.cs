@@ -148,6 +148,7 @@ namespace akb.Core.Managing.InRunUpdates
         void UpdateUserHUDSlots()
         {
             throw new System.NotImplementedException();
+            
         }
 
         void ClearCurrentHUDSlots()

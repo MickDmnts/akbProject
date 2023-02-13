@@ -23,8 +23,6 @@ namespace akb.Core.Managing
             ManagerHUB.GetManager.GameEventsHandler.onPlayerRageChange += SetRageBarValue;
 
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetOnHub;
-
-            ragebar.fillAmount = 0;
         }
 
         void ResetOnHub(GameScenes scene)
@@ -33,6 +31,8 @@ namespace akb.Core.Managing
 
             healthbar.fillAmount = 1;
             healthbar.color = maxHealthColor;
+
+            ragebar.fillAmount = 0;
 
             ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
 
@@ -64,7 +64,11 @@ namespace akb.Core.Managing
 
             if (ragebar.fillAmount == 1)
             {
-                animator.SetBool("burning",true);
+                animator.SetBool("Burning",true);
+            }
+            else
+            {
+                animator.SetBool("Burning", false);
             }
         }
 

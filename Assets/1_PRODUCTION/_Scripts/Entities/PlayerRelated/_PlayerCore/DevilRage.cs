@@ -104,7 +104,6 @@ namespace akb.Entities.Player
                 currentDamage *= rageDamageMultiplier;
 
                 ManagerHUB.GetManager.PlayerEntity.PlayerAttack.SetAttackDamage(currentDamage, true);
-                //activate flame here
             }
         }
 

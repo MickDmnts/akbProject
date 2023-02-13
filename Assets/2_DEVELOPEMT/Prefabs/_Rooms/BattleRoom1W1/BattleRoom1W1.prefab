@@ -1125,22 +1125,22 @@ MonoBehaviour:
   - {x: -1.5000007, y: 0.5}
   - {x: -1.5000007, y: 0}
   - {x: -0.50000054, y: 0}
-  - {x: 2.1213202, y: -0.5}
-  - {x: 2.828427, y: -0.5}
-  - {x: 2.828427, y: 0}
-  - {x: 2.1213202, y: 0}
-  - {x: 2.828427, y: -0.5}
-  - {x: 3.535534, y: -0.5}
-  - {x: 3.535534, y: 0}
-  - {x: 2.828427, y: 0}
-  - {x: 3.535534, y: 0}
-  - {x: 3.535534, y: 0.5}
-  - {x: 2.828427, y: 0.5}
-  - {x: 2.828427, y: 0}
-  - {x: 2.828427, y: 0.5}
-  - {x: 2.1213202, y: 0.5}
-  - {x: 2.1213202, y: 0}
-  - {x: 2.828427, y: 0}
+  - {x: 2.1213205, y: -0.5}
+  - {x: 2.8284273, y: -0.5}
+  - {x: 2.8284273, y: 0}
+  - {x: 2.1213205, y: 0}
+  - {x: 2.8284273, y: -0.5}
+  - {x: 3.5355344, y: -0.5}
+  - {x: 3.5355344, y: 0}
+  - {x: 2.8284273, y: 0}
+  - {x: 3.5355344, y: 0}
+  - {x: 3.5355344, y: 0.5}
+  - {x: 2.8284273, y: 0.5}
+  - {x: 2.8284273, y: 0}
+  - {x: 2.8284273, y: 0.5}
+  - {x: 2.1213205, y: 0.5}
+  - {x: 2.1213205, y: 0}
+  - {x: 2.8284273, y: 0}
   - {x: -1.5, y: -0.5}
   - {x: 0, y: -0.5}
   - {x: 0, y: 0}
@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1467
+  m_VersionIndex: 1470
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2520,22 +2520,22 @@ MonoBehaviour:
   - {x: 3, y: 1}
   - {x: 3, y: 0.5}
   - {x: 2, y: 0.5}
-  - {x: 1.4142135, y: 0}
-  - {x: 0.70710677, y: 0}
-  - {x: 0.70710677, y: 0.5}
-  - {x: 1.4142135, y: 0.5}
-  - {x: 0.70710677, y: 0}
+  - {x: 1.4142137, y: 0}
+  - {x: 0.7071068, y: 0}
+  - {x: 0.7071068, y: 0.5}
+  - {x: 1.4142137, y: 0.5}
+  - {x: 0.7071068, y: 0}
   - {x: 0, y: 0}
   - {x: 0, y: 0.5}
-  - {x: 0.70710677, y: 0.5}
+  - {x: 0.7071068, y: 0.5}
   - {x: 0, y: 0.5}
   - {x: 0, y: 1}
-  - {x: 0.70710677, y: 1}
-  - {x: 0.70710677, y: 0.5}
-  - {x: 0.70710677, y: 1}
-  - {x: 1.4142135, y: 1}
-  - {x: 1.4142135, y: 0.5}
-  - {x: 0.70710677, y: 0.5}
+  - {x: 0.7071068, y: 1}
+  - {x: 0.7071068, y: 0.5}
+  - {x: 0.7071068, y: 1}
+  - {x: 1.4142137, y: 1}
+  - {x: 1.4142137, y: 0.5}
+  - {x: 0.7071068, y: 0.5}
   - {x: 0, y: 0}
   - {x: -1.5, y: 0}
   - {x: -1.5, y: 0.5}
@@ -2820,7 +2820,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1499
+  m_VersionIndex: 1502
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3675,7 +3675,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2192
+  m_VersionIndex: 2195
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5645,6 +5645,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8405243732744350873}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &5498885756724343572
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8405243732744448569}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 22.558004, y: 26.218657, z: 19.541252}
+  m_Center: {x: 0, y: 0.000015258789, z: 9.770641}
 --- !u!208 &3706850856907201486
 NavMeshObstacle:
   m_ObjectHideFlags: 0

@@ -418,10 +418,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSpawnLocations:
-  - {fileID: 4217373030199669020}
-  - {fileID: 7939065282049814727}
-  - {fileID: 1006656593415238822}
-  - {fileID: 1012093884565917605}
+  - itemSpawn: {fileID: 0}
+    itemPrice: 0
+  - itemSpawn: {fileID: 0}
+    itemPrice: 0
+  - itemSpawn: {fileID: 0}
+    itemPrice: 0
+  - itemSpawn: {fileID: 0}
+    itemPrice: 0
 --- !u!1 &6050371786479876132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,7 +1097,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1331
+  m_VersionIndex: 1334
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
