@@ -53,7 +53,7 @@ namespace akb.Core.Managing.UI
         void SaveExit()
         {
             ManagerHUB.GetManager.GameEventsHandler.OnSaveInitialized();
-            Application.Quit();
+            ManagerHUB.GetManager.UIManager.QuitGame();
         }
     }
 }

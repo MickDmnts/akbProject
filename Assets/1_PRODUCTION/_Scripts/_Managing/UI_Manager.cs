@@ -178,7 +178,7 @@ namespace akb.Core.Managing.UI
         /// <summary>
         /// Call to shut down the game.
         /// </summary>
-        void QuitGame()
+        public void QuitGame()
         {
             Application.Quit();
         }

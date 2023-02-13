@@ -53,7 +53,7 @@ namespace akb.Core.Managing.UI
 
         void Exit()
         {
-            Application.Quit();
+            ManagerHUB.GetManager.UIManager.QuitGame();
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
