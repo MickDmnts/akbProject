@@ -77,11 +77,11 @@ namespace akb.Entities.Player
         /// </summary>
         void IncreaseRageFill()
         {
-            if (!isUnlocked) return;
+            //if (!isUnlocked) return;
 
             rageFill += rageFillRate;
             ManagerHUB.GetManager.GameEventsHandler.OnPlayerRageChange(rageFill);
-            Debug.Log(rageFill);
+
             if (rageFill >= currentRageMax)
             {
                 rageFill = currentRageMax;
@@ -93,7 +93,7 @@ namespace akb.Entities.Player
         /// </summary>
         void ActivateRage()
         {
-            if (!isUnlocked) return;
+            //if (!isUnlocked) return;
 
             if (CanActivate())
             {

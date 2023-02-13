@@ -13,6 +13,8 @@ namespace akb.Core.Managing.UI
     [DefaultExecutionOrder(-398)]
     public class UI_Manager : MonoBehaviour
     {
+        [SerializeField] UIFader uiFader;
+
         /// <summary>
         ///  All UI panels of the game.
         /// </summary>
