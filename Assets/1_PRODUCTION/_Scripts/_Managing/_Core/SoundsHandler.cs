@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using akb.Core.Managing;
 using akb.Core.Managing.LevelLoading;
@@ -75,16 +76,20 @@ namespace akb.Core.Sounds
         [SerializeField] List<AudioClip> levelWideClips;
         [SerializeField] List<AudioClip> sfxClips;
 
-        public AudioSource mainAudioSource;
-        public AudioSource sfxSource;
+        [SerializeField] AudioSource mainAudioSource;
+        [SerializeField] AudioSource sfxSource;
+        [SerializeField] float fadeSpeed;
 
-        Slider musicSlider;
+        IEnumerator activeBehaviour;
+        float gamewideCache;
+        float sfxCache;
 
         private void Start()
         {
             ManagerHUB.GetManager.SetSoundsHandlerReference(this);
 
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ChangeSoundtrack;
+            ManagerHUB.GetManager.GameEventsHandler.onFadeOut += MusicFadeOut;
             ManagerHUB.GetManager.GameEventsHandler.onAstarothFirstPhase += PlayAstarothOST;
 
             mainAudioSource.loop = true;
@@ -125,11 +130,6 @@ namespace akb.Core.Sounds
             mainAudioSource.Play();
         }
 
-        public void SetSoundReferences(Slider musicSlider)
-        {
-            this.musicSlider = musicSlider;
-        }
-
         public void SetMasterVolume(float value)
         {
             ControlMainAudioSource(value);
@@ -167,10 +167,57 @@ namespace akb.Core.Sounds
             }
         }
 
+        void MusicFadeOut()
+        {
+            activeBehaviour = ManageMusicFadeOut(fadeSpeed);
+            StartCoroutine(activeBehaviour);
+        }
+
+        IEnumerator ManageMusicFadeOut(float speed)
+        {
+            gamewideCache = mainAudioSource.volume;
+            sfxCache = sfxSource.volume;
+
+            //Fade Out
+            while(mainAudioSource.volume > 0.005f && sfxSource.volume > 0.005f)
+            {
+                mainAudioSource.volume -= Time.deltaTime * speed;
+                sfxSource.volume -= Time.deltaTime * speed;
+                Debug.Log("Fade out");
+                yield return null;
+            }
+
+            Debug.Log("Faded out");
+            MusicFadeIn();
+        }
+
+        void MusicFadeIn()
+        {
+            activeBehaviour = ManageMusicFadeIn(fadeSpeed);
+            StartCoroutine(activeBehaviour);
+        }
+
+        IEnumerator ManageMusicFadeIn(float speed)
+        {
+            //Fade in
+            while (mainAudioSource.volume < gamewideCache && sfxSource.volume < sfxCache)
+            {
+                mainAudioSource.volume += Time.deltaTime * speed;
+                sfxSource.volume += Time.deltaTime * speed;
+                Debug.Log("Fade in");
+                yield return null;
+
+            }
+
+            Debug.Log("Faded in");
+            yield return null;
+        }
+
         private void OnDestroy()
         {
             ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= ChangeSoundtrack;
             ManagerHUB.GetManager.GameEventsHandler.onAstarothFirstPhase -= PlayAstarothOST;
+            ManagerHUB.GetManager.GameEventsHandler.onFadeOut -= MusicFadeOut;
         }
     }
 }

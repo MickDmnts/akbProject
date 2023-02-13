@@ -72,6 +72,24 @@ namespace akb.Core.Managing.GameEvents
             }
         }
 
+        public event Action onFadeOut;
+        public void OnFadeOut()
+        {
+            if(onFadeOut != null)
+            {
+                onFadeOut();
+            }
+        }
+
+        public event Action onFadeIn;
+        public void OnFadeIn()
+        {
+            if (onFadeIn != null)
+            {
+                onFadeIn();
+            }
+        }
+
         /// <summary>
         /// Add to this event to get notified when it's time to save.
         /// </summary>

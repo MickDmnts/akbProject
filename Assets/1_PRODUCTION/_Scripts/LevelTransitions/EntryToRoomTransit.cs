@@ -84,6 +84,7 @@ public class EntryToRoomTransit : MonoBehaviour
 
         //Move the player
         ManagerHUB.GetManager.PlayerEntity.PlayerMovement.TeleportEntity(nextRoomEntry);
+        ManagerHUB.GetManager.GameEventsHandler.OnFadeOut();
 
         //Waits until the player is properly moved
         while (ManagerHUB.GetManager.PlayerEntity.transform.position != nextRoomEntry)

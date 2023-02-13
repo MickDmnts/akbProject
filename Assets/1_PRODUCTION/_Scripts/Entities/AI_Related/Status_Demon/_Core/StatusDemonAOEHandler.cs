@@ -18,10 +18,7 @@ namespace akb.Entities.AI.Implementations.Status_Demon
         private void Start()
         {
             parentEntity = transform.GetComponentInParent<StatusDemon>();
-            Debug.Log(parentEntity.name);
             effectType = parentEntity.GetEffectType();
-
-            Debug.Log(effectType);
         }
 
         public bool StartAttack()

@@ -4,16 +4,16 @@ using akb.Core.Managing.InRunUpdates;
 
 namespace akb.Core.Managing
 {
+    [System.Serializable]
+    public struct ItemPacket
+    {
+        public Transform itemSpawn;
+        public int itemPrice;
+    }
+
     public class StoreHandler : MonoBehaviour
     {
-        [SerializeField] Transform[] itemSpawnLocations;
-
-        int[] prices;
-
-        private void Awake()
-        {
-            prices = new int[] { 100, 200, 300, 400 };
-        }
+        [SerializeField] ItemPacket[] itemSpawnLocations;
 
         private void Start()
         {
@@ -25,9 +25,9 @@ namespace akb.Core.Managing
 
                 GameObject advancement = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvancementGameObject(type);
 
-                advancement.GetComponent<AdvancementPickUp>().SetPickupType(AdvancementPickUp.PickType.PromptPickup, 0);
+                advancement.GetComponent<AdvancementPickUp>().SetPickupType(AdvancementPickUp.PickType.PromptPickup, itemSpawnLocations[i].itemPrice);
 
-                advancement.transform.position = itemSpawnLocations[i].position;
+                advancement.transform.position = itemSpawnLocations[i].itemSpawn.position;
             }
         }
     }
