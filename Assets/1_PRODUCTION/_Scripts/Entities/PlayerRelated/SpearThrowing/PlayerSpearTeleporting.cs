@@ -183,6 +183,7 @@ namespace akb.Entities.Player.SpearHandling
                 if (canTeleport)
                 {
                     currentTeleportationCD = spearTeleportationCD;
+                    currentTeleportationCharges++;
                     hasTeleported = false;
                 }
                 yield return null;
