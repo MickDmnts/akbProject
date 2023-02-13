@@ -578,6 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864d6bca5ece9492eaf7a82553edb652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiFader: {fileID: 0}
 --- !u!1 &1348085297
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +879,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 91cb8913c88c9d2498e774f6f927a905, type: 3}
   mainAudioSource: {fileID: 751186646}
   sfxSource: {fileID: 2116169467}
+  fadeSpeed: 1
 --- !u!1 &1711773611
 GameObject:
   m_ObjectHideFlags: 0

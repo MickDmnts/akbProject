@@ -19,6 +19,8 @@ namespace akb.Core.Managing
         {
             for (int i = 0; i < itemSpawnLocations.Length; i++)
             {
+                if (itemSpawnLocations[i].itemSpawn == null) continue;
+
                 int rng = UnityEngine.Random.Range(0, ManagerHUB.GetManager.InRunAdvancementHandler.InRunAdvancementPairsCount);
 
                 AdvancementTypes type = (AdvancementTypes)rng;
