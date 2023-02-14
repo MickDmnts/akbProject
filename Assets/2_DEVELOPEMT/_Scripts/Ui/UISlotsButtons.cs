@@ -42,6 +42,14 @@ namespace akb.Core.Managing.UI
                 LoadButtonInfo(assigne, i);
                 _ = assigne;
             }
+
+            if (buttonType == ButtonType.savedGame)
+            {
+                for (int i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].interactable = !(GameManager.GetManager.Database.GetLastRoom(i) == -2);
+                }
+            }
         }
 
         void LoadButtonInfo(int saveFileID, int buttonIndex)

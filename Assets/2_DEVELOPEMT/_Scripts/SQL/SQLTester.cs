@@ -87,6 +87,14 @@ namespace akb.Core.Database
                 Debug.Log(GameManager.GetManager.Database.GetMonsterDescription(0, 2));
                 Debug.Log(GameManager.GetManager.Database.GetMonsterDescription(0, 3));
             }
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                Debug.Log(GameManager.GetManager.Database.GetHasActiveRun(0));
+                Debug.Log(GameManager.GetManager.Database.GetHasActiveRun(1));
+                Debug.Log(GameManager.GetManager.Database.GetHasActiveRun(2));
+                Debug.Log(GameManager.GetManager.Database.GetHasActiveRun(3));
+            }
         }
     }
 }

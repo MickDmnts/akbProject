@@ -19,11 +19,11 @@ namespace akb.Core.Database
             if (dbPath == "")
             {
 #if UNITY_EDITOR
-                dbPath = "URI=file:" + Application.dataPath + "/Resources/akbPlayerDb.db";
+                dbPath = "URI=file:" + Application.dataPath + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "akbPlayerDb.db";
 #endif
 
 #if UNITY_STANDALONE && !UNITY_EDITOR
-                            dbPath = "URI=file:" + Application.dataPath + "/akbPlayerDb.db";
+                            dbPath = "URI=file:" + Application.dataPath +  Path.DirectorySeparatorChar + "akbPlayerDb.db";
 #endif
             }
 
@@ -793,6 +793,43 @@ These guys find it funny to play pranks on other demons as they do with the soul
             }
         }
 
+        ///<summary>Writes the passed room ID to the corresponding save file ID cell.</summary>
+        public void UpdateLastRoom(int roomID, int saveFileID)
+        {
+            using (SqliteConnection connection = new SqliteConnection(dbPath))
+            {
+                connection.Open();
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = @"UPDATE SAVE_FILE_RUN_INFO
+                                            SET
+                                                LastRoom = @roomId
+                                            WHERE 
+                                                SaveFileID = @fileID;";
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "roomId",
+                        Value = roomID
+                    });
+
+                    command.Parameters.Add(new SqliteParameter()
+                    {
+                        ParameterName = "fileID",
+                        Value = saveFileID.ToString()
+                    });
+
+                    int result = command.ExecuteNonQuery();
+#if UNITY_EDITOR
+                    AddLoggerEntry($"Last room update at save file {saveFileID}, result: {result.ToString()}");
+#endif
+                }
+            }
+        }
+
         ///<summary>Writes the passed value to the corresponding save file ID cell.</summary>
         public void UpdatePlayerHealthValue(int playerHealth, int saveFileID)
         {
@@ -875,43 +912,6 @@ These guys find it funny to play pranks on other demons as they do with the soul
             }
         }
 
-        ///<summary>Writes the passed room ID to the corresponding save file ID cell.</summary>
-        public void UpdateLastRoom(int roomID, int saveFileID)
-        {
-            using (SqliteConnection connection = new SqliteConnection(dbPath))
-            {
-                connection.Open();
-
-                using (SqliteCommand command = connection.CreateCommand())
-                {
-                    command.CommandType = CommandType.Text;
-
-                    command.CommandText = @"UPDATE SAVE_FILE_RUN_INFO
-                                            SET
-                                                LastRoom = @roomId
-                                            WHERE 
-                                                SaveFileID = @fileID;";
-
-                    command.Parameters.Add(new SqliteParameter()
-                    {
-                        ParameterName = "roomId",
-                        Value = roomID
-                    });
-
-                    command.Parameters.Add(new SqliteParameter()
-                    {
-                        ParameterName = "fileID",
-                        Value = saveFileID.ToString()
-                    });
-
-                    int result = command.ExecuteNonQuery();
-#if UNITY_EDITOR
-                    AddLoggerEntry($"Last room update at save file {saveFileID}, result: {result.ToString()}");
-#endif
-                }
-            }
-        }
-
         ///<summary>Returns the room ID saved in the save file ID corresponding cell.</summary>
         ///<return>-1 in case the cell is NULL.</return>
         public int GetLastRoom(int saveFileID)
@@ -952,7 +952,7 @@ These guys find it funny to play pranks on other demons as they do with the soul
                     connection.Clone();
                     connection.Dispose();
                     AddLoggerEntry($"No last room entry at {saveFileID}");
-                    return -1;
+                    return -2;
                 }
             }
         }

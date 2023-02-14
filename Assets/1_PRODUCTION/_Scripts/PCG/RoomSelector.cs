@@ -48,7 +48,7 @@ namespace akb.Core.Managing.PCG
         void LoadSaveGameData(int saveFileID)
         {
             currentLevel = GameManager.GetManager.Database.GetLastRoom(saveFileID);
-            Debug.Log(currentLevel);
+            Debug.Log("cLevel" + currentLevel);
         }
 
         void SaveLastRoom()

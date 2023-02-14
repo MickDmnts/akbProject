@@ -144,8 +144,8 @@ namespace akb.Entities.Player
 
             RaycastHit hitInfo;
             Ray mouseRay = Camera.main.ScreenPointToRay(mouse2DPos);
-            if (Physics.Raycast(mouseRay, out hitInfo, 1000))
-            { /*Nop...*/ }
+            if (Physics.Raycast(mouseRay, out hitInfo, 1000, LayerMask.GetMask("Non-Interactable")))
+            {/*Nop...*/ }
 
             Vector3 direction = transform.position - hitInfo.point;
             direction.y = transform.position.y;
