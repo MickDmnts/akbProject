@@ -30,6 +30,13 @@ namespace akb.Core.Managing.InRunUpdates
         /// </summary>
         AdvancementTypes advType = AdvancementTypes.None;
 
+        public bool CanPickup => canPickup;
+        public int Price => price;
+
+        public SlotType Slot => slot;
+        public AdvancementTypes AdvType => advType;
+        public PickType PickupType => pickType;
+
         private void OnTriggerEnter(Collider other)
         {
             switch (pickType)
@@ -46,7 +53,7 @@ namespace akb.Core.Managing.InRunUpdates
                     if (other.GetComponent<PlayerEntity>())
                     {
                         ManagerHUB.GetManager.SlotsHandler.SetAdvancement(slot, advType);
-
+                        Debug.Log($"Set {slot} to {advType}");
                         Destroy(transform.root.gameObject);
                     }
                     break;
@@ -73,10 +80,19 @@ namespace akb.Core.Managing.InRunUpdates
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.GetComponent<PlayerEntity>())
+            switch (pickType)
             {
-                UI_Notifier.SetActive(true);
-                canPickup = true;
+                case PickType.PromptPickup:
+                    if (other.GetComponent<PlayerEntity>())
+                    {
+                        UI_Notifier.SetActive(true);
+                        canPickup = false;
+                    }
+                    break;
+
+                case PickType.AutoPickup:
+
+                    break;
             }
         }
 

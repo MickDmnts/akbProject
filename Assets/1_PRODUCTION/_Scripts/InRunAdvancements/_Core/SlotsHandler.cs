@@ -34,22 +34,21 @@ namespace akb.Core.Managing.InRunUpdates
         //Spear Throw specific
         SpearPierce = 3,
         DamageAtTeleportPoint = 4,
-        //PullEnemyOnSpearRecall = 5,
 
         //Dodge Roll Specific
-        MovementSpeed = 6,
-        PushAway = 7,
-        ShockOnTouch = 8,
+        MovementSpeed = 5,
+        PushAway = 6,
+        ShockOnTouch = 7,
 
         //Passives
-        IgnoreFirstHit = 9,
-        MultiplyCoins = 10,
-        RegenHealthOnRoomEntry = 11,
+        IgnoreFirstHit = 8,
+        MultiplyCoins = 9,
+        RegenHealthOnRoomEntry = 10,
 
         //Devil Rage Specific
-        EnflameSuroundings = 12,
-        DoubleSpeed = 13,
-        TeleportOnDodge = 14,
+        EnflameSuroundings = 11,
+        DoubleSpeed = 12,
+        TeleportOnDodge = 13,
     }
 
     public class SlotsHandler : MonoBehaviour
@@ -148,7 +147,7 @@ namespace akb.Core.Managing.InRunUpdates
         void UpdateUserHUDSlots()
         {
             throw new System.NotImplementedException();
-            
+
         }
 
         void ClearCurrentHUDSlots()

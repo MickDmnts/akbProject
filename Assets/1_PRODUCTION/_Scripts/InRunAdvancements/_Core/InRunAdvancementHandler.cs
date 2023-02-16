@@ -99,7 +99,7 @@ namespace akb.Core.Managing.InRunUpdates
                 //Bypass the none enum type.
                 if (Enum.Parse<AdvancementTypes>(type).Equals(AdvancementTypes.None)) continue;
 
-                inRunAdvancementPairs.Add(advType, CreateAdvancementGameobject(advType));
+                inRunAdvancementPairs.TryAdd(advType, CreateAdvancementGameobject(advType));
             }
         }
 
@@ -185,6 +185,40 @@ namespace akb.Core.Managing.InRunUpdates
             newAdv.transform.position = transform.root.position;
 
             //make a switch here
+            SlotType sType = SlotType.None;
+            switch (type)
+            {
+                case AdvancementTypes.ThirdEnflamed:
+                case AdvancementTypes.Lighting:
+                case AdvancementTypes.ThirdStun:
+                    sType = SlotType.Attack;
+                    break;
+
+                case AdvancementTypes.SpearPierce:
+                case AdvancementTypes.DamageAtTeleportPoint:
+                    sType = SlotType.Throw;
+                    break;
+
+                case AdvancementTypes.MovementSpeed:
+                case AdvancementTypes.PushAway:
+                case AdvancementTypes.ShockOnTouch:
+                    sType = SlotType.DodgeRoll;
+                    break;
+
+                case AdvancementTypes.IgnoreFirstHit:
+                case AdvancementTypes.MultiplyCoins:
+                case AdvancementTypes.RegenHealthOnRoomEntry:
+                    sType = SlotType.Passive;
+                    break;
+
+                case AdvancementTypes.EnflameSuroundings:
+                case AdvancementTypes.DoubleSpeed:
+                case AdvancementTypes.TeleportOnDodge:
+                    sType = SlotType.DevilRage;
+                    break;
+            }
+
+            advPickUp.SetAdvancementSlot(sType);
 
             return newAdv;
         }
@@ -194,7 +228,13 @@ namespace akb.Core.Managing.InRunUpdates
         /// </summary>
         public GameObject GetAdvancementGameObject(AdvancementTypes type)
         {
-            GameObject copy = inRunAdvancementPairs[type];
+            GameObject copy = Instantiate(inRunAdvancementPairs[type]);
+            AdvancementPickUp copyAdv = copy.GetComponent<AdvancementPickUp>();
+            AdvancementPickUp originalAdv = inRunAdvancementPairs[type].GetComponent<AdvancementPickUp>();
+
+            copyAdv.SetAdvancementSlot(originalAdv.Slot);
+            copyAdv.SetPickupType(originalAdv.PickupType, originalAdv.Price);
+            copyAdv.SetAdvancementType(originalAdv.AdvType);
             return copy;
         }
 

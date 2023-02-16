@@ -247,7 +247,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4692b01f8a46c42bbaff39cd8a971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inRunAdvancementsSprites: []
+  inRunAdvancementsSprites:
+  - {fileID: 1791140542, guid: 0a4ecb1efbae2914aa59562450fd9f5b, type: 3}
+  - {fileID: -2035156288, guid: 0a4ecb1efbae2914aa59562450fd9f5b, type: 3}
+  - {fileID: -213391353, guid: 0a4ecb1efbae2914aa59562450fd9f5b, type: 3}
+  - {fileID: -620273954, guid: 8f7f3f753a5ae4e45b6f5cd0461f4232, type: 3}
+  - {fileID: -1497305674, guid: 8f7f3f753a5ae4e45b6f5cd0461f4232, type: 3}
+  - {fileID: -1010930353, guid: 15c2e0fd639557847a092ebaf3602246, type: 3}
+  - {fileID: 1413110795, guid: 15c2e0fd639557847a092ebaf3602246, type: 3}
+  - {fileID: 1055073, guid: 15c2e0fd639557847a092ebaf3602246, type: 3}
+  - {fileID: 1492542718, guid: 15c2e0fd639557847a092ebaf3602246, type: 3}
+  - {fileID: 1515747522, guid: 15c2e0fd639557847a092ebaf3602246, type: 3}
+  - {fileID: 1996061664, guid: 15c2e0fd639557847a092ebaf3602246, type: 3}
+  - {fileID: 69122308, guid: 0a4ecb1efbae2914aa59562450fd9f5b, type: 3}
+  - {fileID: -1084673482, guid: 0a4ecb1efbae2914aa59562450fd9f5b, type: 3}
+  - {fileID: -212045830, guid: 0a4ecb1efbae2914aa59562450fd9f5b, type: 3}
   prefabCase: {fileID: 4141176543184212211, guid: 24e41f9fd47e1a8438e368da9fe48f89,
     type: 3}
 --- !u!4 &146950159

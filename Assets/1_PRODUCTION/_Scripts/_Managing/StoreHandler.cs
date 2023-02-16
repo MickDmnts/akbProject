@@ -30,6 +30,8 @@ namespace akb.Core.Managing
                 advancement.GetComponent<AdvancementPickUp>().SetPickupType(AdvancementPickUp.PickType.PromptPickup, itemSpawnLocations[i].itemPrice);
 
                 advancement.transform.position = itemSpawnLocations[i].itemSpawn.position;
+
+                Debug.Log(advancement.name);
             }
         }
     }
