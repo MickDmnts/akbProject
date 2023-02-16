@@ -137,9 +137,16 @@ namespace akb.Entities.Player
 
         public void IncrementPlayerHealthBy(int value)
         {
+            if (EntityLife >= playerMaxHealth)
+            {
+                return;
+            }
+
             value = value > GetPlayerMaxHealth() ? GetPlayerMaxHealth() : value;
 
             EntityLife += value;
+
+            ManagerHUB.GetManager.GameEventsHandler.OnPlayerHealthChange(EntityLife, playerMaxHealth);
         }
 
         public void IncrementPlayerMaxHealthBy(int incrementValue)

@@ -23,6 +23,8 @@ namespace akb.Core.Managing.UI
         [SerializeField] TextMeshProUGUI[] buttonTotalRuns;
         [SerializeField] TextMeshProUGUI[] buttonTotalUpgradesMade;
         [SerializeField] TextMeshProUGUI[] buttonSinnerSoulsInHand;
+        [SerializeField] Button backButton;
+
 
         private void Start()
         {
@@ -50,6 +52,13 @@ namespace akb.Core.Managing.UI
                     buttons[i].interactable = !(GameManager.GetManager.Database.GetLastRoom(i) == -2);
                 }
             }
+
+            backButton.onClick.AddListener(Back);
+        }
+
+        void Back()
+        {
+            ManagerHUB.GetManager.UIManager.EnablePanel("MainMenuScreen_UI_Panel");
         }
 
         void LoadButtonInfo(int saveFileID, int buttonIndex)
