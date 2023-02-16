@@ -16,27 +16,47 @@ namespace akb.Entities.Interactions
             animator = GetComponent<Animator>();
             nextSpikeHit = Time.time + spikeHitRate;
         }
-        private void OnTriggerEnter(Collider other)
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    if (Time.time > nextSpikeHit)
+        //    {
+        //        if (other.gameObject.CompareTag("Player"))
+        //        {
+        //            animator.SetTrigger("Up");
+        //            played = true;
+        //        }
+        //    }
+        //}
+        private void OnTriggerStay(Collider other)
         {
+            played = false;
+            animator.SetTrigger("Down");
             if (Time.time > nextSpikeHit)
             {
                 if (other.gameObject.CompareTag("Player"))
                 {
                     animator.SetTrigger("Up");
+                    nextSpikeHit = Time.time + spikeHitRate;
                     played = true;
+                    if (played == true)
+                    {
+                        other.TryGetComponent<IInteractable>(out IInteractable interactable);
+                        interactable.AttackInteraction(damageValue);
+                    }
                 }
             }
         }
-        private void OnTriggerStay(Collider other)
-        {
-            animator.SetTrigger("Down");
-            if (Time.time > nextSpikeHit)
-            {
-                nextSpikeHit = Time.time + spikeHitRate;
-                animator.SetTrigger("Up");
-                played = false;
-            }
-        }
+        //public void TrapDamage()
+        //{
+        //    Collider[] colliders = Physics.OverlapSphere(transform.position,2);
+        //    for(int i = 0; i< colliders.Length; i++)
+        //    {
+        //        if(colliders[i].TryGetComponent<IInteractable>(out IInteractable interactable))
+        //        {
+        //            interactable.AttackInteraction(damageValue);
+        //        }
+        //    }
+        //}
         private void OnTriggerExit(Collider other)
         {
             if (!played) return;
