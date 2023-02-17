@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using akb.Core.Database.Monsters;
+using System;
 
 namespace akb.Core.Managing.UI
 {
@@ -19,6 +20,8 @@ namespace akb.Core.Managing.UI
         List<string> monsterDescription = new List<string>();
 
         List<Button> monsterButtons = new List<Button>();
+
+        public string str;
 
         //Monsters Buttons
         [SerializeField] Button basicDemonButton;
@@ -89,6 +92,22 @@ namespace akb.Core.Managing.UI
             }
         }
 
+        void Image()
+        {
+            // Texture size does not matter, since sprite will replace with with incoming size.
+
+            // Convert from Base64String to a byte array
+            byte[] imageBytes = Convert.FromBase64String(str);
+            // Create a new Texture2D object
+            Texture2D tex = new Texture2D(2, 2);
+            // Load the image data into the texture
+            tex.LoadImage(imageBytes);
+            // Create a new Sprite object
+            Sprite sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
+            //Set the sprite as the converted one
+            monsterSpriteTemplate.sprite = sprite;
+        }
+
 
         void SetDefault()
         {
@@ -102,6 +121,7 @@ namespace akb.Core.Managing.UI
                 //monsterSpriteTemplate.sprite = monsterSprite[MonsterIDs.BasicDemon];
 
                 monsterDescriptionTempalte.text = GameManager.GetManager.Database.GetMonsterDescription(GameManager.GetManager.ActiveFileID, MonsterIDs.BasicDemon);
+                Image();
             }
         }
 
