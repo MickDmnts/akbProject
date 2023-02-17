@@ -17,10 +17,11 @@ namespace akb.Entities.Interactions
             nextSpikeHit = Time.time + spikeHitRate;
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (Time.time > nextSpikeHit)
             {
+                nextSpikeHit = Time.time + spikeHitRate;
                 if (other.gameObject.CompareTag("Player"))
                 {
                     animator.SetTrigger("Up");
@@ -42,6 +43,7 @@ namespace akb.Entities.Interactions
                     interactable.AttackInteraction(damageValue);
                 }
             }
+            animator.SetTrigger("Down");
         }
 
         private void OnTriggerExit(Collider other)
