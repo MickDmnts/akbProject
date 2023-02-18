@@ -21,8 +21,6 @@ namespace akb.Core.Managing.UI
 
         List<Button> monsterButtons = new List<Button>();
 
-        public string str;
-
         //Monsters Buttons
         [SerializeField] Button basicDemonButton;
         [SerializeField] Button fireBasicDemonButton;
@@ -81,20 +79,19 @@ namespace akb.Core.Managing.UI
         {
             if (GameManager.GetManager.Database.GetIsMonsterFoundValue(GameManager.GetManager.ActiveFileID, buttonIndex) == 0)
             {
-                //monsterSpriteTemplate.sprite = lockedMonstersSprite;
                 monsterDescriptionTempalte.text = lockedMonstersDescripton;
             }
             else
             {
-                //monsterSpriteTemplate.sprite = monsterSprite[buttonIndex];
-
                 monsterDescriptionTempalte.text = GameManager.GetManager.Database.GetMonsterDescription(GameManager.GetManager.ActiveFileID, buttonIndex);
+                Image(buttonIndex);
             }
         }
 
-        void Image()
+        void Image(int buttonIndex)
         {
             // Texture size does not matter, since sprite will replace with with incoming size.
+            string str = GameManager.GetManager.Database.GetMonsterImage(buttonIndex);
 
             // Convert from Base64String to a byte array
             byte[] imageBytes = Convert.FromBase64String(str);
@@ -118,10 +115,8 @@ namespace akb.Core.Managing.UI
             }
             else
             {
-                //monsterSpriteTemplate.sprite = monsterSprite[MonsterIDs.BasicDemon];
-
                 monsterDescriptionTempalte.text = GameManager.GetManager.Database.GetMonsterDescription(GameManager.GetManager.ActiveFileID, MonsterIDs.BasicDemon);
-                Image();
+                Image(0);
             }
         }
 

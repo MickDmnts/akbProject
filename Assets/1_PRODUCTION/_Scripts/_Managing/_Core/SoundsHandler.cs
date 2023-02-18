@@ -179,7 +179,7 @@ namespace akb.Core.Sounds
             sfxCache = sfxSource.volume;
 
             //Fade Out
-            while(mainAudioSource.volume > 0.005f && sfxSource.volume > 0.005f)
+            while (mainAudioSource.volume > 0.005f && sfxSource.volume > 0.005f)
             {
                 mainAudioSource.volume -= Time.deltaTime * speed;
                 sfxSource.volume -= Time.deltaTime * speed;
@@ -210,6 +210,7 @@ namespace akb.Core.Sounds
             }
 
             Debug.Log("Faded in");
+            StopAllCoroutines();
             yield return null;
         }
 
