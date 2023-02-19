@@ -147,6 +147,21 @@ namespace akb.Core.Managing.InRunUpdates
             return pairs;
         }
 
+        public bool AreSlotsFilled()
+        {
+            Dictionary<SlotType, AdvancementTypes> slotPairs = GetInRunAdvancementTypes();
+
+            foreach (KeyValuePair<SlotType, IAdvanceable> pair in slotHandlerPairs)
+            {
+                if (Enum.Parse<AdvancementTypes>(pair.Value.GetActiveName()) != AdvancementTypes.None)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         ///<summary>Sets the passed type to the corresponding slot AdvancementSlot passed.</summary>
         public void SetAdvancement(SlotType slot, AdvancementTypes type)
         {

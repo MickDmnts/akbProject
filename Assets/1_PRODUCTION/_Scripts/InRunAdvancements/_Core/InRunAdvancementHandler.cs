@@ -41,15 +41,22 @@ namespace akb.Core.Managing.InRunUpdates
 
         void DropReward()
         {
-            int rng = UnityEngine.Random.Range(0, inRunAdvancementPairs.Count);
+            if (ManagerHUB.GetManager.SlotsHandler.AreSlotsFilled())
+            {
+                ManagerHUB.GetManager.CurrencyHandler.IncreaseSinnerSoulsBy(1);
+            }
+            else
+            {
+                int rng = UnityEngine.Random.Range(0, inRunAdvancementPairs.Count);
 
-            AdvancementTypes type = (AdvancementTypes)rng;
+                AdvancementTypes type = (AdvancementTypes)rng;
 
-            GameObject advancement = GetAdvancementGameObject(type);
+                GameObject advancement = GetAdvancementGameObject(type);
 
-            advancement.GetComponent<AdvancementPickUp>().SetPickupType(AdvancementPickUp.PickType.AutoPickup, 0);
+                advancement.GetComponent<AdvancementPickUp>().SetPickupType(AdvancementPickUp.PickType.AutoPickup, 0);
 
-            advancement.transform.position = ManagerHUB.GetManager.PlayerEntity.transform.position;
+                advancement.transform.position = ManagerHUB.GetManager.PlayerEntity.transform.position;
+            }
         }
 
         /// <summary>

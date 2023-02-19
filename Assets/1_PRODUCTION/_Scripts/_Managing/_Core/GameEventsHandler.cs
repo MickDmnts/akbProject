@@ -1,5 +1,5 @@
 using System;
-using System.Diagnostics;
+using UnityEngine;
 using akb.Core.Managing.LevelLoading;
 
 namespace akb.Core.Managing.GameEvents
@@ -75,7 +75,7 @@ namespace akb.Core.Managing.GameEvents
         public event Action onFadeOut;
         public void OnFadeOut()
         {
-            if(onFadeOut != null)
+            if (onFadeOut != null)
             {
                 onFadeOut();
             }

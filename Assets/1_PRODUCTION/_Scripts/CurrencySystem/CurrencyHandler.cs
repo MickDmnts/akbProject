@@ -27,6 +27,7 @@ namespace akb.Core.Managing.Currencies
             ManagerHUB.GetManager.GameEventsHandler.onLoadGame += LoadGameBehaviour;
 
             ManagerHUB.GetManager.GameEventsHandler.onCoinReceive += AddCoinsToPlayer;
+            ManagerHUB.GetManager.GameEventsHandler.onAstarothDeath += ReceiveBossSouls;
         }
 
         void NewGameBehaviour(int saveFileID)
@@ -44,6 +45,11 @@ namespace akb.Core.Managing.Currencies
         }
 
         #region UTILITIES
+        void ReceiveBossSouls()
+        {
+            IncreaseSinnerSoulsBy(3);
+        }
+
         void AddCoinsToPlayer(int coinValue)
         {
             coinValue = coinValue * (int)coinMultiplier.GetMultiplierValue;
@@ -68,6 +74,8 @@ namespace akb.Core.Managing.Currencies
             if (sinnerSouls == 0) value++;
 
             sinnerSouls += value;
+
+            GameManager.GetManager.Database.UpdateSoulsValue(sinnerSouls, GameManager.GetManager.ActiveFileID);
         }
 
         public void DecreaseSinnerSoulsBy(int value) => sinnerSouls -= value;
@@ -85,6 +93,7 @@ namespace akb.Core.Managing.Currencies
             ManagerHUB.GetManager.GameEventsHandler.onLoadGame -= LoadGameBehaviour;
 
             ManagerHUB.GetManager.GameEventsHandler.onCoinReceive -= AddCoinsToPlayer;
+            ManagerHUB.GetManager.GameEventsHandler.onAstarothDeath -= ReceiveBossSouls;
 
             coinMultiplier.UnsubEvents();
         }

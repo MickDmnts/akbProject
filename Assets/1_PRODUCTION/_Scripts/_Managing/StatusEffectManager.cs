@@ -44,23 +44,23 @@ namespace akb.Core.Managing
             switch (effectType)
             {
                 case EffectType.Enflamed:
-                    tempEffect = effects[0].gameObject;
+                    tempEffect = Instantiate(effects[0].gameObject);
                     break;
 
                 case EffectType.Shocked:
-                    tempEffect = effects[1].gameObject;
+                    tempEffect = Instantiate(effects[1].gameObject);
                     break;
 
                 case EffectType.Stunned:
-                    tempEffect = effects[2].gameObject;
+                    tempEffect = Instantiate(effects[2].gameObject);
                     break;
 
                 case EffectType.Confused:
-                    tempEffect = effects[3].gameObject;
+                    tempEffect = Instantiate(effects[3].gameObject);
                     break;
 
                 case EffectType.Charmed:
-                    tempEffect = effects[4].gameObject;
+                    tempEffect = Instantiate(effects[4].gameObject);
                     break;
 
                 default:
