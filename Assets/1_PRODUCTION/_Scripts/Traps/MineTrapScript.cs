@@ -10,6 +10,7 @@ namespace akb.Entities.Interactions
         ParticleSystem explode;
         [SerializeField] float damageValue;
         bool exploded = false;
+
         private void Start()
         {
             explode = GetComponent<ParticleSystem>();
@@ -31,9 +32,9 @@ namespace akb.Entities.Interactions
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, 5);
 
-            for(int i =0; i < colliders.Length; i++)
+            for (int i = 0; i < colliders.Length; i++)
             {
-                if(colliders[i].TryGetComponent<IInteractable>(out IInteractable interactable))
+                if (colliders[i].TryGetComponent<IInteractable>(out IInteractable interactable))
                 {
                     interactable.AttackInteraction(damageValue);
                 }
@@ -41,6 +42,7 @@ namespace akb.Entities.Interactions
             ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.MineExplode);
             explode.Play();
         }
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;

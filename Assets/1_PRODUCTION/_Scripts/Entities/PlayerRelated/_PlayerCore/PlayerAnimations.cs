@@ -10,13 +10,11 @@ namespace akb.Entities.Player
         [Header("Set animator layers")]
         [SerializeField] int animatorMovementLayer;
         [SerializeField] int animatorSpearLayer;
-        [SerializeField] AudioClip[] audioClips;
-        AudioSource audio;
+
         Animator playerAnimator;
 
         private void Start()
         {
-            audio = GetComponent<AudioSource>();
             playerAnimator = GetComponentInChildren<Animator>();
         }
 
@@ -68,10 +66,6 @@ namespace akb.Entities.Player
         public void PlayAttackAnimation()
         {
             playerAnimator.SetTrigger("Attack");
-            for(int i =0; i < audioClips.Length; i++)
-            {
-                audio.PlayOneShot(audioClips[i]);
-            }
         }
 
         public Animator GetPlayerAnimator()

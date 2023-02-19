@@ -25,9 +25,6 @@ namespace akb.Entities.Player
 
         InputAction attackAction;
 
-        [SerializeField] AudioClip[] audioClips;
-        AudioSource audio;
-
         #region ATTACK_VARS
         bool isAttacking = false;
         bool healthRegenActive = false;
@@ -48,7 +45,6 @@ namespace akb.Entities.Player
         // Start is called before the first frame update
         void Start()
         {
-            audio = GetComponent<AudioSource>();
             EntrySetup();
         }
 
@@ -142,10 +138,6 @@ namespace akb.Entities.Player
             foreach (Transform hit in hits)
             {
                 IInteractable interactable = hit.GetComponent<IInteractable>();
-                for(int i=0; i < audioClips.Length; i++)
-                {
-                    audio.PlayOneShot(audioClips[i]);
-                }
                 if (interactable != null)
                 {
                     interactable.AttackInteraction(attackDamage);
