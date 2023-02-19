@@ -10,9 +10,8 @@ public class LevelTransition : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        //ManagerHUB.GetManager.GameEventsHandler.onFadeOut += FadeOut;
         ManagerHUB.GetManager.GameEventsHandler.onSceneLoaded += FadeOut;
-        ManagerHUB.GetManager.GameEventsHandler.onNextRoomEntry += FadeIn;
+        ManagerHUB.GetManager.GameEventsHandler.onNextRoomEntry += FadeOut;
     }
 
     public void FadeOut()
@@ -29,8 +28,7 @@ public class LevelTransition : MonoBehaviour
 
     private void OnDestroy()
     {
-        //ManagerHUB.GetManager.GameEventsHandler.onFadeOut -= FadeOut;
         ManagerHUB.GetManager.GameEventsHandler.onSceneLoaded -= FadeOut;
-        ManagerHUB.GetManager.GameEventsHandler.onNextRoomEntry -= FadeIn;
+        ManagerHUB.GetManager.GameEventsHandler.onNextRoomEntry -= FadeOut;
     }
 }
