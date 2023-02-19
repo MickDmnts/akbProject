@@ -1,3 +1,5 @@
+using akb.Core.Managing;
+using akb.Core.Sounds;
 namespace akb.Entities.AI.Implementations.Simple_Demon
 {
     public class SimpleDemonAnimations : AI_EntityAnimations
@@ -14,6 +16,7 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
 
         public override void PlayAttackAnimation()
         {
+            ManagerHUB.GetManager.SoundsHandler.HellCreeperSounds();
             ai_animator.SetBool("executeAttack", true);
         }
 

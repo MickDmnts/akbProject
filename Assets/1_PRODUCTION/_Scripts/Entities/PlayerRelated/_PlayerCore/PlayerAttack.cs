@@ -141,13 +141,18 @@ namespace akb.Entities.Player
                 if (interactable != null)
                 {
                     interactable.AttackInteraction(attackDamage);
+                    //Stabflesh
 
                     //Apply status effect on third hit
                     ApplyAdvancementEffect(interactable);
-
+                    ManagerHUB.GetManager.SoundsHandler.PlayerRandomFleshHit();
                     OmvivampEffect();
 
                     ManagerHUB.GetManager.GameEventsHandler.OnEnemyHit();
+                }
+                else
+                {
+                    ManagerHUB.GetManager.SoundsHandler.PlayerRandomSwing();
                 }
             }
 

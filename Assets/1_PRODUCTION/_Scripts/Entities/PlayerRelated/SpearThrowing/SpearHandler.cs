@@ -3,6 +3,7 @@ using UnityEngine;
 
 using akb.Entities.Interactions;
 using akb.Core.Managing;
+using akb.Core.Sounds;
 using akb.Core.Managing.InRunUpdates;
 
 namespace akb.Entities.Player.SpearHandling
@@ -136,6 +137,7 @@ namespace akb.Entities.Player.SpearHandling
             {
                 if (!collision.gameObject.CompareTag("Demon"))
                 {
+                    ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.TridentThrow);
                     SpearRB.constraints = RigidbodyConstraints.FreezeAll;
                 }
             }
@@ -161,6 +163,7 @@ namespace akb.Entities.Player.SpearHandling
 
                 if (hits[i].TryGetComponent<IInteractable>(out interactable))
                 {
+                    ManagerHUB.GetManager.SoundsHandler.SpearThrowHitSounds();
                     interactable.AttackInteraction(damageValue);
                 }
 

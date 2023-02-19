@@ -1,3 +1,5 @@
+using akb.Core.Managing;
+using akb.Core.Sounds;
 namespace akb.Entities.AI.Implementations.Ranged_Demon
 {
     public class RangedDemonAnimations : AI_EntityAnimations
@@ -19,6 +21,7 @@ namespace akb.Entities.AI.Implementations.Ranged_Demon
 
         public override void PlayAttackAnimation()
         {
+            ManagerHUB.GetManager.SoundsHandler.GrimBatSounds();
             ai_animator.Play("RangedDemon_Attack");
         }
 

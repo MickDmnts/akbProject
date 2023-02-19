@@ -1,6 +1,6 @@
 using UnityEngine;
 using akb.Core.Managing;
-
+using akb.Core.Sounds;
 public class Healer : MonoBehaviour
 {
     [Header("Set in inspector")]
@@ -24,6 +24,7 @@ public class Healer : MonoBehaviour
         if (currentInterval >= healInterval)
         {
             ManagerHUB.GetManager.PlayerEntity.IncrementPlayerHealthBy(healAmount);
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.HealthReceived);
             Transform playerTransform = ManagerHUB.GetManager.PlayerEntity.transform;
             GameObject effect = Instantiate(healEffect, playerTransform.position, Quaternion.identity);
 

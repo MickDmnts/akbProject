@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 using akb.Core.Managing;
-using UnityEngine.Rendering;
 using akb.Core.Managing.InRunUpdates;
 
 public class UpdateCurrency : MonoBehaviour
@@ -44,21 +42,29 @@ public class UpdateCurrency : MonoBehaviour
     {
         Dictionary<SlotType, AdvancementTypes> value = ManagerHUB.GetManager.SlotsHandler.GetInRunAdvancementTypes();
 
-        if (ManagerHUB.GetManager.SlotsHandler.GetInRunAdvancementTypes() == null)
-        {
-            advacementSprite1.sprite = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(value[SlotType.Attack]);
-            advacementSprite2.sprite = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(value[SlotType.Throw]);
-            advacementSprite3.sprite = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(value[SlotType.DodgeRoll]);
-            advacementSprite4.sprite = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(value[SlotType.Passive]);
-            advacementSprite5.sprite = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(value[SlotType.DevilRage]);
-        }
+        if (value[SlotType.Attack] != AdvancementTypes.None)
+        { advacementSprite1.sprite = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(value[SlotType.Attack]); }
         else
-        {
-            advacementSprite1.sprite = defaultImage;
-            advacementSprite2.sprite = defaultImage;
-            advacementSprite3.sprite = defaultImage;
-            advacementSprite4.sprite = defaultImage;
-            advacementSprite5.sprite = defaultImage;
-        }
+        { advacementSprite1.sprite = defaultImage; }
+
+        if (value[SlotType.Throw] != AdvancementTypes.None)
+        { advacementSprite2.sprite = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(value[SlotType.Throw]); }
+        else
+        { advacementSprite2.sprite = defaultImage; }
+
+        if (value[SlotType.DodgeRoll] != AdvancementTypes.None)
+        { advacementSprite3.sprite = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(value[SlotType.DodgeRoll]); }
+        else
+        { advacementSprite3.sprite = defaultImage; }
+
+        if (value[SlotType.DevilRage] != AdvancementTypes.None)
+        { advacementSprite4.sprite = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(value[SlotType.DevilRage]); }
+        else
+        { advacementSprite4.sprite = defaultImage; }
+
+        if (value[SlotType.Passive] != AdvancementTypes.None)
+        { advacementSprite5.sprite = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(value[SlotType.Passive]); }
+        else
+        { advacementSprite5.sprite = defaultImage; }
     }
 }

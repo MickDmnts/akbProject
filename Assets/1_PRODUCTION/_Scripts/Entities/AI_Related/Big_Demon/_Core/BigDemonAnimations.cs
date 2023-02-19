@@ -8,7 +8,7 @@ namespace akb.Entities.AI.Implementations.Big_Demon
         public override void PlayChargeAnimation()
         {
             ai_animator.SetTrigger("chargingAttack");
-            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.FlamechargerFootsteps);
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.WraithCharge);
         }
         #endregion
 

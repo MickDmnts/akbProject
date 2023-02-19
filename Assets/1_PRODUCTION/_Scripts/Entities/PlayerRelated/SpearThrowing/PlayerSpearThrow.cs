@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 using akb.Core.Managing;
+using akb.Core.Sounds;
 using UnityEngine.Rendering.Universal;
 
 namespace akb.Entities.Player.SpearHandling
@@ -192,7 +193,7 @@ namespace akb.Entities.Player.SpearHandling
             if (holdCounter < maxHoldTime)
             {
                 holdCounter += Time.deltaTime * holdCounterChargeMultiplier;
-
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.TridentCharge);
                 spearGraphic.size = new Vector3(spearGraphicSize.x, spearGraphicSize.y * holdCounter, spearGraphicSize.z);
             }
         }
@@ -244,6 +245,7 @@ namespace akb.Entities.Player.SpearHandling
         /// </summary>
         void PlayThrowSpearAnim()
         {
+
             playerEntity.PlayerAnimations.PlayThrowAnimation();
         }
 
