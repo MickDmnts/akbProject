@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -121,13 +122,21 @@ namespace akb.Entities.AI.Implementations.Astaroth
 
                 MoveLayerOnDeath();
 
-                //DO EXTRA STUFF HERE 
-                //REWARD SOULS AND OPEN TRANSISTOR.
-
                 //Notify subs for an agent death
                 ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
                 UpdateDatabaseEntry();
+
+                StartCoroutine(AfterAstarothDeath());
             }
+        }
+
+        IEnumerator AfterAstarothDeath()
+        {
+            yield return new WaitForSeconds(5f);
+
+            ManagerHUB.GetManager.LevelManager.TransitToHub();
+
+            yield return null;
         }
 
         ///<summary>Changes the phase of the boss based on its health value

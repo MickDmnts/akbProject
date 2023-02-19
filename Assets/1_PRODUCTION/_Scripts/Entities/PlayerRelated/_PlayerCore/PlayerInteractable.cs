@@ -3,6 +3,7 @@
 using akb.Entities.Interactions;
 using akb.Core.Managing;
 using akb.Core.Managing.LevelLoading;
+using System.Collections;
 
 namespace akb.Entities.Player.Interactions
 {
@@ -66,13 +67,11 @@ namespace akb.Entities.Player.Interactions
             }
 
             SubtractHealth(damageValue);
-            //SHOW HURT AND DO STUFF
 
             playerEntity.IsDead = CheckIfDead(playerEntity.GetPlayerHealth());
 
             if (playerEntity.IsDead)
             {
-                //PLAY DEATH ANIMATION
                 ManagerHUB.GetManager.LevelManager.TransitToHub();
                 GameObject deathGfx = Instantiate(playerEntity.DeathGFX);
                 deathGfx.transform.position = transform.position;

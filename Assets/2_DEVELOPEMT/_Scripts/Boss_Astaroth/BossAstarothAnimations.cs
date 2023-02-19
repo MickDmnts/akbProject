@@ -1,7 +1,16 @@
+using akb.Core.Managing;
+
 namespace akb.Entities.AI.Implementations.Astaroth
 {
     public class BossAstarothAnimations : AI_EntityAnimations
     {
+        private void Start()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onAstarothSecondPhase += PlayShieldedAnimation;
+            ManagerHUB.GetManager.GameEventsHandler.onAllRocksBroken += StopShieldedAnimation;
+            ManagerHUB.GetManager.GameEventsHandler.onProjectilePulse += PlayProjectilePulseAnimation;
+        }
+
         public override void PlayAttackAnimation()
         {
             //nop..
@@ -12,19 +21,43 @@ namespace akb.Entities.AI.Implementations.Astaroth
             //nop...
         }
 
-        public void PlayGotHitAnimation()
+        public override void ResetAttackVariables()
         {
             //nop...
+        }
+
+        public void PlayGotHitAnimation()
+        {
+            ai_animator.Play("GetHit", 0);
         }
 
         public void PlayDeathAnimation()
         {
-            //nop...
+            ai_animator.Play("Death", 0);
         }
 
-        public override void ResetAttackVariables()
+        public void PlayShieldedAnimation()
         {
-            //nop...
+            ai_animator.Play("IdleSleep");
+            ai_animator.SetBool("hasShield", true);
+        }
+
+        public void StopShieldedAnimation()
+        {
+            ai_animator.Play("WakeUp");
+            ai_animator.SetBool("hasShield", false);
+        }
+
+        public void PlayProjectilePulseAnimation()
+        {
+            ai_animator.Play("ProjectilePulse");
+        }
+
+        private void OnDestroy()
+        {
+            ManagerHUB.GetManager.GameEventsHandler.onAstarothSecondPhase -= PlayShieldedAnimation;
+            ManagerHUB.GetManager.GameEventsHandler.onAllRocksBroken -= StopShieldedAnimation;
+            ManagerHUB.GetManager.GameEventsHandler.onProjectilePulse -= PlayProjectilePulseAnimation;
         }
     }
 }

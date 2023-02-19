@@ -68,11 +68,11 @@ namespace akb.Entities.AI.Implementations.Astaroth
 
         IEnumerator SpawnProjectiles()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.BossFireOrbs);
+
             foreach (BoundPos projPos in boundPositions)
             {
                 Instantiate(projectileGo, projPos.position, projPos.rotation);
-                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.BossFireOrbs);
-
                 yield return new WaitForSeconds(0.001f);
             }
 

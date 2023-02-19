@@ -286,6 +286,21 @@ namespace akb.Core.Managing.GameEvents
         }
 
         /// <summary>
+        /// Add to this event to get notified when Astaroth atacks with a projectile pulse
+        /// </summary>
+        public event Action onProjectilePulse;
+        /// <summary>
+        /// Call to notify onProjectilePulse callbacks.
+        /// </summary>
+        public void OnProjectilePulse()
+        {
+            if (onProjectilePulse != null)
+            {
+                onProjectilePulse();
+            }
+        }
+
+        /// <summary>
         /// Add to this event to get notified when an astaroth rock breaks.
         /// </summary>
         public event Action<int> onRockBroken;
