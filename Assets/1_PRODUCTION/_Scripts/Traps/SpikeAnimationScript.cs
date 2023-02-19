@@ -18,6 +18,19 @@ namespace akb.Entities.Interactions
             nextSpikeHit = Time.time + spikeHitRate;
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (Time.time > nextSpikeHit)
+            {
+                nextSpikeHit = Time.time + spikeHitRate;
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    animator.SetTrigger("Up");
+                    played = true;
+                }
+            }
+        }
+
         private void OnTriggerStay(Collider other)
         {
             if (Time.time > nextSpikeHit)
