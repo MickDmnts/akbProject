@@ -116,7 +116,7 @@ namespace akb.Entities.Player
 
         IEnumerator IncreaseMoveSpeed()
         {
-            playerEntity.PlayerMovement.SetCurrentMoveSpeed(playerEntity.PlayerMovement.GetMoveSpeed() * 2, true);
+            playerEntity.PlayerMovement.SetCurrentMoveSpeed(playerEntity.PlayerMovement.GetMoveSpeed() * 0.3f, true);
             yield return new WaitForSeconds(2f);
 
             playerEntity.PlayerMovement.SetCurrentMoveSpeed(playerEntity.PlayerMovement.GetMoveSpeedCache());
