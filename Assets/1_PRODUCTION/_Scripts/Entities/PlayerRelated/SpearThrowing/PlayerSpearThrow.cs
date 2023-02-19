@@ -119,6 +119,7 @@ namespace akb.Entities.Player.SpearHandling
 
             if (hasSpear)
             {
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.TridentCharge);
                 StartOrbit();
                 PlayChargeAnimation();
             }
@@ -193,7 +194,7 @@ namespace akb.Entities.Player.SpearHandling
             if (holdCounter < maxHoldTime)
             {
                 holdCounter += Time.deltaTime * holdCounterChargeMultiplier;
-                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.TridentCharge);
+                
                 spearGraphic.size = new Vector3(spearGraphicSize.x, spearGraphicSize.y * holdCounter, spearGraphicSize.z);
             }
         }

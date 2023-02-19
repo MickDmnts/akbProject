@@ -65,7 +65,7 @@ namespace akb.Entities.Player.SpearHandling
             this.playerSpearThrow = playerSpearThrow;
 
             SpearCollider.isTrigger = true;
-
+            
             runningBehaviour = SimulateSpearTravel();
             StartCoroutine(runningBehaviour);
         }
@@ -120,7 +120,6 @@ namespace akb.Entities.Player.SpearHandling
             {
                 //While being thrown
                 StartCoroutine(HitSurroundings(playerSpearThrow.GetSpearThrowDamage()));
-
                 CheckForSpearPiercing(collision);
             }
             else
@@ -137,7 +136,6 @@ namespace akb.Entities.Player.SpearHandling
             {
                 if (!collision.gameObject.CompareTag("Demon"))
                 {
-                    ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.TridentThrow);
                     SpearRB.constraints = RigidbodyConstraints.FreezeAll;
                 }
             }
@@ -145,6 +143,7 @@ namespace akb.Entities.Player.SpearHandling
             {
                 gameObject.transform.SetParent(collision.transform, true);
                 SpearRB.constraints = RigidbodyConstraints.FreezeAll;
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.TridentThrow);
             }
         }
 
@@ -163,8 +162,8 @@ namespace akb.Entities.Player.SpearHandling
 
                 if (hits[i].TryGetComponent<IInteractable>(out interactable))
                 {
-                    ManagerHUB.GetManager.SoundsHandler.SpearThrowHitSounds();
                     interactable.AttackInteraction(damageValue);
+                    ManagerHUB.GetManager.SoundsHandler.SpearThrowHitSounds();
                 }
 
                 yield return null;

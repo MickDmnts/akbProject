@@ -9,7 +9,6 @@ namespace akb.Entities.Interactions
         Animator animator;
         ParticleSystem explode;
         [SerializeField] float damageValue;
-        bool exploded = false;
 
         private void Start()
         {
