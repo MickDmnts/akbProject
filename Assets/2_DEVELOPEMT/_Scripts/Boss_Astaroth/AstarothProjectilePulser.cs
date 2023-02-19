@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
-
+using akb.Core.Sounds;
 using akb.Core.Managing;
+
 
 namespace akb.Entities.AI.Implementations.Astaroth
 {
@@ -70,6 +71,8 @@ namespace akb.Entities.AI.Implementations.Astaroth
             foreach (BoundPos projPos in boundPositions)
             {
                 Instantiate(projectileGo, projPos.position, projPos.rotation);
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.BossFireOrbs);
+
                 yield return new WaitForSeconds(0.001f);
             }
 

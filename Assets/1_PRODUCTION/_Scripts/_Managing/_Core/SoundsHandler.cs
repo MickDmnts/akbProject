@@ -172,6 +172,15 @@ namespace akb.Core.Sounds
             int rngSwing = Random.Range(29, 33);
             PlayOneShot((GameAudioClip)rngSwing);
         }
+        public void PlayerRandomFleshHit()
+        {
+            int rngHit = Random.Range(34, 37);
+            PlayOneShot((GameAudioClip)rngHit);
+        }
+        public void PlayHealingRoomIdle()
+        {
+            PlayOneShot(GameAudioClip.HealthFountainIDLE);
+        }
 
         /* 
                 void MusicFadeOut()

@@ -145,7 +145,7 @@ namespace akb.Entities.Player
 
                     //Apply status effect on third hit
                     ApplyAdvancementEffect(interactable);
-
+                    ManagerHUB.GetManager.SoundsHandler.PlayerRandomFleshHit();
                     OmvivampEffect();
 
                     ManagerHUB.GetManager.GameEventsHandler.OnEnemyHit();
