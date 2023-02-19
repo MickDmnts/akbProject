@@ -33,7 +33,7 @@ namespace akb.Entities.Player.SpearHandling
         int currentTeleportationCharges;
         int teleportationChargesCache;
 
-        public float CurrentTeleportationCD => currentTeleportationCD;
+        public float CurrentTeleportationCD => spearTeleportationCD;
 
         private void Start()
         {
