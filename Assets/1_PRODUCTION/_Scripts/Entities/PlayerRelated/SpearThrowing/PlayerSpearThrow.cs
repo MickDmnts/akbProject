@@ -246,7 +246,7 @@ namespace akb.Entities.Player.SpearHandling
         /// </summary>
         void PlayThrowSpearAnim()
         {
-
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.TridentThrow);
             playerEntity.PlayerAnimations.PlayThrowAnimation();
         }
 
