@@ -256,6 +256,21 @@ namespace akb.Core.Managing.GameEvents
         }
 
         /// <summary>
+        /// Add to this event to get notified when the player teleports and get the current teleport cooldown.
+        /// </summary>
+        public event Action<float> onTeleportCooldown;
+        /// <summary>
+        /// Call to notify onTeleportCooldown callbacks.
+        /// </summary>
+        public void OnTeleportCooldown(float value)
+        {
+            if (onTeleportCooldown != null)
+            {
+                onTeleportCooldown(value);
+            }
+        }
+
+        /// <summary>
         /// Add to this event to get notified when Astaroth enters his first phase.
         /// </summary>
         public event Action onAstarothFirstPhase;
