@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 using akb.Core.Managing;
-using UnityEngine.Rendering;
 using akb.Core.Managing.InRunUpdates;
 
 public class UpdateCurrency : MonoBehaviour
