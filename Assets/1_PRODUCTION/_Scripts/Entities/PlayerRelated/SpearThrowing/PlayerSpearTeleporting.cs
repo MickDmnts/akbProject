@@ -197,6 +197,8 @@ namespace akb.Entities.Player.SpearHandling
             if (currentCD <= 0f) currentCD = 0;
 
             currentCD -= Time.deltaTime;
+
+            ManagerHUB.GetManager.GameEventsHandler.OnTeleportCooldown(currentCD);
         }
 
         bool CheckHasTeleportedState(float currentTPCooldown)
