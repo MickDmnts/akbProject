@@ -1232,7 +1232,7 @@ MonoBehaviour:
       type: 3}
     storeRoom: {fileID: 5480419412266862194, guid: 7624b228756a4be4c9e4bf7c3fd56974,
       type: 3}
-    bossRoom: {fileID: 5480419412266862194, guid: ccc07f48eaca20244a553cf597c816d1,
+    bossRoom: {fileID: 1626758069548598754, guid: 824e64f12d9160248bd75224be5d2c5c,
       type: 3}
 --- !u!4 &1856625620
 Transform:
