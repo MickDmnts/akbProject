@@ -148,7 +148,7 @@ namespace akb.Core.Managing.InRunUpdates
 
             //Write the slotted types to the inRunAdvancements list.
             string[] slotTypes = Enum.GetNames(typeof(SlotType));
-            for (int i = 0; i < slotTypes.Length; i++)
+            for (int i = 0; i < slottedTypes.Count; i++)
             {
                 ManagerHUB.GetManager.SlotsHandler.SetAdvancement(Enum.Parse<SlotType>(slotTypes[i]), slottedTypes[i]);
             }
@@ -156,7 +156,7 @@ namespace akb.Core.Managing.InRunUpdates
             //Write the unused types to the inRunAdvancements list.
             foreach (AdvancementTypes unusedType in unusedTypes)
             {
-                inRunAdvancementPairs.Add(unusedType, CreateAdvancementGameobject(unusedType));
+                inRunAdvancementPairs.TryAdd(unusedType, CreateAdvancementGameobject(unusedType));
             }
         }
 
