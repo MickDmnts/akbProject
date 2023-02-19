@@ -114,7 +114,6 @@ namespace akb.Core.Managing.InRunUpdates
                 {SlotType.DodgeRoll, DodgeInRunAdvancements = new DodgeRunAdvancements()},
                 {SlotType.Passive, PassiveInRunAdvancements = new PassiveRunAdvancements()},
                 {SlotType.DevilRage, DevilRageInRunAdvancements = new DevilRageRunAdvancements()},
-
             };
         }
 
