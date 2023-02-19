@@ -136,6 +136,7 @@ namespace akb.Entities.Player.SpearHandling
             {
                 if (!collision.gameObject.CompareTag("Demon"))
                 {
+                    ManagerHUB.GetManager.SoundsHandler.SpearThrowHitSounds();
                     SpearRB.constraints = RigidbodyConstraints.FreezeAll;
                 }
             }
@@ -143,7 +144,6 @@ namespace akb.Entities.Player.SpearHandling
             {
                 gameObject.transform.SetParent(collision.transform, true);
                 SpearRB.constraints = RigidbodyConstraints.FreezeAll;
-                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.TridentThrow);
             }
         }
 
