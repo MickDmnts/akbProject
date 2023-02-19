@@ -169,11 +169,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effects:
-  - {fileID: 5077043595733934342, guid: 5493b69d580bff9449302d4493f06389, type: 3}
-  - {fileID: 409389347770855168, guid: b51c1b594e7dfa94f9790e52ae645dd3, type: 3}
-  - {fileID: 475213589843535710, guid: 5dd578c2a2511614ab5a63fa47fbe1b1, type: 3}
-  - {fileID: 1302602617030492965, guid: 29a7dcff27520744da6f33c14e46d4ef, type: 3}
-  - {fileID: 4526663383026868938, guid: c4adde6bcb8a75f45bfe5e2526fd8d97, type: 3}
+  - {fileID: 5077043595733934337, guid: 5493b69d580bff9449302d4493f06389, type: 3}
+  - {fileID: 409389347770855169, guid: b51c1b594e7dfa94f9790e52ae645dd3, type: 3}
+  - {fileID: 475213589843535709, guid: 5dd578c2a2511614ab5a63fa47fbe1b1, type: 3}
+  - {fileID: 1302602617030492967, guid: 29a7dcff27520744da6f33c14e46d4ef, type: 3}
+  - {fileID: 4526663383026868939, guid: c4adde6bcb8a75f45bfe5e2526fd8d97, type: 3}
 --- !u!1 &135572636
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialMultiplier: 1
   multiplierValue: 0.2
-  coinGainGFX: {fileID: 0}
+  coinGainGFX: {fileID: 143964, guid: 09d9de58ef3bf5444ac94afa0e6013cb, type: 3}
 --- !u!4 &936654931
 Transform:
   m_ObjectHideFlags: 0
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldData:
   - WorldName: World 1
-    entry: {fileID: 5480419412266862194, guid: ccc07f48eaca20244a553cf597c816d1, type: 3}
+    entry: {fileID: 5480419412266862194, guid: 7624b228756a4be4c9e4bf7c3fd56974, type: 3}
     battleRooms:
     - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
     - {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9, type: 3}

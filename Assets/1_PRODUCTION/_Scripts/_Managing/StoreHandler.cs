@@ -26,12 +26,21 @@ namespace akb.Core.Managing
                 AdvancementTypes type = (AdvancementTypes)rng;
 
                 GameObject advancement = ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvancementGameObject(type);
+                advancement.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
 
-                advancement.GetComponent<AdvancementPickUp>().SetPickupType(AdvancementPickUp.PickType.PromptPickup, itemSpawnLocations[i].itemPrice);
+                if (advancement.TryGetComponent<AdvancementPickUp>(out AdvancementPickUp tempAdv))
+                {
+                    tempAdv.SetPickupType(AdvancementPickUp.PickType.PromptPickup, itemSpawnLocations[i].itemPrice);
+
+                    if (itemSpawnLocations[i].itemSpawn.TryGetComponent<OpenCanvas>(out OpenCanvas tempCanvas))
+                    {
+                        tempCanvas.SetDescriptionText("Temp description");
+                        tempCanvas.SetIcon(ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(type));
+                        tempCanvas.SetPriceText(itemSpawnLocations[i].itemPrice);
+                    }
+                }
 
                 advancement.transform.position = itemSpawnLocations[i].itemSpawn.position;
-
-                Debug.Log(advancement.name);
             }
         }
     }

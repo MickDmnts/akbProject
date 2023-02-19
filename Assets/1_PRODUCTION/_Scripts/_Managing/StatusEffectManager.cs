@@ -1,5 +1,4 @@
 using UnityEngine;
-using akb.Entities.Interactions;
 
 namespace akb.Core.Managing
 {
@@ -27,7 +26,7 @@ namespace akb.Core.Managing
         /// The game status effects.
         /// </summary>
         [Header("Set in inspector")]
-        [SerializeField, Tooltip("The game status effects.")] StatusEffect[] effects;
+        [SerializeField, Tooltip("The game status effects.")] GameObject[] effects;
 
         private void Awake()
         {
@@ -44,23 +43,23 @@ namespace akb.Core.Managing
             switch (effectType)
             {
                 case EffectType.Enflamed:
-                    tempEffect = Instantiate(effects[0].gameObject);
+                    tempEffect = Instantiate(effects[0]);
                     break;
 
                 case EffectType.Shocked:
-                    tempEffect = Instantiate(effects[1].gameObject);
+                    tempEffect = Instantiate(effects[1]);
                     break;
 
                 case EffectType.Stunned:
-                    tempEffect = Instantiate(effects[2].gameObject);
+                    tempEffect = Instantiate(effects[2]);
                     break;
 
                 case EffectType.Confused:
-                    tempEffect = Instantiate(effects[3].gameObject);
+                    tempEffect = Instantiate(effects[3]);
                     break;
 
                 case EffectType.Charmed:
-                    tempEffect = Instantiate(effects[4].gameObject);
+                    tempEffect = Instantiate(effects[4]);
                     break;
 
                 default:

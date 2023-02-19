@@ -14,9 +14,9 @@ namespace akb.Core.Managing.InRunUpdates
 
         [Header("Set in inspector")]
         [SerializeField] PickType pickType = PickType.AutoPickup;
-        [SerializeField] GameObject UI_Notifier;
 
         bool canPickup = false;
+
 
         int price = 0;
 
@@ -42,9 +42,8 @@ namespace akb.Core.Managing.InRunUpdates
             switch (pickType)
             {
                 case PickType.PromptPickup:
-                    if (other.GetComponent<PlayerEntity>())
+                    if (other.CompareTag("Player"))
                     {
-                        UI_Notifier.SetActive(true);
                         canPickup = true;
                     }
                     break;
@@ -85,7 +84,6 @@ namespace akb.Core.Managing.InRunUpdates
                 case PickType.PromptPickup:
                     if (other.GetComponent<PlayerEntity>())
                     {
-                        UI_Notifier.SetActive(true);
                         canPickup = false;
                     }
                     break;

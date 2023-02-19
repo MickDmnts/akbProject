@@ -39,24 +39,33 @@ namespace akb.Core.Managing
 
             List<EnemySpawnInfo> enemyPairs = ManagerHUB.GetManager.RoomSelector.GetCurrentRoomEnemies();
 
-            Transform anchor = ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform;
+            Transform anchor;
+            if (ManagerHUB.GetManager.RoomSelector.CurrentRoomGO != null)
+            {
+                anchor = ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform;
+            }
+            else { yield break; }
 
             roomEnemyCounter = enemyPairs.Count;
 
             foreach (EnemySpawnInfo enemyPosPair in enemyPairs)
             {
-                Vector3 roomPos = enemyPosPair.EnemySpawn.position + anchor.position;
+                if (enemyPosPair.Enemy != null
+                    & enemyPosPair.EnemySpawn != null)
+                {
+                    Vector3 roomPos = enemyPosPair.EnemySpawn.position + anchor.position;
 
-                GameObject spawnedEnemy = Instantiate(enemyPosPair.Enemy, roomPos, enemyPosPair.EnemySpawn.rotation);
-                GameObject spawnVfx = Instantiate(enemySpawnEffect);
-                spawnVfx.transform.position = spawnedEnemy.transform.position + (Vector3.up / 2);
-                spawnVfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
+                    GameObject spawnedEnemy = Instantiate(enemyPosPair.Enemy, roomPos, enemyPosPair.EnemySpawn.rotation);
+                    GameObject spawnVfx = Instantiate(enemySpawnEffect);
+                    spawnVfx.transform.position = spawnedEnemy.transform.position + (Vector3.up / 2);
+                    spawnVfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
 
-                spawnedEnemies.Add(spawnedEnemy);
+                    spawnedEnemies.Add(spawnedEnemy);
 
-                spawnedEnemy.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
+                    spawnedEnemy.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
 
-                yield return new WaitForSeconds(0.8f);
+                    yield return new WaitForSeconds(0.8f);
+                }
             }
         }
 

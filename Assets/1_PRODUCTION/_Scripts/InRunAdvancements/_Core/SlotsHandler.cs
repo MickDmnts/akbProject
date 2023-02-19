@@ -150,16 +150,16 @@ namespace akb.Core.Managing.InRunUpdates
         public bool AreSlotsFilled()
         {
             Dictionary<SlotType, AdvancementTypes> slotPairs = GetInRunAdvancementTypes();
+            bool isFilled = false;
 
-            foreach (KeyValuePair<SlotType, IAdvanceable> pair in slotHandlerPairs)
-            {
-                if (Enum.Parse<AdvancementTypes>(pair.Value.GetActiveName()) != AdvancementTypes.None)
-                {
-                    return true;
-                }
-            }
+            if (slotPairs[SlotType.Attack] != AdvancementTypes.None
+                & slotPairs[SlotType.Throw] != AdvancementTypes.None
+                & slotPairs[SlotType.DevilRage] != AdvancementTypes.None
+                & slotPairs[SlotType.DodgeRoll] != AdvancementTypes.None
+                & slotPairs[SlotType.Passive] != AdvancementTypes.None)
+            { isFilled = true; }
 
-            return false;
+            return isFilled;
         }
 
         ///<summary>Sets the passed type to the corresponding slot AdvancementSlot passed.</summary>
