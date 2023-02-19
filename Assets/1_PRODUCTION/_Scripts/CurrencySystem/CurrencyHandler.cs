@@ -8,6 +8,7 @@ namespace akb.Core.Managing.Currencies
         [Header("Set coin multiplier values")]
         [SerializeField] float initialMultiplier;
         [SerializeField] float multiplierValue;
+        [SerializeField] GameObject coinGainGFX;
 
         int hellCoins = -1;
         int sinnerSouls = 100;
@@ -55,6 +56,10 @@ namespace akb.Core.Managing.Currencies
             coinValue = coinValue * (int)coinMultiplier.GetMultiplierValue;
 
             hellCoins += coinValue;
+
+            GameObject temp = Instantiate(coinGainGFX);
+            temp.transform.position = ManagerHUB.GetManager.PlayerEntity.transform.position + Vector3.up;
+            temp.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
 
             //Update the database value
             GameManager.GetManager.Database.UpdateInRunCoinValue(hellCoins, GameManager.GetManager.ActiveFileID);

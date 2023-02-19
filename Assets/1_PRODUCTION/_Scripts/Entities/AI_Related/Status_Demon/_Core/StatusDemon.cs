@@ -175,6 +175,7 @@ namespace akb.Entities.AI.Implementations.Status_Demon
 
                 GameObject gfx = Instantiate(deathGFX);
                 gfx.transform.position = transform.position;
+                gfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
 
                 MoveLayerOnDeath();
 
@@ -186,7 +187,8 @@ namespace akb.Entities.AI.Implementations.Status_Demon
 
         public void ApplyStatusEffect(GameObject effect)
         {
-            Instantiate<GameObject>(effect, transform);
+            GameObject gfx = Instantiate<GameObject>(effect, transform);
+            gfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
         }
 
         void UpdateDatabaseEntry()

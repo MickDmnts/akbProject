@@ -32,8 +32,9 @@ public class PressurePadScript : MonoBehaviour
         if (timeTillSpawn >= spawnTime)
         {
             ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.ProjectileShoot);
-            Instantiate(projectile, spawn.position, spawn.rotation);
+            GameObject proj = Instantiate(projectile, spawn.position, spawn.rotation);
             timeTillSpawn = 0;
+            proj.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
         }
     }
 }

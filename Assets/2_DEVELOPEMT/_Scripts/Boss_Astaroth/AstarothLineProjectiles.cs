@@ -49,7 +49,8 @@ public class AstarothLineProjectiles : MonoBehaviour
     {
         for (int i = 0; i != projectilesPerThrow; i++)
         {
-            Instantiate(projectilePrefab, spawnPoint.position, spawnPoint.rotation);
+            GameObject temp = Instantiate(projectilePrefab, spawnPoint.position, spawnPoint.rotation);
+            temp.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
             yield return new WaitForSeconds(0.1f);
         }
 

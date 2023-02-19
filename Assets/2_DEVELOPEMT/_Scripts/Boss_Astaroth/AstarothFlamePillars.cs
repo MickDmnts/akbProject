@@ -50,7 +50,8 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             Vector3 playerPos = ManagerHUB.GetManager.PlayerEntity.transform.position;
 
-            Instantiate(pillarGo, playerPos, pillarGo.transform.rotation);
+            GameObject temp = Instantiate(pillarGo, playerPos, pillarGo.transform.rotation);
+            temp.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
         }
 
         private void OnDestroy()

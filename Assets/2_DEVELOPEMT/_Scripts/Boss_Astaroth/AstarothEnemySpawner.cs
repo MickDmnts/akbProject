@@ -65,7 +65,8 @@ namespace akb.Entities.AI.Implementations.Astaroth
         {
             for (int i = 0; i < spawnPositions.Length; i++)
             {
-                Instantiate(enemyToSpawn, spawnPositions[i].position, enemyToSpawn.transform.rotation);
+                GameObject temp = Instantiate(enemyToSpawn, spawnPositions[i].position, enemyToSpawn.transform.rotation);
+                temp.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
 
                 activeEnemies++;
 

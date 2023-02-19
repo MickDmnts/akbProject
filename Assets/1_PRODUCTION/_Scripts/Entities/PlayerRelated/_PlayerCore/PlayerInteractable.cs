@@ -72,9 +72,11 @@ namespace akb.Entities.Player.Interactions
 
             if (playerEntity.IsDead)
             {
-                ManagerHUB.GetManager.LevelManager.TransitToHub();
                 GameObject deathGfx = Instantiate(playerEntity.DeathGFX);
                 deathGfx.transform.position = transform.position;
+                deathGfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
+
+                ManagerHUB.GetManager.LevelManager.TransitToHub();
             }
         }
 

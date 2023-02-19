@@ -48,6 +48,7 @@ namespace akb.Gameplay
 
             particleEffectCache = Instantiate(portalActivatedGFX);
             particleEffectCache.transform.position = transform.position;
+            particleEffectCache.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
         }
 
         private void OnTriggerEnter(Collider other)

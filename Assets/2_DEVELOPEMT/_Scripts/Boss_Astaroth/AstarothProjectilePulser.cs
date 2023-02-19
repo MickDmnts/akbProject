@@ -72,7 +72,8 @@ namespace akb.Entities.AI.Implementations.Astaroth
 
             foreach (BoundPos projPos in boundPositions)
             {
-                Instantiate(projectileGo, projPos.position, projPos.rotation);
+                GameObject temp = Instantiate(projectileGo, projPos.position, projPos.rotation);
+                temp.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
                 yield return new WaitForSeconds(0.001f);
             }
 

@@ -27,7 +27,7 @@ public class Healer : MonoBehaviour
             ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.HealthReceived);
             Transform playerTransform = ManagerHUB.GetManager.PlayerEntity.transform;
             GameObject effect = Instantiate(healEffect, playerTransform.position, Quaternion.identity);
-
+            effect.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
             currentInterval = 0f;
         }
     }

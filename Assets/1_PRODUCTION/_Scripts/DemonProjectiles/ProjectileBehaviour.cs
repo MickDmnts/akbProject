@@ -116,7 +116,8 @@ namespace akb.Projectiles
         void ExitBehaviour(Collision collision = null)
         {
             //Universal behaviour
-            Instantiate(projectileHitParticle.gameObject, transform.position, projectileHitParticle.transform.rotation);
+            GameObject gfx = Instantiate(projectileHitParticle.gameObject, transform.position, projectileHitParticle.transform.rotation);
+            gfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
 
             if (collision != null)
             {

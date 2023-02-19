@@ -50,6 +50,7 @@ namespace akb.Core.Managing
                 GameObject spawnedEnemy = Instantiate(enemyPosPair.Enemy, roomPos, enemyPosPair.EnemySpawn.rotation);
                 GameObject spawnVfx = Instantiate(enemySpawnEffect);
                 spawnVfx.transform.position = spawnedEnemy.transform.position + (Vector3.up / 2);
+                spawnVfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
 
                 spawnedEnemies.Add(spawnedEnemy);
 
