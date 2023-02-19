@@ -16,7 +16,7 @@ namespace akb.Core.Managing.UI
         [SerializeField] Sprite lockedMonstersSprite;
         [SerializeField] string lockedMonstersDescripton;
 
-        [SerializeField] List<Sprite> monsterSprite;
+        //[SerializeField] List<Sprite> monsterSprite;
         List<string> monsterDescription = new List<string>();
 
         List<Button> monsterButtons = new List<Button>();
@@ -80,6 +80,7 @@ namespace akb.Core.Managing.UI
             if (GameManager.GetManager.Database.GetIsMonsterFoundValue(GameManager.GetManager.ActiveFileID, buttonIndex) == 0)
             {
                 monsterDescriptionTempalte.text = lockedMonstersDescripton;
+                monsterSpriteTemplate.sprite = lockedMonstersSprite;  
             }
             else
             {
@@ -110,7 +111,7 @@ namespace akb.Core.Managing.UI
         {
             if (GameManager.GetManager.Database.GetIsMonsterFoundValue(GameManager.GetManager.ActiveFileID, MonsterIDs.BasicDemon) == 0)
             {
-                //monsterSpriteTemplate.sprite = lockedMonstersSprite;
+                monsterSpriteTemplate.sprite = lockedMonstersSprite;
                 monsterDescriptionTempalte.text = lockedMonstersDescripton;
             }
             else
