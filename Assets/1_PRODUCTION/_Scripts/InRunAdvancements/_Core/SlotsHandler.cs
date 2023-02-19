@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -94,6 +95,7 @@ namespace akb.Core.Managing.InRunUpdates
         private void Awake()
         {
             ManagerHUB.GetManager.SetSlotHandlerReference(this);
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry += ResetAbilitiesOnDeath;
 
             EntrySetup();
         }
@@ -116,6 +118,7 @@ namespace akb.Core.Managing.InRunUpdates
             };
         }
 
+        ///<summary>Returns the active In run advancements of the player as a string array.</summary>
         public string[] GetSlottedAdvancementTypes()
         {
             List<string> parsedTypes = new List<string>();
@@ -127,6 +130,22 @@ namespace akb.Core.Managing.InRunUpdates
             }
 
             return parsedTypes.ToArray();
+        }
+
+        ///<summary>Returns the active In run advancements types of the player as a dictionary.</summary>
+        public Dictionary<SlotType, AdvancementTypes> GetInRunAdvancementTypes()
+        {
+            Dictionary<SlotType, AdvancementTypes> pairs = new Dictionary<SlotType, AdvancementTypes>();
+
+            foreach (KeyValuePair<SlotType, IAdvanceable> pair in slotHandlerPairs)
+            {
+                SlotType slotType = pair.Key;
+                AdvancementTypes advType = Enum.Parse<AdvancementTypes>(pair.Value.GetActiveName());
+
+                pairs.TryAdd(slotType, advType);
+            }
+
+            return pairs;
         }
 
         ///<summary>Sets the passed type to the corresponding slot AdvancementSlot passed.</summary>
@@ -144,15 +163,9 @@ namespace akb.Core.Managing.InRunUpdates
             }
         }
 
-        void UpdateUserHUDSlots()
+        private void OnDestroy()
         {
-            throw new System.NotImplementedException();
-
-        }
-
-        void ClearCurrentHUDSlots()
-        {
-            throw new System.NotImplementedException();
+            ManagerHUB.GetManager.GameEventsHandler.onPlayerHubEntry -= ResetAbilitiesOnDeath;
         }
     }
 }
