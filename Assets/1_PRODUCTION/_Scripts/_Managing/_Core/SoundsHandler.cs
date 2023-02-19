@@ -181,7 +181,21 @@ namespace akb.Core.Sounds
         {
             PlayOneShot(GameAudioClip.HealthFountainIDLE);
         }
-
+        public void SpearThrowHitSounds()
+        {
+            int rngSpearHit = Random.Range(34, 37);
+            PlayOneShot((GameAudioClip)rngSpearHit);
+        }
+        public void GrimBatSounds()
+        {
+            int rngHit = Random.Range(21, 22);
+            PlayOneShot((GameAudioClip)rngHit);
+        }
+        public void HellCreeperSounds()
+        {
+            int rngHit = Random.Range(23, 25);
+            PlayOneShot((GameAudioClip)rngHit);
+        }
         /* 
                 void MusicFadeOut()
                 {
