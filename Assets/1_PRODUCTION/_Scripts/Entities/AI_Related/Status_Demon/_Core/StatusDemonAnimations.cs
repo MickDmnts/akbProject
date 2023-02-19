@@ -1,3 +1,5 @@
+using akb.Core.Managing;
+using akb.Core.Sounds;
 namespace akb.Entities.AI.Implementations.Status_Demon
 {
     public class StatusDemonAnimations : AI_EntityAnimations
@@ -9,6 +11,7 @@ namespace akb.Entities.AI.Implementations.Status_Demon
 
         public void PlayTeleportAnimation()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.BrainShaperBeforeTeleport);
             ai_animator.Play("StatusDemon_Teleporting");
         }
 

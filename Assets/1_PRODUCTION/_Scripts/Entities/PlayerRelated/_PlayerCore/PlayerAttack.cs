@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.InputSystem;
 
 using akb.Entities.Interactions;
 using akb.Core.Managing;
+using akb.Core.Sounds;
 
 namespace akb.Entities.Player
 {
@@ -22,6 +24,9 @@ namespace akb.Entities.Player
         PlayerEntity playerEntity;
 
         InputAction attackAction;
+
+        [SerializeField] AudioClip[] audioClips;
+        AudioSource audio;
 
         #region ATTACK_VARS
         bool isAttacking = false;
@@ -43,6 +48,7 @@ namespace akb.Entities.Player
         // Start is called before the first frame update
         void Start()
         {
+            audio = GetComponent<AudioSource>();
             EntrySetup();
         }
 
@@ -133,10 +139,13 @@ namespace akb.Entities.Player
         void CallAttackInteraction()
         {
             List<Transform> hits = playerEntity.PlayerAttackFOV.GetHitsInsideFrustrum(0);
-
             foreach (Transform hit in hits)
             {
                 IInteractable interactable = hit.GetComponent<IInteractable>();
+                for(int i=0; i < audioClips.Length; i++)
+                {
+                    audio.PlayOneShot(audioClips[i]);
+                }
                 if (interactable != null)
                 {
                     interactable.AttackInteraction(attackDamage);

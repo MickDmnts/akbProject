@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using akb.Core.Managing;
+using akb.Core.Sounds;
 namespace akb.Entities.Interactions
 {
     public sealed class EnflamedStatusEffect : StatusEffect
@@ -28,6 +29,7 @@ namespace akb.Entities.Interactions
             delayCache = Time.time + delayUntilEffectStart;
 
             ApplyVFXToEntity(GetAttachedEntity());
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.GetEnflamed);
         }
 
         public override void Update()

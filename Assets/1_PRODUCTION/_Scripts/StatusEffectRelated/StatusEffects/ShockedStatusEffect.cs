@@ -1,4 +1,6 @@
 using UnityEngine;
+using akb.Core.Managing;
+using akb.Core.Sounds;
 
 namespace akb.Entities.Interactions
 {
@@ -32,6 +34,8 @@ namespace akb.Entities.Interactions
                     shockable.InflictShockInteraction();
 
                     ApplyVFXToEntity(GetAttachedEntity());
+
+                    ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.GetElectrified);
 
                     isActive = true;
                 }

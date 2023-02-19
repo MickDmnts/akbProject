@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using akb.Core.Sounds;
+using akb.Core.Managing;
 namespace akb.Entities.Interactions
 {
     public class SpikeAnimationScript : MonoBehaviour
@@ -24,6 +25,7 @@ namespace akb.Entities.Interactions
                 nextSpikeHit = Time.time + spikeHitRate;
                 if (other.gameObject.CompareTag("Player"))
                 {
+                    ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.SpikeTrapTrigger);
                     animator.SetTrigger("Up");
                     played = true;
                 }
@@ -45,7 +47,10 @@ namespace akb.Entities.Interactions
             }
             animator.SetTrigger("Down");
         }
-
+        public void PlayTrapOut()
+        {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.SpikeTrapOut);
+        }
         private void OnTriggerExit(Collider other)
         {
             if (!played) return;

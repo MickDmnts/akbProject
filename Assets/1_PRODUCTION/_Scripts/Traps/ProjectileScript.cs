@@ -1,6 +1,6 @@
 using UnityEngine;
-
-
+using akb.Core.Sounds;
+using akb.Core.Managing;
 namespace akb.Entities.Interactions
 {
     public class ProjectileScript : MonoBehaviour
@@ -22,6 +22,7 @@ namespace akb.Entities.Interactions
         {
             if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.ProjectileHit);
                 interactable.AttackInteraction(damageValue);
             }
         }

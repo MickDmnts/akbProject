@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using akb.Core.Sounds;
+using akb.Core.Managing;
 using akb.Entities.Interactions;
 
 namespace akb.Entities.AI.Implementations.Astaroth
@@ -26,6 +27,8 @@ namespace akb.Entities.AI.Implementations.Astaroth
 
             if (interactable != null)
             {
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.BossFireOrbs);
+
                 interactable.AttackInteraction(projectileDamage);
             }
 

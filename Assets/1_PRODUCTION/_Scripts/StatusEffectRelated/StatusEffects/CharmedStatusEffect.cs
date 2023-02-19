@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using akb.Core.Managing;
+using akb.Core.Sounds;
 namespace akb.Entities.Interactions
 {
     public class CharmedStatusEffect : StatusEffect
@@ -34,7 +35,7 @@ namespace akb.Entities.Interactions
                     charmable.DeactivateEntityControls();
 
                     ApplyVFXToEntity(GetAttachedEntity());
-
+                    ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.GetCharmed);
                     isActive = true;
                 }
             }

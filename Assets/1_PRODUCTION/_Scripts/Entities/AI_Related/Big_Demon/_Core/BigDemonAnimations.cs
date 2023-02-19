@@ -1,3 +1,5 @@
+using akb.Core.Managing;
+using akb.Core.Sounds;
 namespace akb.Entities.AI.Implementations.Big_Demon
 {
     public class BigDemonAnimations : AI_EntityAnimations
@@ -6,6 +8,7 @@ namespace akb.Entities.AI.Implementations.Big_Demon
         public override void PlayChargeAnimation()
         {
             ai_animator.SetTrigger("chargingAttack");
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.FlamechargerFootsteps);
         }
         #endregion
 

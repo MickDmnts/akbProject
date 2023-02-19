@@ -1,4 +1,7 @@
 using UnityEngine;
+using akb.Core.Sounds;
+using akb.Core.Managing;
+
 namespace akb.Entities.Interactions
 {
     public class MineTrapScript : MonoBehaviour
@@ -18,6 +21,7 @@ namespace akb.Entities.Interactions
         {
             if (other.gameObject.CompareTag("Player"))
             {
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.MineTrigger);
                 animator.SetTrigger("Shake");
             }
         }
@@ -34,6 +38,7 @@ namespace akb.Entities.Interactions
                     interactable.AttackInteraction(damageValue);
                 }
             }
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.MineExplode);
             explode.Play();
         }
         private void OnDrawGizmos()

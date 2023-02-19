@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using akb.Core.Sounds;
+using akb.Core.Managing;
 namespace akb.Entities.Interactions
 {
     public class SpearAnimationScript : MonoBehaviour
     {
         [SerializeField] float spearHitRate = 2f;
-
         float nextSpikeHit;
         Animator animator;
         bool played = false;
+        
 
         void Start()
         {
@@ -36,6 +35,7 @@ namespace akb.Entities.Interactions
             {
                 if (other.gameObject.CompareTag("Player"))
                 {
+                    ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.ArcAttack);
                     nextSpikeHit = Time.time + spearHitRate;
                     animator.SetTrigger("TrapAttack");
                     played = false;
@@ -49,18 +49,5 @@ namespace akb.Entities.Interactions
 
             animator.ResetTrigger("TrapAttack");
         }
-        //public void TrapDamageInteraction(Collider other)
-        //{
-        //    if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
-        //    {
-        //        Debug.Log("I do damage");
-        //        interactable.AttackInteraction(damageValue);
-        //    }
-        //    //if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
-        //    //{
-        //    //    Debug.Log("I do damage");
-        //    //    interactable.AttackInteraction(damageValue);
-        //    //}
-        //}
     }
 }

@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using akb.Core.Sounds;
+using akb.Core.Managing;
 using UnityEngine;
 
 public class PressurePadScript : MonoBehaviour
@@ -31,6 +31,7 @@ public class PressurePadScript : MonoBehaviour
         timeTillSpawn += Time.deltaTime;
         if (timeTillSpawn >= spawnTime)
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.ProjectileShoot);
             Instantiate(projectile, spawn.position, spawn.rotation);
             timeTillSpawn = 0;
         }
