@@ -6,7 +6,7 @@ namespace akb.Core.Managing.UI
     public class Options : MonoBehaviour
     {
         [SerializeField] Slider masterSlider;
-        [SerializeField] Slider musicSlider;
+        //[SerializeField] Slider musicSlider;
         [SerializeField] Slider soundEffectsSlider;
 
         [SerializeField] Toggle screenShakeToggle;
@@ -27,7 +27,7 @@ namespace akb.Core.Managing.UI
         void EntrySetup()
         {
             masterSlider.onValueChanged.AddListener(delegate { Master(); });
-            musicSlider.onValueChanged.AddListener(delegate { Music(); });
+            //musicSlider.onValueChanged.AddListener(delegate { Music(); });
             soundEffectsSlider.onValueChanged.AddListener(delegate { SoundEffects(); });
 
             screenShakeToggle.onValueChanged.AddListener(delegate { ScreenShake(); });
@@ -44,10 +44,10 @@ namespace akb.Core.Managing.UI
             ManagerHUB.GetManager.SoundsHandler.SetMasterVolume(masterSlider.value);
         }
 
-        void Music()
-        {
-            ManagerHUB.GetManager.SoundsHandler.ControlMainAudioSource(musicSlider.value);
-        }
+        //void Music()
+        //{
+        //    ManagerHUB.GetManager.SoundsHandler.ControlMainAudioSource(musicSlider.value);
+        //}
 
         void SoundEffects()
         {

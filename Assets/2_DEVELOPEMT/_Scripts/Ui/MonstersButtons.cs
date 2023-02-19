@@ -111,8 +111,8 @@ namespace akb.Core.Managing.UI
         {
             if (GameManager.GetManager.Database.GetIsMonsterFoundValue(GameManager.GetManager.ActiveFileID, MonsterIDs.BasicDemon) == 0)
             {
-                monsterSpriteTemplate.sprite = lockedMonstersSprite;
                 monsterDescriptionTempalte.text = lockedMonstersDescripton;
+                monsterSpriteTemplate.sprite = lockedMonstersSprite;
             }
             else
             {
