@@ -23,6 +23,7 @@ namespace akb.Core.Managing.UI
         [SerializeField] Image abilityImage;
         [SerializeField] Image buttonImage;
         [SerializeField] TextMeshProUGUI lvl;
+        [SerializeField] TextMeshProUGUI sinnerSoulNeeded;
 
         bool pointerDown;
 
@@ -45,6 +46,8 @@ namespace akb.Core.Managing.UI
         //Detect if clicks are no longer registering
         public void OnPointerUp(PointerEventData pointerEventData)
         {
+            ManagerHUB.GetManager.SoundsHandler.StopCurrentOneShot();
+
             buttonImage.color = Color.white;
 
             if (currentlvl <= lvlsCanUpgade)
@@ -103,6 +106,8 @@ namespace akb.Core.Managing.UI
                     {
                         if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier1)
                         {
+                            sinnerSoulNeeded.text = "Cost: " + ((int)SinnerSoulCostPerTier.Tier2);
+
                             currentlvl++;
 
                             ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier1);
@@ -114,7 +119,10 @@ namespace akb.Core.Managing.UI
                         }
                         else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier2)
                         {
+                            sinnerSoulNeeded.text = "Max";
+
                             currentlvl++;
+
                             ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier2);
 
                             ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
@@ -129,6 +137,8 @@ namespace akb.Core.Managing.UI
                     {
                         if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier1)
                         {
+                            sinnerSoulNeeded.text = "Cost: " + ((int)SinnerSoulCostPerTier.Tier2);
+
                             currentlvl++;
 
                             ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier1);
@@ -140,6 +150,8 @@ namespace akb.Core.Managing.UI
                         }
                         else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier2)
                         {
+                            sinnerSoulNeeded.text = "Cost: " + ((int)SinnerSoulCostPerTier.Tier3);
+
                             currentlvl++;
                             ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier2);
 
@@ -151,6 +163,8 @@ namespace akb.Core.Managing.UI
                         }
                         else if (currentlvl == 2 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier3)
                         {
+                            sinnerSoulNeeded.text = "Max";
+
                             currentlvl++;
                             ManagerHUB.GetManager.CurrencyHandler.DecreaseSinnerSoulsBy((int)SinnerSoulCostPerTier.Tier3);
 
