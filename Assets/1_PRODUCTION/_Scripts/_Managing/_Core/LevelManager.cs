@@ -45,6 +45,8 @@ namespace akb.Core.Managing.LevelLoading
 
         [SerializeField]
         LevelLoadPacket hubPacket;
+        [SerializeField]
+        LevelLoadPacket mainMenuPacket;
 
         /// <summary>
         /// The currently loaded and active scenes.
@@ -104,6 +106,9 @@ namespace akb.Core.Managing.LevelLoading
             //force load to player hub
             ForceLoad(hubPacket.PacketIndex);
         }
+
+        public void TransitToMainMenu()
+        { ForceLoad(mainMenuPacket.PacketIndex); }
 
         private void Start()
         {

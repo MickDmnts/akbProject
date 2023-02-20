@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine;
+
 using akb.Core.Managing;
 using akb.Entities.Player;
-using UnityEngine;
 
 public class VoidChecker : MonoBehaviour
 {
@@ -10,7 +9,14 @@ public class VoidChecker : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerEntity>())
         {
-            ManagerHUB.GetManager.LevelManager.TransitToHub();
+            if (ManagerHUB.GetManager.LevelManager.FocusedScene == akb.Core.Managing.LevelLoading.GameScenes.TutorialArena)
+            {
+                ManagerHUB.GetManager.PlayerEntity.PlayerMovement.TeleportEntity(Vector3.up * 2);
+            }
+            else
+            {
+                ManagerHUB.GetManager.LevelManager.TransitToHub();
+            }
         }
     }
 }

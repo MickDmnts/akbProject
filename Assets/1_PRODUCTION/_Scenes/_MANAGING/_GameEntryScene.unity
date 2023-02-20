@@ -1317,6 +1317,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5be3d39344069fc419bc4ed3ce01d8fa, type: 2}
   - {fileID: 11400000, guid: 7c25eabd1716a5147bf868bd6e081d78, type: 2}
   hubPacket: {fileID: 11400000, guid: 2119a3ac88cf0284cac0407bcd0b4ee4, type: 2}
+  mainMenuPacket: {fileID: 11400000, guid: 9554815653d48f9418feef6618e011c4, type: 2}
 --- !u!1 &2116169465
 GameObject:
   m_ObjectHideFlags: 0
