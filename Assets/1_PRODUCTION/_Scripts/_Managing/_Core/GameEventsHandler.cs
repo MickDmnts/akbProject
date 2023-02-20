@@ -181,6 +181,21 @@ namespace akb.Core.Managing.GameEvents
         }
 
         /// <summary>
+        /// Add to this event to get notified when the player must receive coins
+        /// </summary>
+        public event Action onItemBuy;
+        /// <summary>
+        /// Call to notify onCoinReceive callbacks.
+        /// </summary>
+        public void OnItemBuy()
+        {
+            if (onItemBuy != null)
+            {
+                onItemBuy();
+            }
+        }
+
+        /// <summary>
         /// Add to this event to get notified when all the room enemies die
         /// </summary>
         public event Action onRoomClear;

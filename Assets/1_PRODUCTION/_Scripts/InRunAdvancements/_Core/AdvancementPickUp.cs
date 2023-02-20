@@ -74,6 +74,8 @@ namespace akb.Core.Managing.InRunUpdates
                         ManagerHUB.GetManager.CurrencyHandler.DecreaseHellCoinsBy(price);
 
                         Destroy(gameObject);
+
+                        ManagerHUB.GetManager.GameEventsHandler.OnItemBuy();
                     }
                 }
             }

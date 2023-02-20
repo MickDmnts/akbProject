@@ -33,7 +33,7 @@ namespace akb.Core.Managing
                 {
                     tempAdv.SetPickupType(AdvancementPickUp.PickType.PromptPickup, itemSpawnLocations[i].itemPrice);
 
-                    if (itemSpawnLocations[i].itemSpawn.TryGetComponent<OpenCanvas>(out OpenCanvas tempCanvas))
+                    if (itemSpawnLocations[i].itemSpawn.TryGetComponent<ItemInfo>(out ItemInfo tempCanvas))
                     {
                         tempCanvas.SetDescriptionText(itemDescriptions[(int)type]);
                         tempCanvas.SetIcon(ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(type));
