@@ -24,6 +24,7 @@ namespace akb.Core.Managing.UI
         [SerializeField] Image buttonImage;
         [SerializeField] TextMeshProUGUI lvl;
         [SerializeField] TextMeshProUGUI sinnerSoulNeeded;
+        [SerializeField] TextMeshProUGUI SinnersSoulsText;
 
         bool pointerDown;
 
@@ -100,8 +101,6 @@ namespace akb.Core.Managing.UI
 
                 if (pointerDownTimer > requiredHoldTime)
                 {
-                    ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.AdvancementLeveled);
-
                     if (lvlsCanUpgade == 2)
                     {
                         if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier1)
@@ -115,7 +114,12 @@ namespace akb.Core.Managing.UI
 
                             ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
 
+                            SinnersSoulsText.SetText(ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls.ToString());
+
                             Reset();
+
+                            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.AdvancementLeveled);
+
                         }
                         else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier2)
                         {
@@ -129,7 +133,12 @@ namespace akb.Core.Managing.UI
 
                             lvl.text = currentlvl + " / " + 2;
 
+                            SinnersSoulsText.SetText(ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls.ToString());
+
                             Reset();
+
+                            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.AdvancementLeveled);
+
                         }
                     }
 
@@ -146,7 +155,12 @@ namespace akb.Core.Managing.UI
 
                             ManagerHUB.GetManager.AdvancementHandler.AdvanceTierOf(typeOfAdvancement);
 
+                            SinnersSoulsText.SetText(ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls.ToString());
+
                             Reset();
+
+                            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.AdvancementLeveled);
+
                         }
                         else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier2)
                         {
@@ -159,7 +173,12 @@ namespace akb.Core.Managing.UI
 
                             lvl.text = currentlvl + " / " + 3;
 
+                            SinnersSoulsText.SetText(ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls.ToString());
+
                             Reset();
+
+                            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.AdvancementLeveled);
+
                         }
                         else if (currentlvl == 2 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier3)
                         {
@@ -172,7 +191,12 @@ namespace akb.Core.Managing.UI
 
                             lvl.text = currentlvl + " / " + 3;
 
+                            SinnersSoulsText.SetText(ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls.ToString());
+
                             Reset();
+
+                            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.AdvancementLeveled);
+
                         }
                     }
 
@@ -224,6 +248,8 @@ namespace akb.Core.Managing.UI
 
         private void Reset()
         {
+            ManagerHUB.GetManager.SoundsHandler.StopCurrentOneShot();
+
             pointerDown = false;
             pointerDownTimer = 0;
         }
