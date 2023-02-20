@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using akb.Core.Sounds;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -82,6 +83,7 @@ namespace akb.Core.Managing.UI
 
         void Setter(int buttonIndex)
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
             //tutorialSpriteTemplate.sprite = tutorialSprite[buttonIndex];
             tutorialDescriptionTempalte.text = tutorialDescription[buttonIndex];
         }

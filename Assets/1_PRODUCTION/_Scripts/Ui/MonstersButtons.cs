@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 using akb.Core.Database.Monsters;
 using System;
+using akb.Core.Sounds;
 
 namespace akb.Core.Managing.UI
 {
@@ -77,6 +78,8 @@ namespace akb.Core.Managing.UI
 
         void Setter(int buttonIndex)
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
+
             if (GameManager.GetManager.Database.GetIsMonsterFoundValue(GameManager.GetManager.ActiveFileID, buttonIndex) == 0)
             {
                 monsterDescriptionTempalte.text = lockedMonstersDescripton;

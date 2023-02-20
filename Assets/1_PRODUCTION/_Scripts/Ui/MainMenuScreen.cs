@@ -1,3 +1,4 @@
+using akb.Core.Sounds;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,21 +41,25 @@ namespace akb.Core.Managing.UI
             //Load Hub scene
             ManagerHUB.GetManager.LevelManager.TransitToHub();
 
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
             ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
         }
 
         void NewGame()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
             ManagerHUB.GetManager.UIManager.EnablePanel("NewGameSlots_UI_Panel");
         }
 
         void LoadGame()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
             ManagerHUB.GetManager.UIManager.EnablePanel("SaveSlot_UI_Panel");
         }
 
         void Exit()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
             ManagerHUB.GetManager.UIManager.QuitGame();
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;

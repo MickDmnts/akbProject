@@ -1,3 +1,4 @@
+using akb.Core.Sounds;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,11 +34,15 @@ namespace akb.Core.Managing.UI
 
         void Tutorials()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.ChangePageGrimoire);
+
             ActivatePanel("Tutorials_UI_Panel");
         }
 
         void Monsters()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.ChangePageGrimoire);
+
             ActivatePanel("Monsters_UI_Panel");
         }
 

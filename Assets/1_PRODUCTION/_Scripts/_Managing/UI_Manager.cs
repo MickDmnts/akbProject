@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 using akb.Core.Managing.LevelLoading;
+using akb.Core.Sounds;
 
 namespace akb.Core.Managing.UI
 {
@@ -106,6 +107,7 @@ namespace akb.Core.Managing.UI
 
                 //TODO: Handle pausing
                 isPaused = true;
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.OpenMenu);
                 EnablePanel("PauseMenu_UI_Panel");
             }
             else
@@ -117,6 +119,8 @@ namespace akb.Core.Managing.UI
                 //TODO: Handle un-pausing
                 isPaused = false;
                 DisableAllPanels();
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.CloseMenu);
+
                 EnablePanel("GamePlayScreenPanel");
             }
         }

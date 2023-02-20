@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using akb.Core.Sounds;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,8 @@ namespace akb.Core.Managing.UI
 
         void Back()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.CloseGrimoire);
+
             ManagerHUB.GetManager.UIManager.EnablePanel("PauseMenu_UI_Panel");
         }
 

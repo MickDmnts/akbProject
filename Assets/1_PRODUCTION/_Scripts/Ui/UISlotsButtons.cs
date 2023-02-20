@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using akb.Core.Sounds;
 
 namespace akb.Core.Managing.UI
 {
@@ -58,6 +59,7 @@ namespace akb.Core.Managing.UI
 
         void Back()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
             ManagerHUB.GetManager.UIManager.EnablePanel("MainMenuScreen_UI_Panel");
         }
 
@@ -99,6 +101,7 @@ namespace akb.Core.Managing.UI
             ManagerHUB.GetManager.LevelManager.LoadNext(false);
 
             //Open the GamePlayScreenPanel (Health, rage etc)
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
             ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
         }
 
@@ -112,6 +115,7 @@ namespace akb.Core.Managing.UI
             ManagerHUB.GetManager.LevelManager.TransitToHub();
 
             //Open the GamePlayScreenPanel (Health, rage etc)
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
             ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
         }
     }

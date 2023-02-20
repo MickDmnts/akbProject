@@ -5,6 +5,7 @@ using TMPro;
 
 using akb.Core.Managing;
 using akb.Core.Managing.UpdateSystem;
+using akb.Core.Sounds;
 
 namespace akb.Core.Managing.UI
 {
@@ -35,6 +36,8 @@ namespace akb.Core.Managing.UI
 
         public void OnPointerDown(PointerEventData pointerEventData)
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.AdvancementLevelingUp);
+
             pointerDown = true;
             buttonImage.color = Color.grey;
         }
@@ -94,6 +97,8 @@ namespace akb.Core.Managing.UI
 
                 if (pointerDownTimer > requiredHoldTime)
                 {
+                    ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.AdvancementLeveled);
+
                     if (lvlsCanUpgade == 2)
                     {
                         if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier1)

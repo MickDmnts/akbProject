@@ -1,3 +1,4 @@
+using akb.Core.Sounds;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,21 +31,26 @@ namespace akb.Core.Managing.UI
 
         void ClosePauseMenu()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.CloseMenu);
+
             ManagerHUB.GetManager.UIManager.PauseGame();
         }
 
         void HellsGrimoire()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.OpenGrimoire);
             ManagerHUB.GetManager.UIManager.EnablePanel("HellsGrimoire_UI_Panel");
         }
 
         void Options()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
             ManagerHUB.GetManager.UIManager.EnablePanel("Options_UI_Panel");
         }
 
         void AbandonRun()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
             ManagerHUB.GetManager.UIManager.DisableAllPanels();
             ManagerHUB.GetManager.UIManager.PauseGame();
             ManagerHUB.GetManager.LevelManager.TransitToHub();
@@ -52,6 +58,7 @@ namespace akb.Core.Managing.UI
 
         void SaveExit()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
             ManagerHUB.GetManager.GameEventsHandler.OnSaveInitialized();
             ManagerHUB.GetManager.UIManager.QuitGame();
         }

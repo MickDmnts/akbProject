@@ -1,3 +1,4 @@
+using akb.Core.Sounds;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,26 +51,36 @@ namespace akb.Core.Managing.UI
 
         void ScreenShake()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
+
             ManagerHUB.GetManager.UIManager.CanScreenShake = screenShakeToggle.isOn;
         }
 
         void RedScreenTint()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
+
             ManagerHUB.GetManager.UIManager.CanShowScreenTint = redScreenTintToggle.isOn;
         }
 
         void HideUIELements()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
+
             ManagerHUB.GetManager.UIManager.CanShowUIElements = hideUIElementToggle.isOn;
         }
 
         void DevMode()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.UIClickSound);
+
             GameManager.GetManager.IsDevMode = devModeToggle.isOn;
         }
 
         void Back()
         {
+            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.OpenMenu);
+
             ManagerHUB.GetManager.UIManager.EnablePanel("PauseMenu_UI_Panel");
         }
     }
