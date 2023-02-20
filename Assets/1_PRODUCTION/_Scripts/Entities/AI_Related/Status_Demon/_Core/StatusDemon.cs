@@ -138,6 +138,9 @@ namespace akb.Entities.AI.Implementations.Status_Demon
                 }
             }
 
+            if (possiblePos == Vector3.zero)
+            { possiblePos = transform.position; }
+
             //Call the method callback
             generatedPositionHandler(possiblePos);
         }
@@ -188,7 +191,7 @@ namespace akb.Entities.AI.Implementations.Status_Demon
         public void ApplyStatusEffect(GameObject effect)
         {
             GameObject gfx = Instantiate<GameObject>(effect, transform);
-            gfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
+            //gfx.transform.SetParent(transform);
         }
 
         void UpdateDatabaseEntry()

@@ -59,8 +59,6 @@ namespace akb.Entities.Player.Interactions
 
             ignoreHit = false;
 
-            Debug.Log($"Attacked player for {damageValue}");
-
             if (playerEntity.GetPlayerHealth() < mitigateDamageAfter * playerEntity.GetPlayerMaxHealth())
             {
                 damageValue /= 2;

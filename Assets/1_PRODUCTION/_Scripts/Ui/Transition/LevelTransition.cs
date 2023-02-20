@@ -17,13 +17,11 @@ public class LevelTransition : MonoBehaviour
     public void FadeOut()
     {
         animator.SetTrigger("FadeOut");
-        Debug.Log("fadeout");
     }
 
     public void FadeIn()
     {
         animator.SetTrigger("FadeIn");
-        Debug.Log("fadein");
     }
 
     private void OnDestroy()

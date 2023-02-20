@@ -38,36 +38,26 @@ namespace akb.Core.Managing
         /// </summary>
         public GameObject GetNeededEffect(EffectType effectType)
         {
-            GameObject tempEffect = null;
-
             switch (effectType)
             {
                 case EffectType.Enflamed:
-                    tempEffect = Instantiate(effects[0]);
-                    break;
+                    return Instantiate(effects[0]);
 
                 case EffectType.Shocked:
-                    tempEffect = Instantiate(effects[1]);
-                    break;
+                    return Instantiate(effects[1]);
 
                 case EffectType.Stunned:
-                    tempEffect = Instantiate(effects[2]);
-                    break;
+                    return Instantiate(effects[2]);
+
 
                 case EffectType.Confused:
-                    tempEffect = Instantiate(effects[3]);
-                    break;
+                    return Instantiate(effects[3]);
 
                 case EffectType.Charmed:
-                    tempEffect = Instantiate(effects[4]);
-                    break;
-
-                default:
-                    tempEffect = null;
-                    break;
+                    return Instantiate(effects[4]);
             }
 
-            return tempEffect;
+            return null;
         }
     }
 }

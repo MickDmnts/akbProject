@@ -25,6 +25,8 @@ namespace akb.Core.Managing.UI
             newGameButton.onClick.AddListener(NewGame);
             loadGamedButton.onClick.AddListener(LoadGame);
             exitButton.onClick.AddListener(Exit);
+
+            continueButton.interactable = GameManager.GetManager.Database.GetLastUsedFileID() >= 0;
         }
 
         void Continue()

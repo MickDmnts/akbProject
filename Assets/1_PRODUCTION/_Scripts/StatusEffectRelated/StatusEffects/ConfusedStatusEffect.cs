@@ -14,6 +14,9 @@ namespace akb.Entities.Interactions
         {
             base.AttachToEntity();
 
+            if (attachedEntity == null)
+            { Destroy(gameObject); }
+
             EffectBehaviour();
 
             timeCache = activeTime;

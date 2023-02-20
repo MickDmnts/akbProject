@@ -156,6 +156,9 @@ namespace akb.Entities.AI.Implementations.Ranged_Demon
                 yield return null;
             }
 
+            if (possiblePos == Vector3.zero)
+            { possiblePos = transform.position; }
+
             //Continue to jump sequence when position sampling gets finished
             StopAllCoroutines();
             StartCoroutine(MoveToNewPos(possiblePos));
@@ -264,7 +267,7 @@ namespace akb.Entities.AI.Implementations.Ranged_Demon
         public void ApplyStatusEffect(GameObject effect)
         {
             GameObject gfx = Instantiate<GameObject>(effect, transform);
-            gfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
+            //gfx.transform.SetParent(transform);
         }
 
         void UpdateDatabaseEntry()

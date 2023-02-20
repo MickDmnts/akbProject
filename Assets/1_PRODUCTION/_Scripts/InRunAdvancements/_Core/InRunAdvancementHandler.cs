@@ -67,12 +67,10 @@ namespace akb.Core.Managing.InRunUpdates
         {
             if (GameManager.GetManager.Database.GetHasActiveRun(saveFileID))
             {
-                Debug.Log("Had save");
                 LoadUnusedAdvancements(saveFileID);
             }
             else
             {
-                Debug.Log("Had NO save");
                 InitializeAdvancements();
             }
         }

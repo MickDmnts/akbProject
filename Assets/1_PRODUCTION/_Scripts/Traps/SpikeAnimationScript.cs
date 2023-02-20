@@ -51,7 +51,6 @@ namespace akb.Entities.Interactions
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i] == null) continue;
-                Debug.Log(colliders[i].name);
 
                 if (colliders[i].TryGetComponent<IInteractable>(out IInteractable interactable))
                 {

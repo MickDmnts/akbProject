@@ -27,7 +27,6 @@ namespace akb.Core.Managing.UI
         void EntrySetup()
         {
             masterSlider.onValueChanged.AddListener(delegate { Master(); });
-            //musicSlider.onValueChanged.AddListener(delegate { Music(); });
             soundEffectsSlider.onValueChanged.AddListener(delegate { SoundEffects(); });
 
             screenShakeToggle.onValueChanged.AddListener(delegate { ScreenShake(); });
@@ -44,11 +43,6 @@ namespace akb.Core.Managing.UI
             ManagerHUB.GetManager.SoundsHandler.SetMasterVolume(masterSlider.value);
         }
 
-        //void Music()
-        //{
-        //    ManagerHUB.GetManager.SoundsHandler.ControlMainAudioSource(musicSlider.value);
-        //}
-
         void SoundEffects()
         {
             ManagerHUB.GetManager.SoundsHandler.ControlSFXAudioSource(soundEffectsSlider.value);
@@ -56,25 +50,21 @@ namespace akb.Core.Managing.UI
 
         void ScreenShake()
         {
-            screenShakeToggle.isOn = !screenShakeToggle.isOn;
             ManagerHUB.GetManager.UIManager.CanScreenShake = screenShakeToggle.isOn;
         }
 
         void RedScreenTint()
         {
-            redScreenTintToggle.isOn = !redScreenTintToggle.isOn;
             ManagerHUB.GetManager.UIManager.CanShowScreenTint = redScreenTintToggle.isOn;
         }
 
         void HideUIELements()
         {
-            hideUIElementToggle.isOn = !hideUIElementToggle.isOn;
             ManagerHUB.GetManager.UIManager.CanShowUIElements = hideUIElementToggle.isOn;
         }
 
         void DevMode()
         {
-            devModeToggle.isOn = !devModeToggle.isOn;
             GameManager.GetManager.IsDevMode = devModeToggle.isOn;
         }
 

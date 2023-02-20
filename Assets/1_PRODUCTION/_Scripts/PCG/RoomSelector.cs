@@ -48,7 +48,6 @@ namespace akb.Core.Managing.PCG
         void LoadSaveGameData(int saveFileID)
         {
             currentLevel = GameManager.GetManager.Database.GetLastRoom(saveFileID);
-            Debug.Log("cLevel" + currentLevel);
         }
 
         void SaveLastRoom()
@@ -105,8 +104,6 @@ namespace akb.Core.Managing.PCG
             //Entry room
             if (currentLevel == ENTRY_LEVEL)
             {
-                Debug.Log("Entered entry sequence");
-
                 currentLevel++;
 
                 nextRoom = roomDataContainer.GetRoomData(roomWorld, RoomType.Entry);
@@ -121,8 +118,6 @@ namespace akb.Core.Managing.PCG
             //Battle - store - Heal rooms
             else if (currentLevel >= BATTLE_MIN && currentLevel <= BATTLE_MAX)
             {
-                Debug.Log("Entered Battle sequence");
-
                 if (IsHealthAboveFiftyPercent(ManagerHUB.GetManager.PlayerEntity.GetPlayerHealth(), ManagerHUB.GetManager.PlayerEntity.GetPlayerMaxHealth()))
                 {
                     if (HasEnoughMoney(accumulatedCoins, coinsNeeded))
@@ -148,8 +143,6 @@ namespace akb.Core.Managing.PCG
             //Quaranted heal before boss
             else if (currentLevel == HEAL_LEVEL)
             {
-                Debug.Log("Entered heal sequence");
-
                 currentLevel++;
 
                 if (ManagerHUB.GetManager.PlayerEntity.GetPlayerHealth() == ManagerHUB.GetManager.PlayerEntity.GetPlayerMaxHealth())
@@ -164,15 +157,10 @@ namespace akb.Core.Managing.PCG
             //Boss room final level
             else
             {
-                Debug.Log("Entered Boss sequence");
-
                 currentLevel = 0;
                 nextRoom = roomDataContainer.GetRoomData(roomWorld, RoomType.Boss);
 
                 roomDataContainer.ResetWorlds();
-
-                //For debug
-                ManagerHUB.GetManager.LevelManager.TransitToHub();
             }
 
             return nextRoom;

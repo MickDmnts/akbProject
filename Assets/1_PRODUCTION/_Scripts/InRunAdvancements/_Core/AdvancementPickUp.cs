@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using akb.Entities.Player;
+using UnityEngine.InputSystem;
 
 namespace akb.Core.Managing.InRunUpdates
 {
@@ -17,8 +18,8 @@ namespace akb.Core.Managing.InRunUpdates
 
         bool canPickup = false;
 
-
         int price = 0;
+        InputAction buyAction;
 
         /// <summary>
         /// The advancement slot THIS gameObject corresponds to.
@@ -39,6 +40,8 @@ namespace akb.Core.Managing.InRunUpdates
 
         private void OnTriggerEnter(Collider other)
         {
+            buyAction = ManagerHUB.GetManager.PlayerEntity.PlayerInputs.Player.Buy;
+            buyAction.Enable();
             switch (pickType)
             {
                 case PickType.PromptPickup:
@@ -52,8 +55,7 @@ namespace akb.Core.Managing.InRunUpdates
                     if (other.GetComponent<PlayerEntity>())
                     {
                         ManagerHUB.GetManager.SlotsHandler.SetAdvancement(slot, advType);
-                        Debug.Log($"Set {slot} to {advType}");
-                        Destroy(transform.root.gameObject);
+                        Destroy(gameObject);
                     }
                     break;
             }
@@ -63,7 +65,7 @@ namespace akb.Core.Managing.InRunUpdates
         {
             if (canPickup)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (buyAction.WasPressedThisFrame())
                 {
                     if (ManagerHUB.GetManager.CurrencyHandler.GetHellCoins >= price)
                     {
@@ -71,7 +73,7 @@ namespace akb.Core.Managing.InRunUpdates
 
                         ManagerHUB.GetManager.CurrencyHandler.DecreaseHellCoinsBy(price);
 
-                        Destroy(transform.root.gameObject);
+                        Destroy(gameObject);
                     }
                 }
             }

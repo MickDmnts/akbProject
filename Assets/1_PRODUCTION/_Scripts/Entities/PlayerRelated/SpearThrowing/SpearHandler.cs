@@ -65,7 +65,7 @@ namespace akb.Entities.Player.SpearHandling
             this.playerSpearThrow = playerSpearThrow;
 
             SpearCollider.isTrigger = true;
-            
+
             runningBehaviour = SimulateSpearTravel();
             StartCoroutine(runningBehaviour);
         }
@@ -179,10 +179,7 @@ namespace akb.Entities.Player.SpearHandling
 
         IEnumerator SimulateSpearRetraction(Transform spearRecallPoint)
         {
-            /*            if (!GameManager.S.SlotsHandler.SpearInRunAdvancements.GetIsAdvancementActive(SpearRunAdvancements.PullEnemyOnSpearRecall))
-                        {*/
             gameObject.transform.SetParent(poolParent);
-            //}
 
             currentTravelDirection = TravelDirection.Recall;
 
