@@ -21,7 +21,10 @@ namespace akb.Entities.Interactions
         {
             base.AttachToEntity();
 
-            interactable = GetAttachedEntity().GetComponent<IInteractable>();
+            if (attachedEntity == null)
+            { Destroy(gameObject); }
+
+            interactable = GetAttachedEntity().gameObject.GetComponent<IInteractable>();
 
             isActive = true;
 

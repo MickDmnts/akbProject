@@ -24,7 +24,7 @@ namespace akb.Entities.Interactions
 
         public override void EffectBehaviour()
         {
-            confusable = GetAttachedEntity().GetComponent<IConfusable>();
+            confusable = GetAttachedEntity().gameObject.GetComponent<IConfusable>();
 
             if (confusable != null)
             {

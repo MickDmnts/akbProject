@@ -12,6 +12,9 @@ namespace akb.Entities.Interactions
         {
             base.AttachToEntity();
 
+            if (attachedEntity == null)
+            { Destroy(gameObject); }
+
             EffectBehaviour();
 
             timeCache = activeTime;
@@ -19,7 +22,7 @@ namespace akb.Entities.Interactions
 
         public override void EffectBehaviour()
         {
-            stunnable = GetAttachedEntity().GetComponent<IStunnable>();
+            stunnable = GetAttachedEntity().gameObject.GetComponent<IStunnable>();
 
             if (stunnable != null)
             {

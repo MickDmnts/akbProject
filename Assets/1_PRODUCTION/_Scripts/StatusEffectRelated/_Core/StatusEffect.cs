@@ -20,11 +20,12 @@ namespace akb.Entities.Interactions
         public virtual void AttachToEntity()
         {
             if (transform.parent != null)
-            { attachedEntity = transform.parent.GetComponent<Entity>(); }
+            {
+                attachedEntity = transform.parent.GetComponent<Entity>();
+                Debug.Log(attachedEntity.name);
+            }
             else
             { Destroy(gameObject); }
-
-            Debug.Log(attachedEntity.name);
         }
 
         public virtual void ApplyVFXToEntity(Entity attachedEntity)

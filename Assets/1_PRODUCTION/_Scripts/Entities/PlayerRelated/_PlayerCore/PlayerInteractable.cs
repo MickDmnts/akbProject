@@ -99,6 +99,7 @@ namespace akb.Entities.Player.Interactions
         public void ApplyStatusEffect(GameObject effect)
         {
             GameObject temp = GameObject.Instantiate(effect, playerEntity.transform);
+            temp.transform.SetParent(playerEntity.transform);
         }
 
         #region SHOCKED_INTERACTION

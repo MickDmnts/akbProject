@@ -18,9 +18,12 @@ namespace akb.Entities.Interactions
         {
             base.AttachToEntity();
 
+            if (attachedEntity == null)
+            { Destroy(gameObject); }
+
             timeCache = activeTime;
 
-            charmable = transform.root.gameObject.GetComponent<ICharmable>();
+            charmable = transform.parent.gameObject.GetComponent<ICharmable>();
 
             if (charmable != null)
             {

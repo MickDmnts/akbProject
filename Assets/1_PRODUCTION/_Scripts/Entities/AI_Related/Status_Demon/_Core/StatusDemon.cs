@@ -191,7 +191,6 @@ namespace akb.Entities.AI.Implementations.Status_Demon
         public void ApplyStatusEffect(GameObject effect)
         {
             GameObject gfx = Instantiate<GameObject>(effect, transform);
-            //gfx.transform.SetParent(transform);
         }
 
         void UpdateDatabaseEntry()

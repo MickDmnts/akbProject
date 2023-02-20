@@ -21,7 +21,7 @@ namespace akb.Entities.Interactions
 
         public override void EffectBehaviour()
         {
-            shockable = GetAttachedEntity().GetComponent<IShockable>();
+            shockable = GetAttachedEntity().gameObject.GetComponent<IShockable>();
 
             if (shockable != null)
             {
