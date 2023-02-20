@@ -192,6 +192,7 @@ namespace akb.Entities.AI.Implementations.Big_Demon
                 gfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
 
                 MoveLayerOnDeath();
+                Destroy(circleGraphic);
 
                 ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
                 ManagerHUB.GetManager.GameEventsHandler.OnCoinReceive(coinsOnDeath);
@@ -202,7 +203,6 @@ namespace akb.Entities.AI.Implementations.Big_Demon
         public void ApplyStatusEffect(GameObject effect)
         {
             GameObject gfx = Instantiate<GameObject>(effect, transform);
-            //gfx.transform.SetParent(transform);
         }
 
         void UpdateDatabaseEntry()

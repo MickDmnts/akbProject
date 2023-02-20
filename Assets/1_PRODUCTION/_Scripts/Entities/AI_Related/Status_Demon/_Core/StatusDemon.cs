@@ -181,6 +181,7 @@ namespace akb.Entities.AI.Implementations.Status_Demon
                 gfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
 
                 MoveLayerOnDeath();
+                Destroy(circleGraphic);
 
                 ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
                 ManagerHUB.GetManager.GameEventsHandler.OnCoinReceive(coinsOnDeath);

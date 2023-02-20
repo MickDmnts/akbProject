@@ -22,14 +22,11 @@ namespace akb.Entities.Interactions
             if (transform.parent != null)
             {
                 attachedEntity = transform.parent.gameObject;
-                Debug.Log(attachedEntity.name);
             }
             else
             {
                 return;
             }
-
-            Debug.Log(attachedEntity.name);
         }
 
         public virtual void ApplyVFXToEntity(GameObject attachedEntity)

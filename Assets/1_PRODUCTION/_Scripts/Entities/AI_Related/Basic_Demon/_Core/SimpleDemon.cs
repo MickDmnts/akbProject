@@ -145,7 +145,7 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
 
                 MoveLayerOnDeath();
 
-                coneGraphic = null;
+                Destroy(coneGraphic);
 
                 GameObject gfx = Instantiate(deathGFX);
                 gfx.transform.position = transform.position;
@@ -161,7 +161,6 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
         public void ApplyStatusEffect(GameObject effect)
         {
             GameObject gfx = Instantiate<GameObject>(effect, transform);
-            //gfx.transform.SetParent(transform);
         }
 
         void UpdateDatabaseEntry()

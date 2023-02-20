@@ -253,6 +253,7 @@ namespace akb.Entities.AI.Implementations.Ranged_Demon
                 GetDemonAnimations().PlayDeathAnimation();
 
                 MoveLayerOnDeath();
+                Destroy(lineGraphic);
 
                 GameObject gfx = Instantiate(deathGFX);
                 gfx.transform.position = transform.position;
