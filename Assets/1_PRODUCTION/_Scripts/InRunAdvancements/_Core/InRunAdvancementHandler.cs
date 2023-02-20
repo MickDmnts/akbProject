@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 
 using akb.Core.Serialization;
+using akb.Core.Managing.LevelLoading;
 
 namespace akb.Core.Managing.InRunUpdates
 {
@@ -41,6 +42,8 @@ namespace akb.Core.Managing.InRunUpdates
 
         void DropReward()
         {
+            if (ManagerHUB.GetManager.LevelManager.FocusedScene == GameScenes.TutorialArena) { return; }
+
             if (ManagerHUB.GetManager.SlotsHandler.AreSlotsFilled())
             {
                 ManagerHUB.GetManager.CurrencyHandler.IncreaseSinnerSoulsBy(1);

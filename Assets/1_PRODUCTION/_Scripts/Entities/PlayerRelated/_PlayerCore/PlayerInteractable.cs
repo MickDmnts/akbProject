@@ -80,6 +80,8 @@ namespace akb.Entities.Player.Interactions
 
         void SubtractHealth(float subtractionValue)
         {
+            if (ManagerHUB.GetManager.LevelManager.FocusedScene == GameScenes.TutorialArena) { return; }
+
             playerEntity.SetPlayerHealth(playerEntity.GetPlayerHealth() - subtractionValue);
 
             //Notify coin multiplyer reset

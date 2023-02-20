@@ -63,6 +63,8 @@ namespace akb.Core.Managing.Currencies
 
         void AddCoinsToPlayer(int coinValue)
         {
+            if (ManagerHUB.GetManager.LevelManager.FocusedScene == GameScenes.TutorialArena) { return; }
+
             coinValue = coinValue * (int)coinMultiplier.GetMultiplierValue;
 
             hellCoins += coinValue;
