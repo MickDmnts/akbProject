@@ -19,28 +19,31 @@ namespace akb.Entities.Interactions
 
         public override void OnEnable()
         {
-
             base.AttachToEntity();
 
-            if (attachedEntity == null)
+            if (GetAttachedEntity() != null)
+            {
+                interactable = GetAttachedEntity().GetComponent<IInteractable>();
+
+                isActive = true;
+
+                timeCache = activeTime;
+                delayCache = Time.time + delayUntilEffectStart;
+
+                ApplyVFXToEntity(GetAttachedEntity());
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.GetEnflamed);
+            }
+            else
             {
                 Destroy(gameObject);
-                return;
+                base.DestroyEffect();
             }
-
-            interactable = GetAttachedEntity().gameObject.GetComponent<IInteractable>();
-
-            isActive = true;
-
-            timeCache = activeTime;
-            delayCache = Time.time + delayUntilEffectStart;
-
-            ApplyVFXToEntity(GetAttachedEntity());
-            ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.GetEnflamed);
         }
 
         public override void Update()
         {
+            if (interactable == null) { return; }
+
             if (Time.time <= delayCache) return;
 
             if (isActive)

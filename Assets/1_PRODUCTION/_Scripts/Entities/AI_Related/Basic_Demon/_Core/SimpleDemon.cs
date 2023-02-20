@@ -154,8 +154,12 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
                 { gfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform); }
 
                 //Notify subs for an agent death
-                ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
-                ManagerHUB.GetManager.GameEventsHandler.OnCoinReceive(coinsOnDeath);
+                if (ManagerHUB.GetManager.RoomSelector.CurrentLevel != 8)
+                {
+                    ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
+                    ManagerHUB.GetManager.GameEventsHandler.OnCoinReceive(coinsOnDeath);
+                }
+
                 UpdateDatabaseEntry();
             }
         }

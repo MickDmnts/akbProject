@@ -1215,16 +1215,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldData:
   - WorldName: World 1
-    entry: {fileID: 5480419412266862194, guid: 7624b228756a4be4c9e4bf7c3fd56974, type: 3}
+    entry: {fileID: 1626758069548598754, guid: 824e64f12d9160248bd75224be5d2c5c, type: 3}
     battleRooms:
-    - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
     - {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9, type: 3}
-    - {fileID: -8114173449490702392, guid: af1565f6fcfe7cb448907e3cb9224a12, type: 3}
+    - {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9, type: 3}
+    - {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9, type: 3}
     - {fileID: 7907759588940549336, guid: 3d5143905e073534e87a0fdd10209297, type: 3}
     - {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9, type: 3}
     - {fileID: -8114173449490702392, guid: af1565f6fcfe7cb448907e3cb9224a12, type: 3}
-    - {fileID: 7907759588940549336, guid: 3d5143905e073534e87a0fdd10209297, type: 3}
-    - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
+    - {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9, type: 3}
+    - {fileID: -3159115323029371462, guid: 9d126715966e9d64ea4cb6fe1fd4e1e9, type: 3}
     - {fileID: 6357048811574813811, guid: 87763efc12397304c95a61aea7c1c736, type: 3}
     battleRoomsCopy: []
     usedBattleRooms: []

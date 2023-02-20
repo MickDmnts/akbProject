@@ -70,7 +70,8 @@ namespace akb.Entities.Player
         {
             if (scene != GameScenes.PlayerHUB) { return; }
 
-            moveSpeed = moveSpeedCache;
+            moveSpeed = 10f;
+            SetIsInputInverted(false);
         }
         #endregion
 

@@ -18,9 +18,6 @@ namespace akb.Entities.AI.Implementations.Astaroth
 
     public class BossAstaroth : AI_Entity, IInteractable
     {
-        [Header("Astaroth specific")]
-        [SerializeField] GameObject projectilePrefab;
-
         [Header("GFXs")]
         [SerializeField] GameObject secondPhaseShield;
 
@@ -132,6 +129,7 @@ namespace akb.Entities.AI.Implementations.Astaroth
 
         IEnumerator AfterAstarothDeath()
         {
+            Debug.Log("Astaroth died");
             yield return new WaitForSeconds(5f);
 
             ManagerHUB.GetManager.LevelManager.TransitToHub();

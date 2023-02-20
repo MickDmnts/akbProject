@@ -13,11 +13,6 @@ namespace akb.Entities.Interactions
         public override void OnEnable()
         {
             base.AttachToEntity();
-            if (attachedEntity == null)
-            {
-                Destroy(gameObject);
-                return;
-            }
 
             EffectBehaviour();
 
@@ -26,12 +21,16 @@ namespace akb.Entities.Interactions
 
         public override void EffectBehaviour()
         {
-            shockable = GetAttachedEntity().gameObject.GetComponent<IShockable>();
+            if (GetAttachedEntity() != null)
+            {
+                shockable = GetAttachedEntity().GetComponent<IShockable>();
+            }
 
             if (shockable != null)
             {
                 if (shockable.IsGettingShocked())
                 {
+                    Destroy(gameObject);
                     base.DestroyEffect();
                 }
                 else

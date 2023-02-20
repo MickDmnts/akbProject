@@ -12,11 +12,6 @@ namespace akb.Entities.Interactions
         {
             base.AttachToEntity();
 
-            if (attachedEntity == null)
-            {
-                Destroy(gameObject);
-                return;
-            }
 
             EffectBehaviour();
 
@@ -25,12 +20,16 @@ namespace akb.Entities.Interactions
 
         public override void EffectBehaviour()
         {
-            stunnable = GetAttachedEntity().GetComponent<IStunnable>();
+            if (GetAttachedEntity() != null)
+            {
+                stunnable = GetAttachedEntity().GetComponent<IStunnable>();
+            }
 
             if (stunnable != null)
             {
                 if (stunnable.IsAlreadyStunned())
                 {
+                    Destroy(gameObject);
                     base.DestroyEffect();
                 }
                 else

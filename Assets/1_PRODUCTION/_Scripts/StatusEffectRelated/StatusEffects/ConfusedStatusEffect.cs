@@ -14,12 +14,6 @@ namespace akb.Entities.Interactions
         {
             base.AttachToEntity();
 
-            if (attachedEntity == null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
             EffectBehaviour();
 
             timeCache = activeTime;
@@ -27,12 +21,16 @@ namespace akb.Entities.Interactions
 
         public override void EffectBehaviour()
         {
-            confusable = GetAttachedEntity().GetComponent<IConfusable>();
+            if (GetAttachedEntity() != null)
+            {
+                confusable = GetAttachedEntity().GetComponent<IConfusable>();
+            }
 
             if (confusable != null)
             {
                 if (confusable.IsConfused())
                 {
+                    Destroy(gameObject);
                     base.DestroyEffect();
                 }
                 else
