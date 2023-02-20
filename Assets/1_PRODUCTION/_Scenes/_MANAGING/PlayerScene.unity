@@ -1850,6 +1850,7 @@ MonoBehaviour:
   buttonImage: {fileID: 477078283}
   lvl: {fileID: 1782313949}
   sinnerSoulNeeded: {fileID: 705642661}
+  SinnersSoulsText: {fileID: 783534291}
   lvlsCanUpgade: 2
 --- !u!114 &477078283
 MonoBehaviour:
@@ -4136,6 +4137,7 @@ MonoBehaviour:
   buttonImage: {fileID: 965051134}
   lvl: {fileID: 813520325}
   sinnerSoulNeeded: {fileID: 1073450002}
+  SinnersSoulsText: {fileID: 783534291}
   lvlsCanUpgade: 2
 --- !u!114 &965051134
 MonoBehaviour:
@@ -6042,6 +6044,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1555731909}
   lvl: {fileID: 250007515}
   sinnerSoulNeeded: {fileID: 1771573863}
+  SinnersSoulsText: {fileID: 783534291}
   lvlsCanUpgade: 3
 --- !u!114 &1555731909
 MonoBehaviour:
@@ -6399,6 +6402,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1641933029}
   lvl: {fileID: 1164510531}
   sinnerSoulNeeded: {fileID: 170580195}
+  SinnersSoulsText: {fileID: 783534291}
   lvlsCanUpgade: 2
 --- !u!114 &1641933029
 MonoBehaviour:
@@ -6804,6 +6808,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1698576327}
   lvl: {fileID: 585262236}
   sinnerSoulNeeded: {fileID: 1103664679}
+  SinnersSoulsText: {fileID: 783534291}
   lvlsCanUpgade: 3
 --- !u!114 &1698576327
 MonoBehaviour:
@@ -7343,6 +7348,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1937515960}
   lvl: {fileID: 909415949}
   sinnerSoulNeeded: {fileID: 981949661}
+  SinnersSoulsText: {fileID: 783534291}
   lvlsCanUpgade: 2
 --- !u!114 &1937515960
 MonoBehaviour:

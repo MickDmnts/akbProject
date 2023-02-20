@@ -30,8 +30,13 @@ public class UpdateCurrency : MonoBehaviour
     [SerializeField]
     Sprite defaultImage;
 
+    [SerializeField]
+    Button defaultButton;
+
     private void OnEnable()
     {
+        defaultButton.Select();
+
         HellsCoinsText.SetText("Hell Coins : " + ManagerHUB.GetManager.CurrencyHandler.GetHellCoins.ToString());
         SinnersSoulsText.SetText("Sinner's Souls : " + ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls.ToString());
 
