@@ -47,6 +47,11 @@ public class Spawner : MonoBehaviour
             }
 
             currentRound++;
+
+            if (currentRound >= 3)
+            {
+                ManagerHUB.GetManager.LevelManager.TransitToHub();
+            }
         }
     }
 
