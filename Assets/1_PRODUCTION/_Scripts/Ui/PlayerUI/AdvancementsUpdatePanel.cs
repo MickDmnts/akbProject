@@ -103,7 +103,7 @@ namespace akb.Core.Managing.UI
                 {
                     if (lvlsCanUpgade == 2)
                     {
-                        if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier1)
+                        if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls >= (int)SinnerSoulCostPerTier.Tier1)
                         {
                             sinnerSoulNeeded.text = "Cost: " + ((int)SinnerSoulCostPerTier.Tier2);
 
@@ -121,7 +121,7 @@ namespace akb.Core.Managing.UI
                             ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.AdvancementLeveled);
 
                         }
-                        else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier2)
+                        else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls >= (int)SinnerSoulCostPerTier.Tier2)
                         {
                             sinnerSoulNeeded.text = "Max";
 
@@ -144,7 +144,7 @@ namespace akb.Core.Managing.UI
 
                     if (lvlsCanUpgade == 3)
                     {
-                        if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier1)
+                        if (currentlvl == 0 && ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls >= (int)SinnerSoulCostPerTier.Tier1)
                         {
                             sinnerSoulNeeded.text = "Cost: " + ((int)SinnerSoulCostPerTier.Tier2);
 
@@ -162,7 +162,7 @@ namespace akb.Core.Managing.UI
                             ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.AdvancementLeveled);
 
                         }
-                        else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier2)
+                        else if (currentlvl == 1 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls >= (int)SinnerSoulCostPerTier.Tier2)
                         {
                             sinnerSoulNeeded.text = "Cost: " + ((int)SinnerSoulCostPerTier.Tier3);
 
@@ -180,7 +180,7 @@ namespace akb.Core.Managing.UI
                             ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.AdvancementLeveled);
 
                         }
-                        else if (currentlvl == 2 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls > (int)SinnerSoulCostPerTier.Tier3)
+                        else if (currentlvl == 2 & ManagerHUB.GetManager.CurrencyHandler.GetSinnerSouls >= (int)SinnerSoulCostPerTier.Tier3)
                         {
                             sinnerSoulNeeded.text = "Max";
 
