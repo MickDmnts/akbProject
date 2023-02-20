@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         ManagerHUB.GetManager.GameEventsHandler.onEnemyDeath += SubtractActiveEnemy;
+        currentRound++;
         SpawnWave();
     }
 
