@@ -69,7 +69,9 @@ namespace akb.Core.Managing.Currencies
 
             GameObject temp = Instantiate(coinGainGFX);
             temp.transform.position = ManagerHUB.GetManager.PlayerEntity.transform.position + Vector3.up;
-            temp.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
+
+            if (ManagerHUB.GetManager.RoomSelector.CurrentRoomGO != null)
+            { temp.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform); }
 
             //Update the database value
             GameManager.GetManager.Database.UpdateInRunCoinValue(hellCoins, GameManager.GetManager.ActiveFileID);

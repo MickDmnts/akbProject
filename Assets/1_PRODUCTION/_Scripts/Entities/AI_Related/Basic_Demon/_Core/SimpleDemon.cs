@@ -149,7 +149,9 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
 
                 GameObject gfx = Instantiate(deathGFX);
                 gfx.transform.position = transform.position;
-                gfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform);
+
+                if (ManagerHUB.GetManager.RoomSelector.CurrentRoomGO != null)
+                { gfx.transform.SetParent(ManagerHUB.GetManager.RoomSelector.CurrentRoomGO.transform); }
 
                 //Notify subs for an agent death
                 ManagerHUB.GetManager.GameEventsHandler.OnEnemyDeath();
