@@ -11,7 +11,7 @@ namespace akb.Entities.Interactions
         [SerializeField] protected EffectType effectType;
         [SerializeField] protected GameObject effectParticle;
 
-        protected Entity attachedEntity;
+        protected GameObject attachedEntity;
         protected GameObject particleHolder;
         protected bool isActive = false;
 
@@ -21,14 +21,18 @@ namespace akb.Entities.Interactions
         {
             if (transform.parent != null)
             {
-                attachedEntity = transform.parent.GetComponent<Entity>();
+                attachedEntity = transform.parent.gameObject;
                 Debug.Log(attachedEntity.name);
             }
             else
-            { Destroy(gameObject); }
+            {
+                return;
+            }
+
+            Debug.Log(attachedEntity.name);
         }
 
-        public virtual void ApplyVFXToEntity(Entity attachedEntity)
+        public virtual void ApplyVFXToEntity(GameObject attachedEntity)
         {
             particleHolder = new GameObject("Effect particles");
             particleHolder.transform.SetParent(attachedEntity.transform, false);
@@ -56,6 +60,6 @@ namespace akb.Entities.Interactions
 
         public abstract void OnDisable();
 
-        public Entity GetAttachedEntity() => attachedEntity;
+        public GameObject GetAttachedEntity() => attachedEntity;
     }
 }

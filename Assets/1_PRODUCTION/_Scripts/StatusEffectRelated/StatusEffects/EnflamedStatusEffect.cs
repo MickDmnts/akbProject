@@ -19,10 +19,14 @@ namespace akb.Entities.Interactions
 
         public override void OnEnable()
         {
+
             base.AttachToEntity();
 
             if (attachedEntity == null)
-            { Destroy(gameObject); }
+            {
+                Destroy(gameObject);
+                return;
+            }
 
             interactable = GetAttachedEntity().gameObject.GetComponent<IInteractable>();
 

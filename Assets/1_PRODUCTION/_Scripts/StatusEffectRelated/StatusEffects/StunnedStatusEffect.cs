@@ -22,7 +22,7 @@ namespace akb.Entities.Interactions
 
         public override void EffectBehaviour()
         {
-            stunnable = GetAttachedEntity().gameObject.GetComponent<IStunnable>();
+            stunnable = GetAttachedEntity().GetComponent<IStunnable>();
 
             if (stunnable != null)
             {
