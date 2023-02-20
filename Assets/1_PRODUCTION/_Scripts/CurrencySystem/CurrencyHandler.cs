@@ -1,3 +1,4 @@
+using akb.Core.Managing.LevelLoading;
 using UnityEngine;
 
 namespace akb.Core.Managing.Currencies
@@ -29,6 +30,7 @@ namespace akb.Core.Managing.Currencies
 
             ManagerHUB.GetManager.GameEventsHandler.onCoinReceive += AddCoinsToPlayer;
             ManagerHUB.GetManager.GameEventsHandler.onAstarothDeath += ReceiveBossSouls;
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged += ResetCoinsOnHub;
         }
 
         void NewGameBehaviour(int saveFileID)
@@ -46,6 +48,14 @@ namespace akb.Core.Managing.Currencies
         }
 
         #region UTILITIES
+        void ResetCoinsOnHub(GameScenes scene)
+        {
+            if (scene == GameScenes.PlayerHUB)
+            {
+                hellCoins = 0;
+            }
+        }
+
         void ReceiveBossSouls()
         {
             IncreaseSinnerSoulsBy(3);
@@ -99,6 +109,7 @@ namespace akb.Core.Managing.Currencies
 
             ManagerHUB.GetManager.GameEventsHandler.onCoinReceive -= AddCoinsToPlayer;
             ManagerHUB.GetManager.GameEventsHandler.onAstarothDeath -= ReceiveBossSouls;
+            ManagerHUB.GetManager.GameEventsHandler.onSceneChanged -= ResetCoinsOnHub;
 
             coinMultiplier.UnsubEvents();
         }

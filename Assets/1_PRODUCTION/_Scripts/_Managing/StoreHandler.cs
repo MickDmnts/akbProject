@@ -13,6 +13,7 @@ namespace akb.Core.Managing
 
     public class StoreHandler : MonoBehaviour
     {
+        [SerializeField] string[] itemDescriptions;
         [SerializeField] ItemPacket[] itemSpawnLocations;
 
         private void Start()
@@ -34,7 +35,7 @@ namespace akb.Core.Managing
 
                     if (itemSpawnLocations[i].itemSpawn.TryGetComponent<OpenCanvas>(out OpenCanvas tempCanvas))
                     {
-                        tempCanvas.SetDescriptionText("Temp description");
+                        tempCanvas.SetDescriptionText(itemDescriptions[(int)type]);
                         tempCanvas.SetIcon(ManagerHUB.GetManager.InRunAdvancementHandler.GetAdvacementSprite(type));
                         tempCanvas.SetPriceText(itemSpawnLocations[i].itemPrice);
                     }

@@ -305,7 +305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6050371786444503248
 Transform:
   m_ObjectHideFlags: 0
@@ -370,6 +370,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571a071d56af1754c9553434e97ce9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDescriptions:
+  - Every third attack causes Enflamed
+  - Every third attack causes damage to a group of nearby minions and Shocked
+  - Every third attack causes the enemy to get stunned
+  - Upon retraction, the trident pierces through targets dealing damage
+  - Upon teleport, cause damage to the enemies around you
+  - Double your movement speed upon dodging
+  - Deal damage and push enemies upon dodging
+  - 'Shock and awe upon dodging '
+  - Ignore the first hit you take on every room
+  - Increase by 1.5 the amount of hell coins you gather
+  - After every room, restore 10% of your max health
+  - While on devil rage, enflame and damage everything around you
+  - While on devil rage, double your movement speed
+  - While on devil rage, your rolls become small teleportations
   itemSpawnLocations:
   - itemSpawn: {fileID: 4217373030199669020}
     itemPrice: 50
@@ -1048,7 +1063,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1352
+  m_VersionIndex: 1355
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2430,6 +2445,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8313815716942878415}
     m_Modifications:
+    - target: {fileID: 4824404611717890505, guid: 79640cf8e9c1a1541ae61c6a054ceaee,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5642518537587478105, guid: 79640cf8e9c1a1541ae61c6a054ceaee,
         type: 3}
       propertyPath: m_Name

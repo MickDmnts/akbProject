@@ -15,7 +15,10 @@ namespace akb.Entities.Interactions
             base.AttachToEntity();
 
             if (attachedEntity == null)
-            { Destroy(gameObject); }
+            {
+                Destroy(gameObject);
+                return;
+            }
 
             EffectBehaviour();
 
@@ -24,7 +27,7 @@ namespace akb.Entities.Interactions
 
         public override void EffectBehaviour()
         {
-            confusable = GetAttachedEntity().gameObject.GetComponent<IConfusable>();
+            confusable = GetAttachedEntity().GetComponent<IConfusable>();
 
             if (confusable != null)
             {

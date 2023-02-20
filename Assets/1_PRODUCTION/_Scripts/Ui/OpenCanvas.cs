@@ -37,7 +37,7 @@ public class OpenCanvas : MonoBehaviour
 
     public void SetDescriptionText(string description)
     {
-        price.SetText("Description: " + description);
+        this.description.SetText("Description: " + description);
     }
 
     public void SetIcon(Sprite icon)

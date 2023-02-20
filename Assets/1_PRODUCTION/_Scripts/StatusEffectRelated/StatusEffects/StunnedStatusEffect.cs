@@ -13,7 +13,10 @@ namespace akb.Entities.Interactions
             base.AttachToEntity();
 
             if (attachedEntity == null)
-            { Destroy(gameObject); }
+            {
+                Destroy(gameObject);
+                return;
+            }
 
             EffectBehaviour();
 
