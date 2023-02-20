@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 using akb.Core.Managing;
 using akb.Core.Managing.LevelLoading;
+using akb.Core.Sounds;
 
 namespace akb.Entities.Player
 {
@@ -18,6 +19,8 @@ namespace akb.Entities.Player
 
         [SerializeField] float rageDuration = 6f;
         [SerializeField] int rageDamageMultiplier = 2;
+
+        [SerializeField] GameObject devilRage;
 
         PlayerEntity playerEntity;
         InputAction rageInput;
@@ -104,6 +107,12 @@ namespace akb.Entities.Player
                 currentDamage *= rageDamageMultiplier;
 
                 ManagerHUB.GetManager.PlayerEntity.PlayerAttack.SetAttackDamage(currentDamage, true);
+
+                GameObject temp = Instantiate(devilRage);
+                temp.transform.position = transform.position + Vector3.up;
+                temp.transform.SetParent(transform);
+
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.DevilRageON);
             }
         }
 

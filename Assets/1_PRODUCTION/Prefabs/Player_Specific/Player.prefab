@@ -172,6 +172,7 @@ MonoBehaviour:
   rageDecreaseValue: 0.08
   rageDuration: 6
   rageDamageMultiplier: 2
+  devilRage: {fileID: 1405008442520684, guid: ab9041fcf0d2ca5429b835df2786ef1e, type: 3}
 --- !u!114 &1456196419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,12 +391,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animatorMovementLayer: 0
   animatorSpearLayer: 1
-  audioClips:
-  - {fileID: 8300000, guid: d94bef2de1ddb034e8097958477b17ba, type: 3}
-  - {fileID: 8300000, guid: ff52d9239629abb488346281563c0920, type: 3}
-  - {fileID: 8300000, guid: 940b0672623270b44aa473e62a731faa, type: 3}
-  - {fileID: 8300000, guid: 21fb0427251dba94aa5b09e0453ffd1f, type: 3}
-  - {fileID: 8300000, guid: 82557bbf77f260145bb8414103f28b04, type: 3}
 --- !u!114 &2972379026712878073
 MonoBehaviour:
   m_ObjectHideFlags: 0

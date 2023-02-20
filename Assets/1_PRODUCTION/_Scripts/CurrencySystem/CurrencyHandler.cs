@@ -90,6 +90,9 @@ namespace akb.Core.Managing.Currencies
 
         public void IncreaseSinnerSoulsBy(int value)
         {
+            if (ManagerHUB.GetManager.LevelManager.FocusedScene == GameScenes.TutorialArena) { return; }
+            if (ManagerHUB.GetManager.RoomSelector.CurrentLevel == 9) { return; }
+
             if (sinnerSouls == 0) value++;
 
             sinnerSouls += value;

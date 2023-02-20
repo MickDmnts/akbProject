@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using akb.Core.Managing.LevelLoading;
+using akb.Core.Sounds;
 
 namespace akb.Core.Managing
 {
@@ -35,7 +36,6 @@ namespace akb.Core.Managing
             ragebar.fillAmount = 0;
 
             ManagerHUB.GetManager.UIManager.EnablePanel("GamePlayScreenPanel");
-
         }
 
         void SetHealthBarValue(float currentHealth, float maxHealth)
@@ -43,7 +43,6 @@ namespace akb.Core.Managing
             healthbar.fillAmount = currentHealth / maxHealth;
 
             healthbar.color = maxHealthColor;
-
 
             if (healthbar.fillAmount < 0.25f)
             {
@@ -64,7 +63,8 @@ namespace akb.Core.Managing
 
             if (ragebar.fillAmount == 1)
             {
-                animator.SetBool("Burning",true);
+                animator.SetBool("Burning", true);
+                ManagerHUB.GetManager.SoundsHandler.PlayOneShot(GameAudioClip.DevilRageReady);
             }
             else
             {
