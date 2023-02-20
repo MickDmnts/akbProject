@@ -1,124 +1,71 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine.SceneManagement;
+using System;
 using UnityEngine;
 using akb.Core.Managing;
 
-
 public class Spawner : MonoBehaviour
 {
-    public enum SpawnState
-    {
-        SPAWNING,
-        WAITING,
-        COUNTING
-    }
-    [System.Serializable]
-    public class Wave
-    {
-        public string name;
-        public Transform Enemy;
-        public int count;
-        public float rate;
-    }
-    public Wave[] waves;
-    [SerializeField] Transform[] spawnPoints;
-    private int nextWave = 0;
-    public SpawnState state = SpawnState.COUNTING;
-    public float timeBetweenWaves = 5f;
-    public float waveCountdown;
-    float searchCountdown = 1f;
+    [Header("Set in inspector")]
+    [SerializeField] Transform[] spawnPositions;
+    [SerializeField] GameObject[] tutorialPanels;
+    [SerializeField] GameObject enemyToSpawn;
+
+    IEnumerator activeBehaviour;
+
+    int activeEnemies = 0;
+    int currentRound = 0;
+
     private void Start()
     {
-        waveCountdown = timeBetweenWaves;
+        ManagerHUB.GetManager.GameEventsHandler.onEnemyDeath += SubtractActiveEnemy;
+        SpawnWave();
     }
 
-    private void Update()
+    void SpawnWave()
     {
-        if(state == SpawnState.WAITING)
-        {
-            if (!EnemyIsAlive())
-            {
-                WaveCompleted();
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        if(waveCountdown <=0)
-        {
-            if(state != SpawnState.SPAWNING)
-            {
-                StartCoroutine(SpawnWave(waves[nextWave]));
-            }
-        }
-        else
-        {
-            waveCountdown -= Time.deltaTime;
-        }
+        activeBehaviour = SpawnEnemies();
+        StartCoroutine(activeBehaviour);
     }
-    //MIXAHL CHECK HERE PLEASE
-    bool EnemyIsAlive()
-    {
-        bool enemyIsAlive = false;
-        searchCountdown -= Time.deltaTime;
-        if(searchCountdown == 0)
-        {
-            searchCountdown = 1f;
-            if (GameObject.FindGameObjectsWithTag("Demon") == null)
-            {
-                enemyIsAlive = false;
-            }
-            else
-            {
-                enemyIsAlive = true;
-            }
-        }
-        return enemyIsAlive;
-    }
-    void WaveCompleted()
-    {
-        Debug.Log("Starting new round");
 
-        state = SpawnState.COUNTING;
-        waveCountdown = timeBetweenWaves;
+    void SubtractActiveEnemy()
+    {
+        activeEnemies--;
 
-        if(nextWave + 1 > waves.Length -1)
+        if (activeEnemies <= 0)
         {
-            //teleport to hub
-            nextWave = -1;
-            SceneManager.LoadScene("PlayerHUB");
-        }
-        else
-        {
-            return;
+            activeEnemies = 0;
+            SpawnWave();
+
+            for (int i = 0; i < tutorialPanels.Length; i++)
+            {
+                if (i == currentRound)
+                {
+                    tutorialPanels[i].SetActive(true);
+                }
+                else { tutorialPanels[i].SetActive(false); }
+            }
+
+            currentRound++;
         }
     }
 
-    IEnumerator SpawnWave(Wave _wave)
+    IEnumerator SpawnEnemies()
     {
-        state = SpawnState.SPAWNING;
+        activeEnemies = 6;
 
-        for(int i =0; i< _wave.count; i++)
+        for (int i = 0; i < spawnPositions.Length; i++)
         {
-            foreach (Transform spawnPoint in spawnPoints)
-            {
-                SpawnEnemy(_wave.Enemy,spawnPoint);
-            }
-            yield return new WaitForSeconds(1f / _wave.rate);
+            GameObject temp = Instantiate(enemyToSpawn, spawnPositions[i].position, enemyToSpawn.transform.rotation);
+
+            yield return null;
         }
 
-        state = SpawnState.WAITING;
-
-        yield break;
+        yield return null;
     }
 
-    void SpawnEnemy(Transform _enemy,Transform spawnPoint)
+    private void OnDestroy()
     {
-            Instantiate(_enemy,spawnPoint);
-            Debug.Log("Spawning Enemy:" + _enemy);
+        ManagerHUB.GetManager.GameEventsHandler.onEnemyDeath -= SubtractActiveEnemy;
+        StopAllCoroutines();
     }
 }

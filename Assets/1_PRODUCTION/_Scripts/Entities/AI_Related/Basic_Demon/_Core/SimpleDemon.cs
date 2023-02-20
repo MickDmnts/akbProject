@@ -6,7 +6,7 @@ namespace akb.Entities.AI.Implementations.Simple_Demon
 {
     using akb.Core.Database.Monsters;
     using akb.Core.Managing;
-
+    using akb.Core.Managing.LevelLoading;
     using akb.Entities.Interactions;
     using Fire_Demon;
 

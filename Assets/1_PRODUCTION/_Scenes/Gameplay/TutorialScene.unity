@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &48995877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48995878}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &48995878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48995877}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &198143141
 Mesh:
   m_ObjectHideFlags: 0
@@ -802,6 +833,37 @@ Transform:
   m_Father: {fileID: 2102921203}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &682681916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 682681917}
+  m_Layer: 0
+  m_Name: Panel (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &682681917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682681916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &847543437
 Mesh:
   m_ObjectHideFlags: 0
@@ -1294,6 +1356,37 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1406331927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1406331928}
+  m_Layer: 0
+  m_Name: Panel (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1406331928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406331927}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1440262111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,29 +1881,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9e3fd54f6e2a54fb27d028994e1db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - name: 1
-    Enemy: {fileID: 5440863929184355346, guid: cac3802df1d3b6b488fada71fd33c948, type: 3}
-    count: 1
-    rate: 1
-  - name: 2
-    Enemy: {fileID: 5440863929184355346, guid: cac3802df1d3b6b488fada71fd33c948, type: 3}
-    count: 1
-    rate: 1
-  - name: 3
-    Enemy: {fileID: 5440863929184355346, guid: cac3802df1d3b6b488fada71fd33c948, type: 3}
-    count: 1
-    rate: 1
-  spawnPoints:
+  spawnPositions:
   - {fileID: 1829092189}
   - {fileID: 2104692083}
   - {fileID: 535367134}
   - {fileID: 573825510}
   - {fileID: 1440262112}
   - {fileID: 1868669754}
-  state: 2
-  timeBetweenWaves: 5
-  waveCountdown: 0
+  tutorialPanels:
+  - {fileID: 48995877}
+  - {fileID: 1406331927}
+  - {fileID: 682681916}
+  enemyToSpawn: {fileID: 5440863929184355347, guid: cac3802df1d3b6b488fada71fd33c948,
+    type: 3}
 --- !u!4 &2102921203
 Transform:
   m_ObjectHideFlags: 0

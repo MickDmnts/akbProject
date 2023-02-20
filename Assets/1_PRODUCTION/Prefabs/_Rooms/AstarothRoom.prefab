@@ -1420,7 +1420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2284444104722500728
 Transform:
   m_ObjectHideFlags: 0
@@ -4026,8 +4026,6 @@ MonoBehaviour:
   deathGFX: {fileID: 1390804924065176, guid: 72ae485445fce1144bab28ae2f6aadd4, type: 3}
   deathLayerID: 29
   coinsOnDeath: 150
-  projectilePrefab: {fileID: 1666608836486861047, guid: 8a20db80bae8fc448be54910d0aabc73,
-    type: 3}
   secondPhaseShield: {fileID: 1527444747669750, guid: d689eae7844400f4883b231a5cd72279,
     type: 3}
   maxDistanceFromTarget: 10
